@@ -17,24 +17,21 @@ const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const user = auth.currentUser;
-    if (user !== null) {
-        const email = user.email;
-        console.log(email)
-    }
+    
 
     const HandleSignin= () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log('Done S');
+            console.log('Done Login');
+            navigation.navigate('Profile')
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
         });
-        navigation.navigate('Profile')
     }
 
     return (
