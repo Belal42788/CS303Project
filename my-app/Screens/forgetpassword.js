@@ -28,15 +28,14 @@ export default function Forgetpassword  ({navigation}){
 return(
     <View style={styles.container}>
         <Image source={logo} style={[styles.logo,{height:height*0.3}]}/>
-        <Text  style={styles.title}>forrget password </Text>
-        <Text  style={styles.title1}>this app is taking about ?</Text>
+        <Text  style={styles.title}>forgot password </Text>
+
 
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
             placeholder="email"
             placeholderTextColor="#003f5c"
-            secureTextEntry={true}
             value={email}
             onChangeText={setEmail}
             />
@@ -47,7 +46,7 @@ return(
         </TouchableOpacity>
 
         <TouchableOpacity  onPress={()=>navigation.navigate('Home')} >
-            <Text>BACK TO SIGHNIN</Text>
+            <Text>back to sign in</Text>
         </TouchableOpacity>
     </View>
 )
