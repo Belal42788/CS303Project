@@ -19,7 +19,7 @@ const RegisterScreen = () => {
             <StatusBar style="auto" />
 
             <View>
-                <Text style={{ paddingTop: 50 }}> wellcome {Email} </Text>
+                <Text style={{ paddingTop: 50 }}> Welcome {Email} </Text>
             </View>
         
         </View>
