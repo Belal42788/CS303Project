@@ -1,6 +1,4 @@
 import {  StyleSheet,View,Text,Image,useWindowDimensions,TouchableOpacity,TextInput } from "react-native";
-//import React from "react";
-//import { StatusBar } from "expo-status-bar";
 import logo from "../assets/download.png"
 import React, { useState } from "react";
 import {  sendPasswordResetEmail } from "firebase/auth";
@@ -14,8 +12,6 @@ export default function Forgetpassword  ({navigation}){
    const handelforgetpassword =()=>{
     sendPasswordResetEmail(auth, email)
     .then(() => {
-      // Password reset email sent!
-      // ..
       console.log("done")
     })
     .catch((error) => {

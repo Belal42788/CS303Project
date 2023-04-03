@@ -7,7 +7,6 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-// import localImage from './asset/image.jpg';
 
 export default function HomePage({navigation}) {
     return (
