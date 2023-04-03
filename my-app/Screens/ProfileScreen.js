@@ -1,30 +1,41 @@
 import { StatusBar } from "expo-status-bar";
-import auth from '../firebase/config/firebase-config.js'
+import auth from "../firebase/config/firebase-config.js";
+import { signOut } from "firebase/auth";
+
 import React from "react";
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 const RegisterScreen = () => {
     const user = auth.currentUser;
     const Email = user.email;
-    
+    const SignOut = () => {
+        signOut(auth)
+            .then(() => {
+                navigation.navigate("Home");
+                alert("you singed out successfuly");
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    };
     return (
-        
         <View style={styles.container}>
-            <Image style={styles.image} source={require("../assets/favicon.png")} />
             <StatusBar style="auto" />
 
             <View>
-                <Text style={{ paddingTop: 50 }}> Welcome {Email} </Text>
+                <Text style={styles.textStyle}> Welcome {Email} </Text>
             </View>
-        
+            <Text> </Text>
+
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={SignOut}>
+                    Sign Out
+                </Text>
+            </TouchableOpacity>
         </View>
-    )
-}
+    );
+};
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -32,31 +43,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    image: {
-        marginBottom: 40,
-        width: 66,
-        height: 66,
-        
+    textStyle: {
+        paddingTop: 50,
+        fontSize: "15px",
+        fontWeight: "bold",
     },
-    inputView: {
-        backgroundColor: "#FFC0CB",
-        borderRadius: 30,
-        width: "70%",
-        height: 45,
-        marginBottom: 20,
-        alignItems: "center",
-    },
-    TextInput: {
-        height: 50,
-        flex: 1,
-        padding: 10,
-        marginLeft: 20,
-    },
-    forgot_button: {
-        height: 30,
-        marginBottom: 30,
-    },
-    loginBtn: {
+    button: {
         width: "70%",
         borderRadius: 25,
         height: 50,
@@ -65,5 +57,12 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: "royalblue",
     },
+    buttonText: {
+        color: "black",
+        fontWeight: "bold",
+        textTransform: "capitalize",
+        fontSize: 15,
+        textAlign: "center",
+    },
 });
-export default RegisterScreen
+export default RegisterScreen;

@@ -44,7 +44,7 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
-            placeholder="Email"
+            placeholder="Enter your Email here:"
             placeholderTextColor="#003f5c"
             value={email}
             onChangeText={setEmail}
@@ -55,7 +55,7 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
-            placeholder="Password"
+            placeholder="Enter your Password:"
             placeholderTextColor="#003f5c"
             secureTextEntry={true}
             value={password}
@@ -69,11 +69,11 @@ const LoginScreen = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText} onPress={HandleSignin}>LOGIN</Text>
+            <Text style={styles.buttonText} onPress={HandleSignin}>LOGIN</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.registerBtn}>
-            <Text style={styles.loginText} onPress={() => navigation.navigate("Register")}>Register</Text>
+            <Text style={styles.buttonText} onPress={() => navigation.navigate("Register")}>Register</Text>
         </TouchableOpacity>
         
         </View>
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 10,
         backgroundColor: "#5cb85c",
+        fontWeight:"bold"
     },
     registerBtn: {
         width: "70%",
@@ -134,7 +135,15 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 10,
         backgroundColor: "royalblue",
-    }
+        fontWeight:'bold'
+    },
+    buttonText: {
+        color: "black",
+        fontWeight: "bold",
+        textTransform: "capitalize",
+        fontSize: 15,
+        textAlign: "center",
+      },
 });
 
 export default LoginScreen

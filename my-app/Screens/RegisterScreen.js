@@ -53,7 +53,7 @@ const RegisterScreen = ({navigation}) => {
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
-            placeholder="Email"
+            placeholder="Enter your Email:"
             placeholderTextColor="#003f5c"
             value={email}
             onChangeText={setEmail}
@@ -63,9 +63,9 @@ const RegisterScreen = ({navigation}) => {
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
-            placeholder="Password"
-            placeholderTextColor="#003f5c"
             secureTextEntry={true}
+            placeholder="Enter Your password:"
+            placeholderTextColor="#003f5c"
             value={password}
             onChangeText={setPassword}
             />
@@ -74,9 +74,9 @@ const RegisterScreen = ({navigation}) => {
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
-            placeholder="RE-Password"
-            placeholderTextColor="#003f5c"
             secureTextEntry={true}
+            placeholder="Confirm your password"
+            placeholderTextColor="#003f5c"
             value={password1}
             onChangeText={setPassword1}
             />
@@ -85,7 +85,11 @@ const RegisterScreen = ({navigation}) => {
         <TouchableOpacity style={styles.loginBtn}>
             <Text style={styles.loginText} onPress={HandleRegister}>Register</Text>
         </TouchableOpacity>
-
+        <Text>  </Text>
+        <Text>  </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Text style={styles.textStyle}>Need to Login instead?</Text>
+        </TouchableOpacity>
         </View>
     )
 }
@@ -97,23 +101,29 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     image: {
-        marginBottom: 40,
+        marginTop: '30%',
+        marginBottom: '60px',
         width: 66,
         height: 66,
     },
     inputView: {
-        backgroundColor: "#FFC0CB",
-        borderRadius: 30,
-        width: "70%",
-        height: 45,
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 2.5,
+        borderRadius: 5,
+        width: "85%",
+        height: 40,
         marginBottom: 20,
         alignItems: "center",
+        textAlign: "left",
     },
     TextInput: {
+        fontSize: 16,
+        width: "100%",
         height: 50,
-        flex: 1,
-        padding: 10,
-        marginLeft: 20,
+        padding: 5,
+        textAlign: "left",
+        color:"black"
     },
     loginBtn: {
         width: "70%",
@@ -124,5 +134,11 @@ const styles = StyleSheet.create({
         marginTop: 30,
         backgroundColor: "royalblue",
     },
+    textStyle: {
+        fontSize: 15,
+        marginBottom: 50,
+        color: "#003f5c",
+        textDecorationLine: 'underline'
+    }
 });
 export default RegisterScreen
