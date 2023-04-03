@@ -14,12 +14,12 @@ export default function App() {
     //  <Forgetpassword/>
     <NavigationContainer>
       <Stack.Navigator>
-         <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
-   <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
+        <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -65,11 +65,15 @@ const LoginScreen = ({navigation}) => {
 
 
         <TouchableOpacity>
-            <Text style={styles.forgot_button}>Forgot Password?</Text>
+            <Text style={styles.forgot_button}>Forgot your password?</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.loginBtn}>
             <Text style={styles.loginText} onPress={HandleSignin}>LOGIN</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.registerBtn}>
+            <Text style={styles.loginText} onPress={() => navigation.navigate("Register")}>Register</Text>
         </TouchableOpacity>
         
         </View>
@@ -89,22 +93,29 @@ const styles = StyleSheet.create({
         
     },
     inputView: {
-        backgroundColor: "#FFC0CB",
-        borderRadius: 30,
-        width: "70%",
-        height: 45,
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 2.5,
+        borderRadius: 5,
+        width: "85%",
+        height: 40,
         marginBottom: 20,
         alignItems: "center",
+        textAlign: "left",
     },
     TextInput: {
+        fontSize: 16,
+        width: "100%",
         height: 50,
-        flex: 1,
-        padding: 10,
-        marginLeft: 20,
+        padding: 5,
+        textAlign: "left",
+        color: "black",
     },
     forgot_button: {
-        height: 30,
-        marginBottom: 30,
+        fontSize: 15,
+        marginBottom: 50,
+        color: "#003f5c",
+        textDecorationLine: 'underline'
     },
     loginBtn: {
         width: "70%",
@@ -113,8 +124,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 10,
-        backgroundColor: "royalblue",
+        backgroundColor: "#5cb85c",
     },
+    registerBtn: {
+        width: "70%",
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10,
+        backgroundColor: "royalblue",
+    }
 });
 
 export default LoginScreen

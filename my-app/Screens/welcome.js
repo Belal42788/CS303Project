@@ -11,7 +11,7 @@ function wellcome  ({navigation}){
 return(
     <View style={styles.container}>
         <Image source={logo} style={[styles.logo,{height:height*0.2}]}/>
-        <Text  style={styles.title}>wlcome to my first app </Text>
+        <Text  style={styles.title}>Welcome to my first app </Text>
         <Text  style={styles.title1}>this app is taking about  jdshf sdbjasdvb dashfsahf sdakhfaksjdf hasdkfhlask </Text>
 
         <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Home')} >
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontWeight:"bold",
-        fontSize:50,
+        fontSize:30,
         marginBottom:20
     },
     title1:{       
