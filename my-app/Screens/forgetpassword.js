@@ -7,7 +7,7 @@ import {  sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase/config/firebase-config";
 
 
-function wellcome  ({navigation}){
+export default function Forgetpassword  ({navigation}){
     const [email, setEmail] = useState("");
     const {height}=useWindowDimensions();
 
@@ -29,7 +29,7 @@ return(
     <View style={styles.container}>
         <Image source={logo} style={[styles.logo,{height:height*0.3}]}/>
         <Text  style={styles.title}>forrget password </Text>
-        <Text  style={styles.title1}>this app is taking about  jdshf sdbjasdvb dashfsahf sdakhfaksjdf hasdkfhlask </Text>
+        <Text  style={styles.title1}>this app is taking about ?</Text>
 
         <View style={styles.inputView}>
             <TextInput
@@ -92,5 +92,3 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
 });
-
-export default wellcome; 
