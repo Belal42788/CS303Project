@@ -1,17 +1,30 @@
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import { signOut } from "firebase/auth";
-
-import React from "react";
+import { getDatabase, ref, child, get } from "firebase/database";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
+    const [User, setUser] = useState({});
     const user = auth.currentUser;
-    const Email = user.email;
+    useEffect(() => {
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val());
+                setUser(snapshot.val());
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }, [])
     const SignOut = () => {
         signOut(auth)
             .then(() => {
-                navigation.navigate("Home");
+                navigation.navigate("Welcome");
                 alert("you singed out successfuly");
             })
             .catch((error) => {
@@ -24,7 +37,13 @@ const RegisterScreen = () => {
             <StatusBar style="auto" />
 
             <View>
-                <Text style={styles.textStyle}> Welcome {Email} </Text>
+                <Text style={styles.textStyle}> Welcome user {User.name} </Text>
+            </View>
+            <View>
+                <Text style={styles.textStyle}> Your Email {User.email} </Text>
+            </View>
+            <View>
+                <Text style={styles.textStyle}> and Your age {User.age} </Text>
             </View>
             <Text> </Text>
 

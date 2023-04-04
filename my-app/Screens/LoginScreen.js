@@ -24,7 +24,6 @@ const LoginScreen = ({navigation}) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log('Done Login');
             navigation.navigate('Profile')
         })
         .catch((error) => {
