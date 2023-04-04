@@ -5,7 +5,7 @@ import logo from "../assets/360_F_361521131_tvclR3GrsVQBFVsUe1EPNFgH2MWIN1w7.jpg
 
 
 
-function wellcome  ({navigation}){
+function Wellcome  ({navigation}){
     const {height}=useWindowDimensions();
 
 return(
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default wellcome; 
+export default Wellcome; 

@@ -13,15 +13,12 @@ import {
 
 const RegisterScreen = ({navigation}) => {
     
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
     const user = auth.currentUser;
-    if (user !== null) {
-        const email = user.email;
-        console.log(email)
-    }
-
 
     const HandleRegister = () => {
         if(password==password1){
@@ -50,6 +47,24 @@ const RegisterScreen = ({navigation}) => {
         <Image style={styles.image} source={require("../assets/signup.png")} />
         <StatusBar style="auto" />
 
+        <View style={styles.inputView}>
+            <TextInput
+            style={styles.TextInput}
+            placeholder="Enter your Name:"
+            placeholderTextColor="#003f5c"
+            value={name}
+            onChangeText={setName}
+            />
+        </View>
+        <View style={styles.inputView}>
+            <TextInput
+            style={styles.TextInput}
+            placeholder="Enter your Email:"
+            placeholderTextColor="#003f5c"
+            value={age}
+            onChangeText={setAge}
+            />
+        </View>
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
