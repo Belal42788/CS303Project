@@ -64,9 +64,6 @@ const LoginScreen = ({navigation}) => {
         </View>
 
 
-        <TouchableOpacity>
-            <Text style={styles.forgot_button} onPress={() => navigation.navigate("Forgetpassword")}>Forgot your password?</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.loginBtn}>
             <Text style={styles.buttonText} onPress={HandleSignin}>LOGIN</Text>
@@ -75,6 +72,35 @@ const LoginScreen = ({navigation}) => {
         <TouchableOpacity style={styles.registerBtn}>
             <Text style={styles.buttonText} onPress={() => navigation.navigate("Register")}>Register</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+                <Text
+                    style={styles.forgot_button}
+                    onPress={() => navigation.navigate("Forgetpassword")}
+                >
+                    Forgot your password?
+                </Text>
+            </TouchableOpacity>
+            <View style={styles.smallloginicon}>
+                <TouchableOpacity >
+                    <Image
+                        style={styles.smallloginicon}
+                        source={require("../assets/thcc.png")}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity >
+                    <Image
+                        style={styles.smallloginicon}
+                        source={require("../assets/gmail_icon-icons.com_62758.png")}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Image
+                        style={styles.smallloginicon}
+                        source={require("../assets/twitter.png")}
+                    />
+                </TouchableOpacity>
+            </View>
         
         </View>
     )
@@ -112,10 +138,12 @@ const styles = StyleSheet.create({
         color: "black",
     },
     forgot_button: {
-        fontSize: 15,
-        marginBottom: 50,
+        marginBottom: 40,
+        marginTop: 20,
         color: "#003f5c",
-        textDecorationLine: 'underline'
+        textDecorationLine: "underline",
+        fontSize: 20,
+        color: "rgb(100, 128, 128)",
     },
     loginBtn: {
         width: "70%",
@@ -144,6 +172,16 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: "center",
       },
+      smallloginicon: {
+        width: 60,
+        height: 60,
+        margin: 5,
+        marginTop: 0,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignContent: "space-around",
+        borderRadius: "50%",
+    },
 });
 
 export default LoginScreen

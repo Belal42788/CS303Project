@@ -88,8 +88,29 @@ const RegisterScreen = ({navigation}) => {
         <Text>  </Text>
         <Text>  </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style={styles.textStyle}>Need to Login instead?</Text>
+            <Text style={styles.forgot_button}>Need to Login instead?</Text>
         </TouchableOpacity>
+        <View style={styles.smallloginicon}>
+                <TouchableOpacity >
+                    <Image
+                        style={styles.smallloginicon}
+                        source={require("../assets/thcc.png")}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity >
+                    <Image
+                        style={styles.smallloginicon}
+                        source={require("../assets/gmail_icon-icons.com_62758.png")}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Image
+                        style={styles.smallloginicon}
+                        source={require("../assets/twitter.png")}
+                    />
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -139,6 +160,23 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         color: "#003f5c",
         textDecorationLine: 'underline'
-    }
+    },  smallloginicon: {
+        width: 60,
+        height: 60,
+        margin: 5,
+        marginTop: 0,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignContent: "space-around",
+        borderRadius: "50%",
+    },
+    forgot_button: {
+        marginBottom: 40,
+        marginTop: 20,
+        color: "#003f5c",
+        textDecorationLine: "underline",
+        fontSize: 20,
+        color: "rgb(100, 128, 128)",
+    },
 });
 export default RegisterScreen

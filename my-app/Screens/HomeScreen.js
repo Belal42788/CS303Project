@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 // import localImage from './asset/image.jpg';
-
 export default function HomePage({navigation}) {
     return (
       <View style={styles.container}>
