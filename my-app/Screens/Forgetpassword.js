@@ -1,7 +1,7 @@
 import {  StyleSheet,View,Text,Image,useWindowDimensions,TouchableOpacity,TextInput } from "react-native";
 //import React from "react";
 //import { StatusBar } from "expo-status-bar";
-import logo from "../assets/download.png"
+import logo from "../assets/forgot-password.png"
 import React, { useState } from "react";
 import {  sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase/config/firebase-config";
@@ -11,23 +11,24 @@ export default function Forgetpassword  ({navigation}){
     const [email, setEmail] = useState("");
     const {height}=useWindowDimensions();
 
-   const handelforgetpassword =()=>{
+    const handelforgetpassword =()=>{
     sendPasswordResetEmail(auth, email)
     .then(() => {
       // Password reset email sent!
       // ..
-      console.log("done")
+    console.log("done")
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
       // ..
     });
     }
 
+
 return(
     <View style={styles.container}>
-        <Image source={logo} style={[styles.logo,{height:height*0.3}]}/>
+        <Image source={logo} style={[styles.logo]}/>
         <Text  style={styles.title}>forgot password </Text>
 
 
@@ -56,10 +57,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-       padding:20,
+        padding:20,
     },
     logo:{
-        width: "70%",
+        width: "40%",
+        height:"30%",
         maxWidth:300,
         maxHeight:300,
         marginBottom:10
