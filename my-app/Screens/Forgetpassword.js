@@ -35,19 +35,19 @@ return(
         <View style={styles.inputView}>
             <TextInput
             style={styles.TextInput}
-            placeholder="email"
+            placeholder="Email :"
             placeholderTextColor="#003f5c"
             value={email}
             onChangeText={setEmail}
             />
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={handelforgetpassword} >
-            <Text>SEND LINK TO YOUR EMAIL</Text>
+        <TouchableOpacity style={styles.loginBtn} onLayout={styles.hoverstyle}onPress={handelforgetpassword} >
+            <Text style={styles.loginText} onPressIn={styles.loginText}>SEND TO EMAIL</Text>
         </TouchableOpacity>
 
         <TouchableOpacity  onPress={()=>navigation.navigate('Home')} >
-            <Text>back to sign in</Text>
+            <Text style={styles.forgot_button} >back to sign in</Text>
         </TouchableOpacity>
     </View>
 )
@@ -76,20 +76,75 @@ const styles = StyleSheet.create({
         color:"3A3967",
          marginBottom:20
     },
-    button:{       
-        width: "70%",
-        borderRadius: 25,
-        height: 50,
+    loginBtn: {
+        width: "90%",
+        borderRadius: 50,
+        height: 70,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 10,
-        backgroundColor: "royalblue",
-        marginBottom:10
-    },
-    TextInput: {
+        marginTop: 0,
+        fontSize:50,
+        Size:50,
+        backgroundColor: "#64e3ff",
+        borderWidth:2,
+        borderColor:"#64e3ff"
+       
+      },
+      TextInput: {
+        fontSize:20,
+        width:"100%",
         height: 50,
         flex: 1,
-        padding: 10,
-        marginLeft: 20,
-    },
+        padding:0,
+        marginLeft: 0,
+        textAlign:"left",
+        color:"white",
+      },
+    
+      inputView: {
+        backgroundColor: "white",
+        borderColor:"#64e3ff",
+        borderWidth: 2,
+        borderRadius: 5,
+        width: "90%",
+        height: 50,
+        marginBottom: 20,
+        alignItems: "center",
+        textAlign:"left",
+      },RegBtn:{
+        width: "90%",
+        borderRadius: 5,
+        height: 70,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 0,
+        fontSize:50,
+        Size:50,
+        backgroundColor: "black",
+        borderWidth:2,
+        borderColor:"#64e3ff",
+        marginBottom:0
+      },
+      loginText :{
+        fontSize :30,
+        lineHeight:20,
+        fontStyle:"normal",
+        padding:10
+        ,color:"black",
+      },RegisterText:{
+        fontSize :20,
+        lineHeight:20,
+        fontStyle:"normal",
+        padding:10
+        ,color:"#64e3ff",
+    
+      },
+      forgot_button: {
+        height: 30,
+        marginTop :30,
+        marginBottom: 0,
+        fontSize:25,
+        color:"rgb(100, 128, 128)",
+      },
+
 });
