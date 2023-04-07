@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword ,sendEmailVerification } from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
@@ -26,7 +26,7 @@ const RegisterScreen = ({ navigation }) => {
             alert("Your pass is small");
             return;
         }
-        if (password == password1) {
+        if (password == password1 & name!="" & age !=""  ) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
 
@@ -40,15 +40,29 @@ const RegisterScreen = ({ navigation }) => {
                         date: Date.now()
                     });
 
-                    navigation.navigate('Profile')
+                    sendEmailVerification(user)
+                    .then(()=>{
+                        alert("Verification link has been sent to your email Plesase check your email then LOGIN")
+                        navigation.navigate('Login')
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage);
+                    })
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
+                    alert("Email alredy registered");
                     console.log(errorMessage);
                 });
-        } else {
+        } else if(password!=password1){
             alert("Password not match");
+        } else if(name == ""){
+            alert("Please enter your Name")
+        }else if(age==""){
+            alert("Please enter your Age")
         }
     }
     

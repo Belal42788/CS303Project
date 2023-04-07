@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-       padding:20,
+        padding:20,
     },
     logo:{
         width: "70%",
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     title1:{       
         fontSize:20,
         color:"3A3967",
-         marginBottom:20
+        marginBottom:20
     },
     button:{       
         width: "70%",
