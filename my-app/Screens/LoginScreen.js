@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword ,signOut} from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
@@ -28,7 +28,8 @@ const LoginScreen = ({ navigation }) => {
                 if (user.emailVerified) {
                     navigation.navigate('Profile')
                 } else {
-                    alert("Email is not Verified")
+                    signOut(auth)
+                    .then(()=>alert("Email is not Verified"))
                 }
             })
             .catch((error) => {
