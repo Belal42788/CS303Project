@@ -1,6 +1,4 @@
 import {  StyleSheet,View,Text,Image,useWindowDimensions,TouchableOpacity,TextInput } from "react-native";
-//import React from "react";
-//import { StatusBar } from "expo-status-bar";
 import logo from "../assets/forgot-password.png"
 import React, { useState } from "react";
 import {  sendPasswordResetEmail } from "firebase/auth";
