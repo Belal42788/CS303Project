@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword ,sendEmailVerification } from "firebase/auth"
+import { createUserWithEmailAndPassword ,sendEmailVerification ,updateEmail,updateProfile,updatePassword} from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
@@ -15,7 +15,7 @@ import {
 const RegisterScreen = ({ navigation }) => {
 
     const [name, setName] = useState("");
-    const [age, setAge] = useState("");
+    // const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
@@ -26,20 +26,37 @@ const RegisterScreen = ({ navigation }) => {
             alert("Your pass is small");
             return;
         }
-        if (password == password1 & name!="" & age !=""  ) {
+
+        if (password == password1 & name!="" ) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
 
                     const user = userCredential.user;
+
                     //to set user informatoin to database
-                    const db = getDatabase();
-                    set(ref(db, 'users/' + user.uid), {
-                        name: name,
-                        age: age,
-                        email: email,
-                        date: Date.now()
+                    // const db = getDatabase();
+                    // set(ref(db, 'users/' + user.uid), {
+                    //     age: age,
+                    //     date: Date.now()
+                    // });
+
+                    //to set user name
+                    updateProfile(auth.currentUser, {
+                        displayName: name
+                    }).then(() => {
+                        console.log("user name updated");
+                    }).catch((error) => {
+                        console.log(error.message);
                     });
 
+                    //to set user email
+                    updateEmail(auth.currentUser, email).then(() => {
+                        console.log("user email updated");
+                    }).catch((error) => {
+                        console.log(error.message);
+                    });
+
+                    //to send email verification
                     sendEmailVerification(user)
                     .then(()=>{
                         alert("Verification link has been sent to your email Plesase check your email then LOGIN")
@@ -50,6 +67,14 @@ const RegisterScreen = ({ navigation }) => {
                         const errorMessage = error.message;
                         console.log(errorMessage);
                     })
+                    
+                    //to set user password
+                    updatePassword(auth.currentUser, password).then(() => {
+                        console.log("user password updated");
+                    }).catch((error) => {
+                        console.log(error.message);
+                    });
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -61,8 +86,6 @@ const RegisterScreen = ({ navigation }) => {
             alert("Password not match");
         } else if(name == ""){
             alert("Please enter your Name")
-        }else if(age==""){
-            alert("Please enter your Age")
         }
     }
     
@@ -90,7 +113,7 @@ const RegisterScreen = ({ navigation }) => {
                     onChangeText={setName}
                 />
             </View>
-            <View style={styles.inputView}>
+            {/* <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
                     placeholder="Enter your Age:"
@@ -98,7 +121,7 @@ const RegisterScreen = ({ navigation }) => {
                     value={age}
                     onChangeText={setAge}
                 />
-            </View>
+            </View> */}
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
