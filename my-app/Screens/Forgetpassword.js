@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     title1:{       
         fontSize:20,
         color:"3A3967",
-         marginBottom:20
+        marginBottom:20
     },
     loginBtn: {
         width: "90%",
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#64e3ff",
         borderWidth:2,
         borderColor:"#64e3ff"
-       
+      
       },
       TextInput: {
         fontSize:20,

@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword ,sendEmailVerification ,updateEmail,updateProfile,updatePassword} from "firebase/auth"
+import { createUserWithEmailAndPassword ,sendEmailVerification ,updateProfile} from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
@@ -40,18 +40,13 @@ const RegisterScreen = ({ navigation }) => {
                     //     date: Date.now()
                     // });
 
-                    //to set user name
+                    //to set user info
                     updateProfile(auth.currentUser, {
-                        displayName: name
+                        displayName: name,
+                        email: email,
+                        password: password,
                     }).then(() => {
                         console.log("user name updated");
-                    }).catch((error) => {
-                        console.log(error.message);
-                    });
-
-                    //to set user email
-                    updateEmail(auth.currentUser, email).then(() => {
-                        console.log("user email updated");
                     }).catch((error) => {
                         console.log(error.message);
                     });
@@ -67,13 +62,6 @@ const RegisterScreen = ({ navigation }) => {
                         const errorMessage = error.message;
                         console.log(errorMessage);
                     })
-                    
-                    //to set user password
-                    updatePassword(auth.currentUser, password).then(() => {
-                        console.log("user password updated");
-                    }).catch((error) => {
-                        console.log(error.message);
-                    });
 
                 })
                 .catch((error) => {
