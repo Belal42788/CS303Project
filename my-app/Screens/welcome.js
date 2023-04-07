@@ -1,6 +1,5 @@
 import {  StyleSheet,View,Text,Image,useWindowDimensions,TouchableOpacity } from "react-native";
 import React from "react";
-//import { StatusBar } from "expo-status-bar";
 import logo from "../assets/360_F_361521131_tvclR3GrsVQBFVsUe1EPNFgH2MWIN1w7.jpg"
 
 
