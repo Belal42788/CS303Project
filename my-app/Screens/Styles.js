@@ -20,7 +20,7 @@ const Styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        fontFamily: "cursive",
+        // fontFamily: "cursive",
         fontWeight: "bold",
     },titleButon: {
         fontSize: "13px",
