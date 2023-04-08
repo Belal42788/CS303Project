@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 10,
-        backgroundColor: "#5cb85c",
+        backgroundColor: "royalblue",
         fontWeight: "bold"
     },
     registerBtn: {
