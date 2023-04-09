@@ -1,3 +1,4 @@
+import HomeScreen from "./Screens/HomeScreen.js";
 import LoginScreen from "./Screens/LoginScreen.js";
 import RegisterScreen from "./Screens/RegisterScreen.js";
 import Welcome from "./Screens/welcome.js";
@@ -12,11 +13,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 export default function App() {
   const Stack = createNativeStackNavigator()
   return (
+    //  <Forgetpassword/>
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen name="Getstat1" component={Getstar1} />
       <Stack.Screen name="Getstat2" component={Getstar2} />
         <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />

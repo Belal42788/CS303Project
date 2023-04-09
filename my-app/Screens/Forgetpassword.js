@@ -1,4 +1,6 @@
 import {  StyleSheet,View,Text,Image,useWindowDimensions,TouchableOpacity,TextInput } from "react-native";
+//import React from "react";
+//import { StatusBar } from "expo-status-bar";
 import logo from "../assets/forgot-password.png"
 import React, { useState } from "react";
 import {  sendPasswordResetEmail } from "firebase/auth";
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     title1:{       
         fontSize:20,
         color:"3A3967",
-        marginBottom:20
+         marginBottom:20
     },
     loginBtn: {
         width: "90%",
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#64e3ff",
         borderWidth:2,
         borderColor:"#64e3ff"
-      
+       
       },
       TextInput: {
         fontSize:20,

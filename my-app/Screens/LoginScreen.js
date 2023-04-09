@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword ,signOut} from "firebase/auth"
+import { signInWithEmailAndPassword  } from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
@@ -17,73 +17,68 @@ import {
   } from 'react-native-fbsdk-next';
 
 
-const LoginScreen = ({ navigation }) => {
-
+const LoginScreen = ({navigation}) => {
+    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const user = auth.currentUser;
-    
-
+    const onFacebookButtonPress = async () =>{
+const result = await LoginManager.logInWithPermissions(['public_profile'])
+    }
     const HandleSignin= () => {
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                if (user.emailVerified) {
-                    navigation.navigate('Profile')
-                } else {
-                    signOut(auth)
-                    .then(()=>alert("Email is not Verified"))
-                }
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert("Email or Password is wrong")
-                console.log(errorMessage);
-            });
-
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log('Done Login');
+            navigation.navigate('Profile')
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+        });
     }
 
     return (
-
+        
         <View style={styles.container}>
-            <Image style={styles.image} source={require("../assets/login.png")} />
-            <StatusBar style="auto" />
+        <Image style={styles.image} source={require("../assets/login.png")} />
+        <StatusBar style="auto" />
 
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="Enter your Email here:"
-                    placeholderTextColor="#003f5c"
-                    value={email}
-                    onChangeText={setEmail}
-                />
-            </View>
+        <View style={styles.inputView}>
+            <TextInput
+            style={styles.TextInput}
+            placeholder="Enter your Email here:"
+            placeholderTextColor="#003f5c"
+            value={email}
+            onChangeText={setEmail}
+            />
+        </View>
 
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="Enter your Password:"
-                    placeholderTextColor="#003f5c"
-                    secureTextEntry={true}
-                    value={password}
-                    onChangeText={setPassword}
-                />
-            </View>
+        <View style={styles.inputView}>
+            <TextInput
+            style={styles.TextInput}
+            placeholder="Enter your Password:"
+            placeholderTextColor="#003f5c"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
+            />
+        </View>
 
 
 
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.buttonText} onPress={HandleSignin}>LOGIN</Text>
-            </TouchableOpacity>
+        <TouchableOpacity style={styles.loginBtn}>
+            <Text style={styles.buttonText} onPress={HandleSignin}>LOGIN</Text>
+        </TouchableOpacity>
 
-            <TouchableOpacity style={styles.registerBtn}>
-                <Text style={styles.buttonText} onPress={() => navigation.navigate("Register")}>Register</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
+        <TouchableOpacity style={styles.registerBtn}>
+            <Text style={styles.buttonText} onPress={() => navigation.navigate("Register")}>Register</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
                 <Text
                     style={styles.forgot_button}
                     onPress={() => navigation.navigate("Forgetpassword")}
@@ -112,7 +107,7 @@ const LoginScreen = ({ navigation }) => {
                     />
                 </TouchableOpacity>
             </View>
-
+        
         </View>
     )
 }
@@ -127,7 +122,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         width: 66,
         height: 66,
-
+        
     },
     inputView: {
         backgroundColor: "white",
@@ -163,8 +158,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 10,
-        backgroundColor: "royalblue",
-        fontWeight: "bold"
+        backgroundColor: "#5cb85c",
+        fontWeight:"bold"
     },
     registerBtn: {
         width: "70%",
@@ -174,7 +169,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 10,
         backgroundColor: "royalblue",
-        fontWeight: 'bold'
+        fontWeight:'bold'
     },
     buttonText: {
         color: "black",
@@ -182,8 +177,8 @@ const styles = StyleSheet.create({
         textTransform: "capitalize",
         fontSize: 15,
         textAlign: "center",
-    },
-    smallloginicon: {
+      },
+      smallloginicon: {
         width: 60,
         height: 60,
         margin: 5,

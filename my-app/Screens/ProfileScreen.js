@@ -1,34 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
-import { signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
-import { getDatabase, ref, child, get } from "firebase/database";
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { signOut } from "firebase/auth";
 
-const RegisterScreen = ({ navigation }) => {
+import React from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-    const [User, setUser] = useState({});
+const RegisterScreen = () => {
     const user = auth.currentUser;
-
-    // useEffect(() => {
-    //     const dbRef = ref(getDatabase());
-    //     get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
-    //         if (snapshot.exists()) {
-    //             console.log(snapshot.val());
-    //             setUser(snapshot.val());
-    //         } else {
-    //             console.log("No data available");
-    //         }
-    //     }).catch((error) => {
-    //         console.error(error);
-    //     });
-    // }, [])
-
-    //to sign out
+    const Email = user.email;
     const SignOut = () => {
         signOut(auth)
             .then(() => {
-                navigation.navigate("Welcome");
+                navigation.navigate("Home");
                 alert("you singed out successfuly");
             })
             .catch((error) => {
@@ -36,67 +19,18 @@ const RegisterScreen = ({ navigation }) => {
                 console.log(errorMessage);
             });
     };
-
-    //to delete user
-    const DeleteUser = () => {
-        deleteUser(user).then(() => {
-            // User deleted.
-            console.log("User Deleted")
-            navigation.navigate("Welcome");
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorMessage)
-        });
-    }
-
-    //to reset password
-    const ResetPassword = () => {
-        sendPasswordResetEmail(auth, user.email)
-            .then(() => {
-                // Password reset email sent!
-                // ..
-                console.log("Password reset email sent!")
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
-                console.log(errorMessage)
-            });
-    }
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
 
-
-            <Image style={styles.PhotoStyle} source={
-                { uri: "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c" }}
-            />
-
             <View>
-                <Text style={styles.textStyle}> Welcome user {user.displayName} </Text>
-            </View>
-            <View>
-                <Text style={styles.textStyle}> Your Email {user.email} </Text>
+                <Text style={styles.textStyle}> Welcome {Email} </Text>
             </View>
             <Text> </Text>
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={SignOut}>
                     Sign Out
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={DeleteUser}>
-                    Deleted Email
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={ResetPassword}>
-                    reset password
                 </Text>
             </TouchableOpacity>
         </View>
@@ -108,14 +42,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
-    },
-    PhotoStyle: {
-        width: "150px",
-        height: "150px",
-        // backgroundColor:"blue",
-        borderRightWidth: "0px",
-        // borderColor:"blue",
-        borderRadius: "50%"
     },
     textStyle: {
         paddingTop: 50,
