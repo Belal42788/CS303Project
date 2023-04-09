@@ -4,6 +4,7 @@ import Home from "./Screens/Homescreen.js";
 import Welcome from "./Screens/welcome.js";
 import Forgetpassword from "./Screens/Forgetpassword.js";
 import ProfileScreen from "./Screens/ProfileScreen.js";
+import { useFonts } from "expo-font";
 import Getstar1 from "./Screens/GetStar1.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -11,6 +12,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+let [fontloaded] =useFonts({
+  'mulish':require('./fonts/assets/fonts/Mulish-VariableFont_wght.ttf'),
+  'roboto':require('./fonts/assets/fonts/RobotoCondensed-Regular.ttf')
+});
   return (
     <NavigationContainer>
       <Stack.Navigator

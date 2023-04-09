@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         // marginLeft: "30%",
         color: "black",
         fontSize: "200%",
-        fontWeight: "600",
+        fontWeight: "650",
         fontFamily:'mulish',
         marginRight:"0",
         lineHeight:"1.2",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
            color: "#003f5c",
            color: "rgb(100, 128, 128)",
-           fontFamily:'mulish'
+           fontFamily:'roboto'
     },
 });
 
