@@ -7,10 +7,16 @@ import ProfileScreen from "./Screens/ProfileScreen.js";
 import Getstar1 from "./Screens/GetStar1.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from "expo-font";
 
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+    let [fontloadeed] = useFonts ({
+      'Roboto' :require('./fonts/assets/fonts/RobotoCondensed-Regular.ttf'),
+      'robotobold' :require('./fonts/assets/fonts/RobotoCondensed-Bold.ttf'),
+      'mulish' :require('./fonts/assets/fonts/Mulish-VariableFont_wght.ttf'),
+    });
   return (
     <NavigationContainer>
       <Stack.Navigator
