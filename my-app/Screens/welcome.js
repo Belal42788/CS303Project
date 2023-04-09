@@ -10,7 +10,7 @@ function Wellcome({ navigation }) {
                 <Text style={Styles.title}>     Welcome</Text>
                 <Text style={Styles.title}>          To</Text>
                 <Text style={Styles.title}>    Car World</Text>
-                <TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Register')} >
+                <TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Get Start1')} >
                     <Text style={Styles.titleButon}>GET STARTED</Text>
                 </TouchableOpacity>
             </View>
