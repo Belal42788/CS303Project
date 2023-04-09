@@ -75,10 +75,10 @@ const RegisterScreen = ({ navigation }) => {
             />
 
             <View>
-                <Text style={styles.textStyle}> Welcome user {user.displayName} </Text>
+                <Text style={styles.textStyle}> Welcome, {user.displayName}! </Text>
             </View>
             <View>
-                <Text style={styles.textStyle}> Your Email {user.email} </Text>
+                <Text style={styles.textStyle}> Your Email is: {user.email} </Text>
             </View>
             <Text> </Text>
 
