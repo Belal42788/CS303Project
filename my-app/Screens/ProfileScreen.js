@@ -4,6 +4,8 @@ import { signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity ,Alert} from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 const RegisterScreen = ({ navigation }) => {
 
@@ -28,6 +30,7 @@ const RegisterScreen = ({ navigation }) => {
     const SignOut = () => {
         signOut(auth)
             .then(() => {
+                AsyncStorage.clear();
                 navigation.navigate("Welcome");
                 alert("you singed out successfuly");
             })
@@ -41,6 +44,7 @@ const RegisterScreen = ({ navigation }) => {
     const DeleteUser = () => {
         deleteUser(user).then(() => {
             // User deleted.
+            AsyncStorage.clear();
             alert("User Deleted")
             navigation.navigate("Welcome");
         }).catch((error) => {

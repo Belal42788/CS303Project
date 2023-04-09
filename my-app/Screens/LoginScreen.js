@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState } from "react";
+import AsyncStorage from '@react-native-community/async-storage';
 import {
   StyleSheet,
   Text,
@@ -24,6 +25,8 @@ const LoginScreen = ({ navigation }) => {
         // Signed in
         const user = userCredential.user;
         if (user.emailVerified) {
+          AsyncStorage.setItem("email", email);
+          AsyncStorage.setItem("password", password);
           navigation.navigate("Profile");
         } else {
           signOut(auth).then(() => alert("Email is not Verified"));
@@ -87,7 +90,7 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <View style={styles.smallloginicon}>
         <TouchableOpacity >
-        {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
+          {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
           <Image
             style={styles.smallloginicon}
             source={require("../assets/thcc.png")}
