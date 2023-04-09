@@ -3,7 +3,7 @@ import auth from "../firebase/config/firebase-config.js";
 import { signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
 
@@ -69,9 +69,11 @@ const RegisterScreen = ({ navigation }) => {
         <View style={styles.container}>
             <StatusBar style="auto" />
 
-            <View style={styles.PhotoStyle}>
 
-            </View>
+            <Image style={styles.PhotoStyle} source={
+                { uri: "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c" }}
+            />
+
             <View>
                 <Text style={styles.textStyle}> Welcome user {user.displayName} </Text>
             </View>
@@ -108,12 +110,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     PhotoStyle: {
-        width:"150px",
-        height:"150px",
-        backgroundColor:"blue",
-        borderRightWidth:"5px",
-        borderColor:"blue",
-        borderRadius:"50%"
+        width: "150px",
+        height: "150px",
+        // backgroundColor:"blue",
+        borderRightWidth: "0px",
+        // borderColor:"blue",
+        borderRadius: "50%"
     },
     textStyle: {
         paddingTop: 50,
