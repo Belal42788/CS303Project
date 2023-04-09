@@ -1,5 +1,6 @@
 import LoginScreen from "./Screens/LoginScreen.js";
 import RegisterScreen from "./Screens/RegisterScreen.js";
+import Home from "./Screens/Homescreen.js";
 import Welcome from "./Screens/welcome.js";
 import Forgetpassword from "./Screens/Forgetpassword.js";
 import ProfileScreen from "./Screens/ProfileScreen.js";
@@ -16,6 +17,7 @@ export default function App() {
       <Stack.Navigator>
       <Stack.Screen name="Getstat1" component={Getstar1} />
       <Stack.Screen name="Getstat2" component={Getstar2} />
+      <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
