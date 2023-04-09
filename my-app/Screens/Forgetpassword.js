@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         padding:0,
         marginLeft: 0,
         textAlign:"left",
-        color:"white",
+        color:"black",
       },
     
       inputView: {

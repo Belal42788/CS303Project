@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\asus\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @invertase/react-native-apple-authentication
+
+PATH: 
+  C:\Program Files\PowerShell\7;C:\Program Files\Eclipse Adoptium\jdk-11.0.18.10-hotspot\bin;C:\Program Files\Eclipse Adoptium\jre-11.0.18.10-hotspot\bin;C:\Program Files\Eclipse Adoptium\jre-8.0.362.9-hotspot\bin;C:\Program Files\Eclipse Adoptium\jdk-8.0.362.9-hotspot\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.6.10-hotspot\bin;C:\Program Files\Eclipse Adoptium\jre-17.0.6.10-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.18.10-hotspot\bin;C:\Python311\Scripts\;C:\Python311\;C:\app\asus\product\21c\dbhomeXE\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Amazon Corretto\jdk17.0.4_8\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.345.1-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.345.1-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Aldec\Active-HDL-Student-Edition\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs;C:\Program Files\MongoDB\Server\6.0\bin;C:\Program Files\PowerShell\7\;C:\MinGW\bin;C:\msys64\mingw64\bin;C:\Program Files\Java\jdk-19.0.2\bin;C:\Users\asus\.gradle\caches\7.4.2;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\asus\AppData\Local\Microsoft\WindowsApps;C:\Program Files\MongoDB\Server\6.0\bin;C:\Users\asus\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\asus\AppData\Roaming\npm;C:\Users\asus\.dotnet\tools
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.14.2
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ECONNABORTED 104.16.23.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+
+npm manifest: 
+  {
+    "name": "my-app",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web"
+    },
+    "dependencies": {
+      "@expo/webpack-config": "^18.0.1",
+      "@react-navigation/native": "^6.1.6",
+      "@react-navigation/native-stack": "^6.9.12",
+      "expo": "~48.0.5",
+      "expo-status-bar": "~1.4.4",
+      "firebase": "^9.17.2",
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-native": "0.71.4",
+      "react-native-fbsdk": "^3.0.0",
+      "react-native-safe-area-context": "^4.5.0",
+      "react-native-screens": "^3.20.0",
+      "react-native-web": "~0.18.10"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.20.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

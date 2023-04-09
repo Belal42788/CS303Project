@@ -10,6 +10,11 @@ import {
     TextInput,
     TouchableOpacity,
 } from "react-native";
+import { getAuth,FacebookAuthProvider,signInWithCredential} from "firebase/auth";
+import {
+    AccessToken,
+    LoginManager,
+  } from 'react-native-fbsdk-next';
 
 
 const LoginScreen = ({navigation}) => {
@@ -17,8 +22,9 @@ const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const user = auth.currentUser;
-    
-
+    const onFacebookButtonPress = async () =>{
+const result = await LoginManager.logInWithPermissions(['public_profile'])
+    }
     const HandleSignin= () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -81,7 +87,7 @@ const LoginScreen = ({navigation}) => {
                 </Text>
             </TouchableOpacity>
             <View style={styles.smallloginicon}>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={onFacebookButtonPress} >
                     <Image
                         style={styles.smallloginicon}
                         source={require("../assets/thcc.png")}

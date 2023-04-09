@@ -3,6 +3,15 @@
     "name": "my-app",
     "slug": "my-app",
     "version": "1.0.0",
+    "plugins" :[
+      ["react-native-fbsdk-next",{
+        "appID": "904070780649314",
+        "clientToken": "af8a41e59088b1dd703bf2b853d6c5b5",
+        "displayName": "test303"
+    }
+    ]
+    ]
+    ,
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
