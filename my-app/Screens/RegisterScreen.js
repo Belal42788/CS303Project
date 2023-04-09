@@ -1,7 +1,8 @@
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword ,sendEmailVerification ,updateProfile} from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
+import { getDatabase, ref, set } from "firebase/database";
 import {
     StyleSheet,
     Text,
@@ -11,86 +12,145 @@ import {
     TouchableOpacity,
 } from "react-native";
 
-const RegisterScreen = ({navigation}) => {
-    
+const RegisterScreen = ({ navigation }) => {
+
+    const [name, setName] = useState("");
+    // const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
     const user = auth.currentUser;
-    if (user !== null) {
-        const email = user.email;
-        console.log(email)
-    }
-
 
     const HandleRegister = () => {
-        if(password==password1){
+        if(pass(password)== false){
+            alert("Your pass is small");
+            return;
+        }
+
+        if (password == password1 & name!="" ) {
             createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-        
-        const user = userCredential.user;
-        console.log('Done');
-        
-        navigation.navigate('Profile')
-        })
-        .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        });
-        }else {
+                .then((userCredential) => {
+
+                    const user = userCredential.user;
+
+                    //to set user informatoin to database
+                    // const db = getDatabase();
+                    // set(ref(db, 'users/' + user.uid), {
+                    //     age: age,
+                    //     date: Date.now()
+                    // });
+
+                    //to set user info
+                    updateProfile(auth.currentUser, {
+                        displayName: name,
+                        email: email,
+                        password: password,
+                    }).then(() => {
+                        console.log("user name updated");
+                    }).catch((error) => {
+                        console.log(error.message);
+                    });
+
+                    //to send email verification
+                    sendEmailVerification(user)
+                    .then(()=>{
+                        alert("Verification link has been sent to your email Plesase check your email then LOGIN")
+                        navigation.navigate('Login')
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(errorMessage);
+                    })
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert("Email alredy registered");
+                    console.log(errorMessage);
+                });
+        } else if(password!=password1){
             alert("Password not match");
+        } else if(name == ""){
+            alert("Please enter your Name")
+        }
+    }
+    
+    function pass(password){
+        if(password<8){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 
-
     return (
-        
+
         <View style={styles.container}>
-        <Image style={styles.image} source={require("../assets/signup.png")} />
-        <StatusBar style="auto" />
+            <Image style={styles.image} source={require("../assets/signup.png")} />
+            <StatusBar style="auto" />
 
-        <View style={styles.inputView}>
-            <TextInput
-            style={styles.TextInput}
-            placeholder="Enter your Email:"
-            placeholderTextColor="#003f5c"
-            value={email}
-            onChangeText={setEmail}
-            />
-        </View>
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter your Name:"
+                    placeholderTextColor="#003f5c"
+                    value={name}
+                    onChangeText={setName}
+                />
+            </View>
+            {/* <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter your Age:"
+                    placeholderTextColor="#003f5c"
+                    value={age}
+                    onChangeText={setAge}
+                />
+            </View> */}
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter your Email:"
+                    placeholderTextColor="#003f5c"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+            </View>
 
-        <View style={styles.inputView}>
-            <TextInput
-            style={styles.TextInput}
-            secureTextEntry={true}
-            placeholder="Enter Your password:"
-            placeholderTextColor="#003f5c"
-            value={password}
-            onChangeText={setPassword}
-            />
-        </View>
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    secureTextEntry={true}
+                    placeholder="Enter Your password:"
+                    placeholderTextColor="#003f5c"
+                    value={password}
+                    onChangeText={setPassword}
+                />
+            </View>
 
-        <View style={styles.inputView}>
-            <TextInput
-            style={styles.TextInput}
-            secureTextEntry={true}
-            placeholder="Confirm your password"
-            placeholderTextColor="#003f5c"
-            value={password1}
-            onChangeText={setPassword1}
-            />
-        </View>
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    secureTextEntry={true}
+                    placeholder="Confirm your password"
+                    placeholderTextColor="#003f5c"
+                    value={password1}
+                    onChangeText={setPassword1}
+                />
+            </View>
 
-        <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText} onPress={HandleRegister}>Register</Text>
-        </TouchableOpacity>
-        <Text>  </Text>
-        <Text>  </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style={styles.forgot_button}>Need to Login instead?</Text>
-        </TouchableOpacity>
-        <View style={styles.smallloginicon}>
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText} onPress={HandleRegister}>Register</Text>
+            </TouchableOpacity>
+            <Text>  </Text>
+            <Text>  </Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Text style={styles.forgot_button}>Need to Login instead?</Text>
+            </TouchableOpacity>
+            <View style={styles.smallloginicon}>
                 <TouchableOpacity >
                     <Image
                         style={styles.smallloginicon}
@@ -144,7 +204,7 @@ const styles = StyleSheet.create({
         height: 50,
         padding: 5,
         textAlign: "left",
-        color:"black"
+        color: "black"
     },
     loginBtn: {
         width: "70%",
@@ -160,7 +220,7 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         color: "#003f5c",
         textDecorationLine: 'underline'
-    },  smallloginicon: {
+    }, smallloginicon: {
         width: 60,
         height: 60,
         margin: 5,

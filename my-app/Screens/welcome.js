@@ -1,57 +1,22 @@
-import {  StyleSheet,View,Text,Image,useWindowDimensions,TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-//import { StatusBar } from "expo-status-bar";
-import logo from "../assets/360_F_361521131_tvclR3GrsVQBFVsUe1EPNFgH2MWIN1w7.jpg"
+import Styles from "./Styles"
 
 
-
-function wellcome  ({navigation}){
-    const {height}=useWindowDimensions();
-
-return(
-    <View style={styles.container}>
-        <Image source={logo} style={[styles.logo,{height:height*0.2}]}/>
-        <Text  style={styles.title}>Welcome to my first app </Text>
-        <Text  style={styles.title1}>this app is taking about  jdshf sdbjasdvb dashfsahf sdakhfaksjdf hasdkfhlask </Text>
-
-        <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Home')} >
-            <Text>GET STARTED</Text>
-        </TouchableOpacity>
-    </View>
-)
+function Wellcome({ navigation }) {
+    return (
+        <View style={Styles.body}>
+            <View style={Styles.container}>
+                <Text style={Styles.title}>     Welcome</Text>
+                <Text style={Styles.title}>          To</Text>
+                <Text style={Styles.title}>    Car World</Text>
+                <TouchableOpacity style={Styles.button} onPress={() => navigation.navigate('Register')} >
+                    <Text style={Styles.titleButon}>GET STARTED</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    )
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-       padding:20,
-    },
-    logo:{
-        width: "70%",
-        maxWidth:300,
-        maxHeight:300,
-        marginBottom:10
-    },
-    title:{
-        fontWeight:"bold",
-        fontSize:30,
-        marginBottom:20
-    },
-    title1:{       
-        fontSize:20,
-        color:"3A3967",
-         marginBottom:20
-    },
-    button:{       
-        width: "70%",
-        borderRadius: 25,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 10,
-        backgroundColor: "royalblue",
-    }
-});
 
-export default wellcome; 
+
+export default Wellcome; 
