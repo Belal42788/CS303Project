@@ -108,7 +108,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     PhotoStyle: {
-        
+        width:"150px",
+        height:"150px",
+        backgroundColor:"blue",
+        borderRightWidth:"5px",
+        borderColor:"blue",
+        borderRadius:"50%"
     },
     textStyle: {
         paddingTop: 50,
