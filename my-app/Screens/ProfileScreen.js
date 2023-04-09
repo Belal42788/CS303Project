@@ -90,7 +90,7 @@ const RegisterScreen = ({ navigation }) => {
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={DeleteUser}>
-                    Deleted Email
+                    Delete Email
                 </Text>
             </TouchableOpacity>
 
