@@ -1,16 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
-import { signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity ,Alert} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
 
 
 const RegisterScreen = ({ navigation }) => {
-
-    const [User, setUser] = useState({});
     const user = auth.currentUser;
+
+
 
     // useEffect(() => {
     //     const dbRef = ref(getDatabase());
@@ -30,9 +30,9 @@ const RegisterScreen = ({ navigation }) => {
     const SignOut = () => {
         signOut(auth)
             .then(() => {
-                AsyncStorage.clear();
-                navigation.navigate("Welcome");
+                AsyncStorage.clear();            
                 alert("you singed out successfuly");
+                window.location.reload(true)
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -45,8 +45,8 @@ const RegisterScreen = ({ navigation }) => {
         deleteUser(user).then(() => {
             // User deleted.
             AsyncStorage.clear();
-            alert("User Deleted")
-            navigation.navigate("Welcome");
+            alert("User Deleted");
+            window.location.reload(true);
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -105,7 +105,8 @@ const RegisterScreen = ({ navigation }) => {
             </TouchableOpacity>
         </View>
     );
-};
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
