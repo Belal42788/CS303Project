@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent:"flex-end",
-        padding: 0,
+        padding: 3,
         backgroundColor: 'transparent',
     },
     logocont:{
