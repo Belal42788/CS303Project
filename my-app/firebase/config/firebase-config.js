@@ -11,6 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "1084505782046",
     appId: "1:1084505782046:web:d41387c47d488afad5fb0f",
     databaseURL: "https://twsela-71a88-default-rtdb.firebaseio.com/",
+    storageBucket: 'gs://twsela-71a88.appspot.com'
 };
 
 const app = initializeApp(firebaseConfig);

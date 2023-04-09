@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
-import { signOut ,deleteUser, sendPasswordResetEmail} from "firebase/auth";
+import { signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-const RegisterScreen = ({navigation}) => {
+const RegisterScreen = ({ navigation }) => {
 
     const [User, setUser] = useState({});
     const user = auth.currentUser;
@@ -38,7 +38,7 @@ const RegisterScreen = ({navigation}) => {
     };
 
     //to delete user
-    const DeleteUser =()=>{
+    const DeleteUser = () => {
         deleteUser(user).then(() => {
             // User deleted.
             console.log("User Deleted")
@@ -51,24 +51,27 @@ const RegisterScreen = ({navigation}) => {
     }
 
     //to reset password
-    const ResetPassword =()=>{
+    const ResetPassword = () => {
         sendPasswordResetEmail(auth, user.email)
-        .then(() => {
-            // Password reset email sent!
-            // ..
-            console.log("Password reset email sent!")
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-            console.log(errorMessage)
-        });
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                console.log("Password reset email sent!")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(errorMessage)
+            });
     }
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
 
+            <View style={styles.PhotoStyle}>
+
+            </View>
             <View>
                 <Text style={styles.textStyle}> Welcome user {user.displayName} </Text>
             </View>
@@ -103,6 +106,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
+    },
+    PhotoStyle: {
+        
     },
     textStyle: {
         paddingTop: 50,
