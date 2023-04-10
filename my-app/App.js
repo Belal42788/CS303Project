@@ -49,11 +49,6 @@ export default function App() {
         >
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
-           {/* <Stack.Screen name="Get Start1" component={Getstar1} /> */}
-          {/* // <Stack.Screen name="Home" component={Home} />
-          // <Stack.Screen name="Welcome" component={Welcome} />
-          // <Stack.Screen name="Register" component={RegisterScreen} />
-          // <Stack.Screen name="Forgetpassword" component={Forgetpassword} />  */}
         </Stack.Navigator>
       </NavigationContainer>
     );
