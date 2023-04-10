@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AsyncStorage from '@react-native-community/async-storage';
 import {
   StyleSheet,
@@ -17,28 +17,63 @@ import {
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [Signed, setSigned] = useState(false);
   const user = auth.currentUser;
 
+
+  AsyncStorage.getItem("Signed").then((value) => {
+    if (Signed == false) { setSigned(value); }
+  });
+
+  
   const HandleSignin = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        if (user.emailVerified) {
-          AsyncStorage.setItem("email", email);
-          AsyncStorage.setItem("password", password);
-          navigation.navigate("Profile");
-        } else {
-          signOut(auth).then(() => alert("Email is not Verified"));
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert("Email or Password is wrong");
-        console.log(errorMessage);
-      });
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      if (user.emailVerified) {
+        AsyncStorage.setItem("Signed", true);
+        AsyncStorage.setItem("email", email);
+        AsyncStorage.setItem("password", password);
+        navigation.navigate("Profile");
+      } else {
+        signOut(auth).then(() => alert("Email is not Verified"));
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert("Email or Password is wrong");
+      console.log(errorMessage);
+    });
   };
+  const HandleSignin2 = () => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      if (user.emailVerified) {
+        navigation.navigate("Profile");
+      } else {
+        signOut(auth).then(() => alert("Email is not Verified"));
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    });
+  };
+  
+  if (Signed) {
+    AsyncStorage.getItem("email").then((value) => {
+      setEmail(value);
+    });
+    AsyncStorage.getItem("password").then((value) => {
+      setPassword(value);
+    });
+    HandleSignin2();
+  }
 
   return (
     <View style={styles.container}>
@@ -113,6 +148,7 @@ const LoginScreen = ({ navigation }) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
