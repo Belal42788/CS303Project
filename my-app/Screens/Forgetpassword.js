@@ -5,9 +5,8 @@ import {
   Image,
   useWindowDimensions,
   TouchableOpacity,
-  TextInput,
+  TextInput,ImageBackground
 } from "react-native";
-import logo from "../assets/forgot-password.png";
 import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase/config/firebase-config";
@@ -31,14 +30,13 @@ export default function Forgetpassword({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={logo} style={[styles.logo]} />
-      <Text style={styles.title}>forgot password </Text>
-
+    <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
+      <Image   source={require("../assets/5-removebg-preview.png")} style={[styles.logo]} />
+      {/* <Text style={styles.title}>forgot password </Text> */}
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email :"
+          placeholder="  Email :"
           placeholderTextColor="#003f5c"
           value={email}
           onChangeText={setEmail}
@@ -58,7 +56,7 @@ export default function Forgetpassword({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate("Login")}>
         <Text style={styles.forgot_button}>back to sign in</Text>
       </TouchableOpacity>
-    </View>
+    </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
@@ -66,14 +64,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    padding: 20,
+    justifyContent: "center",
   },
   logo: {
-    width: "40%",
-    height: "30%",
-    maxWidth: 300,
-    maxHeight: 300,
-    marginBottom: 10,
+    justifyContent:"center",
+        alignContent:"center",
+        alignItems:"center",
+        alignSelf:"center",
+        marginBottom: "50%",
+        marginTop: "-10%",
+        width: 300,
+        height: 300,
   },
   title: {
     fontWeight: "bold",
@@ -86,39 +87,44 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   loginBtn: {
-    width: "90%",
-    borderRadius: 50,
-    height: 70,
-    alignItems: "center",
+    width: "85%",
+    borderRadius: 13,
+    height: "8%",
+    marginBottom: "2%",
+    marginTop: "2%",
     justifyContent: "center",
-    marginTop: 0,
-    fontSize: 50,
-    Size: 50,
-    backgroundColor: "#64e3ff",
-    borderWidth: 2,
-    borderColor: "#64e3ff",
+    alignItems:"flex-end",
+    alignContent:"center",
+    backgroundColor: "#ce9e04",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderColor: "black",
+    display:"flex",
   },
   TextInput: {
-    fontSize: 20,
-    width: "100%",
-    height: 50,
-    flex: 1,
-    padding: 0,
-    marginLeft: 0,
-    textAlign: "left",
     color: "black",
+    fontSize: "200%",
+    fontWeight: "700",
+    fontFamily:'cairo',
+    alignSelf:"center",
+    
   },
 
   inputView: {
     backgroundColor: "white",
-    borderColor: "#64e3ff",
-    borderWidth: 2,
-    borderRadius: 5,
+    borderColor: "black",
+    borderWidth: 2.5,
+    borderRadius: 15,
     width: "90%",
-    height: 50,
-    marginBottom: 20,
+    height: "7%",
+    fontFamily:'cairo',
+    marginBottom: "5%",
+    marginTop: "-50%",
     alignItems: "center",
     textAlign: "left",
+    alignContent:"center",
+    alignSelf:"center",
+    justifyContent:"center",
   },
   RegBtn: {
     width: "90%",
@@ -135,11 +141,11 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   loginText: {
-    fontSize: 30,
-    lineHeight: 20,
-    fontStyle: "normal",
-    padding: 10,
     color: "black",
+    fontSize: "200%",
+    fontWeight: "700",
+    fontFamily:'cairo',
+    alignSelf:"center",
   },
   RegisterText: {
     fontSize: 20,
@@ -149,10 +155,11 @@ const styles = StyleSheet.create({
     color: "#64e3ff",
   },
   forgot_button: {
-    height: 30,
-    marginTop: 30,
-    marginBottom: 0,
-    fontSize: 25,
+    marginBottom: "10%",
+    marginTop: "5%",
+    color: "#003f5c",
+    textDecorationLine: "underline",
+    fontSize: 20,
     color: "rgb(100, 128, 128)",
   },
 });

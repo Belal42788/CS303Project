@@ -10,7 +10,8 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  Alert,
+  Alert, ImageBackground
+  
 } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
@@ -81,9 +82,9 @@ const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
-      <Image style={styles.image} source={require("../assets/login.png")} />
+      <Image style={styles.image} source={require("../assets/4-removebg-preview (1).png")} />
 
       <View style={styles.inputView}>
         <TextInput
@@ -120,14 +121,6 @@ const LoginScreen = ({ navigation }) => {
           Register
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text
-          style={styles.forgot_button}
-          onPress={() => navigation.navigate("Forgetpassword")}
-        >
-          Forgot your password?
-        </Text>
-      </TouchableOpacity>
       <View style={styles.smallloginicon}>
         <TouchableOpacity>
           {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
@@ -150,7 +143,15 @@ const LoginScreen = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
-    </View>
+      <TouchableOpacity>
+        <Text
+          style={styles.forgot_button}
+          onPress={() => navigation.navigate("Forgetpassword")}
+        >
+          Forgot your password?
+        </Text>
+      </TouchableOpacity>
+    </ImageBackground>
   );
 };
 
@@ -162,69 +163,89 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    marginBottom: 40,
-    width: 66,
-    height: 66,
+    justifyContent:"center",
+    alignContent:"center",
+    alignItems:"center",
+    alignSelf:"center",
+    marginBottom: "-1%",
+    width: 250,
+    height: 250,
   },
   inputView: {
     backgroundColor: "white",
-    borderColor: "black",
-    borderWidth: 2.5,
-    borderRadius: 5,
-    width: "85%",
-    height: 40,
-    marginBottom: 20,
-    alignItems: "center",
-    textAlign: "left",
+        borderColor: "black",
+        borderWidth: 2.5,
+        borderRadius: 15,
+        width: "90%",
+        height: "7%",
+        fontFamily:'cairo',
+        marginBottom: "5px",
+        alignItems: "center",
+        textAlign: "left",
+        alignContent:"center",
+        alignSelf:"center",
+        justifyContent:"center",
   },
   TextInput: {
-    fontSize: 16,
-    width: "100%",
-    height: 50,
-    padding: 5,
+    fontSize: "120%",
+    width: "96%",
+    height: "90%",
     textAlign: "left",
     color: "black",
+    fontFamily:'cairo',
+    fontWeight:"700",
   },
   forgot_button: {
-    marginBottom: 40,
-    marginTop: 20,
+    width:"100%",
+    marginBottom: "10%",
+    marginTop: "5%",
     color: "#003f5c",
     textDecorationLine: "underline",
     fontSize: 20,
     color: "rgb(100, 128, 128)",
   },
   loginBtn: {
-    width: "70%",
-    borderRadius: 25,
-    height: 50,
-    alignItems: "center",
+    width: "85%",
+    borderRadius: 13,
+    height: "8%",
+    marginBottom: "2%",
+    marginTop: "2%",
     justifyContent: "center",
-    marginTop: 10,
-    backgroundColor: "royalblue",
-    fontWeight: "bold",
+    alignItems:"flex-end",
+    alignContent:"center",
+    backgroundColor: "#ce9e04",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderColor: "black",
+    display:"flex",
   },
   registerBtn: {
-    width: "70%",
-    borderRadius: 25,
-    height: 50,
-    alignItems: "center",
+    width: "85%",
+    borderRadius: 13,
+    height: "8%",
+    marginBottom: "2%",
+    marginTop: "2%",
     justifyContent: "center",
-    marginTop: 10,
-    backgroundColor: "royalblue",
-    fontWeight: "bold",
+    alignItems:"flex-end",
+    alignContent:"center",
+    backgroundColor: "#ce9e04",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderColor: "black",
+    display:"flex",
   },
   buttonText: {
     color: "black",
-    fontWeight: "bold",
-    textTransform: "capitalize",
-    fontSize: 15,
-    textAlign: "center",
+    fontSize: "200%",
+    fontWeight: "700",
+    fontFamily:'cairo',
+    alignSelf:"center",
   },
   smallloginicon: {
-    width: 60,
-    height: 60,
+    width: 55,
+    height: 55,
     margin: 5,
-    marginTop: 0,
+    marginTop: "1%",
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignContent: "space-around",

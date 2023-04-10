@@ -95,7 +95,7 @@ const RegisterScreen = ({ navigation }) => {
         
         <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
-            <Image style={styles.image} source={require("../assets/sign-in.png")} />
+            <Image style={styles.image} source={require("../assets/3-removebg-preview.png")} />
 
             <View style={styles.inputView}>
                 <TextInput
@@ -187,9 +187,13 @@ const styles = StyleSheet.create({
     },
     image: {
         // marginTop: '50px',
-        marginBottom: "7%",
-        width: 120,
-        height: 120,
+        justifyContent:"center",
+        alignContent:"center",
+        alignItems:"center",
+        alignSelf:"center",
+        marginBottom: "-1%",
+        width: 250,
+        height: 250,
     },
     inputView: {
         backgroundColor: "white",
@@ -207,13 +211,13 @@ const styles = StyleSheet.create({
         justifyContent:"center",
     },
     TextInput: {
-        fontSize: "100%",
+        fontSize: "120%",
         width: "96%",
         height: "90%",
         textAlign: "left",
         color: "black",
         fontFamily:'cairo',
-        fontWeight:"600",
+        fontWeight:"700",
     },
     RegBtn: {
        
