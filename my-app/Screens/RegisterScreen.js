@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         alignSelf:"center",
         marginBottom: "-8%",
+        marginTop: "-12%",
         width: 250,
         height: 250,
     },
