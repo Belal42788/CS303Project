@@ -146,9 +146,7 @@ const RegisterScreen = ({ navigation }) => {
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.loginText} onPress={HandleRegister}>Register</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text style={styles.forgot_button}>Need to Login instead?</Text>
-            </TouchableOpacity>
+            
             <View style={styles.smallloginicon}>
                 <TouchableOpacity >
                     <Image
