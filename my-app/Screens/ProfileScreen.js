@@ -5,7 +5,6 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
-import * as Updates from 'expo-updates';
 
 
 const RegisterScreen = ({ navigation }) => {
