@@ -14,7 +14,7 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    Alert,
+    Alert, ImageBackground
 } from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
@@ -92,14 +92,15 @@ const RegisterScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
+        
+        <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
-            <Image style={styles.image} source={require("../assets/signup.png")} />
+            <Image style={styles.image} source={require("../assets/sign-in.png")} />
 
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="Enter your Name:"
+                    placeholder="Enter your Name :"
                     placeholderTextColor="#003f5c"
                     value={name}
                     onChangeText={setName}
@@ -117,7 +118,7 @@ const RegisterScreen = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="Enter your Email:"
+                    placeholder="Enter your Email :"
                     placeholderTextColor="#003f5c"
                     value={email}
                     onChangeText={setEmail}
@@ -128,7 +129,7 @@ const RegisterScreen = ({ navigation }) => {
                 <TextInput
                     style={styles.TextInput}
                     secureTextEntry={true}
-                    placeholder="Enter Your password:"
+                    placeholder="Enter Your password :"
                     placeholderTextColor="#003f5c"
                     value={password}
                     onChangeText={setPassword}
@@ -139,23 +140,18 @@ const RegisterScreen = ({ navigation }) => {
                 <TextInput
                     style={styles.TextInput}
                     secureTextEntry={true}
-                    placeholder="Confirm your password"
+                    placeholder="Confirm your password :"
                     placeholderTextColor="#003f5c"
                     value={password1}
                     onChangeText={setPassword1}
                 />
             </View>
 
-            <TouchableOpacity style={styles.loginBtn}>
+            <TouchableOpacity style={styles.RegBtn}>
                 <Text style={styles.loginText} onPress={HandleRegister}>
                     Register
                 </Text>
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text style={styles.forgot_button}>Need to Login instead?</Text>
-            </TouchableOpacity>
-
             <View style={styles.smallloginicon}>
                 <TouchableOpacity>
                     <Image
@@ -176,7 +172,10 @@ const RegisterScreen = ({ navigation }) => {
                     />
                 </TouchableOpacity>
             </View>
-        </View>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Text style={styles.forgot_button}>Need to Login instead?</Text>
+            </TouchableOpacity>
+        </ImageBackground>
     );
 };
 const styles = StyleSheet.create({
@@ -188,57 +187,71 @@ const styles = StyleSheet.create({
     },
     image: {
         // marginTop: '50px',
-        marginBottom: "35px",
-        width: 66,
-        height: 66,
+        marginBottom: "7%",
+        width: 120,
+        height: 120,
     },
     inputView: {
         backgroundColor: "white",
         borderColor: "black",
         borderWidth: 2.5,
-        borderRadius: 5,
-        width: "85%",
-        height: 40,
+        borderRadius: 15,
+        width: "90%",
+        height: "7%",
+        fontFamily:'cairo',
         marginBottom: "5px",
         alignItems: "center",
         textAlign: "left",
+        alignContent:"center",
+        alignSelf:"center",
+        justifyContent:"center",
     },
     TextInput: {
-        fontSize: 16,
-        width: "100%",
-        height: 50,
-        padding: 5,
+        fontSize: "100%",
+        width: "96%",
+        height: "90%",
         textAlign: "left",
         color: "black",
+        fontFamily:'cairo',
+        fontWeight:"600",
     },
-    loginBtn: {
-        width: "70%",
-        borderRadius: 25,
-        height: 50,
-        alignItems: "center",
+    RegBtn: {
+       
+        width: "85%",
+        borderRadius: 13,
+        height: "8%",
+        marginBottom: "2%",
+        marginTop: "2%",
         justifyContent: "center",
-        marginTop: 30,
-        backgroundColor: "royalblue",
+        alignItems:"flex-end",
+        alignContent:"center",
+        backgroundColor: "#ce9e04",
+        borderStyle: "solid",
+        borderWidth: 3,
+        borderColor: "black",
+        display:"flex",
+        
     },
-    textStyle: {
-        fontSize: 15,
-        marginBottom: 50,
-        color: "#003f5c",
-        textDecorationLine: "underline",
+    loginText:{
+        color: "black",
+        fontSize: "200%",
+        fontWeight: "700",
+        fontFamily:'cairo',
+        alignSelf:"center",
     },
     smallloginicon: {
-        width: 60,
-        height: 60,
+        width: 55,
+        height: 55,
         margin: 5,
-        marginTop: 0,
+        marginTop: "1%",
         flexDirection: "row",
         justifyContent: "space-evenly",
         alignContent: "space-around",
         borderRadius: "50%",
     },
     forgot_button: {
-        marginBottom: 40,
-        marginTop: 20,
+        marginBottom: "10%",
+        marginTop: "5%",
         color: "#003f5c",
         textDecorationLine: "underline",
         fontSize: 20,

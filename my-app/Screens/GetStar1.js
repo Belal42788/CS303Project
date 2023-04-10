@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         justifyContent:"flex-end",
         padding: 3,
         backgroundColor: 'transparent',
+
     },
     logocont:{
   flex:1,
@@ -87,7 +88,8 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         fontFamily:'prompt',
         alignSelf:"center",
-        marginTop:"5%"
+        marginRight:"10%",
+        marginTop:"5%",
     },
     signInButton: {
         marginBottom: 40,
