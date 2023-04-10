@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword ,sendEmailVerification ,updateProfile} from "firebase/auth"
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth"
 import { StatusBar } from "expo-status-bar";
 import auth from '../firebase/config/firebase-config.js'
 import React, { useState } from "react";
@@ -22,12 +22,12 @@ const RegisterScreen = ({ navigation }) => {
     const user = auth.currentUser;
 
     const HandleRegister = () => {
-        if(pass(password)== false){
+        if (pass(password) == false) {
             alert("Your pass is small");
             return;
         }
 
-        if (password == password1 & name!="" ) {
+        if (password == password1 & name != "") {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
 
@@ -53,15 +53,15 @@ const RegisterScreen = ({ navigation }) => {
 
                     //to send email verification
                     sendEmailVerification(user)
-                    .then(()=>{
-                        alert("Verification link has been sent to your email Plesase check your email then LOGIN")
-                        navigation.navigate('Login')
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        console.log(errorMessage);
-                    })
+                        .then(() => {
+                            alert("Verification link has been sent to your email Plesase check your email then LOGIN")
+                            navigation.navigate('Login')
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            console.log(errorMessage);
+                        })
 
                 })
                 .catch((error) => {
@@ -70,18 +70,18 @@ const RegisterScreen = ({ navigation }) => {
                     alert("Email alredy registered");
                     console.log(errorMessage);
                 });
-        } else if(password!=password1){
+        } else if (password != password1) {
             alert("Password not match");
-        } else if(name == ""){
+        } else if (name == "") {
             alert("Please enter your Name")
         }
     }
-    
-    function pass(password){
-        if(password<8){
+
+    function pass(password) {
+        if (password < 8) {
             return false;
         }
-        else{
+        else {
             return true;
         }
     }
@@ -145,8 +145,6 @@ const RegisterScreen = ({ navigation }) => {
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.loginText} onPress={HandleRegister}>Register</Text>
             </TouchableOpacity>
-            <Text>  </Text>
-            <Text>  </Text>
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                 <Text style={styles.forgot_button}>Need to Login instead?</Text>
             </TouchableOpacity>
@@ -157,7 +155,6 @@ const RegisterScreen = ({ navigation }) => {
                         source={require("../assets/thcc.png")}
                     />
                 </TouchableOpacity>
-
                 <TouchableOpacity >
                     <Image
                         style={styles.smallloginicon}
@@ -182,8 +179,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     image: {
-        marginTop: '30%',
-        marginBottom: '60px',
+        marginTop: '60px',
+        marginBottom: '30px',
         width: 66,
         height: 66,
     },
