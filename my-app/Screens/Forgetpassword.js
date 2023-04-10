@@ -102,11 +102,13 @@ const styles = StyleSheet.create({
     display:"flex",
   },
   TextInput: {
+    fontSize: "160%",
+    width: "96%",
+    height: "90%",
+    textAlign: "left",
     color: "black",
-    fontSize: "200%",
-    fontWeight: "700",
     fontFamily:'cairo',
-    alignSelf:"center",
+    fontWeight:"800",
     
   },
 
