@@ -3,7 +3,7 @@ import auth from "../firebase/config/firebase-config.js";
 import { signOut, deleteUser, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity ,Alert} from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
 
@@ -33,7 +33,7 @@ const RegisterScreen = ({ navigation }) => {
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                alert(errorMessage);
             });
     };
 
@@ -41,12 +41,12 @@ const RegisterScreen = ({ navigation }) => {
     const DeleteUser = () => {
         deleteUser(user).then(() => {
             // User deleted.
-            console.log("User Deleted")
+            alert("User Deleted")
             navigation.navigate("Welcome");
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorMessage)
+            alert(errorMessage)
         });
     }
 
@@ -56,13 +56,13 @@ const RegisterScreen = ({ navigation }) => {
             .then(() => {
                 // Password reset email sent!
                 // ..
-                console.log("Password reset email sent!")
+                alert("Password reset email sent!")
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // ..
-                console.log(errorMessage)
+                alert(errorMessage)
             });
     }
     return (

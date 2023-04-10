@@ -10,6 +10,7 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    Alert
 } from "react-native";
 
 const RegisterScreen = ({ navigation }) => {
@@ -48,7 +49,7 @@ const RegisterScreen = ({ navigation }) => {
                     }).then(() => {
                         console.log("user name updated");
                     }).catch((error) => {
-                        console.log(error.message);
+                        alert(error.message);
                     });
 
                     //to send email verification
@@ -60,14 +61,14 @@ const RegisterScreen = ({ navigation }) => {
                         .catch((error) => {
                             const errorCode = error.code;
                             const errorMessage = error.message;
-                            console.log(errorMessage);
+                            alert(errorMessage);
                         })
 
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    alert("Email alredy registered");
+                    Alert.alert("Email alredy registered");
                     console.log(errorMessage);
                 });
         } else if (password != password1) {

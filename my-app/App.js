@@ -8,10 +8,11 @@ import Getstar1 from "./Screens/GetStar1.js";
 import Getstar2 from "./Screens/GetStar2.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import auth from "./firebase/config/firebase-config.js";
 
-
+const Stack = createNativeStackNavigator()
 export default function App() {
-  const Stack = createNativeStackNavigator()
+  console.log(auth)
   return (
     <NavigationContainer>
       <Stack.Navigator
