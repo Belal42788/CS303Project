@@ -14,7 +14,7 @@ function wellcome({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post4).jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post15).jpg')} style={styles.container}>
                <TouchableOpacity style={styles.logocont}>
                 <Text style={styles.screenText}><FontAwesome name="xing"size={"100%"} color="white"style={{}}/> Luxury</Text>
                 </TouchableOpacity>
@@ -22,7 +22,8 @@ function wellcome({ navigation }) {
                     Find a variety of the car ofyour dreams, at a good price and quality premium.
                 </Text> */}
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Register')} >
-              <Text style={styles.buttonText}>GET STARTED < FontAwesome name="arrow-right" style={styles.ico}  size={"100%"} color="white" /></Text> 
+              <Text style={styles.buttonText}>GET STARTED </Text> 
+              {/* < FontAwesome name="arrow-right" style={styles.ico}  size={"100%"} color="white" /> */}
             </TouchableOpacity>
             {/* <FontAwesome name="arrow-right" size={"100%"} color="white" style={{ marginLeft: "12%" }} /> */}
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
@@ -48,15 +49,18 @@ const styles = StyleSheet.create({
     },
     button: {
         width: "90%",
-        borderRadius: 50,
+        borderRadius: 20,
         height: "8%",
         marginBottom: "2%",
         justifyContent: "center",
-        alignItems:"center",
-        backgroundColor: "#fcc90d",
+        alignItems:"flex-end",
+        alignContent:"center",
+        backgroundColor: "#ce9e04",
         borderStyle: "solid",
         borderWidth: 3,
         borderColor: "black",
+        display:"flex",
+        
 
 
     },
@@ -70,19 +74,11 @@ const styles = StyleSheet.create({
 
     },
     buttonText: {
-        // marginLeft: "30%",
         color: "black",
-        fontSize: "170%",
-        fontWeight: "650",
-        fontFamily:'prompt',
-        marginRight:"0",
-        lineHeight:"1.2",
-        marginLeft:"16%",
+        fontSize: "200%",
+        fontWeight: "700",
+        fontFamily:'cairo',
         alignSelf:"center",
-        justifyContent:"center",
-        // alignItems: "center",
-        // justifyContent: "center",
-        width: "100%"
 
     },
     screenText: {
@@ -95,12 +91,12 @@ const styles = StyleSheet.create({
     },
     signInButton: {
         marginBottom: 40,
-        marginTop: 20,
+        marginTop: "9%",
         textDecorationLine: "underline",
-        fontSize: 20,
+        fontSize: 16,
            color: "#003f5c",
            color: "rgb(100, 128, 128)",
-           fontFamily:'roboto'
+           fontFamily:'cairo'
     },
 });
 

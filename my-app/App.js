@@ -16,6 +16,7 @@ let [fontloaded] =useFonts({
   'mulish':require('./fonts/assets/fonts/Mulish-VariableFont_wght.ttf'),
   'roboto':require('./fonts/assets/fonts/RobotoCondensed-Regular.ttf'),
   'prompt':require('./fonts/assets/fonts/Prompt-Bold.ttf'),
+  'cairo' :require('./fonts/assets/fonts/Cairo-VariableFont_slnt,wght.ttf'),
 });
   return (
     <NavigationContainer>
