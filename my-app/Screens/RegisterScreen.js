@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
         alignContent:"center",
         alignItems:"center",
         alignSelf:"center",
-        marginBottom: "-1%",
+        marginBottom: "-8%",
         width: 250,
         height: 250,
     },
