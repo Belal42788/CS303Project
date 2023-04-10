@@ -10,12 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import {
-  getAuth,
-  FacebookAuthProvider,
-  signInWithCredential,
-} from "firebase/auth";
-import { AccessToken, LoginManager } from "react-native-fbsdk-next";
+
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
