@@ -89,8 +89,8 @@ const RegisterScreen = ({ navigation }) => {
     return (
 
         <View style={styles.container}>
-            <Image style={styles.image} source={require("../assets/signup.png")} />
             <StatusBar style="auto" />
+            <Image style={styles.image} source={require("../assets/signup.png")} />
 
             <View style={styles.inputView}>
                 <TextInput
@@ -179,8 +179,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     image: {
-        marginTop: '60px',
-        marginBottom: '30px',
+        // marginTop: '50px',
+        marginBottom: '35px',
         width: 66,
         height: 66,
     },
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         width: "85%",
         height: 40,
-        marginBottom: 20,
+        marginBottom: "5px",
         alignItems: "center",
         textAlign: "left",
     },

@@ -38,8 +38,8 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/login.png")} />
       <StatusBar style="auto" />
+      <Image style={styles.image} source={require("../assets/login.png")} />
 
       <View style={styles.inputView}>
         <TextInput
