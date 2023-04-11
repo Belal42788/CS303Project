@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from "@react-native-community/async-storage";
 import {
   StyleSheet,
   Text,
@@ -10,9 +10,8 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  Alert
+  Alert,
 } from "react-native";
-
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -20,12 +19,11 @@ const LoginScreen = ({ navigation }) => {
   const [Signed, setSigned] = useState(false);
   const user = auth.currentUser;
 
-
   AsyncStorage.getItem("Signed").then((value) => {
-    if (Signed == false) { setSigned(value); }
+    if (Signed == false) {
+      setSigned(value);
+    }
   });
-
-  
 
   const HandleSignin = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -79,7 +77,6 @@ const LoginScreen = ({ navigation }) => {
       } catch (error) {
         console.log(error);
       }
-      
     }
   }
 
@@ -132,7 +129,7 @@ const LoginScreen = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
       <View style={styles.smallloginicon}>
-        <TouchableOpacity >
+        <TouchableOpacity>
           {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
           <Image
             style={styles.smallloginicon}
