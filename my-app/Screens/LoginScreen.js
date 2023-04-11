@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
+import FontAwesome from "@expo/vector-icons/FontAwesome"
 import AsyncStorage from "@react-native-community/async-storage";
 import {
   StyleSheet,
@@ -84,8 +85,11 @@ const LoginScreen = ({ navigation }) => {
   return (
     <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
-      <Image style={styles.image} source={require("../assets/4-removebg-preview (1).png")} />
+      {/* <Image style={styles.image} source={require("../assets/4-removebg-preview (1).png")} /> */}
 
+      <View style={styles.logocont}>
+                <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -151,6 +155,9 @@ const LoginScreen = ({ navigation }) => {
           Forgot your password?
         </Text>
       </TouchableOpacity>
+      <View style={styles.smallView}>
+        <Text>   </Text>
+      </View>
     </ImageBackground>
   );
 };
@@ -248,6 +255,25 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignContent: "space-around",
     borderRadius: "50%",
+  },
+  logocont: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "100%",
+    
+  },
+  logoText: {
+    color: "white",
+    fontSize: "50px",
+    fontWeight: "600",
+    fontFamily: 'prompt',
+    justifyContent:'center',
+    alignSelf: "center",
+    marginTop: "30%",
+  },
+  smallView:{
+    paddingBottom:'30%'
   },
 });
 
