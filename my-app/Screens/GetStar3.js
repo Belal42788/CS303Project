@@ -50,28 +50,30 @@ const styles = StyleSheet.create({
     },
 
     topScreenView: {
-      flex:1,
-      alignItems:'center',
-      width: '80%',
-      paddingTop:'50%',
-      marginTop:'20%',
-      // marginBottom:'20%',
-      textAlign:'center'
+        width:"100%",
+        flex:1,
+        alignItems:'flex-start',
+        alignContent:"flex-start",
+        alignSelf :"flex-start",
+        marginBottom:'40%',
+        textAlign:'center'
+
     },
 
     bottomScreenView: {
         flex:1,
         alignItems:'center',
         textAlign:'center',
-        width:'90%',
-        // marginBottom: '1%'
+        width:'80%',
+        // marginBottom: '80%',
+        paddingTop: '10%'
     },
 
     button: {
-        width: "70%",
+        width: "60%",
         borderRadius: 15,
         // height: "8%",
-        marginBottom: "6%",
+        marginBottom: "4%",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
@@ -107,16 +109,19 @@ const styles = StyleSheet.create({
         marginTop: "5%",
     },
     screenText: {
-      color:'white',
-      fontSize:'25px',
-      fontWeight:'400',
-      // marginTop:'5%',
-      alignContent:'center',
-      alignItems:'center',
-      textAlign:'center'
-  },
+        width:"100%",
+        color:'white',
+        fontSize:'25px',
+        fontWeight:'400',
+        // marginTop:'5%',
+        alignContent:'center',
+        alignItems:'center',
+        textAlign:'center',
+        fontFamily: 'cairo',
+        opacity :"80%"
+    },
     backButton: {
-        marginBottom: '10%',
+        marginBottom: "20%",
         textDecorationLine: "underline",
         fontSize: 20,
         color:'#d8d8d8',

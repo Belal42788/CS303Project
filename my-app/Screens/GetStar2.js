@@ -57,12 +57,12 @@ const styles = StyleSheet.create({
 
     topScreenView: {
         flex:1,
-        alignItems:'center',
-        width: '80%',
-        paddingTop:'50%',
-        marginTop:'20%',
-        // marginBottom:'20%',
+        alignItems:'flex-start',
+        alignContent:"flex-start",
+        alignSelf :"flex-start",
+        marginBottom:'40%',
         textAlign:'center'
+
     },
 
     bottomScreenView: {
@@ -120,7 +120,9 @@ const styles = StyleSheet.create({
         // marginTop:'5%',
         alignContent:'center',
         alignItems:'center',
-        textAlign:'center'
+        textAlign:'center',
+        fontFamily: 'cairo',
+        opacity :"80%"
     },
     backButton: {
         marginBottom: "20%",

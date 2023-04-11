@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
     height: "7%",
     fontFamily:'cairo',
     marginBottom: "5%",
-    marginTop: "-50%",
+    marginTop: "50%",
     alignItems: "center",
     textAlign: "left",
     alignContent:"center",
     alignSelf:"center",
-    justifyContent:"center",
+    justifyContent:"flex-end",
   },
   RegBtn: {
     width: "90%",
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     color: "#64e3ff",
   },
   forgot_button: {
-    marginBottom: "10%",
+    marginBottom: "0",
     marginTop: "5%",
     color: "#d8d8d8",
     textDecorationLine: "underline",
@@ -186,10 +186,9 @@ logoText: {
     fontFamily: 'prompt',
     justifyContent: 'center',
     alignSelf: "center",
-    paddingTop: '20%',
-    marginTop: "30%",
+    marginTop: "15%",
 },
 smallView: {
-    paddingBottom: '50%'
+    paddingBottom: '20%'
 },
 });

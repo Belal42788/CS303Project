@@ -19,7 +19,7 @@ import {
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { collection, addDoc, getFirestore } from "firebase/firestore"; 
-import firestore from '@react-native-firebase/firestore';
+//import firestore from '@react-native-firebase/firestore';
 
 const RegisterScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState("");
@@ -332,8 +332,9 @@ const styles = StyleSheet.create({
     logocont: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         width: "100%",
+      
 
     },
     logoText: {
@@ -343,10 +344,10 @@ const styles = StyleSheet.create({
         fontFamily: 'prompt',
         justifyContent: 'center',
         alignSelf: "center",
-        marginTop: "30%",
+        marginTop: "20%",
     },
     smallView: {
-        paddingBottom: '20%'
+        paddingBottom: '5%'
     },
 });
 export default RegisterScreen;

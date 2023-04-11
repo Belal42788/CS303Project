@@ -23,11 +23,9 @@ function wellcome({ navigation }) {
                 <Text style={styles.screenTopText}>Enjoy the Permium</Text>
                 
             </View>
-            <View style={styles.bottomScreenView}>
             <Text style={styles.screenBottomText}>
                     Find a variety of the car of your dreams, at a good price and quality premium.
                 </Text>
-            </View>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Get Start2')} >
                 <Text style={styles.buttonText}>GET STARTED </Text>
             </TouchableOpacity>
@@ -48,31 +46,32 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "flex-end",
-        padding: 3,
         backgroundColor: 'transparent',
+        height:"100%"
 
     },
     logocont: {
-        flex: 1,
         alignItems: "center",
         justifyContent: "flex-start",
-        width: "100%"
+        width: "100%",
+        marginBottom:"1%",
+        marginTop:"1%",
     },
 
     topScreenView: {
         flex:1,
         alignItems:'center',
         width: '100%',
-        marginBottom:'100%'
+        marginBottom:'70%'
     },
 
     bottomScreenView: {
         flex:1,
         alignItems:'center',
         textAlign:'center',
-        width:'90%',
-        paddingTop:'5%'
+        paddingTop:'20%',
         // marginBottom: '1%'
+        margin:"5%",
     },
 
     button: {
@@ -88,6 +87,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "black",
         display: "flex",
+        marginBottom: "1%",
+       marginTop:"8%"
     },
 
     ico: {
@@ -112,20 +113,29 @@ const styles = StyleSheet.create({
         fontFamily: 'prompt',
         justifyContent:'center',
         alignSelf: "center",
-        marginTop: "5%",
+        marginTop: "1%",
     },
     screenTopText: {
         color:'white',
         fontSize:'38px',
         fontWeight:'400',
         // marginTop:'5%',
-        alignContent:'center'
+        alignContent:'center',
+        width:"100%",
+        textAlign:"center",
+        opacity:"80%"
+
+        
     },
     screenBottomText:{
         color:'#d8d8d8',
         fontWeight:'400',
-        fontSize: '16px',
+        fontSize: '120%',
         fontFamily: 'cairo',
+        lineHeight:"1.2",
+        width:"100%",
+        opacity:"90%",
+        textAlign:"center",
         
     },
     signInButton: {

@@ -288,22 +288,23 @@ const styles = StyleSheet.create({
   logocont: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     width: "100%",
+  
 
-  },
-  logoText: {
+},
+logoText: {
     color: "white",
     fontSize: "50px",
     fontWeight: "600",
     fontFamily: 'prompt',
     justifyContent: 'center',
     alignSelf: "center",
-    marginTop: "30%",
-  },
-  smallView: {
-    paddingBottom: '30%'
-  },
+    marginTop: "20%",
+},
+smallView: {
+    paddingBottom: '5%'
+},
 });
 
 export default LoginScreen;
