@@ -9,7 +9,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import auth from "../firebase/config/firebase-config";
+import { StatusBar } from "expo-status-bar";
 
 export default function Forgetpassword({ navigation }) {
   const [email, setEmail] = useState("");
@@ -31,8 +33,12 @@ export default function Forgetpassword({ navigation }) {
 
   return (
     <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
-      <Image   source={require("../assets/5-removebg-preview.png")} style={[styles.logo]} />
+      <StatusBar style="auto" />.
+      {/* <Image   source={require("../assets/5-removebg-preview.png")} style={[styles.logo]} /> */}
       {/* <Text style={styles.title}>forgot password </Text> */}
+      <View style={styles.logocont}>
+        <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -56,6 +62,9 @@ export default function Forgetpassword({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate("Login")}>
         <Text style={styles.forgot_button}>back to sign in</Text>
       </TouchableOpacity>
+      <View style={styles.smallView}>
+        <Text>   </Text>
+      </View>
     </ImageBackground>
   );
 }
@@ -163,4 +172,24 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     fontSize: 20,
   },
+  logocont: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "100%",
+
+},
+logoText: {
+    color: "white",
+    fontSize: "50px",
+    fontWeight: "600",
+    fontFamily: 'prompt',
+    justifyContent: 'center',
+    alignSelf: "center",
+    paddingTop: '20%',
+    marginTop: "30%",
+},
+smallView: {
+    paddingBottom: '50%'
+},
 });
