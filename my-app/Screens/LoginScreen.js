@@ -139,21 +139,24 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={setPassword}
         />
       </View>
-
+      <TouchableOpacity>
+        <Text
+          style={styles.forgot_button}
+          onPress={() => navigation.navigate("Forgetpassword")}
+        >
+          Forgot your password?
+        </Text>
+      </TouchableOpacity>
+      <Text>   </Text>
       <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.buttonText} onPress={HandleSignin}>
           LOGIN
         </Text>
       </TouchableOpacity>
+      <Text>   </Text>
 
-      <TouchableOpacity style={styles.registerBtn}>
-        <Text
-          style={styles.buttonText}
-          onPress={() => navigation.navigate("Register")}
-        >
-          Register
-        </Text>
-      </TouchableOpacity>
+      
+
       <View style={styles.smallloginicon}>
         <TouchableOpacity>
           {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
@@ -176,16 +179,19 @@ const LoginScreen = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
+      <Text>   </Text>
+      <Text>   </Text>
       <TouchableOpacity>
         <Text
-          style={styles.forgot_button}
-          onPress={() => navigation.navigate("Forgetpassword")}
+          style={styles.Sign_Up_button}
+          onPress={() => navigation.navigate("Register")}
         >
-          Forgot your password?
+          Don't Have Account?Sign Up Now.
         </Text>
       </TouchableOpacity>
       <View style={styles.smallView}>
         <Text>   </Text>
+      <Text>   </Text>
       </View>
     </ImageBackground>
   );
@@ -237,7 +243,15 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     color: "#d8d8d8",
     textDecorationLine: "underline",
-    fontSize: 20,
+    fontSize: 13,
+  },
+  Sign_Up_button: {
+    width: "100%",
+    marginBottom: "10%",
+    marginTop: "5%",
+    color: "#d8d8d8",
+    textDecorationLine: "underline",
+    fontSize: 15,
   },
   loginBtn: {
     width: "85%",
