@@ -18,10 +18,12 @@ import {
     Alert, ImageBackground
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
-
+import { collection, addDoc, getFirestore } from "firebase/firestore"; 
+import firestore from '@react-native-firebase/firestore';
 
 const RegisterScreen = ({ navigation }) => {
-    const [name, setName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     // const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -60,7 +62,7 @@ const RegisterScreen = ({ navigation }) => {
             return;
         }
 
-        if ((password == password1) & (name != "")) {
+        if ((password == password1) & (firstName != "")&(lastName != "")&(email != "")) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
@@ -72,14 +74,32 @@ const RegisterScreen = ({ navigation }) => {
                     //     date: Date.now()
                     // });
 
+                    //to set user info to firestore
+                    const db=getFirestore();
+                    
+                    try {
+                        const docRef = addDoc(collection(db, "users"), {
+                        first: "Alan",
+                        middle: "Mathison",
+                        last: "Turing",
+                        born: 1912
+                        });
+                    
+                        console.log("Document written with ID: ", docRef.id);
+                    } catch (e) {
+                        console.error("Error adding document: ", e);
+                    }
+
+
+
                     //to set user info
                     updateProfile(auth.currentUser, {
-                        displayName: name,
+                        displayName: firstName + " " + lastName,
                         email: email,
                         password: password,
                     })
                         .then(() => {
-                            console.log("user name updated");
+                            console.log("user profile added");
                         })
                         .catch((error) => {
                             alert(error.message);
@@ -107,8 +127,12 @@ const RegisterScreen = ({ navigation }) => {
                 });
         } else if (password != password1) {
             alert("Password not match");
-        } else if (name == "") {
-            alert("Please enter your Name");
+        } else if (firstName == "") {
+            alert("Please enter your First Name");
+        } else if (lastName == "") {
+            alert("Please enter your Last Name");
+        } else if (email == "") {
+            alert("Please enter your Email");
         }
     };
 
@@ -132,10 +156,19 @@ const RegisterScreen = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="Enter your Name :"
+                    placeholder="Enter your First Name"
                     placeholderTextColor="#003f5c"
-                    value={name}
-                    onChangeText={setName}
+                    value={firstName}
+                    onChangeText={setFirstName}
+                />
+            </View>
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter your Last Name"
+                    placeholderTextColor="#003f5c"
+                    value={lastName}
+                    onChangeText={setLastName}
                 />
             </View>
             {/* <View style={styles.inputView}>
@@ -150,7 +183,7 @@ const RegisterScreen = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="Enter your Email :"
+                    placeholder="Enter your Email"
                     placeholderTextColor="#003f5c"
                     value={email}
                     onChangeText={setEmail}
@@ -161,7 +194,7 @@ const RegisterScreen = ({ navigation }) => {
                 <TextInput
                     style={styles.TextInput}
                     secureTextEntry={true}
-                    placeholder="Enter Your password :"
+                    placeholder="Enter Your password"
                     placeholderTextColor="#003f5c"
                     value={password}
                     onChangeText={setPassword}
@@ -172,7 +205,7 @@ const RegisterScreen = ({ navigation }) => {
                 <TextInput
                     style={styles.TextInput}
                     secureTextEntry={true}
-                    placeholder="Confirm your password :"
+                    placeholder="Confirm your password"
                     placeholderTextColor="#003f5c"
                     value={password1}
                     onChangeText={setPassword1}
