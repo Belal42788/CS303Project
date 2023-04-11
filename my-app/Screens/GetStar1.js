@@ -124,7 +124,9 @@ const styles = StyleSheet.create({
     screenBottomText:{
         color:'#d8d8d8',
         fontWeight:'400',
-        fontSize: '16px'
+        fontSize: '16px',
+        fontFamily: 'cairo',
+        
     },
     signInButton: {
         marginBottom: "6%",
