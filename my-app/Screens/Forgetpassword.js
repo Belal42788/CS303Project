@@ -36,7 +36,7 @@ export default function Forgetpassword({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="  Email :"
+          placeholder="Email :"
           placeholderTextColor="#003f5c"
           value={email}
           onChangeText={setEmail}
