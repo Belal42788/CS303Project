@@ -44,7 +44,7 @@ return(
             <Text style={styles.loginText} onPressIn={styles.loginText}>SEND TO EMAIL</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity  onPress={()=>navigation.navigate('Home')} >
+        <TouchableOpacity  onPress={()=>navigation.navigate('Login')} >
             <Text style={styles.forgot_button} >back to sign in</Text>
         </TouchableOpacity>
     </View>
