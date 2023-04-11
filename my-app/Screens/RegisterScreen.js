@@ -17,6 +17,8 @@ import {
     TouchableOpacity,
     Alert, ImageBackground
 } from "react-native";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+
 
 const RegisterScreen = ({ navigation }) => {
     const [name, setName] = useState("");
@@ -24,7 +26,33 @@ const RegisterScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
-    const user = auth.currentUser;
+    const auth = getAuth();
+    auth.languageCode = 'it';
+
+    const Gprovider = new GoogleAuthProvider();
+    
+    const signGoogle = () => {
+        signInWithPopup(auth, Gprovider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            navigation.navigate("Profile");
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+    };
 
     const HandleRegister = () => {
         if (pass(password) == false) {
@@ -163,7 +191,7 @@ const RegisterScreen = ({ navigation }) => {
                         source={require("../assets/thcc.png")}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={signGoogle}>
                     <Image
                         style={styles.smallloginicon}
                         source={require("../assets/gmail_icon-icons.com_62758.png")}
