@@ -26,45 +26,46 @@ const LoginScreen = ({ navigation }) => {
   });
 
   
+
   const HandleSignin = () => {
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      if (user.emailVerified) {
-        AsyncStorage.setItem("Signed", true);
-        AsyncStorage.setItem("email", email);
-        AsyncStorage.setItem("password", password);
-        navigation.navigate("Profile");
-      } else {
-        signOut(auth).then(() => alert("Email is not Verified"));
-      }
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert("Email or Password is wrong");
-      console.log(errorMessage);
-    });
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        if (user.emailVerified) {
+          AsyncStorage.setItem("Signed", true);
+          AsyncStorage.setItem("email", email);
+          AsyncStorage.setItem("password", password);
+          navigation.navigate("Profile");
+        } else {
+          signOut(auth).then(() => alert("Email is not Verified"));
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Email or Password is wrong");
+        console.log(errorMessage);
+      });
   };
   const HandleSignin2 = () => {
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      if (user.emailVerified) {
-        navigation.navigate("Profile");
-      } else {
-        signOut(auth).then(() => alert("Email is not Verified"));
-      }
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-    });
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        if (user.emailVerified) {
+          navigation.navigate("Profile");
+        } else {
+          signOut(auth).then(() => alert("Email is not Verified"));
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
-  
+
   if (Signed) {
     AsyncStorage.getItem("email").then((value) => {
       setEmail(value);
@@ -72,7 +73,14 @@ const LoginScreen = ({ navigation }) => {
     AsyncStorage.getItem("password").then((value) => {
       setPassword(value);
     });
-    HandleSignin2();
+    if (email != "") {
+      try {
+        HandleSignin2();
+      } catch (error) {
+        console.log(error);
+      }
+      
+    }
   }
 
   return (
