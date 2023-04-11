@@ -15,6 +15,7 @@ import {
     Image,
     TouchableOpacity,
     Alert,
+    ImageBackground
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -81,7 +82,7 @@ const RegisterScreen = ({ navigation }) => {
             });
     };
     return (
-        <View style={styles.container}>
+        <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
 
             <Image
@@ -116,7 +117,7 @@ const RegisterScreen = ({ navigation }) => {
                     reset password
                 </Text>
             </TouchableOpacity>
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -139,22 +140,29 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         fontSize: "15px",
         fontWeight: "bold",
+        color:'#d8d8d8'
     },
     button: {
         width: "70%",
-        borderRadius: 25,
+        borderRadius: 18,
         height: 50,
         alignItems: "center",
+        alignContent: 'center',
         justifyContent: "center",
+        borderStyle:'solid',
+        borderWidth:2,
+        borderColor:'black',
+        display:'flex',
         marginTop: 10,
-        backgroundColor: "royalblue",
+        backgroundColor: "#ce9e04",
     },
     buttonText: {
         color: "black",
         fontWeight: "bold",
         textTransform: "capitalize",
-        fontSize: 15,
+        fontSize: 20,
         textAlign: "center",
+        fontFamily:'cairo'
     },
 });
 export default RegisterScreen;

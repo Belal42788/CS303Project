@@ -14,30 +14,20 @@ function wellcome({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post15).jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/bluredImage.jpg')} style={styles.container}>
             <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
             </View>
             <View style={styles.topScreenView}>
-            <Text style={styles.screenTopText}>Luxury Cars.</Text>
-                <Text style={styles.screenTopText}>Enjoy the Permium</Text>
-                
+              <Text style={styles.screenText}>
+                What are you waiting for?{'\n'}{'\n'}create an account and start your journey Right NOW!
+              </Text>
             </View>
-            <View style={styles.bottomScreenView}>
-            <Text style={styles.screenBottomText}>
-                    Find a variety of the car of your dreams, at a good price and quality premium.
-                </Text>
-            </View>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Get Start2')} >
-                <Text style={styles.buttonText}>GET STARTED </Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Register')} >
+                <Text style={styles.buttonText}>LET'S GO!</Text>
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                <Text style={styles.skipButton}>Skip</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text style={styles.signInButton}>Already have an account? SIGN IN</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Get Start2")}>
+                <Text style={styles.backButton}>Back</Text>
             </TouchableOpacity>
         </ImageBackground >
     )
@@ -47,8 +37,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "flex-end",
-        padding: 3,
+        // justifyContent: "flex-end",
+        // padding: 3,
         backgroundColor: 'transparent',
 
     },
@@ -60,10 +50,13 @@ const styles = StyleSheet.create({
     },
 
     topScreenView: {
-        flex:1,
-        alignItems:'center',
-        width: '100%',
-        marginBottom:'100%'
+      flex:1,
+      alignItems:'center',
+      width: '80%',
+      paddingTop:'50%',
+      marginTop:'20%',
+      // marginBottom:'20%',
+      textAlign:'center'
     },
 
     bottomScreenView: {
@@ -71,15 +64,14 @@ const styles = StyleSheet.create({
         alignItems:'center',
         textAlign:'center',
         width:'90%',
-        paddingTop:'5%'
         // marginBottom: '1%'
     },
 
     button: {
-        width: "90%",
-        borderRadius: 18,
+        width: "70%",
+        borderRadius: 15,
         // height: "8%",
-        // marginBottom: "2%",
+        marginBottom: "6%",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
@@ -114,34 +106,23 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: "5%",
     },
-    screenTopText: {
-        color:'white',
-        fontSize:'38px',
-        fontWeight:'400',
-        // marginTop:'5%',
-        alignContent:'center'
-    },
-    screenBottomText:{
-        color:'#d8d8d8',
-        fontWeight:'400',
-        fontSize: '16px'
-    },
-    signInButton: {
-        marginBottom: "6%",
-        // marginTop: "9%",
-        textDecorationLine: "underline",
-        fontSize: 16,
-        color:'#d8d8d8',
-        fontFamily: 'cairo'
-    },
-    skipButton: {
-        marginBottom: "10%",
+    screenText: {
+      color:'white',
+      fontSize:'25px',
+      fontWeight:'400',
+      // marginTop:'5%',
+      alignContent:'center',
+      alignItems:'center',
+      textAlign:'center'
+  },
+    backButton: {
+        marginBottom: '10%',
         textDecorationLine: "underline",
         fontSize: 20,
         color:'#d8d8d8',
         fontFamily: 'cairo',
         fontWeight:'bold'
-    }
+    },
 });
 
 export default wellcome; 

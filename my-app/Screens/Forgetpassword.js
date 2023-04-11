@@ -159,9 +159,8 @@ const styles = StyleSheet.create({
   forgot_button: {
     marginBottom: "10%",
     marginTop: "5%",
-    color: "#003f5c",
+    color: "#d8d8d8",
     textDecorationLine: "underline",
     fontSize: 20,
-    color: "rgb(100, 128, 128)",
   },
 });

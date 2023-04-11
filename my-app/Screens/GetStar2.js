@@ -14,30 +14,26 @@ function wellcome({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post15).jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/bluredImage.jpg')} style={styles.container}>
             <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
             </View>
             <View style={styles.topScreenView}>
-            <Text style={styles.screenTopText}>Luxury Cars.</Text>
-                <Text style={styles.screenTopText}>Enjoy the Permium</Text>
-                
+              <Text style={styles.screenText}>
+                With just a few taps, choose your preferred car from our well maintained fleet and book it instantly.
+              </Text>
             </View>
-            <View style={styles.bottomScreenView}>
-            <Text style={styles.screenBottomText}>
-                    Find a variety of the car of your dreams, at a good price and quality premium.
-                </Text>
-            </View>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Get Start2')} >
-                <Text style={styles.buttonText}>GET STARTED </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                <Text style={styles.skipButton}>Skip</Text>
+            {/* <View style={styles.bottomScreenView}>
+            <Text style={styles.screenText}>
+                Just choose the brand and the model you want then go for your RIDE!
+              </Text>
+            </View> */}
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Get Start3')} >
+                <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                <Text style={styles.signInButton}>Already have an account? SIGN IN</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Get Start1")}>
+                <Text style={styles.backButton}>Back</Text>
             </TouchableOpacity>
         </ImageBackground >
     )
@@ -47,8 +43,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "flex-end",
-        padding: 3,
+        // justifyContent: "flex-end",
+        // padding: 3,
         backgroundColor: 'transparent',
 
     },
@@ -62,24 +58,27 @@ const styles = StyleSheet.create({
     topScreenView: {
         flex:1,
         alignItems:'center',
-        width: '100%',
-        marginBottom:'100%'
+        width: '80%',
+        paddingTop:'50%',
+        marginTop:'20%',
+        // marginBottom:'20%',
+        textAlign:'center'
     },
 
     bottomScreenView: {
         flex:1,
         alignItems:'center',
         textAlign:'center',
-        width:'90%',
-        paddingTop:'5%'
-        // marginBottom: '1%'
+        width:'80%',
+        // marginBottom: '80%',
+        paddingTop: '10%'
     },
 
     button: {
-        width: "90%",
-        borderRadius: 18,
+        width: "60%",
+        borderRadius: 15,
         // height: "8%",
-        // marginBottom: "2%",
+        marginBottom: "4%",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
@@ -114,34 +113,23 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: "5%",
     },
-    screenTopText: {
+    screenText: {
         color:'white',
-        fontSize:'38px',
+        fontSize:'25px',
         fontWeight:'400',
         // marginTop:'5%',
-        alignContent:'center'
+        alignContent:'center',
+        alignItems:'center',
+        textAlign:'center'
     },
-    screenBottomText:{
-        color:'#d8d8d8',
-        fontWeight:'400',
-        fontSize: '16px'
-    },
-    signInButton: {
-        marginBottom: "6%",
-        // marginTop: "9%",
-        textDecorationLine: "underline",
-        fontSize: 16,
-        color:'#d8d8d8',
-        fontFamily: 'cairo'
-    },
-    skipButton: {
-        marginBottom: "10%",
+    backButton: {
+        marginBottom: "20%",
         textDecorationLine: "underline",
         fontSize: 20,
         color:'#d8d8d8',
         fontFamily: 'cairo',
         fontWeight:'bold'
-    }
+    },
 });
 
 export default wellcome; 
