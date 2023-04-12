@@ -12,20 +12,49 @@ import {
   TextInput,
   TouchableOpacity,
   Alert, ImageBackground
-  
+
 } from "react-native";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+
+const provider = new GoogleAuthProvider();
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Signed, setSigned] = useState(false);
-  const user = auth.currentUser;
+  const auth = getAuth();
+  auth.languageCode = 'it';
+
 
   AsyncStorage.getItem("Signed").then((value) => {
     if (Signed == false) {
       setSigned(value);
     }
   });
+
+  const signGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        navigation.navigate("Profile");
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   const HandleSignin = () => {
     signInWithEmailAndPassword(auth, email, password)
@@ -83,12 +112,12 @@ const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
+    <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
       {/* <Image style={styles.image} source={require("../assets/4-removebg-preview (1).png")} /> */}
 
       <View style={styles.logocont}>
-                <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
+        <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
       </View>
       <View style={styles.inputView}>
         <TextInput
@@ -134,7 +163,7 @@ const LoginScreen = ({ navigation }) => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={signGoogle}>
           <Image
             style={styles.smallloginicon}
             source={require("../assets/gmail_icon-icons.com_62758.png")}
@@ -170,28 +199,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    justifyContent:"center",
-    alignContent:"center",
-    alignItems:"center",
-    alignSelf:"center",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
     marginBottom: "-8%",
     width: 250,
     height: 250,
   },
   inputView: {
     backgroundColor: "white",
-        borderColor: "black",
-        borderWidth: 2.5,
-        borderRadius: 15,
-        width: "90%",
-        height: "7%",
-        fontFamily:'cairo',
-        marginBottom: "5px",
-        alignItems: "center",
-        textAlign: "left",
-        alignContent:"center",
-        alignSelf:"center",
-        justifyContent:"center",
+    borderColor: "black",
+    borderWidth: 2.5,
+    borderRadius: 15,
+    width: "90%",
+    height: "7%",
+    fontFamily: 'cairo',
+    marginBottom: "5px",
+    alignItems: "center",
+    textAlign: "left",
+    alignContent: "center",
+    alignSelf: "center",
+    justifyContent: "center",
   },
   TextInput: {
     fontSize: "120%",
@@ -199,11 +228,11 @@ const styles = StyleSheet.create({
     height: "90%",
     textAlign: "left",
     color: "black",
-    fontFamily:'cairo',
-    fontWeight:"700",
+    fontFamily: 'cairo',
+    fontWeight: "700",
   },
   forgot_button: {
-    width:"100%",
+    width: "100%",
     marginBottom: "10%",
     marginTop: "5%",
     color: "#d8d8d8",
@@ -216,13 +245,13 @@ const styles = StyleSheet.create({
     height: "8%",
     marginTop: "2%",
     justifyContent: "center",
-    alignItems:"flex-end",
-    alignContent:"center",
+    alignItems: "flex-end",
+    alignContent: "center",
     backgroundColor: "#ce9e04",
     borderStyle: "solid",
     borderWidth: 3,
     borderColor: "black",
-    display:"flex",
+    display: "flex",
   },
   registerBtn: {
     width: "85%",
@@ -231,20 +260,20 @@ const styles = StyleSheet.create({
     marginBottom: "2%",
     marginTop: "2%",
     justifyContent: "center",
-    alignItems:"flex-end",
-    alignContent:"center",
+    alignItems: "flex-end",
+    alignContent: "center",
     backgroundColor: "#ce9e04",
     borderStyle: "solid",
     borderWidth: 3,
     borderColor: "black",
-    display:"flex",
+    display: "flex",
   },
   buttonText: {
     color: "black",
     fontSize: "200%",
     fontWeight: "700",
-    fontFamily:'cairo',
-    alignSelf:"center",
+    fontFamily: 'cairo',
+    alignSelf: "center",
   },
   smallloginicon: {
     width: 55,
@@ -261,19 +290,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
-    
+
   },
   logoText: {
     color: "white",
     fontSize: "50px",
     fontWeight: "600",
     fontFamily: 'prompt',
-    justifyContent:'center',
+    justifyContent: 'center',
     alignSelf: "center",
     marginTop: "30%",
   },
-  smallView:{
-    paddingBottom:'30%'
+  smallView: {
+    paddingBottom: '30%'
   },
 });
 
