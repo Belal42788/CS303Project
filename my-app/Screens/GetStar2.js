@@ -10,7 +10,7 @@ import backgroundpic from "../assets/zachary-edmundson-ygqZpaNl_dM-unsplash - Co
 
 
 
-function wellcome({ navigation }) {
+function GetSart2({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default wellcome; 
+export default GetSart2; 
