@@ -13,6 +13,17 @@ import AsyncStorage from "@react-native-community/async-storage";
 import React, { useState } from "react";
 
 const Stack = createNativeStackNavigator();
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 50,
+    mass: 3,
+    overshootClamping: false,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
 export default function App() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -35,26 +46,24 @@ export default function App() {
   if (email == null) {
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-
-        
-          <Stack.Screen name="Get Start1" component={Getstar1} />
-          <Stack.Screen name="Get Start2" component={Getstar2} />
+     <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:"horizontal", headerShown: false,transitionSpec: {open:config,close:config}}}>
+          <Stack.Screen name="Get Start1" component={Getstar1}  />
+          <Stack.Screen name="Get Start2" component={Getstar2}   />
           <Stack.Screen name="Get Start3" component={Getstar3} />
           {/* <Stack.Screen name="Home" component={Home} /> */}
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
-          <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
+          <Stack.Screen name="Register" component={RegisterScreen}  />
+          <Stack.Screen name="Profile" component={ProfileScreen}  />
+          <Stack.Screen name="Forgetpassword" component={Forgetpassword}  />
         </Stack.Navigator>
       </NavigationContainer>
     );
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
+         <Stack.Navigator screenOptions={{headerShown: false,cardStyleInterpolator: forFade,}}>
+          <Stack.Screen name="Login" component={LoginScreen} options={{ cardStyleInterpolator: forFade }}/>
+          <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

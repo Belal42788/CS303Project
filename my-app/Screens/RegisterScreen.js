@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
         fontFamily: 'prompt',
         justifyContent: 'center',
         alignSelf: "center",
-        marginTop: "20%",
+        marginTop: "10%",
     },
     smallView: {
         paddingBottom: '5%'

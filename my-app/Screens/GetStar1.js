@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, useWindowDimensions, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, View, Text, Image, useWindowDimensions, TouchableOpacity, ImageBackground, Button } from "react-native";
 import React from "react";
 import { ReactDOM } from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
@@ -14,9 +14,14 @@ function GetStar1({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post15).jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg')} style={styles.container}>
             <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
+            </View>
+            <View style={styles.buttonscontain}>
+            <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
+            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
+            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
             </View>
             <View style={styles.topScreenView}>
             <Text style={styles.screenTopText}>Luxury Cars.</Text>
@@ -64,7 +69,40 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom:'70%'
     },
-
+    buttonscontain:{
+     display:"flex",
+     flexDirection:"row",
+     justifyContent: "center",
+     alignItems: "center",
+     alignContent: "center",
+     marginTop:"2%",
+     marginLeft:"3%",
+     
+    },
+    upperbuttons :{
+        width: "200%",
+        height: "500%",
+        borderRadius:"100%",
+        backgroundColor: "white",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "black",
+        marginBottom: "1%",
+       marginTop:"4%",
+       marginLeft:"10%",
+    },
+    specialbutton:{
+        width: "200%",
+        height: "500%",
+        borderRadius:"100%",
+        backgroundColor: "#ce9e04",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderColor: "black",
+        marginBottom: "1%",
+       marginTop:"4%",
+       marginLeft:"10%",
+    },
     bottomScreenView: {
         flex:1,
         alignItems:'center',

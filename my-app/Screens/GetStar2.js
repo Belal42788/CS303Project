@@ -14,9 +14,14 @@ function GetSart2({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/bluredImage.jpg')} style={styles.container}>
-            <View style={styles.logocont}>
+        <ImageBackground source={require('../assets/Exclusive Luxury Car (Instagram Post15editblur).jpg')} style={styles.container}>
+             <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
+            </View>
+            <View style={styles.buttonscontain}>
+            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
+            <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
+            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
             </View>
             <View style={styles.topScreenView}>
               <Text style={styles.screenText}>
@@ -49,10 +54,11 @@ const styles = StyleSheet.create({
 
     },
     logocont: {
-        flex: 1,
         alignItems: "center",
         justifyContent: "flex-start",
-        width: "100%"
+        width: "100%",
+        marginBottom:"1%",
+        marginTop:"1%",
     },
 
     topScreenView: {
@@ -104,6 +110,41 @@ const styles = StyleSheet.create({
         alignSelf: "center",
 
     },
+    buttonscontain:{
+        display:"flex",
+        flexDirection:"row",
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
+        marginTop:"2%",
+        marginBottom: "50%",
+        marginLeft:"3%",
+        
+       },
+       upperbuttons :{
+           width: "200%",
+           height: "500%",
+           borderRadius:"100%",
+           backgroundColor: "white",
+           borderStyle: "solid",
+           borderWidth: 2,
+           borderColor: "black",
+          marginTop:"0",
+          marginLeft:"10%",
+          
+       },
+       specialbutton:{
+           width: "200%",
+           height: "500%",
+           borderRadius:"100%",
+           backgroundColor: "#ce9e04",
+           borderStyle: "solid",
+           borderWidth: 2,
+           borderColor: "black",
+           marginBottom: "1%",
+          marginTop:"4%",
+          marginLeft:"10%",
+       },
     logoText: {
         color: "white",
         fontSize: "20px",
@@ -111,7 +152,7 @@ const styles = StyleSheet.create({
         fontFamily: 'prompt',
         justifyContent:'center',
         alignSelf: "center",
-        marginTop: "5%",
+        marginTop: "1%",
     },
     screenText: {
         color:'white',
