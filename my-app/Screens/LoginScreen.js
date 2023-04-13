@@ -22,6 +22,7 @@ const provider = new GoogleAuthProvider();
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [urlPhoto, setUrlPhoto] = useState(null);
   const [Signed, setSigned] = useState(false);
   const auth = getAuth();
   auth.languageCode = 'it';
@@ -65,6 +66,7 @@ const LoginScreen = ({ navigation }) => {
           AsyncStorage.setItem("Signed", true);
           AsyncStorage.setItem("email", email);
           AsyncStorage.setItem("password", password);
+          AsyncStorage.setItem("urlPhoto", user.photoURL);
           navigation.navigate("Profile");
         } else {
           signOut(auth).then(() => alert("Email is not Verified"));

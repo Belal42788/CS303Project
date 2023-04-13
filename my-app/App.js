@@ -10,10 +10,16 @@ import Getstar3 from './Screens/GetStar3.js'
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-community/async-storage";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+
+
+
 
 const Stack = createNativeStackNavigator();
+
 export default function App() {
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   AsyncStorage.getItem("email").then((value) => {
@@ -26,18 +32,20 @@ export default function App() {
       setPassword(value);
     }
   });
+
+  
   let [fontloaded] = useFonts({
     mulish: require("./fonts/assets/fonts/Mulish-VariableFont_wght.ttf"),
     roboto: require("./fonts/assets/fonts/RobotoCondensed-Regular.ttf"),
     prompt: require("./fonts/assets/fonts/Prompt-Bold.ttf"),
     cairo: require("./fonts/assets/fonts/Cairo-VariableFont_slnt,wght.ttf"),
   });
+
+
   if (email == null) {
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-
-        
           <Stack.Screen name="Get Start1" component={Getstar1} />
           <Stack.Screen name="Get Start2" component={Getstar2} />
           <Stack.Screen name="Get Start3" component={Getstar3} />

@@ -18,13 +18,23 @@ import {
     ImageBackground
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
-import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc ,deleteDoc} from "firebase/firestore";
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 
 const RegisterScreen = ({ navigation }) => {
     const user = auth.currentUser;
     const db = getFirestore();
     const UserRef = doc(db, "users", user.uid);
+    const [urlPhoto, setUrlPhoto] = useState(null);
+
+
+
+    AsyncStorage.getItem("urlPhoto").then((value) => {
+        if (value != null) {
+            setUrlPhoto(value);
+        }
+    });
+
 
     //to sign out
     const SignOut = () => {
@@ -71,14 +81,22 @@ const RegisterScreen = ({ navigation }) => {
                 alert(errorMessage);
             });
     };
+    function getUrlPhoto() {
+        if (urlPhoto != null) {
+            return urlPhoto;
+        }
+        else {
+            return "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c";
+        }
+    }
     return (
-        <ImageBackground  source={require('../assets/reg3.jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
 
             <Image
                 style={styles.PhotoStyle}
                 source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c",
+                    uri: getUrlPhoto(),
                 }}
             />
 
@@ -130,7 +148,7 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         fontSize: "15px",
         fontWeight: "bold",
-        color:'#d8d8d8'
+        color: '#d8d8d8'
     },
     button: {
         width: "70%",
@@ -139,10 +157,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignContent: 'center',
         justifyContent: "center",
-        borderStyle:'solid',
-        borderWidth:2,
-        borderColor:'black',
-        display:'flex',
+        borderStyle: 'solid',
+        borderWidth: 2,
+        borderColor: 'black',
+        display: 'flex',
         marginTop: 10,
         backgroundColor: "#ce9e04",
     },
@@ -152,7 +170,7 @@ const styles = StyleSheet.create({
         textTransform: "capitalize",
         fontSize: 20,
         textAlign: "center",
-        fontFamily:'cairo'
+        fontFamily: 'cairo'
     },
 });
 export default RegisterScreen;
