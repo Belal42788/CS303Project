@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
         marginTop:"2%",
         marginBottom: "50%",
-        marginLeft:"3%",
+        marginLeft:"5%",
         
        },
        upperbuttons :{

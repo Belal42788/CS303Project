@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
      alignItems: "center",
      alignContent: "center",
      marginTop:"2%",
-     marginLeft:"3%",
+     marginLeft:"5%",
      
     },
     upperbuttons :{
