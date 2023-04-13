@@ -18,13 +18,13 @@ import {
     Alert, ImageBackground
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
-import { collection, addDoc, getFirestore } from "firebase/firestore"; 
-//import firestore from '@react-native-firebase/firestore';
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc ,deleteDoc} from "firebase/firestore";
+
 
 const RegisterScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    // const [age, setAge] = useState("");
+    const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
@@ -32,28 +32,28 @@ const RegisterScreen = ({ navigation }) => {
     auth.languageCode = 'it';
 
     const Gprovider = new GoogleAuthProvider();
-    
+
     const signGoogle = () => {
         signInWithPopup(auth, Gprovider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            navigation.navigate("Profile");
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-        });
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                navigation.navigate("Profile");
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
     };
 
     const HandleRegister = () => {
@@ -62,35 +62,30 @@ const RegisterScreen = ({ navigation }) => {
             return;
         }
 
-        if ((password == password1) & (firstName != "")&(lastName != "")&(email != "")) {
+        if ((password == password1) & (firstName != "") & (lastName != "") & (email != "")) {
             createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
+                .then(async (userCredential) => {
                     const user = userCredential.user;
+                    const db = getFirestore();
+                    const UserRef = doc(db, "users", user.uid);
 
-                    //to set user informatoin to database
-                    // const db = getDatabase();
-                    // set(ref(db, 'users/' + user.uid), {
-                    //     age: age,
-                    //     date: Date.now()
-                    // });
+                    // Add a new document in collection "cities"
+                    await setDoc(UserRef, {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        phone: phone,
+                        date: Date.now()
+                    });
 
-                    //to set user info to firestore
-                    const db=getFirestore();
-                    
-                    try {
-                        const docRef = addDoc(collection(db, "users"), {
-                        first: "Alan",
-                        middle: "Mathison",
-                        last: "Turing",
-                        born: 1912
-                        });
-                    
-                        console.log("Document written with ID: ", docRef.id);
-                    } catch (e) {
-                        console.error("Error adding document: ", e);
+                    const docSnap = await getDoc(UserRef);
+
+                    if (docSnap.exists()) {
+                        console.log("Document data:", docSnap.data());
+                    } else {
+                        // docSnap.data() will be undefined in this case
+                        console.log("No such document!");
                     }
-
-
 
                     //to set user info
                     updateProfile(auth.currentUser, {
@@ -171,15 +166,7 @@ const RegisterScreen = ({ navigation }) => {
                     onChangeText={setLastName}
                 />
             </View>
-            {/* <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="Enter your Age:"
-                    placeholderTextColor="#003f5c"
-                    value={age}
-                    onChangeText={setAge}
-                />
-            </View> */}
+
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
@@ -187,6 +174,16 @@ const RegisterScreen = ({ navigation }) => {
                     placeholderTextColor="#003f5c"
                     value={email}
                     onChangeText={setEmail}
+                />
+            </View>
+
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter your Phone Number"
+                    placeholderTextColor="#003f5c"
+                    value={phone}
+                    onChangeText={setPhone}
                 />
             </View>
 
@@ -334,7 +331,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-      
+
 
     },
     logoText: {

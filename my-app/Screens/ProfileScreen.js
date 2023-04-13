@@ -18,23 +18,13 @@ import {
     ImageBackground
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc ,deleteDoc} from "firebase/firestore";
+
 
 const RegisterScreen = ({ navigation }) => {
     const user = auth.currentUser;
-
-    // useEffect(() => {
-    //     const dbRef = ref(getDatabase());
-    //     get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
-    //         if (snapshot.exists()) {
-    //             console.log(snapshot.val());
-    //             setUser(snapshot.val());
-    //         } else {
-    //             console.log("No data available");
-    //         }
-    //     }).catch((error) => {
-    //         console.error(error);
-    //     });
-    // }, [])
+    const db = getFirestore();
+    const UserRef = doc(db, "users", user.uid);
 
     //to sign out
     const SignOut = () => {
