@@ -28,6 +28,11 @@ const config = {
     restSpeedThreshold: 0.01,
   },
 };
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
 export default function App() {
 
   const [email, setEmail] = useState(null);
