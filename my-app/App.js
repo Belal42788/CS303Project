@@ -55,9 +55,9 @@ export default function App() {
   if (email == null) {
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Get Start1" component={Getstar1} />
-          <Stack.Screen name="Get Start2" component={Getstar2} />
+     <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:"horizontal", headerShown: false,transitionSpec: {open:config,close:config}}}>
+          <Stack.Screen name="Get Start1" component={Getstar1}  />
+          <Stack.Screen name="Get Start2" component={Getstar2}   />
           <Stack.Screen name="Get Start3" component={Getstar3} />
           {/* <Stack.Screen name="Home" component={Home} /> */}
           <Stack.Screen name="Login" component={LoginScreen} />
