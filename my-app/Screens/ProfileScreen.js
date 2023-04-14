@@ -6,7 +6,7 @@ import {
     deleteUser,
     sendPasswordResetEmail,
 } from "firebase/auth";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getStorage,getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import {
     StyleSheet,
@@ -81,6 +81,13 @@ const RegisterScreen = ({ navigation }) => {
                 alert(errorMessage);
             });
     };
+
+    //to update Photo
+    const updatePhoto = () => {
+        const mountainImagesRef = ref(storage, 'images/mountains.jpg');
+    }
+
+    //to get urlPhoto
     function getUrlPhoto() {
         if (urlPhoto != null) {
             return urlPhoto;
@@ -89,6 +96,7 @@ const RegisterScreen = ({ navigation }) => {
             return "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c";
         }
     }
+
     return (
         <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
@@ -108,6 +116,11 @@ const RegisterScreen = ({ navigation }) => {
             </View>
             <Text> </Text>
 
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={updatePhoto}>
+                    Updata Photo
+                </Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={SignOut}>
                     Sign Out
