@@ -6,15 +6,12 @@ import ProfileScreen from "./Screens/ProfileScreen.js";
 import { useFonts } from "expo-font";
 import Getstar1 from "./Screens/GetStar1.js";
 import Getstar2 from './Screens/GetStar2.js';
-import Getstar3 from './Screens/GetStar3.js'
+import Getstar3 from './Screens/GetStar3.js';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-community/async-storage";
 import React, { useState, useEffect } from "react";
-
-
-
-
+import MainSrceen from "./Screens/MainScreen.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -61,6 +58,7 @@ export default function App() {
     return (
       <NavigationContainer>
      <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:"horizontal", headerShown: false,transitionSpec: {open:config,close:config}}}>
+          <Stack.Screen name="Main Screen" component={MainSrceen}  />
           <Stack.Screen name="Get Start1" component={Getstar1}  />
           <Stack.Screen name="Get Start2" component={Getstar2}   />
           <Stack.Screen name="Get Start3" component={Getstar3} />
