@@ -13,9 +13,9 @@ import {
   TouchableOpacity,
   Alert,
   ImageBackground,
+  FlatList,
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
 function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -65,6 +65,57 @@ function MainScreen({ navigation }) {
           <Text style={styles.markstext}>Ferrari</Text>
         </TouchableOpacity>
       </View>
+      <View  style={styles.products}>
+      <TouchableOpacity style={styles.card}>
+      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+      <Text style={styles.title}>Tesla Model X</Text>
+      <View style={styles.info} >
+      <Text style={styles.numofseats}>💺4 seats</Text>
+      <Text style={styles.price}>💳30$/hour</Text>
+      </View>
+    </TouchableOpacity>
+      <TouchableOpacity style={styles.card}>
+      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+      <Text style={styles.title}>Tesla Model X</Text>
+      <View style={styles.info} >
+      <Text style={styles.numofseats}>💺4 seats</Text>
+      <Text style={styles.price}>💳30$/hour</Text>
+      </View>
+    </TouchableOpacity>
+      <TouchableOpacity style={styles.card}>
+      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+      <Text style={styles.title}>Tesla Model X</Text>
+      <View style={styles.info} >
+      <Text style={styles.numofseats}>💺4 seats</Text>
+      <Text style={styles.price}>💳30$/hour</Text>
+      </View>
+    </TouchableOpacity>
+      <TouchableOpacity style={styles.card}>
+      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+      <Text style={styles.title}>Tesla Model X</Text>
+      <View style={styles.info} >
+      <Text style={styles.numofseats}>💺4 seats</Text>
+      <Text style={styles.price}>💳30$/hour</Text>
+      </View>
+    </TouchableOpacity>
+      <TouchableOpacity style={styles.card}>
+      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+      <Text style={styles.title}>Tesla Model X</Text>
+      <View style={styles.info} >
+      <Text style={styles.numofseats}>💺4 seats</Text>
+      <Text style={styles.price}>💳30$/hour</Text>
+      </View>
+    </TouchableOpacity>
+      <TouchableOpacity style={styles.card}>
+      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+      <Text style={styles.title}>Tesla Model X</Text>
+      <View style={styles.info} >
+      <Text style={styles.numofseats}>💺4 seats</Text>
+      <Text style={styles.price}>💳30$/hour</Text>
+      </View>
+    </TouchableOpacity>
+     
+      </View>
     </View>
   );
 }
@@ -84,6 +135,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     alignContent: "space-between",
+    marginTop:"5%",
   },
   searchbarview: {
     backgroundColor: "white",
@@ -142,5 +194,81 @@ const styles = StyleSheet.create({
     marginTop: "10%",
     marginBottom: "20%",
   },
+  products:{
+    marginTop: "10%",
+    marginBottom: "10%",
+    display: "flex",
+    flexWrap: "wrap",
+    width: "100%",
+    height :"auto",
+    flexDirection: "row",
+    alignContent: "space-between",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    backgroundColor:"lightgray",
+    padding:"auto",
+    paddingRight:"1%",
+    paddingTop:"10%",
+    borderRadius:20,
+    borderBottomEndRadius:0,
+    borderBottomLeftRadius:0,
+    
+
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    padding: 5,
+    height:270,
+    width :175,
+    marginLeft:"2%",
+    marginBottom:"2%",
+
+    
+  },
+  image: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    marginBottom: 10,
+    borderRadius: 15,
+    height:"70%",
+    borderBottomEndRadius:0,
+    borderBottomLeftRadius:0,
+  },
+  info:{
+ display:"flex",
+ flexDirection:"row",
+ alignContent:"space-around",
+ alignItems:"center",
+ justifyContent:"space-between",
+  },
+  title: {
+    fontSize: "100%",
+    fontWeight: '700',
+    fontFamily: "cairo",
+    marginBottom:"5%"
+  },
+  price: {
+    fontSize: "80%",
+    fontWeight: '700',
+    color: 'black',
+    fontFamily: "cairo",
+  },
+  numofseats:{
+    fontSize: "80%",
+    fontWeight: '700',
+    color: 'black',
+    fontFamily: "cairo",
+  }
+
 });
 export default MainScreen;
