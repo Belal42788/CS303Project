@@ -58,8 +58,6 @@ export default function App() {
     return (
       <NavigationContainer>
      <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:"horizontal", headerShown: false,transitionSpec: {open:config,close:config}}}>
-          {/* <Stack.Screen name="List Product" component={ListProduct}  /> */}
-          <Stack.Screen name="Main Screen" component={MainSrceen}  />
           <Stack.Screen name="Get Start1" component={Getstar1}  />
           <Stack.Screen name="Get Start2" component={Getstar2}   />
           <Stack.Screen name="Get Start3" component={Getstar3} />
@@ -68,6 +66,7 @@ export default function App() {
           <Stack.Screen name="Register" component={RegisterScreen}  />
           <Stack.Screen name="Profile" component={ProfileScreen}  />
           <Stack.Screen name="Forgetpassword" component={Forgetpassword}  />
+          <Stack.Screen name="Main Screen" component={MainSrceen}  />
         </Stack.Navigator>
       </NavigationContainer>
     );
