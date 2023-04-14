@@ -218,18 +218,18 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
-    borderRadius: 20,
+    borderRadius: 18,
     shadowColor: 'black',
     shadowOffset: {
       width: 10,
       height: 10,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.45,
     shadowRadius: 3.84,
     elevation: 5,
     padding: 5,
-    height:270,
-    width :175,
+    height:260,
+    width :165,
     marginLeft:"2%",
     marginBottom:"2%",
 
