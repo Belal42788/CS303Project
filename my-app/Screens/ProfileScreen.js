@@ -6,7 +6,7 @@ import {
     deleteUser,
     sendPasswordResetEmail,
 } from "firebase/auth";
-import { getStorage,getDatabase, ref, child, get } from "firebase/database";
+import { getStorage, getDatabase, ref, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import {
     StyleSheet,
@@ -19,6 +19,8 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
+import * as ImagePicker from 'expo-image-picker';
+
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -26,6 +28,8 @@ const RegisterScreen = ({ navigation }) => {
     const db = getFirestore();
     const UserRef = doc(db, "users", user.uid);
     const [urlPhoto, setUrlPhoto] = useState(null);
+    const [image, setImage] = useState(null);
+    const [fileName, setFileName] = useState(null);
 
 
 
@@ -82,9 +86,36 @@ const RegisterScreen = ({ navigation }) => {
             });
     };
 
+
+    //to PickImage
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        console.log(result);
+        if (!result.canceled) {
+            var name = result.uri.substring(result.uri.lastIndexOf('/') + 1, result.uri.length);
+            setImage((result.assets[0].uri)); 
+            setFileName(name);
+            AsyncStorage.setItem("urlPhoto", (result.assets[0].uri));
+            console.log(image);
+            console.log(fileName);
+        }
+
+
+    };
+
+
     //to update Photo
     const updatePhoto = () => {
-        const mountainImagesRef = ref(storage, 'images/mountains.jpg');
+        pickImage();
+        
+        // const mountainImagesRef = ref(storage, 'images/mountains.jpg');
     }
 
     //to get urlPhoto
