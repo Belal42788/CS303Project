@@ -14,6 +14,7 @@ import {
   Alert,
   ImageBackground,
   FlatList,
+  ScrollView,
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 function MainScreen({ navigation }) {
@@ -35,7 +36,7 @@ function MainScreen({ navigation }) {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.marks}>
+      <View  style={styles.marks} >
         <TouchableOpacity>
           <Image
             source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
@@ -212,16 +213,16 @@ const styles = StyleSheet.create({
     borderRadius:20,
     borderBottomEndRadius:0,
     borderBottomLeftRadius:0,
-    
+    gap:5,
 
   },
   card: {
     backgroundColor: '#fff',
     borderRadius: 20,
-    shadowColor: '#000',
+    shadowColor: 'black',
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: 10,
+      height: 10,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
