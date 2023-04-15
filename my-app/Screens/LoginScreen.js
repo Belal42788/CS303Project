@@ -157,7 +157,7 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <Text>   </Text>
 
-
+      
 
       <View style={styles.smallloginicon}>
         <TouchableOpacity>
@@ -193,7 +193,7 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <View style={styles.smallView}>
         <Text>   </Text>
-        <Text>   </Text>
+      <Text>   </Text>
       </View>
     </ImageBackground>
   );
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    marginBottom: -8,
+    marginBottom: "-8%",
     width: 250,
     height: 250,
   },
@@ -222,7 +222,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "90%",
     height: "7%",
-    marginBottom: 5,
+    fontFamily: 'cairo',
+    marginBottom: "5px",
     alignItems: "center",
     textAlign: "left",
     alignContent: "center",
@@ -230,16 +231,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   TextInput: {
-    fontSize: 13,
+    fontSize: "120%",
     width: "96%",
     height: "90%",
     textAlign: "left",
     color: "black",
+    fontFamily: 'cairo',
     fontWeight: "700",
   },
   forgot_button: {
     width: "100%",
-    marginBottom: 5,
+    marginBottom: "10%",
     marginTop: "5%",
     color: "#d8d8d8",
     textDecorationLine: "underline",
@@ -247,7 +249,7 @@ const styles = StyleSheet.create({
   },
   Sign_Up_button: {
     width: "100%",
-    marginBottom: 5,
+    marginBottom: "10%",
     marginTop: "5%",
     color: "#d8d8d8",
     textDecorationLine: "underline",
@@ -271,7 +273,7 @@ const styles = StyleSheet.create({
     width: "85%",
     borderRadius: 13,
     height: "8%",
-    marginBottom: 5,
+    marginBottom: "2%",
     marginTop: "2%",
     justifyContent: "center",
     alignItems: "flex-end",
@@ -284,8 +286,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "black",
-    fontSize: 13,
+    fontSize: "200%",
     fontWeight: "700",
+    fontFamily: 'cairo',
     alignSelf: "center",
   },
   smallloginicon: {
@@ -296,28 +299,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignContent: "space-around",
-    borderRadius: 5,
+    borderRadius: "50%",
   },
   logocont: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+  
 
-
-  },
-  logoText: {
+},
+logoText: {
     color: "white",
-    fontSize: 13,
+    fontSize: "50px",
     fontWeight: "600",
-
+    fontFamily: 'prompt',
     justifyContent: 'center',
     alignSelf: "center",
     marginTop: "20%",
-  },
-  smallView: {
+},
+smallView: {
     paddingBottom: '5%'
-  },
+},
 });
 
 export default LoginScreen;

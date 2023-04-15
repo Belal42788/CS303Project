@@ -19,14 +19,14 @@ function GetSart3({ navigation }) {
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
             </View>
             <View style={styles.buttonscontain}>
-                <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
-                <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
-                <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
+            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
+            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
+            <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
             </View>
             <View style={styles.topScreenView}>
-                <Text style={styles.screenText}>
-                    What are you waiting for?{'\n'}{'\n'}create an account and start your journey Right NOW!
-                </Text>
+              <Text style={styles.screenText}>
+                What are you waiting for?{'\n'}{'\n'}create an account and start your journey Right NOW!
+              </Text>
             </View>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Register')} >
                 <Text style={styles.buttonText}>LET'S GO!</Text>
@@ -50,36 +50,36 @@ const styles = StyleSheet.create({
     logocont: {
         alignItems: "center",
         justifyContent: "flex-start",
-        width: 10,
-        marginBottom:1,
-        marginTop: "1%",
+        width: "100%",
+        marginBottom:"1%",
+        marginTop:"1%",
     },
 
     topScreenView: {
-        width: 10,
-        flex: 1,
-        alignItems: 'flex-start',
-        alignContent: "flex-start",
-        alignSelf: "flex-start",
-        marginBottom:5,
-        textAlign: 'center'
+        width:"100%",
+        flex:1,
+        alignItems:'flex-start',
+        alignContent:"flex-start",
+        alignSelf :"flex-start",
+        marginBottom:'40%',
+        textAlign:'center'
 
     },
 
     bottomScreenView: {
-        flex: 1,
-        alignItems: 'center',
-        textAlign: 'center',
-        width: 10,
+        flex:1,
+        alignItems:'center',
+        textAlign:'center',
+        width:'80%',
         // marginBottom: '80%',
         paddingTop: '10%'
     },
 
     button: {
-        width: 10,
+        width: "60%",
         borderRadius: 15,
         // height: "8%",
-        marginBottom:5,
+        marginBottom: "4%",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
@@ -89,80 +89,86 @@ const styles = StyleSheet.create({
         borderColor: "black",
         display: "flex",
     },
-    buttonscontain: {
-        display: "flex",
-        flexDirection: "row",
+    buttonscontain:{
+        display:"flex",
+        flexDirection:"row",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        marginTop:3,
-        marginTop: "2%",
-        marginLeft: "5%",
-
-    },
-    upperbuttons: {
-        width: 10,
-        height: "500%",
-        backgroundColor: "white",
-        borderStyle: "solid",
-        borderWidth: 2,
-        borderColor: "black",
-        marginTop: "4%",
-        marginLeft: "10%",
-    },
-    specialbutton: {
-        width: 10,
-        height: "500%",
-        backgroundColor: "#ce9e04",
-        borderStyle: "solid",
-        borderWidth: 2,
-        borderColor: "black",
-        marginTop: "4%",
-        marginLeft: "10%",
-    },
+        marginTop:"2%",
+        marginBottom: "40%",
+        marginLeft:"5%",
+        
+       },
+       upperbuttons :{
+           width: "200%",
+           height: "500%",
+           borderRadius:"100%",
+           backgroundColor: "white",
+           borderStyle: "solid",
+           borderWidth: 2,
+           borderColor: "black",
+           marginBottom: "1%",
+          marginTop:"4%",
+          marginLeft:"10%",
+       },
+       specialbutton:{
+           width: "200%",
+           height: "500%",
+           borderRadius:"100%",
+           backgroundColor: "#ce9e04",
+           borderStyle: "solid",
+           borderWidth: 2,
+           borderColor: "black",
+           marginBottom: "1%",
+          marginTop:"4%",
+          marginLeft:"10%",
+       },
 
     ico: {
         alignSelf: "flex-end",
         justifyContent: "flex-end",
         marginLeft: "5%",
-        width: 10,
+        width: "100%",
 
     },
     buttonText: {
         color: "black",
-        fontSize: 10,
+        fontSize: "200%",
         fontWeight: "700",
-         
-    alignSelf: "center",
+        fontFamily: 'cairo',
+        alignSelf: "center",
 
-},
-    logoText: {
-    color: "white",
-    fontWeight: "600",
-
-    justifyContent: 'center',
-    alignSelf: "center",
-    marginTop: "1%",
-},
-    screenText: {
-        width: 10,
-    color: 'white',
-    fontSize: 10,
-    fontWeight: '400',
-    // marginTop:'5%',
-    alignContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    opacity :5,
     },
-backButton: {
-    marginBottom: 5,
+    logoText: {
+        color: "white",
+        fontSize: "20px",
+        fontWeight: "600",
+        fontFamily: 'prompt',
+        justifyContent:'center',
+        alignSelf: "center",
+        marginTop: "1%",
+    },
+    screenText: {
+        width:"100%",
+        color:'white',
+        fontSize:'25px',
+        fontWeight:'400',
+        // marginTop:'5%',
+        alignContent:'center',
+        alignItems:'center',
+        textAlign:'center',
+        fontFamily: 'cairo',
+        opacity :"80%"
+    },
+    backButton: {
+        marginBottom: "20%",
         textDecorationLine: "underline",
-            fontSize: 20,
-                color: '#d8d8d8',
-         
-                    fontWeight: 'bold'
-},
+        fontSize: 20,
+        color:'#d8d8d8',
+        fontFamily: 'cairo',
+        fontWeight:'bold'
+    },
 });
 
 export default GetSart3; 
