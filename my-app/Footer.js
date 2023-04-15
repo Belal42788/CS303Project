@@ -19,7 +19,7 @@ const styles = {
     position: 'absolute',
     bottom: 0,
     flexDirection: 'row',
-    width: '100%',
+    width: 10,
     height: 60,
     backgroundColor: '#fff',
     borderTopWidth: 1,

@@ -181,21 +181,21 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     PhotoStyle: {
-        width: "150px",
+        width: 10,
         height: "150px",
         // backgroundColor:"blue",
-        borderRightWidth: "0px",
+        borderRightWidth: 1,
         // borderColor:"blue",
-        borderRadius: "50%",
+        borderRadius: 10,
     },
     textStyle: {
         paddingTop: 50,
-        fontSize: "15px",
+        fontSize: 13,
         fontWeight: "bold",
         color: '#d8d8d8'
     },
     button: {
-        width: "70%",
+        width: 10,
         borderRadius: 18,
         height: 50,
         alignItems: "center",
@@ -214,7 +214,6 @@ const styles = StyleSheet.create({
         textTransform: "capitalize",
         fontSize: 20,
         textAlign: "center",
-        fontFamily: 'cairo'
     },
 });
 export default RegisterScreen;

@@ -36,7 +36,7 @@ function MainScreen({ navigation }) {
           />
         </TouchableOpacity>
       </View>
-      <View  style={styles.marks} >
+      <View style={styles.marks} >
         <TouchableOpacity>
           <Image
             source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
@@ -66,56 +66,56 @@ function MainScreen({ navigation }) {
           <Text style={styles.markstext}>Ferrari</Text>
         </TouchableOpacity>
       </View>
-      <View  style={styles.products}>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-     
+      <View style={styles.products}>
+        <TouchableOpacity style={styles.card}>
+          <Image source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+          <Text style={styles.title}>Tesla Model X</Text>
+          <View style={styles.info} >
+            <Text style={styles.numofseats}>💺4 seats</Text>
+            <Text style={styles.price}>💳30$/hour</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Image source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+          <Text style={styles.title}>Tesla Model X</Text>
+          <View style={styles.info} >
+            <Text style={styles.numofseats}>💺4 seats</Text>
+            <Text style={styles.price}>💳30$/hour</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Image source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+          <Text style={styles.title}>Tesla Model X</Text>
+          <View style={styles.info} >
+            <Text style={styles.numofseats}>💺4 seats</Text>
+            <Text style={styles.price}>💳30$/hour</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Image source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+          <Text style={styles.title}>Tesla Model X</Text>
+          <View style={styles.info} >
+            <Text style={styles.numofseats}>💺4 seats</Text>
+            <Text style={styles.price}>💳30$/hour</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Image source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+          <Text style={styles.title}>Tesla Model X</Text>
+          <View style={styles.info} >
+            <Text style={styles.numofseats}>💺4 seats</Text>
+            <Text style={styles.price}>💳30$/hour</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.card}>
+          <Image source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
+          <Text style={styles.title}>Tesla Model X</Text>
+          <View style={styles.info} >
+            <Text style={styles.numofseats}>💺4 seats</Text>
+            <Text style={styles.price}>💳30$/hour</Text>
+          </View>
+        </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -130,23 +130,22 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   header: {
-    width: "80%",
+    width: 10,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
     alignContent: "space-between",
-    marginTop:"5%",
+    marginTop: "5%",
   },
   searchbarview: {
     backgroundColor: "white",
     borderColor: "black",
     borderWidth: 2.5,
     borderRadius: 70,
-    width: "85%",
+    width: 10,
     height: "70%",
-    fontFamily: "cairo",
-    marginBottom: "5px",
+    marginBottom: 5,
     justifyContent: "flex-start",
     alignItems: "flex-start",
     textAlign: "left",
@@ -155,28 +154,28 @@ const styles = StyleSheet.create({
     marginLeft: "-10%",
   },
   searchbartext: {
-    fontSize: "80%",
-    width: "90%",
+    fontSize: 10,
+    width: 10,
     height: "90%",
     textAlign: "left",
     color: "black",
-    fontFamily: "cairo",
+    fontSize: 20,
     fontWeight: "700",
   },
   PhotoStyle: {
     width: 50,
     height: 50,
     bordertWidth: "5",
-    borderRadius: "50%",
+    borderRadius: 10,
     marginLeft: "50%",
   },
   marks: {
     marginTop: "10%",
-    marginBottom: "10%",
+    marginBottom: 10,
     // marginLeft:"-20%",
     display: "flex",
     flexWrap: "wrap",
-    width: "90%",
+    width: 10,
     flexDirection: "row",
     alignContent: "space-between",
     alignItems: "center",
@@ -185,35 +184,35 @@ const styles = StyleSheet.create({
   marksicons: {
     width: 80,
     height: 80,
-    borderRadius: "50%",
+    borderRadius: 10,
   },
   markstext: {
     color: "black",
-    fontFamily: "cairo",
+
     fontWeight: "800",
     alignSelf: "center",
     marginTop: "10%",
-    marginBottom: "20%",
+    marginBottom: 10,
   },
-  products:{
+  products: {
     marginTop: "10%",
-    marginBottom: "10%",
+    marginBottom: 10,
     display: "flex",
     flexWrap: "wrap",
-    width: "100%",
-    height :"auto",
+    width: 10,
+    height: "auto",
     flexDirection: "row",
     alignContent: "space-between",
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor:"lightgray",
-    padding:"auto",
-    paddingRight:"1%",
-    paddingTop:"10%",
-    borderRadius:20,
-    borderBottomEndRadius:0,
-    borderBottomLeftRadius:0,
-    gap:5,
+    backgroundColor: "lightgray",
+    padding: "auto",
+    paddingRight: "1%",
+    paddingTop: "10%",
+    borderRadius: 20,
+    borderBottomEndRadius: 0,
+    borderBottomLeftRadius: 0,
+    gap: 5,
 
   },
   card: {
@@ -228,47 +227,45 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     padding: 5,
-    height:260,
-    width :165,
-    marginLeft:"2%",
-    marginBottom:"2%",
+    height: 260,
+    width: 165,
+    marginLeft: "2%",
+    marginBottom:3,
 
-    
+
   },
   image: {
-    width: '100%',
+    width: 10,
     height: 200,
     resizeMode: 'cover',
     marginBottom: 10,
     borderRadius: 15,
-    height:"70%",
-    borderBottomEndRadius:0,
-    borderBottomLeftRadius:0,
+    height: "70%",
+    borderBottomEndRadius: 0,
+    borderBottomLeftRadius: 0,
   },
-  info:{
- display:"flex",
- flexDirection:"row",
- alignContent:"space-around",
- alignItems:"center",
- justifyContent:"space-between",
+  info: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "space-around",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   title: {
-    fontSize: "100%",
+    fontSize: 10,
     fontWeight: '700',
-    fontFamily: "cairo",
-    marginBottom:"5%"
+
   },
   price: {
-    fontSize: "80%",
+    fontSize: 10,
     fontWeight: '700',
     color: 'black',
-    fontFamily: "cairo",
+
   },
-  numofseats:{
-    fontSize: "80%",
+  numofseats: {
+    fontSize: 10,
     fontWeight: '700',
     color: 'black',
-    fontFamily: "cairo",
   }
 
 });

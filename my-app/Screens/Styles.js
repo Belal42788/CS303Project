@@ -4,7 +4,7 @@ var h = window.innerHeight;
 const Styles = StyleSheet.create({
     body: {
         backgroundColor: "white",
-        width: w + "px",
+        width: 10,
         height: h - 65 + "px"
     },
     container: {
@@ -15,7 +15,7 @@ const Styles = StyleSheet.create({
         backgroundColor: "gray",
         borderColor: "gray",
         borderWidth: "5px",
-        borderRadius: "5px",
+        borderRadius: 5,
         padding: "20px",
     },
     title: {
@@ -23,11 +23,11 @@ const Styles = StyleSheet.create({
         // fontFamily: "cursive",
         fontWeight: "bold",
     },titleButon: {
-        fontSize: "13px",
+        fontSize: 13,
         fontWeight: "bold",
     },
     button: {
-        width: "120px",
+        width: 10,
         borderRadius: 25,
         height: "50px",
         alignItems: "center",

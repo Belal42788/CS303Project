@@ -48,11 +48,11 @@ const styles = StyleSheet.create({
     marginBottom:'30%',
     alignItems: "center",
     justifyContent: "center",
-    width:'200',
+    width: 10,
     fontWeight:"bold"
   },
   button: {
-    width: "70%",
+    width: 10,
         borderRadius: 25,
         height: 50,
         alignItems: "center",
