@@ -66,7 +66,6 @@ const LoginScreen = ({ navigation }) => {
           AsyncStorage.setItem("Signed", true);
           AsyncStorage.setItem("email", email);
           AsyncStorage.setItem("password", password);
-          AsyncStorage.setItem("urlPhoto", user.photoURL);
           navigation.navigate("Profile");
         } else {
           signOut(auth).then(() => alert("Email is not Verified"));

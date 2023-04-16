@@ -5,8 +5,9 @@ import {
     signOut,
     deleteUser,
     sendPasswordResetEmail,
+    updateProfile,
 } from "firebase/auth";
-import { getStorage, getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import {
     StyleSheet,
@@ -20,10 +21,8 @@ import {
 import AsyncStorage from "@react-native-community/async-storage";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
-
- import { storage } from "../firebase/config/firebase-config.js";
- import { getDownloadURL,uploadBytes, ref } from "firebase/storage";
-
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { firebase } from "../firebase/config/firebase-config.js";
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -31,33 +30,11 @@ const RegisterScreen = ({ navigation }) => {
     const db = getFirestore();
     const UserRef = doc(db, "users", user.uid);
     const [urlPhoto, setUrlPhoto] = useState(null);
-    const [image, setImage] = useState(null);
-    const [fileName, setFileName] = useState(null);
 
+    useEffect(() => {
+        setUrlPhoto(user.urlPhoto);
+    }, [user])
 
-
-    AsyncStorage.getItem("urlPhoto").then((value) => {
-        if (value != null) {
-            setUrlPhoto(value);
-        }
-    });
-    ////////////////////////////////
-
-     useEffect(() => {
-        const dbRef = ref(getDatabase());
-        get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
-            if (snapshot.exists()) {
-                console.log(snapshot.val());
-                setUser(snapshot.val());
-            } else {
-                console.log("No data available");
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
-    }, [])
-
-//////////////////////////////////////////////
     //to sign out
     const SignOut = () => {
         signOut(auth)
@@ -75,30 +52,30 @@ const RegisterScreen = ({ navigation }) => {
     //to delete user
     const DeleteUser = () => {
         deleteUser(user)
-        .then(() => {
-            // User deleted.
-            AsyncStorage.clear();
-            alert("User Deleted");
-            window.location.reload(true);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
+            .then(() => {
+                // User deleted.
+                AsyncStorage.clear();
+                alert("User Deleted");
+                window.location.reload(true);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
 
         deleteDoc(UserRef)
-        .then(() => {
-            // User deleted.
-            AsyncStorage.clear();
-            alert("User Deleted");
-            window.location.reload(true);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
+            .then(() => {
+                // User deleted.
+                AsyncStorage.clear();
+                alert("User Deleted");
+                window.location.reload(true);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
     };
 
     //to reset password
@@ -121,85 +98,48 @@ const RegisterScreen = ({ navigation }) => {
     //to PickImage
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1,
-        });
-
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+            console.log('permission to access media library is required')
+            return;
+        }
+        const result = await ImagePicker.launchImageLibraryAsync();
         console.log(result);
         if (!result.canceled) {
-            var name = result.uri.substring(result.uri.lastIndexOf('/') + 1, result.uri.length);
-            setImage((result.assets[0].uri));
-        // const uploadurl=await uploadImageAsync (result.assets[0].uri);//me
-         //setImage(uploadurl);
-            setFileName(name);
-            AsyncStorage.setItem("urlPhoto", (result.assets[0].uri));
-            console.log(image);
-            console.log(fileName);
+            return result.uri;
         }
-
-
     };
-///////////////////////////////////////////////////////////////////////
-const uploadImage = async () => {
-    const blob = await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-            resolve(xhr.response);
-        };
-        xhr.onerror = function () {
-            reject(new TypeError('Network request failed'));
-        };
-        xhr.responseType = 'blob';
-        xhr.open('GET', image, true);
-        xhr.send(null);
-    })
-    const ref = firebase.storage().ref().child(Pictures/Image3)
-    const snapshot = ref.put(blob)
-    snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,
-        () => {
-            setUploading(true)
-        },
-        (error) => {
-            setUploading(false)
-            console.log(error)
-            return
-        },
-        () => {
-            snapshot.snapshot.ref.getDownloadURL().then((url) => {
-                setUploading(false)
-                console.log("Download URL: ", url)
-                setImage(url)
-                return url
-            })
-        }
-    )
-}
-////////////////////////////////////////////////////////////////////
+
+
     //to update Photo
-    const updatePhoto = async() => {
-        pickImage();
-        
-        // const mountainImagesRef = ref(storage, 'images/mountains.jpg');
-        const response = await fetch(image.uri);
+    const updatePhoto = async () => {
+        const uri = await pickImage();
+        console.log(uri);
+        setUrlPhoto((uri));
+        const filename = user.uid;
+        const ref = firebase.storage().ref().child("images/" + filename);
+
+        const response = await fetch(uri);
         const blob = await response.blob();
-        const ref = firebase.storage().ref().child(`images/${Date.now()}`);
-        await ref.put(blob);
-        Alert.alert('Upload successful', 'Your image has been uploaded to Firebase storage!', [{ text: 'OK' }]);
-        setImage(null);
+        const snapshot = await ref.put(blob);
+        console.log('Image uploaded successfully');
+
+        const downloadURL = await snapshot.ref.getDownloadURL();
+
+        setUrlPhoto(downloadURL);
+
+        updateProfile(auth.currentUser, {
+            photoURL: downloadURL,
+        })
+            .then(() => {
+                console.log("user profile added");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+            window.location.reload(true);
     }
 
-    //to get urlPhoto
-    function getUrlPhoto() {
-        if (urlPhoto != null) {
-            return urlPhoto;
-        }
-        else {
-            return "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c";
-        }
-    }
 
     return (
         <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
@@ -208,7 +148,7 @@ const uploadImage = async () => {
             <Image
                 style={styles.PhotoStyle}
                 source={{
-                    uri: getUrlPhoto(),
+                    uri: user.photoURL ? user.photoURL : "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c",
                 }}
             />
 
