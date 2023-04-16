@@ -25,7 +25,7 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { firebase } from "../firebase/config/firebase-config.js";
 
 
-const RegisterScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
     const user = auth.currentUser;
     const db = getFirestore();
     const UserRef = doc(db, "users", user.uid);
@@ -230,4 +230,4 @@ const styles = StyleSheet.create({
         fontFamily: 'cairo'
     },
 });
-export default RegisterScreen;
+export default ProfileScreen;
