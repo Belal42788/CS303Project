@@ -38,8 +38,23 @@ const RegisterScreen = ({ navigation }) => {
             setUrlPhoto(value);
         }
     });
+    ////////////////////////////////
 
+     useEffect(() => {
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val());
+                setUser(snapshot.val());
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }, [])
 
+//////////////////////////////////////////////
     //to sign out
     const SignOut = () => {
         signOut(auth)
