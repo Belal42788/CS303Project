@@ -35,12 +35,32 @@ const RegisterScreen = ({ navigation }) => {
 
     const signGoogle = () => {
         signInWithPopup(auth, Gprovider)
-            .then((result) => {
+            .then(async (result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
+                console.log(user.uid);
+                // const UserRef = doc(db, "users", user.uid);
+
+                //     // Add a new document in collection "cities"
+                //     await setDoc(UserRef, {
+                //         firstName: user.displayName,
+                //         lastName: user.displayName,
+                //         email: user.email,
+                //         phone: user.phoneNumber,
+                //         date: Date.now()
+                //     }).then(() => {
+                //         console.log("Document successfully written!");
+                //         navigation.navigate("Profile");
+                //     })
+                //     .catch((error) => {
+                //         const errorCode = error.code;
+                //         const errorMessage = error.message;
+                //         alert(errorMessage);
+                //     });
+
                 navigation.navigate("Profile");
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
