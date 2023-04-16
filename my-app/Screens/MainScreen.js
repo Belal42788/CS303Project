@@ -4,6 +4,8 @@ import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
+import cardArray from "../compnents/carcard.js";
+import BrandsArray from "../compnents/brands.js";
 import {
   StyleSheet,
   Text,
@@ -36,37 +38,27 @@ function MainScreen({ navigation }) {
           />
         </TouchableOpacity>
       </View>
-      <View  style={styles.marks} >
-        <TouchableOpacity>
-          <Image
-            source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
-            style={styles.marksicons}
-          />
-          <Text style={styles.markstext}>Tesla</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
-            style={styles.marksicons}
-          />
-          <Text style={styles.markstext}>Mazda</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
-            style={styles.marksicons}
-          />
-          <Text style={styles.markstext}>Ford</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
-            style={styles.marksicons}
-          />
-          <Text style={styles.markstext}>Ferrari</Text>
-        </TouchableOpacity>
+      <View style={styles.marks}>
+        <ScrollView horizontal={true} >
+          {/* <TouchableOpacity>
+            <Image
+              source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
+              style={styles.marksicons}
+            />
+            <Text style={styles.markstext}>Tesla</Text>
+          </TouchableOpacity> */}
+           {BrandsArray.map((m) =>{
+            return(
+              <TouchableOpacity key={m.id}>  
+              <Image source={m.img} style={styles.marksicons}/>
+              <Text style={styles.markstext}>{m.name}</Text>
+            </TouchableOpacity>
+            );
+           })}
+        </ScrollView>
       </View>
-      <View  style={styles.products}>
+      <View style={styles.products}>
+        {/*
       <TouchableOpacity style={styles.card}>
       <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
       <Text style={styles.title}>Tesla Model X</Text>
@@ -74,48 +66,20 @@ function MainScreen({ navigation }) {
       <Text style={styles.numofseats}>💺4 seats</Text>
       <Text style={styles.price}>💳30$/hour</Text>
       </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity>
-     
+    </TouchableOpacity> */}
+        {cardArray.map((o) => {
+          return (
+            <TouchableOpacity style={styles.card} key={o.id}>
+                <Text style={styles.title}>{o.nameCar}</Text>
+              <Image source={o.img} style={styles.image} />
+            
+              <View style={styles.info}>
+                {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
+                <Text style={styles.price}>💳{o.rent}$/hour </Text>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
       </View>
     </View>
   );
@@ -136,7 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     alignContent: "space-between",
-    marginTop:"5%",
+    marginTop: "5%",
   },
   searchbarview: {
     backgroundColor: "white",
@@ -162,6 +126,8 @@ const styles = StyleSheet.create({
     color: "black",
     fontFamily: "cairo",
     fontWeight: "700",
+    marginLeft:9
+    
   },
   PhotoStyle: {
     width: 50,
@@ -186,6 +152,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: "50%",
+    marginLeft:12,
   },
   markstext: {
     color: "black",
@@ -194,82 +161,92 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: "10%",
     marginBottom: "20%",
+    marginLeft:12,
   },
-  products:{
+  products: {
     marginTop: "10%",
     marginBottom: "10%",
     display: "flex",
     flexWrap: "wrap",
     width: "100%",
-    height :"auto",
+    height: "auto",
     flexDirection: "row",
     alignContent: "space-between",
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor:"lightgray",
-    padding:"auto",
-    paddingRight:"1%",
-    paddingTop:"10%",
-    borderRadius:20,
-    borderBottomEndRadius:0,
-    borderBottomLeftRadius:0,
-    gap:5,
-
+    backgroundColor: "lightgray",
+    padding: "auto",
+    paddingRight: "1%",
+    paddingTop: "10%",
+    borderRadius: 20,
+    borderBottomEndRadius: 0,
+    borderBottomLeftRadius: 0,
+    gap: 5,
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 18,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: {
-      width: 10,
-      height: 10,
+      width: 7,
+      height: 7,
     },
     shadowOpacity: 0.45,
-    shadowRadius: 3.84,
+    shadowRadius: 0.54,
     elevation: 5,
     padding: 5,
-    height:260,
-    width :165,
-    marginLeft:"2%",
-    marginBottom:"2%",
-
+    height: "auto",
+    width: "auto",
+    minWidth: 250,
+   minHeight:300,
+    marginLeft: "2%",
+    marginBottom: "2%",
     
   },
   image: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'cover',
+    minWidth: 190,
+    minHeight: 190,
+    resizeMode: "cover",
     marginBottom: 10,
     borderRadius: 15,
-    height:"70%",
-    borderBottomEndRadius:0,
-    borderBottomLeftRadius:0,
+    height: "70%",
+    borderBottomEndRadius: 0,
+    borderBottomLeftRadius: 0,
   },
-  info:{
- display:"flex",
- flexDirection:"row",
- alignContent:"space-around",
- alignItems:"center",
- justifyContent:"space-between",
+  info: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "space-around",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   title: {
-    fontSize: "100%",
-    fontWeight: '700',
+    fontSize: "120%",
+    fontWeight: "700",
     fontFamily: "cairo",
-    marginBottom:"5%"
+    marginTop: "3%",
+    marginBottom: "3%",
+    textAlign:"center",
   },
   price: {
-    fontSize: "80%",
-    fontWeight: '700',
-    color: 'black',
+    fontSize: "100%",
+    fontWeight: "700",
+    color: "black",
     fontFamily: "cairo",
+    maxWidth: "100%",
+    minWidth: "100%",
+    display:"flex",
+    flexWrap: "wrap",
+    justifyContent:"center"
+   
   },
-  numofseats:{
+  numofseats: {
     fontSize: "80%",
-    fontWeight: '700',
-    color: 'black',
+    fontWeight: "700",
+    color: "black",
     fontFamily: "cairo",
-  }
-
+    maxWidth: "50%",
+    flexWrap: "wrap",
+  },
 });
 export default MainScreen;
