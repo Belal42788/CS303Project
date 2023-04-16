@@ -21,6 +21,9 @@ import AsyncStorage from "@react-native-community/async-storage";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 
+ import { storage } from "../firebase/config/firebase-config.js";
+ import { getDownloadURL,uploadBytes, ref } from "firebase/storage";
+
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -106,7 +109,7 @@ const RegisterScreen = ({ navigation }) => {
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
             aspect: [4, 3],
             quality: 1,
@@ -115,7 +118,9 @@ const RegisterScreen = ({ navigation }) => {
         console.log(result);
         if (!result.canceled) {
             var name = result.uri.substring(result.uri.lastIndexOf('/') + 1, result.uri.length);
-            setImage((result.assets[0].uri)); 
+            setImage((result.assets[0].uri));
+        // const uploadurl=await uploadImageAsync (result.assets[0].uri);//me
+         //setImage(uploadurl);
             setFileName(name);
             AsyncStorage.setItem("urlPhoto", (result.assets[0].uri));
             console.log(image);
@@ -124,13 +129,53 @@ const RegisterScreen = ({ navigation }) => {
 
 
     };
-
-
+///////////////////////////////////////////////////////////////////////
+const uploadImage = async () => {
+    const blob = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            resolve(xhr.response);
+        };
+        xhr.onerror = function () {
+            reject(new TypeError('Network request failed'));
+        };
+        xhr.responseType = 'blob';
+        xhr.open('GET', image, true);
+        xhr.send(null);
+    })
+    const ref = firebase.storage().ref().child(Pictures/Image3)
+    const snapshot = ref.put(blob)
+    snapshot.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        () => {
+            setUploading(true)
+        },
+        (error) => {
+            setUploading(false)
+            console.log(error)
+            return
+        },
+        () => {
+            snapshot.snapshot.ref.getDownloadURL().then((url) => {
+                setUploading(false)
+                console.log("Download URL: ", url)
+                setImage(url)
+                return url
+            })
+        }
+    )
+}
+////////////////////////////////////////////////////////////////////
     //to update Photo
-    const updatePhoto = () => {
+    const updatePhoto = async() => {
         pickImage();
         
         // const mountainImagesRef = ref(storage, 'images/mountains.jpg');
+        const response = await fetch(image.uri);
+        const blob = await response.blob();
+        const ref = firebase.storage().ref().child(`images/${Date.now()}`);
+        await ref.put(blob);
+        Alert.alert('Upload successful', 'Your image has been uploaded to Firebase storage!', [{ text: 'OK' }]);
+        setImage(null);
     }
 
     //to get urlPhoto
