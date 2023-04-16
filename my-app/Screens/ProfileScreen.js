@@ -56,18 +56,18 @@ const RegisterScreen = ({ navigation }) => {
 
     //to delete user
     const DeleteUser = () => {
-        deleteUser(user)
-            .then(() => {
-                // User deleted.
-                AsyncStorage.clear();
-                alert("User Deleted");
-                window.location.reload(true);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
-            });
+        deleteDoc(UserRef)
+        .then(() => {
+            // User deleted.
+            AsyncStorage.clear();
+            alert("User Deleted");
+            window.location.reload(true);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
     };
 
     //to reset password
