@@ -6,6 +6,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
 import cardArray from "../compnents/carcard.js";
 import BrandsArray from "../compnents/brands.js";
+import Footer from "../Footer";
 import {
   StyleSheet,
   Text,
@@ -81,6 +82,7 @@ function MainScreen({ navigation }) {
           );
         })}
       </View>
+      {/* <Footer/> */}
     </View>
   );
 }
