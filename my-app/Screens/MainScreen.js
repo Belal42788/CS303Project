@@ -82,7 +82,7 @@ function MainScreen({ navigation }) {
           );
         })}
       </View>
-      {/* <Footer/> */}
+      <Footer/>
     </View>
   );
 }
