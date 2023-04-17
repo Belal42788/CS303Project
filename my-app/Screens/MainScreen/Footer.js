@@ -1,16 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Stack = createNativeStackNavigator();
-
-const Footer = ({ navigation }) => {
+const Footer = () => {
   return (
     <View style={styles.footer}>
-      <TouchableOpacity style={styles.button} onPress={() => Stack.Navigator("Profile")}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Profile</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => Stack.Navigator("Main Screen")}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>home</Text>
       </TouchableOpacity>
     </View>

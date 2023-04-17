@@ -215,7 +215,7 @@ const UpdateBirthDate = async () => {
 
         setUrlPhoto(downloadURL);
 
-        await updateProfile(auth.currentUser, {
+        updateProfile(auth.currentUser, {
             photoURL: downloadURL,
         })
             .then(() => {
@@ -224,9 +224,7 @@ const UpdateBirthDate = async () => {
             .catch((error) => {
                 alert(error.message);
             });
-
-            
-        window.location.reload(true);
+            window.location.reload(true);
     }
 //handle First Name mode
     const handleFirstNameMode = () => {
