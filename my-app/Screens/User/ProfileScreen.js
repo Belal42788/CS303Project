@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import auth from "../firebase/config/firebase-config.js";
+import auth from "../../firebase/config/firebase-config.js";
 import {
     signInWithEmailAndPassword,
     signOut,
@@ -24,7 +24,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { firebase } from "../firebase/config/firebase-config.js";
+import { firebase } from "../../firebase/config/firebase-config.js";
 
 
 const ProfileScreen = ({ navigation }) => {
@@ -262,7 +262,7 @@ const UpdateBirthDate = async () => {
 
 
     return (
-        <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
+        <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
 
             <Image

@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
-import auth from "../firebase/config/firebase-config.js";
+import auth from "../../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 import AsyncStorage from "@react-native-community/async-storage";
@@ -42,7 +42,7 @@ const LoginScreen = ({ navigation }) => {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        navigation.navigate("Profile");
+        navigation.navigate("Main Screen");
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       }).catch((error) => {
@@ -66,7 +66,7 @@ const LoginScreen = ({ navigation }) => {
           AsyncStorage.setItem("Signed", true);
           AsyncStorage.setItem("email", email);
           AsyncStorage.setItem("password", password);
-          navigation.navigate("Profile");
+          navigation.navigate("Main Screen");
         } else {
           signOut(auth).then(() => alert("Email is not Verified"));
         }
@@ -84,7 +84,7 @@ const LoginScreen = ({ navigation }) => {
         // Signed in
         const user = userCredential.user;
         if (user.emailVerified) {
-          navigation.navigate("Profile");
+          navigation.navigate("Main Screen");
         } else {
           signOut(auth).then(() => alert("Email is not Verified"));
         }
@@ -113,9 +113,9 @@ const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <ImageBackground source={require('../assets/reg3.jpg')} style={styles.container}>
+    <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
-      {/* <Image style={styles.image} source={require("../assets/4-removebg-preview (1).png")} /> */}
+      {/* <Image style={styles.image} source={require("../../assets/4-removebg-preview (1).png")} /> */}
 
       <View style={styles.logocont}>
         <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
@@ -163,20 +163,20 @@ const LoginScreen = ({ navigation }) => {
           {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
           <Image
             style={styles.smallloginicon}
-            source={require("../assets/thcc.png")}
+            source={require("../../assets/thcc.png")}
           />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={signGoogle}>
           <Image
             style={styles.smallloginicon}
-            source={require("../assets/gmail_icon-icons.com_62758.png")}
+            source={require("../../assets/gmail_icon-icons.com_62758.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity>
           <Image
             style={styles.smallloginicon}
-            source={require("../assets/twitter.png")}
+            source={require("../../assets/twitter.png")}
           />
         </TouchableOpacity>
       </View>

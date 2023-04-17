@@ -6,7 +6,7 @@ import Ionicons from "@expo/vector-icons/Ionicons"
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 import { useFonts } from "expo-font";
 //import { StatusBar } from "expo-status-bar";
-import backgroundpic from "../assets/zachary-edmundson-ygqZpaNl_dM-unsplash - Copy.jpg"
+import backgroundpic from "../../assets/zachary-edmundson-ygqZpaNl_dM-unsplash - Copy.jpg"
 
 
 
@@ -14,7 +14,7 @@ function GetStar1({ navigation }) {
     const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg')} style={styles.container}>
+        <ImageBackground source={require('../../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg')} style={styles.container}>
             <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
             </View>

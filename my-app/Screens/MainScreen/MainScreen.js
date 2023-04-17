@@ -1,12 +1,12 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
-import auth from "../firebase/config/firebase-config.js";
+import auth from "../../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
 import cardArray from "../compnents/carcard.js";
 import BrandsArray from "../compnents/brands.js";
-import Footer from "../Footer";
+import Footer from "./Footer.js";
 import {
   StyleSheet,
   Text,
@@ -21,21 +21,21 @@ import {
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 function MainScreen({ navigation }) {
+  const user = auth.currentUser;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.searchbarview}>
           <TextInput
             style={styles.searchbartext}
-            placeholder="  🔎 Search your dream Car:"
+            placeholder="  🔎 Search "
             placeholderTextColor="#003f5c"
           />
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
           <Image
-            source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")}
+            source={user.photoURL}
             style={styles.PhotoStyle}
-            onPress={() => navigation.navigate("Profile")}
           />
         </TouchableOpacity>
       </View>
@@ -48,14 +48,14 @@ function MainScreen({ navigation }) {
             />
             <Text style={styles.markstext}>Tesla</Text>
           </TouchableOpacity> */}
-           {BrandsArray.map((m) =>{
-            return(
-              <TouchableOpacity key={m.id}>  
-              <Image source={m.img} style={styles.marksicons}/>
-              <Text style={styles.markstext}>{m.name}</Text>
-            </TouchableOpacity>
+          {BrandsArray.map((m) => {
+            return (
+              <TouchableOpacity key={m.id}>
+                <Image source={m.img} style={styles.marksicons} />
+                <Text style={styles.markstext}>{m.name}</Text>
+              </TouchableOpacity>
             );
-           })}
+          })}
         </ScrollView>
       </View>
       <View style={styles.products}>
@@ -71,9 +71,9 @@ function MainScreen({ navigation }) {
         {cardArray.map((o) => {
           return (
             <TouchableOpacity style={styles.card} key={o.id}>
-                <Text style={styles.title}>{o.nameCar}</Text>
+              <Text style={styles.title}>{o.nameCar}</Text>
               <Image source={o.img} style={styles.image} />
-            
+
               <View style={styles.info}>
                 {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
                 <Text style={styles.price}>💳{o.rent}$/hour </Text>
@@ -82,7 +82,7 @@ function MainScreen({ navigation }) {
           );
         })}
       </View>
-      <Footer/>
+      {/* <Footer/> */}
     </View>
   );
 }
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     color: "black",
     fontFamily: "cairo",
     fontWeight: "700",
-    marginLeft:9
-    
+    marginLeft: 9
+
   },
   PhotoStyle: {
     width: 50,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: "50%",
-    marginLeft:12,
+    marginLeft: 12,
   },
   markstext: {
     color: "black",
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: "10%",
     marginBottom: "20%",
-    marginLeft:12,
+    marginLeft: 12,
   },
   products: {
     marginTop: "10%",
@@ -200,10 +200,10 @@ const styles = StyleSheet.create({
     height: "auto",
     width: "auto",
     minWidth: 250,
-   minHeight:300,
+    minHeight: 300,
     marginLeft: "2%",
     marginBottom: "2%",
-    
+
   },
   image: {
     minWidth: 190,
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     fontFamily: "cairo",
     marginTop: "3%",
     marginBottom: "3%",
-    textAlign:"center",
+    textAlign: "center",
   },
   price: {
     fontSize: "100%",
@@ -237,10 +237,10 @@ const styles = StyleSheet.create({
     fontFamily: "cairo",
     maxWidth: "100%",
     minWidth: "100%",
-    display:"flex",
+    display: "flex",
     flexWrap: "wrap",
-    justifyContent:"center"
-   
+    justifyContent: "center"
+
   },
   numofseats: {
     fontSize: "80%",
