@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-community/async-storage";
 import React, { useState, useEffect } from "react";
 import MainSrceen from "./Screens/MainScreen/MainScreen.js";
+import Footer from "./Screens/MainScreen/Footer.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -65,6 +66,7 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
+          <Stack.Screen name="Footer" component={Footer} />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -75,6 +77,7 @@ export default function App() {
           <Stack.Screen name="Login" component={LoginScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
+          <Stack.Screen name="Footer" component={Footer} />
         </Stack.Navigator>
       </NavigationContainer>
     );
