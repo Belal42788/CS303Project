@@ -262,7 +262,7 @@ const UpdateBirthDate = async () => {
 
 
     return (
-        <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
+        <ImageBackground source={require('../../assets/reg3.jpg')} resizeMode="stretch" style={styles.container}>
             <StatusBar style="auto" />
 
             <Image
@@ -415,25 +415,28 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        height : 'auto',
+        width : '100%',
     },
     PhotoStyle: {
-        width: "150px",
-        height: "150px",
+        width: "100px",
+        height: "100px",
         // backgroundColor:"blue",
         borderRightWidth: "0px",
         // borderColor:"blue",
         borderRadius: "50%",
+        marginTop:0,
     },
     textStyle: {
-        paddingTop: 50,
         fontSize: "15px",
         fontWeight: "bold",
-        color: '#d8d8d8'
+        color: '#d8d8d8',
+        fontFamily: 'cairo'
     },
     button: {
         width: "70%",
         borderRadius: 18,
-        height: 50,
+        height: 40,
         alignItems: "center",
         alignContent: 'center',
         justifyContent: "center",
@@ -441,7 +444,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'black',
         display: 'flex',
-        marginTop: 10,
+        marginTop: 3,
         backgroundColor: "#ce9e04",
     },
     buttonText: {
