@@ -26,6 +26,7 @@ const RegisterScreen = ({ navigation }) => {
     const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
+    const [BirthDate, setBirthDate] = useState("");
     const [password, setPassword] = useState("");
     const [password1, setPassword1] = useState("");
     const auth = getAuth();
@@ -95,6 +96,7 @@ const RegisterScreen = ({ navigation }) => {
                         lastName: lastName,
                         email: email,
                         phone: phone,
+                        BirthDate: BirthDate,
                         date: Date.now()
                     });
 
@@ -204,6 +206,16 @@ const RegisterScreen = ({ navigation }) => {
                     placeholderTextColor="#003f5c"
                     value={phone}
                     onChangeText={setPhone}
+                />
+            </View>
+
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="Enter your BirthDate: DD/MM/YYYY"
+                    placeholderTextColor="#003f5c"
+                    value={BirthDate}
+                    onChangeText={setBirthDate}
                 />
             </View>
 

@@ -6,6 +6,7 @@ import {
     deleteUser,
     sendPasswordResetEmail,
     updateProfile,
+    updatePhoneNumber,
 } from "firebase/auth";
 import { getDatabase, child, get } from "firebase/database";
 import React, { useEffect, useState } from "react";
@@ -15,6 +16,7 @@ import {
     View,
     Image,
     TouchableOpacity,
+    TextInput,
     Alert,
     ImageBackground
 } from "react-native";
@@ -30,6 +32,91 @@ const ProfileScreen = ({ navigation }) => {
     const db = getFirestore();
     const UserRef = doc(db, "users", user.uid);
     const [urlPhoto, setUrlPhoto] = useState(null);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [BirthDate, setBirthDate] = useState("");
+    const [firstNameMode, setFirstNameMode] = useState(false);
+    const [lastNameMode, setLastNameMode] = useState(false);
+    const [phoneMode, setPhoneMode] = useState(false);
+    const [BirthDateMode, setBirthDateMode] = useState(false);
+    
+//to get user info
+const GetUserInfo = async () => {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+    setFirstName(docSnap.data().firstName);
+    setLastName(docSnap.data().lastName);
+    setPhone(docSnap.data().phone);
+    setEmail(docSnap.data().email);
+    setBirthDate(docSnap.data().BirthDate);
+    
+    
+    } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+    }
+};
+
+//get user info when the screen is loaded
+useEffect(() => {
+    GetUserInfo();
+}, []);
+
+//to update First Name
+const UpdateFirstName = async () => {
+    if(firstName == ""){
+        alert("Please enter your First Name");
+    }else{
+        await updateDoc(UserRef, {
+            firstName: firstName,
+        });
+        setFirstNameMode(false);
+        alert("First Name Updated");
+    }
+};
+
+//to update Last Name
+const UpdateLastName = async () => {
+    if(lastName == ""){
+        alert("Please enter your Last Name");
+    }else{
+        await updateDoc(UserRef, {
+            lastName: lastName,
+        });
+        setLastNameMode(false);
+        alert("Last Name Updated");
+    }
+};
+
+//to update Phone
+const UpdatePhone = async () => {
+    if(phone == ""){
+        alert("Please enter your Phone");
+    }else{
+        await updateDoc(UserRef, {
+            phone: phone,
+        });
+        setPhoneMode(false);
+        alert("Phone Updated");
+    }
+};
+
+//to update BirthDate
+const UpdateBirthDate = async () => {
+    if(BirthDate == ""){
+        alert("Please enter your BirthDate");
+    }else{
+        await updateDoc(UserRef, {
+            BirthDate: BirthDate,
+        });
+        setBirthDateMode(false);
+        alert("BirthDate Updated");
+    }
+};
 
     useEffect(() => {
         setUrlPhoto(user.urlPhoto);
@@ -139,6 +226,39 @@ const ProfileScreen = ({ navigation }) => {
             });
             window.location.reload(true);
     }
+//handle First Name mode
+    const handleFirstNameMode = () => {
+        if(firstNameMode){
+            setFirstNameMode(false);
+        }else{
+            setFirstNameMode(true);
+        }
+    }
+//handle Last Name mode
+    const handleLastNameMode = () => {
+        if(lastNameMode){
+            setLastNameMode(false);
+        }else{
+            setLastNameMode(true);
+        }
+    }
+//handle Phone mode
+    const handlePhoneMode = () => {
+        if(phoneMode){
+            setPhoneMode(false);
+        }else{
+            setPhoneMode(true);
+        }
+    }
+//handle BirthDate mode
+    const handleBirthDateMode = () => {
+        if(BirthDateMode){
+            setBirthDateMode(false);
+        }else{
+            setBirthDateMode(true);
+        }
+    }
+
 
 
     return (
@@ -151,13 +271,116 @@ const ProfileScreen = ({ navigation }) => {
                     uri: user.photoURL ? user.photoURL : "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c",
                 }}
             />
+            
+            {
+                firstNameMode ?
+                    (
+                    <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="First Name"
+                                value={firstName}
+                                onChangeText={ setFirstName }
+                                />
+                        </View>
+                        <TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={UpdateFirstName}>
+                                    Updata First Name
+                                </Text>
+                        </TouchableOpacity></>
+                    ):(
+                        <><View>
+                            <Text style={styles.textStyle}> First Name, {firstName}! </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText}  onPress={handleFirstNameMode}>
+                                    Updata First Name
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
+            
+
+            {
+                lastNameMode ?
+                    (
+                    <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Last Name"
+                                value={lastName} />
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={UpdateLastName}>
+                                    Updata Last Name
+                                </Text>
+                            </TouchableOpacity></>
+                    ):(
+                        <><View>
+                            <Text style={styles.textStyle}> Last Name, {lastName}! </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handleLastNameMode}>
+                                    Updata Last Name
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
+            
 
             <View>
-                <Text style={styles.textStyle}> Welcome, {user.displayName}! </Text>
+                <Text style={styles.textStyle}> Your Email is: {email} </Text>
             </View>
-            <View>
-                <Text style={styles.textStyle}> Your Email is: {user.email} </Text>
-            </View>
+
+            {
+                BirthDateMode ?
+                    (
+                    <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Birth Date"
+                                onChangeText={(BirthDate) => setBirthDate(BirthDate)}
+                                value={BirthDate} />
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={UpdateBirthDate}>
+                                    Updata Birth Date
+                                </Text>
+                            </TouchableOpacity></>
+                    ):(
+                        <><View>
+                            <Text style={styles.textStyle}> Birth Date is: {BirthDate} </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handleBirthDateMode}>
+                                    Updata Birth Date
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
+            
+
+            {
+                phoneMode ?
+                    (
+                    <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Phone Number"
+                                onChangeText={(phone) => setPhone(phone)}
+                                value={phone} />
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={updatePhoneNumber}>
+                                    Updata Phone Number
+                                </Text>
+                            </TouchableOpacity></>
+                    ):(
+                        <><View>
+                            <Text style={styles.textStyle}> Phone Number is: {phone} </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handlePhoneMode}>
+                                    Updata Phone Number
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
+            
+
             <Text> </Text>
 
             <TouchableOpacity style={styles.button}>
