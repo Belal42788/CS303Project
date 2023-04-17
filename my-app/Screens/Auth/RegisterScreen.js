@@ -307,6 +307,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignSelf: "center",
         justifyContent: "center",
+        marginTop: '-1%',
     },
     TextInput: {
         fontSize: "120%",
