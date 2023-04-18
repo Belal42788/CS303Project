@@ -215,16 +215,16 @@ const UpdateBirthDate = async () => {
 
         setUrlPhoto(downloadURL);
 
-        updateProfile(auth.currentUser, {
+        await updateProfile(auth.currentUser, {
             photoURL: downloadURL,
         })
-            .then(() => {
-                console.log("user profile added");
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-            window.location.reload(true);
+        .then(() => {
+            console.log("user profile added");
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+        window.location.reload(true);
     }
 //handle First Name mode
     const handleFirstNameMode = () => {
