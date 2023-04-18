@@ -3,7 +3,6 @@ import { StatusBar } from "expo-status-bar";
 import auth from "../../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
-import AsyncStorage from "@react-native-community/async-storage";
 import {
   StyleSheet,
   Text,
@@ -22,17 +21,9 @@ const provider = new GoogleAuthProvider();
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [urlPhoto, setUrlPhoto] = useState(null);
-  const [Signed, setSigned] = useState(false);
   const auth = getAuth();
   auth.languageCode = 'it';
 
-
-  AsyncStorage.getItem("Signed").then((value) => {
-    if (Signed == false) {
-      setSigned(value);
-    }
-  });
 
   const signGoogle = () => {
     signInWithPopup(auth, provider)
@@ -63,9 +54,6 @@ const LoginScreen = ({ navigation }) => {
         // Signed in
         const user = userCredential.user;
         if (user.emailVerified) {
-          AsyncStorage.setItem("Signed", true);
-          AsyncStorage.setItem("email", email);
-          AsyncStorage.setItem("password", password);
           navigation.navigate("Main Screen");
         } else {
           signOut(auth).then(() => alert("Email is not Verified"));
@@ -78,45 +66,10 @@ const LoginScreen = ({ navigation }) => {
         console.log(errorMessage);
       });
   };
-  const HandleSignin2 = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        if (user.emailVerified) {
-          navigation.navigate("Main Screen");
-        } else {
-          signOut(auth).then(() => alert("Email is not Verified"));
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
-  };
-
-  if (Signed) {
-    AsyncStorage.getItem("email").then((value) => {
-      setEmail(value);
-    });
-    AsyncStorage.getItem("password").then((value) => {
-      setPassword(value);
-    });
-    if (email != "") {
-      try {
-        HandleSignin2();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
 
   return (
     <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
-      {/* <Image style={styles.image} source={require("../../assets/4-removebg-preview (1).png")} /> */}
-
       <View style={styles.logocont}>
         <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
       </View>

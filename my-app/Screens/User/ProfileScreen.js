@@ -270,7 +270,7 @@ const UpdateBirthDate = async () => {
             <Image
                 style={styles.PhotoStyle}
                 source={{
-                    uri: user.photoURL ? user.photoURL : "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c",
+                    uri: user.photoURL ,
                 }}
             />
             

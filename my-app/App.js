@@ -3,9 +3,10 @@ import RegisterScreen from "./Screens/Auth/RegisterScreen.js";
 import Forgetpassword from "./Screens/Auth/Forgetpassword.js";
 import ProfileScreen from "./Screens/User/ProfileScreen.js";
 import { useFonts } from "expo-font";
+import { auth } from "./firebase/config/firebase-config.js";
 import Getstar1 from "./Screens/Start/GetStar1.js";
-import Getstar2 from './Screens/Start/GetStar2.js';
-import Getstar3 from './Screens/Start/GetStar3.js';
+import Getstar2 from "./Screens/Start/GetStar2.js";
+import Getstar3 from "./Screens/Start/GetStar3.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-community/async-storage";
@@ -15,7 +16,7 @@ import Footer from "./Screens/MainScreen/Footer.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
-  animation: 'spring',
+  animation: "spring",
   config: {
     stiffness: 1000,
     damping: 50,
@@ -25,26 +26,15 @@ const config = {
     restSpeedThreshold: 0.01,
   },
 };
+
 const forFade = ({ current }) => ({
   cardStyle: {
     opacity: current.progress,
   },
 });
+
 export default function App() {
-
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  AsyncStorage.getItem("email").then((value) => {
-    if (value != null) {
-      setEmail(value);
-    }
-  });
-  AsyncStorage.getItem("password").then((value) => {
-    if (value != null) {
-      setPassword(value);
-    }
-  });
-
+  const [login, setLogin] = useState(false);
 
   let [fontloaded] = useFonts({
     mulish: require("./fonts/assets/fonts/Mulish-VariableFont_wght.ttf"),
@@ -53,11 +43,29 @@ export default function App() {
     cairo: require("./fonts/assets/fonts/Cairo-VariableFont_slnt,wght.ttf"),
   });
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log("you login")
+        setLogin(true);
+      } else {
+        console.log("you are not login");
+        setLogin(false);
+      }
+    });
+  }, []);
 
-  if (email == null) {
+  if (!login) {
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ gestureEnabled: true, gestureDirection: "horizontal", headerShown: false, transitionSpec: { open: config, close: config } }}>
+        <Stack.Navigator
+          screenOptions={{
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+            headerShown: false,
+            transitionSpec: { open: config, close: config },
+          }}
+        >
           <Stack.Screen name="Get Start1" component={Getstar1} />
           <Stack.Screen name="Get Start2" component={Getstar2} />
           <Stack.Screen name="Get Start3" component={Getstar3} />
@@ -66,18 +74,15 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
-          <Stack.Screen name="Footer" component={Footer} />
         </Stack.Navigator>
       </NavigationContainer>
     );
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade, }}>
-          <Stack.Screen name="Login" component={LoginScreen} options={{ cardStyleInterpolator: forFade }} />
-          <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
+        <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade }}>
           <Stack.Screen name="Main Screen" component={MainSrceen} />
-          <Stack.Screen name="Footer" component={Footer} />
+          <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
         </Stack.Navigator>
       </NavigationContainer>
     );

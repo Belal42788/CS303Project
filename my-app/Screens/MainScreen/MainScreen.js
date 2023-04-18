@@ -1,9 +1,8 @@
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+
 import { StatusBar } from "expo-status-bar";
 import auth from "../../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import AsyncStorage from "@react-native-community/async-storage";
 import cardArray from "../compnents/carcard.js";
 import BrandsArray from "../compnents/brands.js";
 import Footer from "./Footer.js";
@@ -19,7 +18,7 @@ import {
   FlatList,
   ScrollView,
 } from "react-native";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 
 function MainScreen({ navigation }) {
   const user = auth.currentUser;
@@ -37,7 +36,7 @@ function MainScreen({ navigation }) {
           <Image source={user.photoURL} style={styles.PhotoStyle} />
         </TouchableOpacity>
       </View>
-      <ScrollView>
+      <ScrollView >
         <View style={styles.container}>
           <View style={styles.marks}>
             <ScrollView horizontal={true}>
@@ -89,6 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     alignContent: "space-between",
+    backgroundColor:"#fff",
     marginTop: "5%",
   },
   searchbarview: {

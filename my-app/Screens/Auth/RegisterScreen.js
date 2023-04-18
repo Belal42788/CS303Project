@@ -6,7 +6,6 @@ import {
 import { StatusBar } from "expo-status-bar";
 import auth from "../../firebase/config/firebase-config.js";
 import React, { useState } from "react";
-import { getDatabase, ref, set } from "firebase/database";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 import {
     StyleSheet,
@@ -43,24 +42,6 @@ const RegisterScreen = ({ navigation }) => {
                 // The signed-in user info.
                 const user = result.user;
                 console.log(user.uid);
-                // const UserRef = doc(db, "users", user.uid);
-
-                //     // Add a new document in collection "cities"
-                //     await setDoc(UserRef, {
-                //         firstName: user.displayName,
-                //         lastName: user.displayName,
-                //         email: user.email,
-                //         phone: user.phoneNumber,
-                //         date: Date.now()
-                //     }).then(() => {
-                //         console.log("Document successfully written!");
-                //         navigation.navigate("Profile");
-                //     })
-                //     .catch((error) => {
-                //         const errorCode = error.code;
-                //         const errorMessage = error.message;
-                //         alert(errorMessage);
-                //     });
 
                 navigation.navigate("Profile");
                 // IdP data available using getAdditionalUserInfo(result)
@@ -114,6 +95,7 @@ const RegisterScreen = ({ navigation }) => {
                         displayName: firstName + " " + lastName,
                         email: email,
                         password: password,
+                        photoURL:"https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c"
                     })
                         .then(() => {
                             console.log("user profile added");
@@ -165,8 +147,6 @@ const RegisterScreen = ({ navigation }) => {
 
         <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
-            {/* <Image style={styles.image} source={require("../../assets/3-removebg-preview.png")} /> */}
-
             <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
             </View>
