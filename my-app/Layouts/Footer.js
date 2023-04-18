@@ -17,7 +17,7 @@ const Footer = ({ navigation }) => {
 
 const styles = {
   footer: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
     flexDirection: 'row',
     width: '100%',

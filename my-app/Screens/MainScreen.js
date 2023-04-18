@@ -36,8 +36,7 @@ function MainScreen({ navigation }) {
           <Image source={user.photoURL} style={styles.PhotoStyle} />
         </TouchableOpacity>
       </View>
-      <ScrollView >
-        <View style={styles.container}>
+
           <View style={styles.marks}>
             <ScrollView horizontal={true}>
               {BrandsArray.map((m) => {
@@ -64,8 +63,6 @@ function MainScreen({ navigation }) {
               );
             })}
           </View>
-        </View>
-      </ScrollView>
       <Footer navigation={navigation}/>
     </View>
   );
@@ -87,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "space-between",
     backgroundColor: "#fff",
-    marginTop: "5%",
+    
   },
   searchbarview: {
     backgroundColor: "white",
