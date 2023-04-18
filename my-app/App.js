@@ -1,17 +1,16 @@
-import LoginScreen from "./Screens/Auth/LoginScreen.js";
-import RegisterScreen from "./Screens/Auth/RegisterScreen.js";
-import Forgetpassword from "./Screens/Auth/Forgetpassword.js";
-import ProfileScreen from "./Screens/User/ProfileScreen.js";
+import LoginScreen from "./Screens/LoginScreen.js";
+import RegisterScreen from "./Screens/RegisterScreen.js";
+import Forgetpassword from "./Screens/Forgetpassword.js";
+import ProfileScreen from "./Screens/ProfileScreen.js";
 import { useFonts } from "expo-font";
 import { auth } from "./firebase/config/firebase-config.js";
-import Getstar1 from "./Screens/Start/GetStar1.js";
-import Getstar2 from "./Screens/Start/GetStar2.js";
-import Getstar3 from "./Screens/Start/GetStar3.js";
+import Getstar1 from "./Screens/GetStar1.js";
+import Getstar2 from "./Screens/GetStar2.js";
+import Getstar3 from "./Screens/GetStar3.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AsyncStorage from "@react-native-community/async-storage";
 import React, { useState, useEffect } from "react";
-import MainSrceen from "./Screens/MainScreen/MainScreen.js";
+import MainSrceen from "./Screens/MainScreen.js";
 
 const Stack = createNativeStackNavigator();
 const config = {

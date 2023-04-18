@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import auth from "../../firebase/config/firebase-config";
+import auth from "../firebase/config/firebase-config";
 import { StatusBar } from "expo-status-bar";
 
 export default function Forgetpassword({ navigation }) {
@@ -32,9 +32,9 @@ export default function Forgetpassword({ navigation }) {
   };
 
   return (
-    <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
+    <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />.
-      {/* <Image   source={require("../../assets/5-removebg-preview.png")} style={[styles.logo]} /> */}
+      {/* <Image   source={require("../assets/5-removebg-preview.png")} style={[styles.logo]} /> */}
       {/* <Text style={styles.title}>forgot password </Text> */}
       <View style={styles.logocont}>
         <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
