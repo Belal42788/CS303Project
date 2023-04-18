@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useState, useEffect } from "react";
 import MainSrceen from "./Screens/MainScreen.js";
 import LodingScreen from "./Screens/lodingScreen.js";
+import Shop from "./Screens/Shop.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -83,6 +84,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade }}>
           <Stack.Screen name="Main Screen" component={MainSrceen} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
+          <Stack.Screen name="Shop" component={Shop} />
         </Stack.Navigator>
       </NavigationContainer>
     );

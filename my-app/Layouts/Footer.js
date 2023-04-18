@@ -1,24 +1,30 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
+import { View, TouchableOpacity, Text, Image, ImageBackground, StyleSheet } from 'react-native';
 
 
 const Footer = ({ navigation }) => {
   return (
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
-        <Image source={require("../assets/Image/Home.png")} style={styles.PhotoStyle} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-        <Image source={require("../assets/Image/Profile.png")} style={styles.PhotoStyle} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => null}>
-        <Image source={require("../assets/Image/shop.png")} style={styles.PhotoStyle} />
-      </TouchableOpacity>
+      <View style={styles.photoGroupH}>
+        <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
+          <Image source={require("../assets/Image/Home.png")} style={styles.PhotoStyle} />
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <Image source={require("../assets/Image/Profile.png")} style={styles.PhotoStyle} />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.photoGroupS}>
+        <TouchableOpacity onPress={() => navigation.navigate("Shop")}>
+          <Image source={require("../assets/Image/shop.png")} style={styles.PhotoStyle} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   footer: {
     position: 'fixed',
     bottom: 0,
@@ -44,13 +50,18 @@ const styles = {
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  photoGroupH: {
+    marginRight: 30,
+  },
+  photoGroupS: {
+    marginLeft: 30,
+  },
   PhotoStyle: {
     width: 50,
     height: 50,
     bordertWidth: "5",
     borderRadius: "50%",
-    marginLeft: "50%",
   },
-};
+});
 
 export default Footer;

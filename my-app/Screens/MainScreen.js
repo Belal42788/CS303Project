@@ -1,4 +1,3 @@
-
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
@@ -6,6 +5,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import cardArray from "../Middleware/carcard.js";
 import BrandsArray from "../Middleware/brands.js";
 import Footer from "../Layouts/Footer.js";
+import Header from "../Layouts/Header.js";
 import {
   StyleSheet,
   Text,
@@ -19,51 +19,40 @@ import {
   ScrollView,
 } from "react-native";
 
-
 function MainScreen({ navigation }) {
   const user = auth.currentUser;
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.searchbarview}>
-          <TextInput
-            style={styles.searchbartext}
-            placeholder="  🔎 Search "
-            placeholderTextColor="#003f5c"
-          />
-        </View>
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-          <Image source={user.photoURL} style={styles.PhotoStyle} />
-        </TouchableOpacity>
-      </View>
-
-          <View style={styles.marks}>
-            <ScrollView horizontal={true}>
-              {BrandsArray.map((m) => {
-                return (
-                  <TouchableOpacity key={m.id}>
-                    <Image source={m.img} style={styles.marksicons} />
-                    <Text style={styles.markstext}>{m.name}</Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </ScrollView>
-          </View>
-          <View style={styles.products}>
-            {cardArray.map((o) => {
+      <Header navigation={navigation} />
+      <ScrollView style={{ width:"100%" , height : "100%" }} >
+        <View style={styles.marks}>
+          <ScrollView horizontal={true}>
+            {BrandsArray.map((m) => {
               return (
-                <TouchableOpacity style={styles.card} key={o.id}>
-                  <Text style={styles.title}>{o.nameCar}</Text>
-                  <Image source={o.img} style={styles.image} />
-                  <View style={styles.info}>
-                    {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
-                    <Text style={styles.price}>💳{o.rent}$/hour </Text>
-                  </View>
+                <TouchableOpacity key={m.id}>
+                  <Image source={m.img} style={styles.marksicons} />
+                  <Text style={styles.markstext}>{m.name}</Text>
                 </TouchableOpacity>
               );
             })}
-          </View>
-      <Footer navigation={navigation}/>
+          </ScrollView>
+        </View>
+        <View style={styles.products}>
+          {cardArray.map((o) => {
+            return (
+              <TouchableOpacity style={styles.card} key={o.id}>
+                <Text style={styles.title}>{o.nameCar}</Text>
+                <Image source={o.img} style={styles.image} />
+                <View style={styles.info}>
+                  {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
+                  <Text style={styles.price}>💳{o.rent}$/hour </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      </ScrollView>
+      <Footer navigation={navigation} />
     </View>
   );
 }
@@ -84,7 +73,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "space-between",
     backgroundColor: "#fff",
-    
   },
   searchbarview: {
     backgroundColor: "white",
@@ -125,7 +113,7 @@ const styles = StyleSheet.create({
     // marginLeft:"-20%",
     display: "flex",
     flexWrap: "wrap",
-    width: "90%",
+    width: "100%",
     flexDirection: "row",
     alignContent: "space-between",
     alignItems: "center",
@@ -229,8 +217,5 @@ const styles = StyleSheet.create({
     maxWidth: "50%",
     flexWrap: "wrap",
   },
-  footer: {
-    backgroundColor: "blue"
-  }
 });
 export default MainScreen;
