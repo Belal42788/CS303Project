@@ -66,7 +66,7 @@ function MainScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
-      <Footer />
+      <Footer navigation={navigation}/>
     </View>
   );
 }
