@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
 
 
 const Footer = ({ navigation }) => {
   return (
     <View style={styles.footer}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Profile")}>
-        <Text style={styles.buttonText}>Profile</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
+        <Image source={require("../assets/Image/Home.png")} style={styles.PhotoStyle} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Main Screen")}>
-        <Text style={styles.buttonText}>home</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <Image source={require("../assets/Image/Profile.png")} style={styles.PhotoStyle} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => null}>
+        <Image source={require("../assets/Image/shop.png")} style={styles.PhotoStyle} />
       </TouchableOpacity>
     </View>
   );
@@ -40,6 +43,13 @@ const styles = {
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  PhotoStyle: {
+    width: 50,
+    height: 50,
+    bordertWidth: "5",
+    borderRadius: "50%",
+    marginLeft: "50%",
   },
 };
 
