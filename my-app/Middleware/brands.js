@@ -1,4 +1,4 @@
-import mark1 from "../../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg";
+import mark1 from "../assets/Image/Exclusive Luxury Car  (Instagram Post15edit).jpg";
 
 const BrandsArray = [
     {

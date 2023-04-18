@@ -1,6 +1,6 @@
 
-import p1 from "../../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg";
-import p2 from "../../assets/audi_PNG1742.png";
+import p1 from "../assets/Image/Exclusive Luxury Car  (Instagram Post15edit).jpg";
+import p2 from "../assets/Image/audi_PNG1742.png";
 const cardArray = [
   {
     id: 1,

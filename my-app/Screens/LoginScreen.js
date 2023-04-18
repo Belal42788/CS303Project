@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
-import auth from "../../firebase/config/firebase-config.js";
+import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 import {
@@ -68,7 +68,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground source={require('../../assets/reg3.jpg')} style={styles.container}>
+    <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.logocont}>
         <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
@@ -116,20 +116,20 @@ const LoginScreen = ({ navigation }) => {
           {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
           <Image
             style={styles.smallloginicon}
-            source={require("../../assets/thcc.png")}
+            source={require("../assets/Image/thcc.png")}
           />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={signGoogle}>
           <Image
             style={styles.smallloginicon}
-            source={require("../../assets/gmail_icon-icons.com_62758.png")}
+            source={require("../assets/Image/gmail_icon-icons.com_62758.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity>
           <Image
             style={styles.smallloginicon}
-            source={require("../../assets/twitter.png")}
+            source={require("../assets/Image/twitter.png")}
           />
         </TouchableOpacity>
       </View>

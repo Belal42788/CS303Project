@@ -1,11 +1,11 @@
 
 import { StatusBar } from "expo-status-bar";
-import auth from "../../firebase/config/firebase-config.js";
+import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import cardArray from "../compnents/carcard.js";
-import BrandsArray from "../compnents/brands.js";
-import Footer from "./Footer.js";
+import cardArray from "../Middleware/carcard.js";
+import BrandsArray from "../Middleware/brands.js";
+import Footer from "../Layouts/Footer.js";
 import {
   StyleSheet,
   Text,

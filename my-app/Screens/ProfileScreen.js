@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import auth from "../../firebase/config/firebase-config.js";
+import auth from "../firebase/config/firebase-config.js";
 import {
     signInWithEmailAndPassword,
     signOut,
@@ -21,12 +21,11 @@ import {
     ImageBackground,
     ScrollView
 } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { firebase } from "../../firebase/config/firebase-config.js";
-import Footer from "../MainScreen/Footer.js";
+import { firebase } from "../firebase/config/firebase-config.js";
+import Footer from "../Layouts/Footer.js";
 
 const ProfileScreen = ({ navigation }) => {
     const user = auth.currentUser;
@@ -264,7 +263,7 @@ const ProfileScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('../../assets/reg3.jpg')} resizeMode="stretch" style={styles.container}>
+            <ImageBackground source={require('../assets/Image/reg3.jpg')} resizeMode="stretch" style={styles.container}>
                 <ScrollView>
                     <StatusBar style="auto" />
 
