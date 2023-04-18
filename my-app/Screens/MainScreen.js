@@ -33,10 +33,7 @@ function MainScreen({ navigation }) {
           />
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-          <Image
-            source={user.photoURL}
-            style={styles.PhotoStyle}
-          />
+          <Image source={user.photoURL} style={styles.PhotoStyle} />
         </TouchableOpacity>
       </View>
       <ScrollView >
@@ -69,34 +66,7 @@ function MainScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
-      <View>
-        <Footer />
-      </View>
-      <View style={styles.products}>
-        {/*
-      <TouchableOpacity style={styles.card}>
-      <Image   source={require("../assets/Exclusive Luxury Car  (Instagram Post15edit).jpg")} style={styles.image} />
-      <Text style={styles.title}>Tesla Model X</Text>
-      <View style={styles.info} >
-      <Text style={styles.numofseats}>💺4 seats</Text>
-      <Text style={styles.price}>💳30$/hour</Text>
-      </View>
-    </TouchableOpacity> */}
-        {cardArray.map((o) => {
-          return (
-            <TouchableOpacity style={styles.card} key={o.id}>
-              <Text style={styles.title}>{o.nameCar}</Text>
-              <Image source={o.img} style={styles.image} />
-
-              <View style={styles.info}>
-                {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
-                <Text style={styles.price}>💳{o.rent}$/hour </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-      {/* <Footer/> */}
+      <Footer />
     </View>
   );
 }
@@ -116,7 +86,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     alignContent: "space-between",
-    backgroundColor:"#fff",
+    backgroundColor: "#fff",
     marginTop: "5%",
   },
   searchbarview: {
@@ -143,8 +113,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontFamily: "cairo",
     fontWeight: "700",
-    marginLeft: 9
-
+    marginLeft: 9,
   },
   PhotoStyle: {
     width: 50,
@@ -218,7 +187,6 @@ const styles = StyleSheet.create({
     minHeight: 300,
     marginLeft: "2%",
     marginBottom: "2%",
-
   },
   image: {
     minWidth: 190,
@@ -254,8 +222,7 @@ const styles = StyleSheet.create({
     minWidth: "100%",
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center"
-
+    justifyContent: "center",
   },
   numofseats: {
     fontSize: "80%",
@@ -265,5 +232,8 @@ const styles = StyleSheet.create({
     maxWidth: "50%",
     flexWrap: "wrap",
   },
+  footer: {
+    backgroundColor: "blue"
+  }
 });
 export default MainScreen;
