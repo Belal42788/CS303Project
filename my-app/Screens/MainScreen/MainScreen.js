@@ -66,9 +66,7 @@ function MainScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
-      <View>
-        <Footer />
-      </View>
+      <Footer />
     </View>
   );
 }
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     alignContent: "space-between",
-    backgroundColor:"#fff",
+    backgroundColor: "#fff",
     marginTop: "5%",
   },
   searchbarview: {
@@ -234,5 +232,8 @@ const styles = StyleSheet.create({
     maxWidth: "50%",
     flexWrap: "wrap",
   },
+  footer: {
+    backgroundColor: "blue"
+  }
 });
 export default MainScreen;
