@@ -12,7 +12,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-community/async-storage";
 import React, { useState, useEffect } from "react";
 import MainSrceen from "./Screens/MainScreen/MainScreen.js";
-import Footer from "./Screens/MainScreen/Footer.js";
 
 const Stack = createNativeStackNavigator();
 const config = {

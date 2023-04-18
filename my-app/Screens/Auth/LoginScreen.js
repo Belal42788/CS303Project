@@ -258,6 +258,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+    marginBottom:'5%',
   
 
 },
@@ -269,6 +270,7 @@ logoText: {
     justifyContent: 'center',
     alignSelf: "center",
     marginTop: "20%",
+
 },
 smallView: {
     paddingBottom: '5%'
