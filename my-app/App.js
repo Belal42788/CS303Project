@@ -11,6 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useState, useEffect } from "react";
 import MainSrceen from "./Screens/MainScreen.js";
+import LodingScreen from "./Screens/lodingScreen.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -64,6 +65,7 @@ export default function App() {
             transitionSpec: { open: config, close: config },
           }}
         >
+          <Stack.Screen name="Loding" component={LodingScreen} />
           <Stack.Screen name="Get Start1" component={Getstar1} />
           <Stack.Screen name="Get Start2" component={Getstar2} />
           <Stack.Screen name="Get Start3" component={Getstar3} />
