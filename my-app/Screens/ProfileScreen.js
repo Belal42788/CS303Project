@@ -261,156 +261,154 @@ const ProfileScreen = ({ navigation }) => {
 
 
     return (
-        <View style={styles.container}>
-            <ImageBackground source={require('../assets/Image/reg3.jpg')} resizeMode="stretch" style={styles.container}>
-                <ScrollView>
-                    <StatusBar style="auto" />
+        
+        <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
+            <StatusBar style="auto" />
 
-                    <Image
-                        style={styles.PhotoStyle}
-                        source={{
-                            uri: user.photoURL,
-                        }}
-                    />
+            <Image
+                style={styles.PhotoStyle}
+                source={{
+                    uri: user.photoURL,
+                }}
+            />
 
-                    {
-                        firstNameMode ?
-                            (
-                                <><View>
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="First Name"
-                                        value={firstName}
-                                        onChangeText={setFirstName}
-                                    />
-                                </View>
-                                    <TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={UpdateFirstName}>
-                                            Updata First Name
-                                        </Text>
-                                    </TouchableOpacity></>
-                            ) : (
-                                <><View>
-                                    <Text style={styles.textStyle}> First Name, {firstName}! </Text>
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={handleFirstNameMode}>
-                                            Updata First Name
-                                        </Text>
-                                    </TouchableOpacity></>
-                            )
-                    }
-
-
-                    {
-                        lastNameMode ?
-                            (
-                                <><View>
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Last Name"
-                                        value={lastName} />
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={UpdateLastName}>
-                                            Updata Last Name
-                                        </Text>
-                                    </TouchableOpacity></>
-                            ) : (
-                                <><View>
-                                    <Text style={styles.textStyle}> Last Name, {lastName}! </Text>
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={handleLastNameMode}>
-                                            Updata Last Name
-                                        </Text>
-                                    </TouchableOpacity></>
-                            )
-                    }
+            {
+                firstNameMode ?
+                    (
+                        <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="First Name"
+                                value={firstName}
+                                onChangeText={setFirstName}
+                            />
+                        </View>
+                            <TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={UpdateFirstName}>
+                                    Updata First Name
+                                </Text>
+                            </TouchableOpacity></>
+                    ) : (
+                        <><View>
+                            <Text style={styles.textStyle}> First Name, {firstName}! </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handleFirstNameMode}>
+                                    Updata First Name
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
 
 
-                    <View>
-                        <Text style={styles.textStyle}> Your Email is: {email} </Text>
-                    </View>
-
-                    {
-                        BirthDateMode ?
-                            (
-                                <><View>
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Birth Date"
-                                        onChangeText={(BirthDate) => setBirthDate(BirthDate)}
-                                        value={BirthDate} />
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={UpdateBirthDate}>
-                                            Updata Birth Date
-                                        </Text>
-                                    </TouchableOpacity></>
-                            ) : (
-                                <><View>
-                                    <Text style={styles.textStyle}> Birth Date is: {BirthDate} </Text>
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={handleBirthDateMode}>
-                                            Updata Birth Date
-                                        </Text>
-                                    </TouchableOpacity></>
-                            )
-                    }
+            {
+                lastNameMode ?
+                    (
+                        <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Last Name"
+                                value={lastName} />
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={UpdateLastName}>
+                                    Updata Last Name
+                                </Text>
+                            </TouchableOpacity></>
+                    ) : (
+                        <><View>
+                            <Text style={styles.textStyle}> Last Name, {lastName}! </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handleLastNameMode}>
+                                    Updata Last Name
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
 
 
-                    {
-                        phoneMode ?
-                            (
-                                <><View>
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Phone Number"
-                                        onChangeText={(phone) => setPhone(phone)}
-                                        value={phone} />
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={updatePhoneNumber}>
-                                            Updata Phone Number
-                                        </Text>
-                                    </TouchableOpacity></>
-                            ) : (
-                                <><View>
-                                    <Text style={styles.textStyle}> Phone Number is: {phone} </Text>
-                                </View><TouchableOpacity>
-                                        <Text style={styles.buttonText} onPress={handlePhoneMode}>
-                                            Updata Phone Number
-                                        </Text>
-                                    </TouchableOpacity></>
-                            )
-                    }
+            <View>
+                <Text style={styles.textStyle}> Your Email is: {email} </Text>
+            </View>
+
+            {
+                BirthDateMode ?
+                    (
+                        <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Birth Date"
+                                onChangeText={(BirthDate) => setBirthDate(BirthDate)}
+                                value={BirthDate} />
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={UpdateBirthDate}>
+                                    Updata Birth Date
+                                </Text>
+                            </TouchableOpacity></>
+                    ) : (
+                        <><View>
+                            <Text style={styles.textStyle}> Birth Date is: {BirthDate} </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handleBirthDateMode}>
+                                    Updata Birth Date
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
 
 
-                    <Text> </Text>
+            {
+                phoneMode ?
+                    (
+                        <><View>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Phone Number"
+                                onChangeText={(phone) => setPhone(phone)}
+                                value={phone} />
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={updatePhoneNumber}>
+                                    Updata Phone Number
+                                </Text>
+                            </TouchableOpacity></>
+                    ) : (
+                        <><View>
+                            <Text style={styles.textStyle}> Phone Number is: {phone} </Text>
+                        </View><TouchableOpacity>
+                                <Text style={styles.buttonText} onPress={handlePhoneMode}>
+                                    Updata Phone Number
+                                </Text>
+                            </TouchableOpacity></>
+                    )
+            }
 
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={updatePhoto}>
-                            Updata Photo
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={SignOut}>
-                            Sign Out
-                        </Text>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={DeleteUser}>
-                            Delete Email
-                        </Text>
-                    </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={updatePhoto}>
+                    Updata Photo
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={SignOut}>
+                    Sign Out
+                </Text>
+            </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={ResetPassword}>
-                            reset password
-                        </Text>
-                    </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={DeleteUser}>
+                    Delete Email
+                </Text>
+            </TouchableOpacity>
 
-                </ScrollView>
-            </ImageBackground>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={ResetPassword}>
+                    reset password
+                </Text>
+            </TouchableOpacity>
+
+
             <Footer navigation={navigation} />
-        </View>
+        </ImageBackground>
+
+
     );
 };
 
@@ -420,7 +418,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
-        height: 'auto',
+        height: '95%',
         width: '100%',
     },
     PhotoStyle: {
@@ -430,7 +428,7 @@ const styles = StyleSheet.create({
         borderRightWidth: "0px",
         // borderColor:"blue",
         borderRadius: "50%",
-        marginTop: 0,
+        // marginTop: 0,
     },
     textStyle: {
         fontSize: "15px",

@@ -24,7 +24,7 @@ function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-      <ScrollView style={{ width:"100%" , height : "100%" }} >
+      <ScrollView style={{ width:"100%" , height : "110%" }} >
         <View style={styles.marks}>
           <ScrollView horizontal={true}>
             {BrandsArray.map((m) => {
