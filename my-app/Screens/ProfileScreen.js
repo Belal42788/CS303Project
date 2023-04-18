@@ -27,6 +27,7 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { firebase } from "../firebase/config/firebase-config.js";
 import Footer from "../Layouts/Footer.js";
 
+
 const ProfileScreen = ({ navigation }) => {
     const user = auth.currentUser;
     const db = getFirestore();
@@ -123,27 +124,26 @@ const ProfileScreen = ({ navigation }) => {
     }, [user])
 
     //to sign out
-    const SignOut = () => {
-        signOut(auth)
+    const SignOut = async () => {
+        await signOut(auth)
             .then(() => {
-                AsyncStorage.clear();
+
                 alert("you singed out successfuly");
-                window.location.reload(true);
+
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 alert(errorMessage);
             });
+        window.location.reload(true);
     };
 
     //to delete user
-    const DeleteUser = () => {
-        deleteUser(user)
+    const DeleteUser = async () => {
+        await deleteUser(user)
             .then(() => {
                 // User deleted.
-                AsyncStorage.clear();
                 alert("User Deleted");
-                window.location.reload(true);
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -151,18 +151,16 @@ const ProfileScreen = ({ navigation }) => {
                 alert(errorMessage);
             });
 
-        deleteDoc(UserRef)
+        await deleteDoc(UserRef)
             .then(() => {
                 // User deleted.
-                AsyncStorage.clear();
-                alert("User Deleted");
-                window.location.reload(true);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 alert(errorMessage);
             });
+        window.location.reload(true);
     };
 
     //to reset password
@@ -224,6 +222,7 @@ const ProfileScreen = ({ navigation }) => {
             .catch((error) => {
                 alert(error.message);
             });
+
         window.location.reload(true);
     }
     //handle First Name mode
