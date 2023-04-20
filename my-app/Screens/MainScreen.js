@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
 
   marks: {
-    marginTop: 70,
+    marginTop: 50,
     marginBottom: 0,
     // marginLeft:"-20%",
     display: "flex",
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     marginTop: "10%",
     marginBottom: "20%",
     marginRight:12,
+    fontSize:15
   },
   products: {
     marginTop: "10%",
