@@ -1,23 +1,24 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, ImageBackground, StyleSheet } from 'react-native';
-
-
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import Ionicons from "@expo/vector-icons/Ionicons"
+import FontAwesome from "@expo/vector-icons/FontAwesome"
 const Footer = ({ navigation }) => {
   return (
     <View style={styles.footer}>
       <View style={styles.photoGroupH}>
         <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
-          <Image source={require("../assets/Image/Home.png")} style={styles.PhotoStyle} />
+          <FontAwesome name='home'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-          <Image source={require("../assets/Image/Profile.png")} style={styles.PhotoStyle} />
+        <FontAwesome name='user'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
       </View>
       <View style={styles.photoGroupS}>
         <TouchableOpacity onPress={() => navigation.navigate("Shop")}>
-          <Image source={require("../assets/Image/shop.png")} style={styles.PhotoStyle} />
+        <FontAwesome  name='cart-plus' size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
       </View>
     </View>
@@ -27,40 +28,20 @@ const Footer = ({ navigation }) => {
 const styles = StyleSheet.create({
   footer: {
     position: 'fixed',
+      display:'flex',
     bottom: 0,
     flexDirection: 'row',
     width: '100%',
+    gap:60,
     height: 60,
-    backgroundColor: 'rgb(206, 158, 4)',
-    borderTopWidth: 1,
+    backgroundColor: '#ce9e04',
+    borderTopWidth: 2,
     borderTopColor: '#ccc',
-    justifyContent: 'center',
+    opacity:0.96,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-  },
-  button: {
-    marginHorizontal: 10,
-    backgroundColor: '#007aff',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  photoGroupH: {
-    marginRight: 30,
-  },
-  photoGroupS: {
-    marginLeft: 30,
-  },
-  PhotoStyle: {
-    width: 50,
-    height: 50,
-    bordertWidth: "5",
-    borderRadius: "50%",
+  
+  
   },
 });
 
