@@ -25,7 +25,7 @@ function MainScreen({ navigation }) {
     <View style={styles.container}>
       <Header navigation={navigation} />
         <View style={styles.marks}>
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true} contentContainerStyle={styles.marksscroll} >
             {BrandsArray.map((m) => {
               return (
                 <TouchableOpacity key={m.id}>
@@ -101,23 +101,32 @@ const styles = StyleSheet.create({
     borderRadius: "50%",
     marginLeft: "50%",
   },
+  marksscroll:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft:10,
+    gap:15,
+  },
+
   marks: {
-    marginTop: "10%",
-    marginBottom: "10%",
+    marginTop: 70,
+    marginBottom: 0,
     // marginLeft:"-20%",
     display: "flex",
     flexWrap: "wrap",
-    width: "100%",
+    width: "auto",
     flexDirection: "row",
     alignContent: "space-between",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
+
   },
   marksicons: {
     width: 80,
     height: 80,
     borderRadius: "50%",
-    marginLeft: 12,
+    marginRight:12,
   },
   markstext: {
     color: "black",
@@ -126,7 +135,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: "10%",
     marginBottom: "20%",
-    marginLeft: 12,
+    marginRight:12,
   },
   products: {
     marginTop: "10%",

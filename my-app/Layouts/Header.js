@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         marginLeft: "10%",
         backgroundColor: "rgb(206, 158, 4)",
+ 
     },
     searchbarview: {
         flexDirection: 'row',
