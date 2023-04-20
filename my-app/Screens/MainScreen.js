@@ -24,7 +24,6 @@ function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-      <ScrollView style={{ width:"100%" , height : "110%" }} >
         <View style={styles.marks}>
           <ScrollView horizontal={true}>
             {BrandsArray.map((m) => {
@@ -51,7 +50,6 @@ function MainScreen({ navigation }) {
             );
           })}
         </View>
-      </ScrollView>
       <Footer navigation={navigation} />
     </View>
   );
@@ -145,6 +143,7 @@ const styles = StyleSheet.create({
     padding: "auto",
     paddingRight: "1%",
     paddingTop: "10%",
+    paddingBottom: 70,
     borderRadius: 20,
     borderBottomEndRadius: 0,
     borderBottomLeftRadius: 0,

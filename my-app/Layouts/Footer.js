@@ -6,21 +6,15 @@ import FontAwesome from "@expo/vector-icons/FontAwesome"
 const Footer = ({ navigation }) => {
   return (
     <View style={styles.footer}>
-      <View style={styles.photoGroupH}>
         <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
           <FontAwesome name='home'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
-      </View>
-      <View>
         <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <FontAwesome name='user'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
-      </View>
-      <View style={styles.photoGroupS}>
         <TouchableOpacity onPress={() => navigation.navigate("Shop")}>
         <FontAwesome  name='cart-plus' size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
-      </View>
     </View>
   );
 };
