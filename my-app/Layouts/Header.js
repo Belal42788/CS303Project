@@ -74,8 +74,9 @@ const styles = StyleSheet.create({
         marginLeft: -5,
         marginTop: 4,
         borderRadius:"25%",
-        borderWidth:10,
-        borderColor:"white"
+        borderWidth:1,
+        outlineStyle: 'none',
+        borderColor:"#fff"
     },
     photoGroub: {
         marginTop: -10,
