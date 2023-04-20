@@ -17,7 +17,7 @@ function Shop({ navigation }) {
     return (
         <View style={styles.container}>
             <Header navigation={navigation} />
-            <ScrollView>
+            <ScrollView  style={{ width:"100%" , height : "100%" }}>
                 <View>
                     <Text>
                         No Item !
@@ -31,11 +31,7 @@ function Shop({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        // justifyContent: "flex-end",
-        // padding: 3,
-        backgroundColor: "white",
+        backgroundColor: "rgb(206, 158, 4)",
     },
 });
 export default Shop;

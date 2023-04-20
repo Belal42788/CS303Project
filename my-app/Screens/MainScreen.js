@@ -59,11 +59,7 @@ function MainScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    // justifyContent: "flex-end",
-    // padding: 3,
-    backgroundColor: "white",
+    backgroundColor: "rgb(206, 158, 4)",
   },
   header: {
     width: "80%",

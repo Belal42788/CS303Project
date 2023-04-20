@@ -13,6 +13,7 @@ import {
 function Header({ navigation }) {
     const user = auth.currentUser;
     return (
+        <View>
         <View style={styles.header}>
             <View style={styles.searchbarview}>
                 <TextInput
@@ -21,25 +22,19 @@ function Header({ navigation }) {
                     placeholderTextColor="#003f5c"
                 />
             </View>
-            <View  style={styles.photoGroub}>
+            <View style={styles.photoGroub}>
                 <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-                    <Image source={user.photoURL} style={styles.PhotoStyle}/>
+                    <Image source={user.photoURL} style={styles.PhotoStyle} />
                 </TouchableOpacity>
             </View>
+        </View>
         </View>
     );
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        // justifyContent: "flex-end",
-        // padding: 3,
-        backgroundColor: "white",
-    },
     header: {
         width: "80%",
+        height: "auto",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-evenly",
@@ -47,7 +42,8 @@ const styles = StyleSheet.create({
         alignContent: "space-between",
         marginTop: 20,
         marginBottom: 5,
-        backgroundColor: "#fff",
+        marginLeft:"10%",
+        backgroundColor: "rgb(206, 158, 4)",
     },
     searchbarview: {
         backgroundColor: "white",
@@ -57,13 +53,13 @@ const styles = StyleSheet.create({
         width: "85%",
         height: "80%",
         fontFamily: "cairo",
+        marginTop: -5,
         marginBottom: "5px",
         justifyContent: "flex-start",
         alignItems: "flex-start",
         textAlign: "left",
         alignContent: "flex-start",
         alignSelf: "center",
-        // marginLeft: "-10%",
     },
     searchbartext: {
         fontSize: "80%",
@@ -73,17 +69,26 @@ const styles = StyleSheet.create({
         color: "black",
         fontFamily: "cairo",
         fontWeight: "700",
-        marginLeft: 9,
+        marginLeft: 12,
+        marginTop: 2,
     },
-    photoGroub:{
-        marginTop : -10,
+    photoGroub: {
+        marginTop: -10,
         marginLeft: 10,
+        marginBottom: 5,
+        width:54,
+        height:54,
+        backgroundColor:"black",
+        borderRadius: "50%",
+        bordertWidth: 20,
     },
     PhotoStyle: {
+        marginTop:2,
+        marginLeft:2,
         width: 50,
         height: 50,
-        bordertWidth: "5",
         borderRadius: "50%",
+        borderColor: "black"
     },
 });
 export default Header;
