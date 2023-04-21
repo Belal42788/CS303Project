@@ -13,7 +13,7 @@ const cardArray = [
   {
     id: 2,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -21,7 +21,7 @@ const cardArray = [
   {
     id: 3,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -29,7 +29,7 @@ const cardArray = [
   {
     id: 4,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -37,7 +37,7 @@ const cardArray = [
   {
     id: 5,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -45,7 +45,7 @@ const cardArray = [
   {
     id: 6,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -53,7 +53,7 @@ const cardArray = [
   {
     id: 7,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -61,7 +61,7 @@ const cardArray = [
   {
     id: 8,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,
@@ -69,7 +69,7 @@ const cardArray = [
   {
     id: 9,
     mark:'Tesla',
-    img: p1,
+    img: p2,
     nameCar: "Tesla Model X",
     seats:4,
     rent:50,

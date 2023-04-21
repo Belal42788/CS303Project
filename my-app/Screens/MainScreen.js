@@ -41,7 +41,7 @@ function MainScreen({ navigation }) {
             return (
               <TouchableOpacity style={styles.card} key={o.id}>
                 <Text style={styles.title}>{o.nameCar}</Text>
-                <Image source={o.img} style={styles.image} />
+               <Image resizeMode="contain" resizeMethod="scale" source={o.img} style={styles.image} />
                 <View style={styles.info}>
                   {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
                   <Text style={styles.price}>💳{o.rent}$/hour </Text>
@@ -175,16 +175,18 @@ const styles = StyleSheet.create({
     width: "auto",
     minWidth: 250,
     minHeight: 300,
-    marginLeft: "2%",
+    marginLeft: "6%",
     marginBottom: "2%",
+    position:'relative',
   },
   image: {
-    minWidth: 190,
-    minHeight: 190,
-    resizeMode: "cover",
-    marginBottom: 10,
-    borderRadius: 15,
+    position:'absolute',
+    top:10,
+    minWidth: 310,
+    minHeight: 300,
+    right:-15,
     height: "70%",
+    resizeMode: "contain",
     borderBottomEndRadius: 0,
     borderBottomLeftRadius: 0,
   },
@@ -204,6 +206,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   price: {
+    position:'absolute',
+    bottom:-230,
     fontSize: "100%",
     fontWeight: "700",
     color: "black",
