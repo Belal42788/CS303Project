@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import cardArray from "../Middleware/carcard.js";
 import BrandsArray from "../Middleware/brands.js";
 import Footer from "../Layouts/Footer.js";
@@ -21,35 +22,67 @@ import {
 
 function MainScreen({ navigation }) {
   const user = auth.currentUser;
+  const db = getFirestore();
+  const [Admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    GetUserInfo();
+  })
+  //to get user info
+  const GetUserInfo = async () => {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setAdmin(docSnap.data().Admin);
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  };
+
+  const Edit = () => {
+    return (
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText} onPress={()=>{navigation.navigate('Admin')}}>
+          Edit
+        </Text>
+      </TouchableOpacity>
+    )
+  }
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-        <View style={styles.marks}>
-          <ScrollView horizontal={true} contentContainerStyle={styles.marksscroll} >
-            {BrandsArray.map((m) => {
-              return (
-                <TouchableOpacity key={m.id}>
-                  <Image source={m.img} style={styles.marksicons} />
-                  <Text style={styles.markstext}>{m.name}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
-        </View>
-        <View style={styles.products}>
-          {cardArray.map((o) => {
+      <View style={styles.marks}>
+        <ScrollView horizontal={true} contentContainerStyle={styles.marksscroll} >
+          {BrandsArray.map((m) => {
             return (
-              <TouchableOpacity style={styles.card} key={o.id}>
-                <Text style={styles.title}>{o.nameCar}</Text>
-               <Image resizeMode="contain" resizeMethod="scale" source={o.img} style={styles.image} />
-                <View style={styles.info}>
-                  {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
-                  <Text style={styles.price}>💳{o.rent}$/hour </Text>
-                </View>
+              <TouchableOpacity key={m.id}>
+                <Image source={m.img} style={styles.marksicons} />
+                <Text style={styles.markstext}>{m.name}</Text>
               </TouchableOpacity>
             );
           })}
-        </View>
+        </ScrollView>
+      </View>
+      {
+        Admin ? Edit() : console.log("not Admin")
+      }
+      <Text style={styles.TextModel}>Model</Text>
+      <View style={styles.products}>
+        {cardArray.map((o) => {
+          return (
+            <TouchableOpacity style={styles.card} key={o.id}>
+              <Text style={styles.title}>{o.nameCar}</Text>
+              <Image resizeMode="contain" resizeMethod="scale" source={o.img} style={styles.image} />
+              <View style={styles.info}>
+                {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
+                <Text style={styles.price}>💳{o.rent}$/hour </Text>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
       <Footer navigation={navigation} />
     </View>
   );
@@ -101,12 +134,12 @@ const styles = StyleSheet.create({
     borderRadius: "50%",
     marginLeft: "50%",
   },
-  marksscroll:{
+  marksscroll: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft:10,
-    gap:15,
+    paddingLeft: 10,
+    gap: 15,
   },
 
   marks: {
@@ -126,7 +159,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: "50%",
-    marginRight:12,
+    marginRight: 12,
   },
   markstext: {
     color: "black",
@@ -135,8 +168,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: "10%",
     marginBottom: "20%",
-    marginRight:12,
-    fontSize:15
+    marginRight: 12,
+    fontSize: 15
   },
   products: {
     marginTop: "10%",
@@ -177,14 +210,14 @@ const styles = StyleSheet.create({
     minHeight: 300,
     marginLeft: "6%",
     marginBottom: "2%",
-    position:'relative',
+    position: 'relative',
   },
   image: {
-    position:'absolute',
-    top:10,
+    position: 'absolute',
+    top: 10,
     minWidth: 310,
     minHeight: 300,
-    right:-15,
+    right: -15,
     height: "70%",
     resizeMode: "contain",
     borderBottomEndRadius: 0,
@@ -206,8 +239,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   price: {
-    position:'absolute',
-    bottom:-230,
+    position: 'absolute',
+    bottom: -230,
     fontSize: "100%",
     fontWeight: "700",
     color: "black",
@@ -225,6 +258,38 @@ const styles = StyleSheet.create({
     fontFamily: "cairo",
     maxWidth: "50%",
     flexWrap: "wrap",
+  },
+  TextModel: {
+    marginTop: 10,
+    color: "black",
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    fontSize: 20,
+    textAlign: "center",
+    fontFamily: "cairo",
+  },
+  button: {
+      width: "70%",
+      borderRadius: 18,
+      height: 40,
+      alignItems: "center",
+      alignContent: "center",
+      justifyContent: "center",
+      borderStyle: "solid",
+      borderWidth: 2,
+      borderColor: "black",
+      display: "flex",
+      marginTop: 3,
+      backgroundColor: "#ce9e04",
+      marginLeft:"15%"
+  },
+  buttonText: {
+      color: "black",
+      fontWeight: "bold",
+      textTransform: "capitalize",
+      fontSize: 20,
+      textAlign: "center",
+      fontFamily: "cairo",
   },
 });
 export default MainScreen;
