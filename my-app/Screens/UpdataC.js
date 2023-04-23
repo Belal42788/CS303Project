@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
+import Footer from "../Layouts/Footer.js";
 
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
 
-export const Updata = ({ navigation }) => {
+export const UpdataC = ({ navigation }) => {
     const [nameProduct, setnameProduct] = useState();
     const [price, setprice] = useState();
     const [mount, setmount] = useState();
@@ -47,7 +48,7 @@ export const Updata = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.paragraph}>
-                Updata Model
+                Updata Catigory
             </Text>
             <View style={styles.select1}>
                 <Controller
@@ -115,7 +116,6 @@ export const Updata = ({ navigation }) => {
                     source={{
                         uri: require("../assets/Image/1.jpg"),
                     }}
-                    
                 />
             </TouchableOpacity>
 
@@ -161,6 +161,7 @@ export const Updata = ({ navigation }) => {
                     Updata
                 </Text>
             </TouchableOpacity>
+            <Footer navigation={navigation} />
 
         </View>
     );

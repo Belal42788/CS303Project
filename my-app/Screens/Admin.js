@@ -142,42 +142,31 @@ const Admin = ({ navigation }) => {
 
 
     return (
-        <View>
+        <View  style={styles.container}>
 
-            <TouchableOpacity style={styles.ImageStyle} onPress={updatePhoto}>
-                <Image
-                    style={styles.PhotoStyle}
-                    source={{
-                        uri: require("../assets/Image/3.png"),
-                    }}
-                />
-            </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => { console.log("sdjjaljsdf") }} style={styles.ImageStyle}>
-                <Image
-                    style={styles.PhotoStyle}
-                    source={{
-                        uri: require("../assets/Image/1.jpg"),
-                    }}
-                    
-                />
-            </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={null}>
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddM') }}>
                     add Model
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={null}>
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdataM') }}>
+                    update Model
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddC') }}>
                     add Catigory
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => { navigation.navigate('Updata') }}>
-                    update
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdataC') }}>
+                    update Catigory
                 </Text>
             </TouchableOpacity>
 
@@ -191,9 +180,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "95%",
+        
+        height: "100%",
         width: "100%",
     },
     textStyle: {
@@ -213,7 +201,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "black",
         display: "flex",
-        marginTop: 3,
+        margin:"15%",
         backgroundColor: "#ce9e04",
     },
     buttonText: {

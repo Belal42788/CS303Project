@@ -1,0 +1,155 @@
+import React, { useState, useCallback } from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import Constants from 'expo-constants';
+import Footer from "../Layouts/Footer.js";
+
+// You can import from local files
+import DropDownPicker from 'react-native-dropdown-picker'
+import { useForm, Controller } from 'react-hook-form';
+
+export const AddM = ({ navigation }) => {
+    const [nameModel, setnameModel] = useState();
+
+    const [uri, seturi] = useState();
+
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.paragraph}>
+                Add Model
+            </Text>
+
+
+            <TouchableOpacity onPress={() => { console.log("sdjjaljsdf") }} style={styles.ImageStyle}>
+                <Image
+                    style={styles.PhotoStyle}
+                    source={{
+                        uri: require("../assets/Image/1.jpg"),
+                    }}
+                    
+                />
+            </TouchableOpacity>
+
+            <View style={styles.inputView}>
+                <TextInput
+                    style={styles.TextInput}
+                    placeholder="nameModel"
+                    placeholderTextColor="#003f5c"
+                    value={nameModel}
+                    onChangeText={setnameModel}
+                />
+            </View>
+
+
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.buttonText} onPress={null}>
+                    Add
+                </Text>
+            </TouchableOpacity>
+            <Footer navigation={navigation} />
+
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#ecf0f1',
+        padding: 8,
+    },
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    placeholderStyles: {
+        color: "grey",
+    },
+    dropdownmodel: {
+        marginHorizontal: 10,
+        width: "85%",
+        marginBottom: 15,
+        marginLeft: "6%",
+        zIndex: 1,
+    },
+    dropdownCompany: {
+        marginHorizontal: 10,
+        marginBottom: 15,
+        zIndex: 1,
+    },
+    dropdown: {
+        borderColor: "#B7B7B7",
+        height: 50,
+        zIndex: 1,
+    },
+    select1: {
+        flexDirection: "row",
+        zIndex: 1,
+    },
+    select2: {
+
+        flexDirection: "row",
+        zIndex: 2,
+    },
+    inputView: {
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 2.5,
+        borderRadius: 15,
+        width: "90%",
+        height: "7%",
+        fontFamily: 'cairo',
+        marginBottom: "5px",
+        alignItems: "center",
+        textAlign: "left",
+        alignContent: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+    }, TextInput: {
+        fontSize: "120%",
+        width: "96%",
+        height: "90%",
+        textAlign: "left",
+        color: "black",
+        fontFamily: 'cairo',
+        fontWeight: "700",
+    },
+    loginBtn: {
+        width: "85%",
+        borderRadius: 13,
+        height: "8%",
+        marginTop: "2%",
+        marginLeft: "8%",
+        justifyContent: "center",
+        alignItems: "flex-end",
+        alignContent: "center",
+        backgroundColor: "#ce9e04",
+        borderStyle: "solid",
+        borderWidth: 3,
+        borderColor: "black",
+        display: "flex",
+    },
+    buttonText: {
+        color: "black",
+        fontSize: "200%",
+        fontWeight: "700",
+        fontFamily: 'cairo',
+        alignSelf: "center",
+    },
+    PhotoStyle: {
+        width: "100px",
+        height: "100px",
+        // backgroundColor:"blue",
+        borderRightWidth: "0px",
+        // borderColor:"blue",
+        borderRadius: "50%",
+        // marginTop: 0,
+    },
+    ImageStyle:{
+        margin:"5%",
+        marginLeft:"35%"
+    }
+});

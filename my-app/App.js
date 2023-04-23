@@ -14,7 +14,10 @@ import MainSrceen from "./Screens/MainScreen.js";
 import LodingScreen from "./Screens/lodingScreen.js";
 import Shop from "./Screens/Shop.js";
 import Admin from "./Screens/Admin.js";
-import { Updata } from "./Screens/Updata.js";
+import { UpdataC } from "./Screens/UpdataC.js";
+import { AddC } from "./Screens/AddC.js";
+import { AddM } from "./Screens/AddM.js";
+import { UpdataM } from "./Screens/UpdataM.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -88,7 +91,10 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Shop" component={Shop} />
           <Stack.Screen name="Admin" component={Admin} />
-          <Stack.Screen name="Updata" component={Updata} />
+          <Stack.Screen name="UpdataC" component={UpdataC} />
+          <Stack.Screen name="UpdataM" component={UpdataM} />
+          <Stack.Screen name="AddC" component={AddC} />
+          <Stack.Screen name="AddM" component={AddM} />
         </Stack.Navigator>
       </NavigationContainer>
     );
