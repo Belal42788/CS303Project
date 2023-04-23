@@ -34,6 +34,7 @@ import * as ImagePicker from "expo-image-picker";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { firebase } from "../firebase/config/firebase-config.js";
 import Footer from "../Layouts/Footer.js";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const Admin = ({ navigation }) => {
     const user = auth.currentUser;
@@ -48,7 +49,7 @@ const Admin = ({ navigation }) => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            
+
         } else {
 
         }
@@ -74,7 +75,7 @@ const Admin = ({ navigation }) => {
 
 
 
-  
+
     const DeleteUser = async () => {
 
         await deleteDoc(UserRef)
@@ -89,7 +90,7 @@ const Admin = ({ navigation }) => {
         window.location.reload(true);
     };
 
-    
+
 
     //to PickImage
     const pickImage = async () => {
@@ -138,43 +139,51 @@ const Admin = ({ navigation }) => {
 
         window.location.reload(true);
     };
-    
+
 
     return (
-        <ImageBackground
-            source={require("../assets/Image/reg3.jpg")}
-            style={styles.container}
-        >
-            <StatusBar style="auto" />
+        <View>
 
-            <Image
-                style={styles.PhotoStyle}
-                source={{
-                    uri: user.photoURL,
-                }}
-            />
+            <TouchableOpacity style={styles.ImageStyle} onPress={updatePhoto}>
+                <Image
+                    style={styles.PhotoStyle}
+                    source={{
+                        uri: require("../assets/Image/3.png"),
+                    }}
+                />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => { console.log("sdjjaljsdf") }} style={styles.ImageStyle}>
+                <Image
+                    style={styles.PhotoStyle}
+                    source={{
+                        uri: require("../assets/Image/1.jpg"),
+                    }}
+                    
+                />
+            </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={updatePhoto}>
-                    selectImage
+                <Text style={styles.buttonText} onPress={null}>
+                    add Model
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={null}>
-                    add
+                    add Catigory
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={null}>
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('Updata') }}>
                     update
                 </Text>
             </TouchableOpacity>
 
 
             <Footer navigation={navigation} />
-        </ImageBackground>
+        </View>
     );
 };
 
@@ -186,15 +195,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: "95%",
         width: "100%",
-    },
-    PhotoStyle: {
-        width: "200px",
-        height: "100px",
-        // backgroundColor:"blue",
-        borderRightWidth: "0px",
-        // borderColor:"blue",
-        // borderRadius: "50%",
-        // marginTop: 0,
     },
     textStyle: {
         fontSize: "15px",
@@ -224,5 +224,17 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontFamily: "cairo",
     },
+    PhotoStyle: {
+        width: "100%",
+        height: "100px",
+        // backgroundColor:"blue",
+        borderRightWidth: "0px",
+        // borderColor:"blue",
+        // borderRadius: "50%",
+        // marginTop: 0,
+    },
+    ImageStyle:{
+        margin:"5%"
+    }
 });
 export default Admin;
