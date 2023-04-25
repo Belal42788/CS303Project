@@ -2,16 +2,69 @@ import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
+import { collection, addDoc, getFirestore, setDoc, doc, docRef  } from "firebase/firestore";
+import * as ImagePicker from 'expo-image-picker';
+import { firebase } from "../firebase/config/firebase-config.js";
 
-// You can import from local files
-import DropDownPicker from 'react-native-dropdown-picker'
-import { useForm, Controller } from 'react-hook-form';
+
 
 export const AddM = ({ navigation }) => {
-    const [nameModel, setnameModel] = useState();
+    const [nameModel, setnameModel] = useState("");
 
-    const [uri, seturi] = useState();
+    const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c");
 
+    //to PickImage
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+            console.log('permission to access media library is required')
+            return;
+        }
+        const result = await ImagePicker.launchImageLibraryAsync();
+        console.log(result);
+        if (!result.canceled) {
+            return result.uri;
+        }
+    };
+
+    //to update Photo
+    const updatePhoto = async () => {
+        const uri = await pickImage();
+        if(nameModel==""){
+            alert("please Enter name of Model");
+            return ;
+        }
+        const filename = nameModel;
+        const ref = firebase.storage().ref().child("images/" + filename);
+
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        const snapshot = await ref.put(blob);
+        console.log('Image uploaded successfully');
+
+        const downloadURL = await snapshot.ref.getDownloadURL();
+
+        seturi(downloadURL);
+    }
+
+    const addM = async () => {
+        if(uri=="https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c"){
+            alert("Please choose Image");
+        }
+        if(nameModel!=""){
+            const db = getFirestore();
+            const docRef = doc(db, "Models", nameModel.toUpperCase());
+            const colRef = collection(docRef, "M")
+            await setDoc(doc(colRef,  "Info"), {
+                name: nameModel,
+                uri: uri
+            });
+            alert("done");
+        }else{
+            alert("please Enter name of Model");
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -20,13 +73,13 @@ export const AddM = ({ navigation }) => {
             </Text>
 
 
-            <TouchableOpacity onPress={() => { console.log("sdjjaljsdf") }} style={styles.ImageStyle}>
+            <TouchableOpacity onPress={updatePhoto} style={styles.ImageStyle}>
                 <Image
                     style={styles.PhotoStyle}
                     source={{
-                        uri: require("../assets/Image/1.jpg"),
+                        uri: uri,
                     }}
-                    
+
                 />
             </TouchableOpacity>
 
@@ -41,8 +94,8 @@ export const AddM = ({ navigation }) => {
             </View>
 
 
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.buttonText} onPress={null}>
+            <TouchableOpacity style={styles.loginBtn} onPress={addM}>
+                <Text style={styles.buttonText} >
                     Add
                 </Text>
             </TouchableOpacity>
@@ -148,8 +201,8 @@ const styles = StyleSheet.create({
         borderRadius: "50%",
         // marginTop: 0,
     },
-    ImageStyle:{
-        margin:"5%",
-        marginLeft:"35%"
+    ImageStyle: {
+        margin: "5%",
+        marginLeft: "35%"
     }
 });
