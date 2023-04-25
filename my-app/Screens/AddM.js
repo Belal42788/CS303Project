@@ -55,6 +55,9 @@ export const AddM = ({ navigation }) => {
         if(nameModel!=""){
             const db = getFirestore();
             const docRef = doc(db, "Models", nameModel.toUpperCase());
+            await setDoc(docRef, {
+
+            });
             const colRef = collection(docRef, "M")
             await setDoc(doc(colRef,  "Info"), {
                 name: nameModel,
