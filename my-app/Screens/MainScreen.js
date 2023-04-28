@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import cardArray from "../Middleware/carcard.js";
-import BrandsArray from "../Middleware/brands.js";
+import  Brands  from "../Middleware/Brands.js";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
 import {
@@ -53,7 +53,7 @@ function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-      <View style={styles.marks}>
+      {/* <View style={styles.marks}>
         <ScrollView horizontal={true} contentContainerStyle={styles.marksscroll} >
           {BrandsArray.map((m) => {
             return (
@@ -64,7 +64,8 @@ function MainScreen({ navigation }) {
             );
           })}
         </ScrollView>
-      </View>
+      </View> */}
+      <Brands />
       {
         Admin ? Edit() : console.log("not Admin")
       }

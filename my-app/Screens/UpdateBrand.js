@@ -7,7 +7,7 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
-import { doc, getDoc, getFirestore, collection } from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection, setDoc } from "firebase/firestore";
 
 
 
@@ -61,6 +61,22 @@ export const UpdateBrand = ({ navigation }) => {
                 seturi(docSnap._document.data.value.mapValue.fields.uri.stringValue);
                 setBrandName(docSnap._document.data.value.mapValue.fields.name.stringValue);
             }
+        }
+    }
+
+    const update = async () => {
+        if (BrandValue != null) {
+            const db = getFirestore();
+            const docRef = doc(db, "Brands", BrandValue.toUpperCase());
+            const colRef = collection(docRef, "B");
+            const DocRef = doc(colRef, "Info");
+            await setDoc(DocRef, {
+                name: BrandName,
+                uri: uri
+            });
+            alert("done");
+        } else {
+            alert('please choose Brand');
         }
     }
 
@@ -163,7 +179,7 @@ export const UpdateBrand = ({ navigation }) => {
 
 
             <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.buttonText} onPress={null}>
+                <Text style={styles.buttonText} onPress={update}>
                     Update
                 </Text>
             </TouchableOpacity>
