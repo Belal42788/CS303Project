@@ -14,8 +14,8 @@ import MainSrceen from "./Screens/MainScreen.js";
 import LodingScreen from "./Screens/lodingScreen.js";
 import Shop from "./Screens/Shop.js";
 import Admin from "./Screens/Admin.js";
-import { UpdataC } from "./Screens/UpdataC.js";
-import { AddC } from "./Screens/AddC.js";
+import { UpdateModel } from "./Screens/UpdateModel.js";
+import { AddModel } from "./Screens/AddModel.js";
 import { AddBrand } from "./Screens/AddBrand.js";
 import { UpdateBrand } from "./Screens/UpdateBrand.js";
 
@@ -92,9 +92,9 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Shop" component={Shop} />
           <Stack.Screen name="Admin" component={Admin} />
-          <Stack.Screen name="UpdataC" component={UpdataC} />
+          <Stack.Screen name="UpdateModel" component={UpdateModel} />
           <Stack.Screen name="UpdateBrand" component={UpdateBrand} />
-          <Stack.Screen name="AddC" component={AddC} />
+          <Stack.Screen name="AddModel" component={AddModel} />
           <Stack.Screen name="AddBrand" component={AddBrand} />
         </Stack.Navigator>
       </NavigationContainer>
