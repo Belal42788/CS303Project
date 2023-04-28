@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
-import { collection, addDoc, getFirestore, setDoc, doc, docRef  } from "firebase/firestore";
+import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { firebase } from "../firebase/config/firebase-config.js";
 import BackButton from '../Components/backButton.js';
@@ -32,9 +32,9 @@ export const AddBrand = ({ navigation }) => {
     //to update Photo
     const updatePhoto = async () => {
         const uri = await pickImage();
-        if(BrandName==""){
+        if (BrandName == "") {
             alert("please Enter name of Brand");
-            return ;
+            return;
         }
         const filename = BrandName;
         const ref = firebase.storage().ref().child("images/" + filename);
@@ -50,35 +50,44 @@ export const AddBrand = ({ navigation }) => {
     }
 
     const AddBrand = async () => {
-        if(uri=="https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c"){
+        if (uri == "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c") {
             alert("Please choose Image");
         }
-        if(BrandName!=""){
+        if (BrandName != "") {
             const db = getFirestore();
             const docRef = doc(db, "Brands", BrandName.toUpperCase());
             await setDoc(docRef, {
 
             });
             const docRef2 = doc(db, "BrandsList", "List");
-            await setDoc(docRef2, {
-                BrandName : BrandName.toUpperCase()
+            const docSnap = await getDoc(docRef2);
+            let arr;
+            let arr2=[];
+            arr = docSnap._document.data.value.mapValue.fields.list.mapValue.fields.BrandName.arrayValue.values;
+            arr.push({
+                stringValue: BrandName.toUpperCase()
             });
+            for (let index = 0; index < arr.length; index++) {
+                arr2.push(arr[index].stringValue);
+            }
+            console.log(arr2);
+            await setDoc(docRef2, { list: { BrandName: arr2 } });
             const colRef = collection(docRef, "B")
-            await setDoc(doc(colRef,  "Info"), {
+            await setDoc(doc(colRef, "Info"), {
                 name: BrandName,
                 uri: uri
             });
             alert("done");
-        }else{
+        } else {
             alert("please Enter name of Brand");
         }
     };
 
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' ,padding: 30}}>
-                <BackButton/>
-                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold',fontSize:20,marginRight:30 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
+                <BackButton />
+                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
                     Add Brand
                 </Text>
             </View>

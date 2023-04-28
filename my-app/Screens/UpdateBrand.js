@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
@@ -7,7 +7,7 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
-import { doc, getDoc ,getFirestore} from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection } from "firebase/firestore";
 
 
 
@@ -22,26 +22,46 @@ export const UpdateBrand = ({ navigation }) => {
 
 
     const [BrandValue, setBrandValue] = useState(null);
+    const [BrandValueOpetion, setBrandValueOpetion] = useState(null);
 
 
     const [Brand, setBrand] = useState([
-        { label: "Bmw", value: "bmw" },
-        { label: "Toyota", value: "toyota" },
-        { label: "Tesla", value: "tesla" },
+
     ]);
 
-    const update = async() => {
-        const db = getFirestore();
-        const docRef = doc(db, "Brands");
-        console.log("Document data:", docRef);
-        // const docSnap = await getDoc(docRef);
 
-        // if (docSnap.exists()) {
-        //     console.log("Document data:", docSnap);
-        // } else {
-        //     // docSnap.data() will be undefined in this case
-        //     console.log("No such document!");
-        // }
+    useEffect(() => {
+        updateList();
+    })
+
+    const updateList = async () => {
+        const db = getFirestore();
+        const docRef2 = doc(db, "BrandsList", "List");
+        const docSnap = await getDoc(docRef2);
+        let arr;
+        let arr2 = [];
+        arr = docSnap._document.data.value.mapValue.fields.list.mapValue.fields.BrandName.arrayValue.values;
+        // arr.push({
+        //     stringValue: BrandName.toUpperCase()
+        // });
+        for (let index = 0; index < arr.length; index++) {
+            arr2.push({ label: arr[index].stringValue, value: arr[index].stringValue });
+        }
+        setBrand(arr2);
+    }
+
+    const selected = async () => {
+        if (BrandValue != null) {
+            if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
+                const db = getFirestore();
+                const docRef = doc(db, "Brands", BrandValue.toUpperCase());
+                const colRef = collection(docRef, "B");
+                const DocRef = doc(colRef, "Info");
+                const docSnap = await getDoc(DocRef);
+                seturi(docSnap._document.data.value.mapValue.fields.uri.stringValue);
+                setBrandName(docSnap._document.data.value.mapValue.fields.name.stringValue);
+            }
+        }
     }
 
     //to PickImage
@@ -107,7 +127,10 @@ export const UpdateBrand = ({ navigation }) => {
                                 placeholderStyle={styles.placeholderStyles}
                                 onChangeValue={() => {
                                     onChange;
-                                    console.log(BrandValue);
+                                    if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
+                                        selected();
+                                    }
+                                    setBrandValueOpetion(BrandValue);
                                 }}
                                 zIndex={3000}
                                 zIndexInverse={1000}
@@ -140,7 +163,7 @@ export const UpdateBrand = ({ navigation }) => {
 
 
             <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.buttonText} onPress={update}>
+                <Text style={styles.buttonText} onPress={null}>
                     Update
                 </Text>
             </TouchableOpacity>
@@ -155,7 +178,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Constants.statusBarHeight,
         backgroundColor: '#ecf0f1',
-        padding: 8,
     },
     paragraph: {
         margin: 24,
