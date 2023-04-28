@@ -14,14 +14,14 @@ export default function LodingScreen({ navigation }) {
     useEffect(()=>{
         const timer = setTimeout(()=>{
             navigation.navigate("Get Start1");
-        },2000);
+        },5000);
         return () => clearTimeout(timer);
     },[]);
 
     return (
         <View style={styles.container}>
-            <ImageBackground  resizeMode="stretch" style={styles.container}
-                source={require("../assets/Image/bmw-black-hd.jpg")}
+            <ImageBackground  resizeMode="center" style={styles.container}
+                source={require("../assets/104743-yellow-car-loading.gif")}
             />
         </View>
     );
