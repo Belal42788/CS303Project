@@ -17,7 +17,7 @@ import Admin from "./Screens/Admin.js";
 import { UpdataC } from "./Screens/UpdataC.js";
 import { AddC } from "./Screens/AddC.js";
 import { AddBrand } from "./Screens/AddBrand.js";
-import { UpdataM } from "./Screens/UpdataM.js";
+import { UpdateBrand } from "./Screens/UpdateBrand.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -92,7 +92,7 @@ export default function App() {
           <Stack.Screen name="Shop" component={Shop} />
           <Stack.Screen name="Admin" component={Admin} />
           <Stack.Screen name="UpdataC" component={UpdataC} />
-          <Stack.Screen name="UpdataM" component={UpdataM} />
+          <Stack.Screen name="UpdateBrand" component={UpdateBrand} />
           <Stack.Screen name="AddC" component={AddC} />
           <Stack.Screen name="AddBrand" component={AddBrand} />
         </Stack.Navigator>

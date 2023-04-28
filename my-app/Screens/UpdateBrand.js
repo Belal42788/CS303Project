@@ -2,59 +2,94 @@ import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
-
+import * as ImagePicker from 'expo-image-picker';
+import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
 
-export const UpdataM = ({ navigation }) => {
-    const [nameModel, setnameModel] = useState();
+export const UpdateBrand = ({ navigation }) => {
+    const [BrandName, setBrandName] = useState();
 
-    const [uri, seturi] = useState();
-
-
-    const [modelOpen, setmodelOpen] = useState(false);
+    const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c");
 
 
-    const [modelValue, setmodelValue] = useState(null);
+    const [BrandOpen, setBrandOpen] = useState(false);
+
+
+    const [BrandValue, setBrandValue] = useState(null);
     
 
-    const [model, setmodel] = useState([
+    const [Brand, setBrand] = useState([
         { label: "Bmw", value: "bmw" },
         { label: "Toyota", value: "toyota" },
         { label: "Tesla", value: "tesla" },
     ]);
 
+    //to PickImage
+        const pickImage = async () => {
+            // No permissions request is necessary for launching the image library
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+            if (status !== 'granted') {
+                console.log('permission to access media library is required')
+                return;
+            }
+            const result = await ImagePicker.launchImageLibraryAsync();
+            console.log(result);
+            if (!result.canceled) {
+                return result.uri;
+            }
+        };
 
+
+    //to update Photo
+    const updatePhoto = async () => {
+        const uri = await pickImage();
+        if(BrandName==""){
+            alert("please Enter name of Brand");
+            return ;
+        }
+        const filename = BrandName;
+        const ref = firebase.storage().ref().child("images/" + filename);
+
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        const snapshot = await ref.put(blob);
+        console.log('Image uploaded successfully');
+
+        const downloadURL = await snapshot.ref.getDownloadURL();
+
+        seturi(downloadURL);
+    }
 
     const { handleSubmit, control } = useForm();
 
     return (
         <View style={styles.container}>
             <Text style={styles.paragraph}>
-                Updata Model
+                Update Brand
             </Text>
             <View style={styles.select1}>
                 <Controller
-                    name="model"
+                    name="Brand"
                     defaultValue=""
                     control={control}
                     render={({ field: { onChange, value } }) => (
-                        <View style={styles.dropdownmodel}>
+                        <View style={styles.dropdownBrand}>
                             <DropDownPicker
                                 style={styles.dropdown}
-                                open={modelOpen}
-                                value={modelValue} //modelValue
-                                items={model}
-                                setOpen={setmodelOpen}
-                                setValue={setmodelValue}
-                                setItems={setmodel}
-                                placeholder="Select Model"
+                                open={BrandOpen}
+                                value={BrandValue} //BrandValue
+                                items={Brand}
+                                setOpen={setBrandOpen}
+                                setValue={setBrandValue}
+                                setItems={setBrand}
+                                placeholder="Select Brand"
                                 searchable={true}
                                 placeholderStyle={styles.placeholderStyles}
                                 onChangeValue={() => {
                                     onChange;
-                                    console.log(modelValue);
+                                    console.log(BrandValue);
                                 }}
                                 zIndex={3000}
                                 zIndexInverse={1000}
@@ -65,30 +100,30 @@ export const UpdataM = ({ navigation }) => {
             </View>
 
 
-            <TouchableOpacity onPress={() => { console.log("sdjjaljsdf") }} style={styles.ImageStyle}>
+            <TouchableOpacity onPress={updatePhoto} style={styles.ImageStyle}>
                 <Image
                     style={styles.PhotoStyle}
                     source={{
-                        uri: require("../assets/Image/1.jpg"),
+                        uri: uri,
                     }}
-                    
+
                 />
             </TouchableOpacity>
 
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="nameModel"
+                    placeholder="Brand Name"
                     placeholderTextColor="#003f5c"
-                    value={nameModel}
-                    onChangeText={setnameModel}
+                    value={BrandName}
+                    onChangeText={setBrandName}
                 />
             </View>
 
 
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.buttonText} onPress={null}>
-                    Updata
+                    Update
                 </Text>
             </TouchableOpacity>
 
@@ -113,7 +148,7 @@ const styles = StyleSheet.create({
     placeholderStyles: {
         color: "grey",
     },
-    dropdownmodel: {
+    dropdownBrand: {
         marginHorizontal: 10,
         width: "85%",
         marginBottom: 15,
