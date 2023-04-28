@@ -148,25 +148,25 @@ const Admin = ({ navigation }) => {
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddBrand') }}>
-                    add Brand
+                    Add Brand
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdateBrand') }}>
-                    update Brand
+                    Update Brand
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddC') }}>
-                    add Catigory
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddModel') }}>
+                    Add Model
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdataC') }}>
-                    update Catigory
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdateModel') }}>
+                    Update Model
                 </Text>
             </TouchableOpacity>
 
