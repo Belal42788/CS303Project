@@ -8,7 +8,7 @@ import { firebase } from "../firebase/config/firebase-config.js";
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
 import { doc, getDoc, getFirestore, collection, setDoc } from "firebase/firestore";
-
+import BackButton from '../Components/backButton.js';
 
 
 
@@ -120,9 +120,12 @@ export const UpdateBrand = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.paragraph}>
-                Update Brand
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
+                <BackButton />
+                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
+                    Update Brand
+                </Text>
+            </View>
             <View style={styles.select1}>
                 <Controller
                     name="Brand"
