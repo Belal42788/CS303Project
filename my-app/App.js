@@ -86,6 +86,7 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
+        
         <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade }}>
           <Stack.Screen name="Main Screen" component={MainSrceen} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />

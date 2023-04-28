@@ -5,6 +5,7 @@ import Footer from "../Layouts/Footer.js";
 import { collection, addDoc, getFirestore, setDoc, doc, docRef  } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { firebase } from "../firebase/config/firebase-config.js";
+import BackButton from '../Components/backButton.js';
 
 
 
@@ -71,21 +72,22 @@ export const AddBrand = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.paragraph}>
-                Add Brand
-            </Text>
-
-
+            <View style={{ flexDirection: 'row', alignItems: 'center' ,padding: 30}}>
+                <BackButton/>
+                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold',fontSize:20,marginRight:30 }}>
+                    Add Brand
+                </Text>
+            </View>
             <TouchableOpacity onPress={updatePhoto} style={styles.ImageStyle}>
                 <Image
                     style={styles.PhotoStyle}
                     source={{
                         uri: uri,
                     }}
-
                 />
             </TouchableOpacity>
-
+            <Text>   </Text>
+            <Text>   </Text>
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
@@ -113,7 +115,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Constants.statusBarHeight,
         backgroundColor: '#ecf0f1',
-        padding: 8,
     },
     paragraph: {
         margin: 24,
@@ -164,7 +165,8 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignSelf: "center",
         justifyContent: "center",
-    }, TextInput: {
+    },
+    TextInput: {
         fontSize: "120%",
         width: "96%",
         height: "90%",
@@ -207,5 +209,6 @@ const styles = StyleSheet.create({
     ImageStyle: {
         margin: "5%",
         marginLeft: "35%"
-    }
+    },
+
 });
