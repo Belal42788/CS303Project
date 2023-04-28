@@ -58,6 +58,10 @@ export const AddBrand = ({ navigation }) => {
             await setDoc(docRef, {
 
             });
+            const docRef2 = doc(db, "BrandsList", "List");
+            await setDoc(docRef2, {
+                BrandName : BrandName.toUpperCase()
+            });
             const colRef = collection(docRef, "B")
             await setDoc(doc(colRef,  "Info"), {
                 name: BrandName,
