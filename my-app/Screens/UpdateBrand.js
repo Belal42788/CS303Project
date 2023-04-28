@@ -7,6 +7,10 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
+import { doc, getDoc ,getFirestore} from "firebase/firestore";
+
+
+
 
 export const UpdateBrand = ({ navigation }) => {
     const [BrandName, setBrandName] = useState();
@@ -18,7 +22,7 @@ export const UpdateBrand = ({ navigation }) => {
 
 
     const [BrandValue, setBrandValue] = useState(null);
-    
+
 
     const [Brand, setBrand] = useState([
         { label: "Bmw", value: "bmw" },
@@ -26,28 +30,42 @@ export const UpdateBrand = ({ navigation }) => {
         { label: "Tesla", value: "tesla" },
     ]);
 
+    const update = async() => {
+        const db = getFirestore();
+        const docRef = doc(db, "Brands");
+        console.log("Document data:", docRef);
+        // const docSnap = await getDoc(docRef);
+
+        // if (docSnap.exists()) {
+        //     console.log("Document data:", docSnap);
+        // } else {
+        //     // docSnap.data() will be undefined in this case
+        //     console.log("No such document!");
+        // }
+    }
+
     //to PickImage
-        const pickImage = async () => {
-            // No permissions request is necessary for launching the image library
-            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-            if (status !== 'granted') {
-                console.log('permission to access media library is required')
-                return;
-            }
-            const result = await ImagePicker.launchImageLibraryAsync();
-            console.log(result);
-            if (!result.canceled) {
-                return result.uri;
-            }
-        };
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+            console.log('permission to access media library is required')
+            return;
+        }
+        const result = await ImagePicker.launchImageLibraryAsync();
+        console.log(result);
+        if (!result.canceled) {
+            return result.uri;
+        }
+    };
 
 
     //to update Photo
     const updatePhoto = async () => {
         const uri = await pickImage();
-        if(BrandName==""){
+        if (BrandName == "") {
             alert("please Enter name of Brand");
-            return ;
+            return;
         }
         const filename = BrandName;
         const ref = firebase.storage().ref().child("images/" + filename);
@@ -122,7 +140,7 @@ export const UpdateBrand = ({ navigation }) => {
 
 
             <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.buttonText} onPress={null}>
+                <Text style={styles.buttonText} onPress={update}>
                     Update
                 </Text>
             </TouchableOpacity>
@@ -188,7 +206,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignSelf: "center",
         justifyContent: "center",
-    }, 
+    },
     TextInput: {
         fontSize: "120%",
         width: "96%",
@@ -229,8 +247,8 @@ const styles = StyleSheet.create({
         borderRadius: "50%",
         // marginTop: 0,
     },
-    ImageStyle:{
-        margin:"5%",
-        marginLeft:"35%"
+    ImageStyle: {
+        margin: "5%",
+        marginLeft: "35%"
     }
 });
