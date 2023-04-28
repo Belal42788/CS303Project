@@ -11,7 +11,7 @@ import { firebase } from "../firebase/config/firebase-config.js";
 export const AddBrand = ({ navigation }) => {
     const [BrandName, setBrandName] = useState("");
 
-    const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c");
+    const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/uploadcar.png?alt=media&token=d89fbcd8-a45b-4f0e-8f77-8c649a08242a");
 
     //to PickImage
     const pickImage = async () => {
