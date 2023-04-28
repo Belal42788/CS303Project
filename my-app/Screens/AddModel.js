@@ -2,13 +2,14 @@ import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
+import BackButton from '../Components/backButton.js';
 
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
 
-export const AddC = ({ navigation }) => {
-    const [nameProduct, setnameProduct] = useState();
+export const AddModel = ({ navigation }) => {
+    const [modelName, setModelName] = useState();
     const [price, setprice] = useState();
     const [mount, setmount] = useState();
     const [discription, setdiscription] = useState();
@@ -32,9 +33,12 @@ export const AddC = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.paragraph}>
-                Add Catigory
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' ,padding: 30}}>
+                <BackButton/>
+                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold',fontSize:20,marginRight:30 }}>
+                    Add Model
+                </Text>
+            </View>
             <View style={styles.select1}>
                 <Controller
                     name="model"
@@ -78,16 +82,16 @@ export const AddC = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="nameProduct"
+                    placeholder="Model Name"
                     placeholderTextColor="#003f5c"
-                    value={nameProduct}
-                    onChangeText={setnameProduct}
+                    value={modelName}
+                    onChangeText={setModelName}
                 />
             </View>
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="price"
+                    placeholder="Price"
                     placeholderTextColor="#003f5c"
                     value={price}
                     onChangeText={setprice}
@@ -96,7 +100,7 @@ export const AddC = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="mount"
+                    placeholder="Mount"
                     placeholderTextColor="#003f5c"
                     value={mount}
                     onChangeText={setmount}
@@ -105,7 +109,7 @@ export const AddC = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="discription"
+                    placeholder="Discription"
                     placeholderTextColor="#003f5c"
                     value={discription}
                     onChangeText={setdiscription}
@@ -128,7 +132,6 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Constants.statusBarHeight,
         backgroundColor: '#ecf0f1',
-        padding: 8,
     },
     paragraph: {
         margin: 24,
