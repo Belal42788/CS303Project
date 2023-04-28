@@ -77,7 +77,8 @@ function MainScreen({ navigation }) {
               <Image resizeMode="contain" resizeMethod="scale" source={o.img} style={styles.image} />
               <View style={styles.info}>
                 {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
-                <Text style={styles.price}>💳{o.rent}$/hour </Text>
+                {/* <Text style={styles.price}>💳{o.rent}$/hour </Text> */}
+                  <Text style={styles.price}><Image  resizeMode="contain" resizeMethod="scale" source={ require('../assets/animation_640_lh12v8mb.gif')} style={styles.pay}/>{o.rent}$/hour </Text>
               </View>
             </TouchableOpacity>
           );
@@ -141,10 +142,14 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     gap: 15,
   },
+pay:{
+  width:'20%',
+  height:'auto'
+},
 
   marks: {
-    marginTop: 50,
-    marginBottom: 0,
+    marginTop: 30,
+    marginBottom: 10,
     // marginLeft:"-20%",
     display: "flex",
     flexWrap: "wrap",
@@ -172,8 +177,8 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   products: {
-    marginTop: "10%",
-    marginBottom: "10%",
+    marginTop: "4%",
+    marginBottom: "4%",
     display: "flex",
     flexWrap: "wrap",
     width: "100%",
@@ -241,7 +246,7 @@ const styles = StyleSheet.create({
   price: {
     position: 'absolute',
     bottom: -230,
-    fontSize: "100%",
+    fontSize: 20,
     fontWeight: "700",
     color: "black",
     fontFamily: "cairo",
@@ -260,7 +265,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   TextModel: {
-    marginTop: 10,
+    marginTop: 5,
     color: "black",
     fontWeight: "bold",
     textTransform: "capitalize",
