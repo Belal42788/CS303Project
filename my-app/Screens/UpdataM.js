@@ -14,7 +14,7 @@ export const UpdataM = ({ navigation }) => {
 
 
     const [modelOpen, setmodelOpen] = useState(false);
-7
+
 
     const [modelValue, setmodelValue] = useState(null);
     
@@ -147,13 +147,14 @@ const styles = StyleSheet.create({
         width: "90%",
         height: "7%",
         fontFamily: 'cairo',
-        marginBottom: "5px",
+        marginBottom: 5,
         alignItems: "center",
         textAlign: "left",
         alignContent: "center",
         alignSelf: "center",
         justifyContent: "center",
-    }, TextInput: {
+    }, 
+    TextInput: {
         fontSize: "120%",
         width: "96%",
         height: "90%",

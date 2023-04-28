@@ -8,8 +8,8 @@ import { firebase } from "../firebase/config/firebase-config.js";
 
 
 
-export const AddM = ({ navigation }) => {
-    const [nameModel, setnameModel] = useState("");
+export const AddBrand = ({ navigation }) => {
+    const [BrandName, setBrandName] = useState("");
 
     const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c");
 
@@ -31,11 +31,11 @@ export const AddM = ({ navigation }) => {
     //to update Photo
     const updatePhoto = async () => {
         const uri = await pickImage();
-        if(nameModel==""){
-            alert("please Enter name of Model");
+        if(BrandName==""){
+            alert("please Enter name of Brand");
             return ;
         }
-        const filename = nameModel;
+        const filename = BrandName;
         const ref = firebase.storage().ref().child("images/" + filename);
 
         const response = await fetch(uri);
@@ -48,31 +48,31 @@ export const AddM = ({ navigation }) => {
         seturi(downloadURL);
     }
 
-    const addM = async () => {
+    const AddBrand = async () => {
         if(uri=="https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c"){
             alert("Please choose Image");
         }
-        if(nameModel!=""){
+        if(BrandName!=""){
             const db = getFirestore();
-            const docRef = doc(db, "Models", nameModel.toUpperCase());
+            const docRef = doc(db, "Brands", BrandName.toUpperCase());
             await setDoc(docRef, {
 
             });
-            const colRef = collection(docRef, "M")
+            const colRef = collection(docRef, "B")
             await setDoc(doc(colRef,  "Info"), {
-                name: nameModel,
+                name: BrandName,
                 uri: uri
             });
             alert("done");
         }else{
-            alert("please Enter name of Model");
+            alert("please Enter name of Brand");
         }
     };
 
     return (
         <View style={styles.container}>
             <Text style={styles.paragraph}>
-                Add Model
+                Add Brand
             </Text>
 
 
@@ -89,15 +89,15 @@ export const AddM = ({ navigation }) => {
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
-                    placeholder="nameModel"
+                    placeholder="Brand Name"
                     placeholderTextColor="#003f5c"
-                    value={nameModel}
-                    onChangeText={setnameModel}
+                    value={BrandName}
+                    onChangeText={setBrandName}
                 />
             </View>
 
 
-            <TouchableOpacity style={styles.loginBtn} onPress={addM}>
+            <TouchableOpacity style={styles.loginBtn} onPress={AddBrand}>
                 <Text style={styles.buttonText} >
                     Add
                 </Text>
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     placeholderStyles: {
         color: "grey",
     },
-    dropdownmodel: {
+    dropdownBrand: {
         marginHorizontal: 10,
         width: "85%",
         marginBottom: 15,

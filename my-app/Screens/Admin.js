@@ -147,14 +147,14 @@ const Admin = ({ navigation }) => {
 
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddM') }}>
-                    add Model
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddBrand') }}>
+                    add Brand
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdataM') }}>
-                    update Model
+                    update Brand
                 </Text>
             </TouchableOpacity>
 

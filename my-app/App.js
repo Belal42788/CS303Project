@@ -16,7 +16,7 @@ import Shop from "./Screens/Shop.js";
 import Admin from "./Screens/Admin.js";
 import { UpdataC } from "./Screens/UpdataC.js";
 import { AddC } from "./Screens/AddC.js";
-import { AddM } from "./Screens/AddM.js";
+import { AddBrand } from "./Screens/AddBrand.js";
 import { UpdataM } from "./Screens/UpdataM.js";
 
 const Stack = createNativeStackNavigator();
@@ -94,7 +94,7 @@ export default function App() {
           <Stack.Screen name="UpdataC" component={UpdataC} />
           <Stack.Screen name="UpdataM" component={UpdataM} />
           <Stack.Screen name="AddC" component={AddC} />
-          <Stack.Screen name="AddM" component={AddM} />
+          <Stack.Screen name="AddBrand" component={AddBrand} />
         </Stack.Navigator>
       </NavigationContainer>
     );
