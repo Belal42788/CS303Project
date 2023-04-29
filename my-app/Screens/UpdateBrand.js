@@ -13,7 +13,7 @@ import BackButton from '../Components/backButton.js';
 
 
 export const UpdateBrand = ({ navigation }) => {
-    const [BrandName, setBrandName] = useState();
+    const [BrandName, setBrandName] = useState("");
 
     const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/uploadcar.png?alt=media&token=d89fbcd8-a45b-4f0e-8f77-8c649a08242a");
 
@@ -21,8 +21,8 @@ export const UpdateBrand = ({ navigation }) => {
     const [BrandOpen, setBrandOpen] = useState(false);
 
 
-    const [BrandValue, setBrandValue] = useState(null);
-    const [BrandValueOpetion, setBrandValueOpetion] = useState(null);
+    const [BrandValue, setBrandValue] = useState("");
+    const [BrandValueOpetion, setBrandValueOpetion] = useState("");
 
 
     const [Brand, setBrand] = useState([

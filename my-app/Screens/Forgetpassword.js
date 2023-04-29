@@ -117,8 +117,9 @@ const styles = StyleSheet.create({
     textAlign: "left",
     color: "black",
     fontFamily:'cairo',
-    fontWeight:"800",
-    
+    fontWeight:"600",
+    outlineStyle: 'none',
+    borderColor: "#fff"
   },
 
   inputView: {
@@ -126,11 +127,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 2.5,
     borderRadius: 15,
-    width: "90%",
-    height: "7%",
     fontFamily:'cairo',
-    marginBottom: "5%",
-    marginTop: "50%",
     alignItems: "center",
     textAlign: "left",
     alignContent:"center",

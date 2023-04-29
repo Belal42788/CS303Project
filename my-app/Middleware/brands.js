@@ -1,5 +1,5 @@
 import { initializeAuth } from "firebase/auth";
-import mark1 from "../assets/Image/Exclusive Luxury Car  (Instagram Post15edit).jpg";
+import Brandcar from "../assets/Image/Brand.png";
 import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
@@ -9,13 +9,33 @@ const Brands = ({ navigation }) => {
   const [BrandsArray, setBrandsArray] = useState([
     {
       id: 1,
-      img: mark1,
-      name: 'Tesla',
+      img: Brandcar,
+      name: '',
     },
     {
       id: 2,
-      img: mark1,
-      name: 'Mazda',
+      img: Brandcar,
+      name: '',
+    },
+    {
+      id: 3,
+      img: Brandcar,
+      name: '',
+    },
+    {
+      id: 4,
+      img: Brandcar,
+      name: '',
+    },
+    {
+      id: 5,
+      img: Brandcar,
+      name: '',
+    },
+    {
+      id: 6,
+      img: Brandcar,
+      name: '',
     },
   ]);
 

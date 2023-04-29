@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import cardArray from "../Middleware/carcard.js";
-import  Brands  from "../Middleware/Brands.js";
+import Brands from "../Middleware/Brands.js";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
 import {
@@ -44,7 +44,7 @@ function MainScreen({ navigation }) {
   const Edit = () => {
     return (
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} onPress={()=>{navigation.navigate('Admin')}}>
+        <Text style={styles.buttonText} onPress={() => { navigation.navigate('Admin') }}>
           Edit
         </Text>
       </TouchableOpacity>
@@ -53,18 +53,6 @@ function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-      {/* <View style={styles.marks}>
-        <ScrollView horizontal={true} contentContainerStyle={styles.marksscroll} >
-          {BrandsArray.map((m) => {
-            return (
-              <TouchableOpacity key={m.id}>
-                <Image source={m.img} style={styles.marksicons} />
-                <Text style={styles.markstext}>{m.name}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
-      </View> */}
       <Brands />
       {
         Admin ? Edit() : console.log("not Admin")
@@ -79,7 +67,7 @@ function MainScreen({ navigation }) {
               <View style={styles.info}>
                 {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
                 {/* <Text style={styles.price}>💳{o.rent}$/hour </Text> */}
-                  <Text style={styles.price}><Image  resizeMode="contain" resizeMethod="scale" source={ require('../assets/ezgif.com-gif-maker (1).gif')} style={styles.pay}/>{o.rent}$/hour </Text>
+                <Text style={styles.price}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/ezgif.com-gif-maker (1).gif')} style={styles.pay} />{o.rent}$/hour </Text>
               </View>
             </TouchableOpacity>
           );
@@ -143,10 +131,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     gap: 15,
   },
-pay:{
-  width:'20%',
-  height:'auto'
-},
+  pay: {
+    width: '20%',
+    height: 'auto'
+  },
 
   marks: {
     marginTop: 30,
@@ -275,27 +263,27 @@ pay:{
     fontFamily: "cairo",
   },
   button: {
-      width: "70%",
-      borderRadius: 18,
-      height: 40,
-      alignItems: "center",
-      alignContent: "center",
-      justifyContent: "center",
-      borderStyle: "solid",
-      borderWidth: 2,
-      borderColor: "black",
-      display: "flex",
-      marginTop: 3,
-      backgroundColor: "#ce9e04",
-      marginLeft:"15%"
+    width: "70%",
+    borderRadius: 18,
+    height: 40,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: "black",
+    display: "flex",
+    marginTop: 3,
+    backgroundColor: "#ce9e04",
+    marginLeft: "15%"
   },
   buttonText: {
-      color: "black",
-      fontWeight: "bold",
-      textTransform: "capitalize",
-      fontSize: 20,
-      textAlign: "center",
-      fontFamily: "cairo",
+    color: "black",
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    fontSize: 20,
+    textAlign: "center",
+    fontFamily: "cairo",
   },
 });
 export default MainScreen;

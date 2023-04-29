@@ -62,13 +62,19 @@ export const AddBrand = ({ navigation }) => {
             const docRef2 = doc(db, "BrandsList", "List");
             const docSnap = await getDoc(docRef2);
             let arr;
-            let arr2=[];
+            let arr2 = [];
             arr = docSnap._document.data.value.mapValue.fields.list.mapValue.fields.BrandName.arrayValue.values;
             arr.push({
                 stringValue: BrandName.toUpperCase()
             });
             for (let index = 0; index < arr.length; index++) {
                 arr2.push(arr[index].stringValue);
+            }
+            for (let index = 0; index < (arr.length - 1); index++) {
+                if (arr2[i] == BrandName.toUpperCase()) {
+                    alert("This Brand is alredy exist.");
+                    return;
+                }
             }
             console.log(arr2);
             await setDoc(docRef2, { list: { BrandName: arr2 } });

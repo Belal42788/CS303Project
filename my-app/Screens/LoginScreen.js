@@ -109,7 +109,7 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <Text>   </Text>
 
-      
+
 
       <View style={styles.smallloginicon}>
         <TouchableOpacity>
@@ -145,7 +145,7 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <View style={styles.smallView}>
         <Text>   </Text>
-      <Text>   </Text>
+        <Text>   </Text>
       </View>
     </ImageBackground>
   );
@@ -190,6 +190,8 @@ const styles = StyleSheet.create({
     color: "black",
     fontFamily: 'cairo',
     fontWeight: "700",
+    outlineStyle: 'none',
+    borderColor: "#fff"
   },
   forgot_button: {
     width: "100%",
@@ -258,11 +260,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    marginBottom:'5%',
-  
+    marginBottom: '5%',
 
-},
-logoText: {
+
+  },
+  logoText: {
     color: "white",
     fontSize: "50px",
     fontWeight: "600",
@@ -271,10 +273,10 @@ logoText: {
     alignSelf: "center",
     marginTop: "20%",
 
-},
-smallView: {
+  },
+  smallView: {
     paddingBottom: '5%'
-},
+  },
 });
 
 export default LoginScreen;

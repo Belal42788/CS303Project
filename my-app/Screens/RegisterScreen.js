@@ -17,7 +17,7 @@ import {
     Alert, ImageBackground
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
-import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc ,deleteDoc} from "firebase/firestore";
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -95,7 +95,7 @@ const RegisterScreen = ({ navigation }) => {
                         displayName: firstName + " " + lastName,
                         email: email,
                         password: password,
-                        photoURL:"https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c"
+                        photoURL: "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c"
                     })
                         .then(() => {
                             console.log("user profile added");
@@ -297,6 +297,8 @@ const styles = StyleSheet.create({
         color: "black",
         fontFamily: 'cairo',
         fontWeight: "700",
+        outlineStyle: 'none',
+        borderColor: "#fff"
     },
     RegBtn: {
 
