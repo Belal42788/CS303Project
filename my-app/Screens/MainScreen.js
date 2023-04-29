@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
 pay:{
-  width:'30%',
+  width:'20%',
   height:'auto'
 },
 
@@ -247,7 +247,7 @@ pay:{
   price: {
     position: 'absolute',
     bottom: -230,
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "700",
     color: "black",
     fontFamily: "cairo",
