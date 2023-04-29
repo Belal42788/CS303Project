@@ -78,7 +78,7 @@ function MainScreen({ navigation }) {
               <View style={styles.info}>
                 {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
                 {/* <Text style={styles.price}>💳{o.rent}$/hour </Text> */}
-                  <Text style={styles.price}><Image  resizeMode="contain" resizeMethod="scale" source={ require('../assets/animation_640_lh12v8mb.gif')} style={styles.pay}/>{o.rent}$/hour </Text>
+                  <Text style={styles.price}><Image  resizeMode="contain" resizeMethod="scale" source={ require('../assets/animation_640_lh1avswy.gif')} style={styles.pay}/>{o.rent}$/hour </Text>
               </View>
             </TouchableOpacity>
           );
