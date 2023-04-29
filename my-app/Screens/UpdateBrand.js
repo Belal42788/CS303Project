@@ -7,8 +7,8 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
-import { doc, getDoc, getFirestore, collection } from "firebase/firestore";
-
+import { doc, getDoc, getFirestore, collection, setDoc } from "firebase/firestore";
+import BackButton from '../Components/backButton.js';
 
 
 
@@ -64,6 +64,22 @@ export const UpdateBrand = ({ navigation }) => {
         }
     }
 
+    const update = async () => {
+        if (BrandValue != null) {
+            const db = getFirestore();
+            const docRef = doc(db, "Brands", BrandValue.toUpperCase());
+            const colRef = collection(docRef, "B");
+            const DocRef = doc(colRef, "Info");
+            await setDoc(DocRef, {
+                name: BrandName,
+                uri: uri
+            });
+            alert("done");
+        } else {
+            alert('please choose Brand');
+        }
+    }
+
     //to PickImage
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -104,9 +120,12 @@ export const UpdateBrand = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.paragraph}>
-                Update Brand
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
+                <BackButton />
+                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
+                    Update Brand
+                </Text>
+            </View>
             <View style={styles.select1}>
                 <Controller
                     name="Brand"
@@ -163,7 +182,7 @@ export const UpdateBrand = ({ navigation }) => {
 
 
             <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.buttonText} onPress={null}>
+                <Text style={styles.buttonText} onPress={update}>
                     Update
                 </Text>
             </TouchableOpacity>
