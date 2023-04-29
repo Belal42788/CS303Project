@@ -79,7 +79,7 @@ function MainScreen({ navigation }) {
               <View style={styles.info}>
                 {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
                 {/* <Text style={styles.price}>💳{o.rent}$/hour </Text> */}
-                  <Text style={styles.price}><Image  resizeMode="contain" resizeMethod="scale" source={ require('../assets/animation_640_lh1avswy.gif')} style={styles.pay}/>{o.rent}$/hour </Text>
+                  <Text style={styles.price}><Image  resizeMode="contain" resizeMethod="scale" source={ require('../assets/ezgif.com-gif-maker (1).gif')} style={styles.pay}/>{o.rent}$/hour </Text>
               </View>
             </TouchableOpacity>
           );
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
 pay:{
-  width:'20%',
+  width:'30%',
   height:'auto'
 },
 
