@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "7%",
     fontFamily: 'cairo',
-    marginBottom: "5px",
+    marginBottom: 5,
     alignItems: "center",
     textAlign: "left",
     alignContent: "center",

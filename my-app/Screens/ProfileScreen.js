@@ -261,7 +261,7 @@ const ProfileScreen = ({ navigation }) => {
 
 
     return (
-        
+
         <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
             <StatusBar style="auto" />
 
@@ -275,27 +275,41 @@ const ProfileScreen = ({ navigation }) => {
             {
                 firstNameMode ?
                     (
-                        <><View>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="First Name"
-                                value={firstName}
-                                onChangeText={setFirstName}
-                            />
-                        </View>
-                            <TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={UpdateFirstName}>
-                                    Updata First Name
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> First Name: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <TextInput
+                                        style={styles.textFieldStyle}
+                                        placeholder=" New First Name"
+                                        placeholderTextColor="#003f5c"
+                                        onChangeText={(firstName) => setFirstName(firstName)}
+                                        value={firstName}
+                                    />
+                                </View>
+                                <TouchableOpacity onPress={UpdateFirstName} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/saveButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     ) : (
-                        <><View>
-                            <Text style={styles.textStyle}> First Name, {firstName}! </Text>
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={handleFirstNameMode}>
-                                    Updata First Name
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> First Name: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <Text style={styles.textFieldStyle}>{firstName}Ahmed !</Text>
+                                </View>
+                                <TouchableOpacity onPress={handleFirstNameMode} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/editButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     )
             }
 
@@ -303,54 +317,88 @@ const ProfileScreen = ({ navigation }) => {
             {
                 lastNameMode ?
                     (
-                        <><View>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Last Name"
-                                value={lastName} />
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={UpdateLastName}>
-                                    Updata Last Name
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> Last Name: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <TextInput
+                                        style={styles.textFieldStyle}
+                                        placeholder=" New Last Name"
+                                        placeholderTextColor="#003f5c"
+                                        onChangeText={(lastName) => setLastName(lastName)}
+                                        value={lastName}
+                                    />
+                                </View>
+                                <TouchableOpacity onPress={UpdateLastName} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/saveButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     ) : (
-                        <><View>
-                            <Text style={styles.textStyle}> Last Name, {lastName}! </Text>
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={handleLastNameMode}>
-                                    Updata Last Name
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> Last Name: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <Text style={styles.textFieldStyle}>{lastName}Ibrahem!</Text>
+                                </View>
+                                <TouchableOpacity onPress={handleLastNameMode} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/editButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     )
             }
 
-
-            <View>
-                <Text style={styles.textStyle}> Your Email is: {email} </Text>
+            <View style={styles.row}>
+                <Text style={styles.label}> Email: </Text>
+                <View style={styles.textFieldBox}>
+                    <Text style={styles.textFieldStyle}>{email}altoraby95@gmail.com</Text>
+                </View>
             </View>
 
             {
                 BirthDateMode ?
                     (
-                        <><View>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Birth Date"
-                                onChangeText={(BirthDate) => setBirthDate(BirthDate)}
-                                value={BirthDate} />
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={UpdateBirthDate}>
-                                    Updata Birth Date
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> Birth Date: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <TextInput
+                                        style={styles.textFieldStyle}
+                                        placeholder=" New Birth Date"
+                                        placeholderTextColor="#003f5c"
+                                        onChangeText={(BirthDate) => setBirthDate(BirthDate)}
+                                        value={BirthDate}
+                                    />
+                                </View>
+                                <TouchableOpacity onPress={UpdateBirthDate} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/saveButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     ) : (
-                        <><View>
-                            <Text style={styles.textStyle}> Birth Date is: {BirthDate} </Text>
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={handleBirthDateMode}>
-                                    Updata Birth Date
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> Birth Date: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <Text style={styles.textFieldStyle}>25/9/2002{BirthDate} </Text>
+                                </View>
+                                <TouchableOpacity onPress={handleBirthDateMode} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/editButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View></>
                     )
             }
 
@@ -358,53 +406,67 @@ const ProfileScreen = ({ navigation }) => {
             {
                 phoneMode ?
                     (
-                        <><View>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Phone Number"
-                                onChangeText={(phone) => setPhone(phone)}
-                                value={phone} />
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={updatePhoneNumber}>
-                                    Updata Phone Number
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> Phone Number: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <TextInput
+                                        style={styles.textFieldStyle}
+                                        placeholder=" New Phone Number"
+                                        placeholderTextColor="#003f5c"
+                                        onChangeText={(phone) => setPhone(phone)}
+                                        value={phone}
+                                    />
+                                </View>
+                                <TouchableOpacity onPress={UpdatePhone} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/saveButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     ) : (
-                        <><View>
-                            <Text style={styles.textStyle}> Phone Number is: {phone} </Text>
-                        </View><TouchableOpacity>
-                                <Text style={styles.buttonText} onPress={handlePhoneMode}>
-                                    Updata Phone Number
-                                </Text>
-                            </TouchableOpacity></>
+                        <>
+                            <View style={styles.row}>
+                                <Text style={styles.label}> Phone Number: </Text>
+                                <View style={styles.textFieldBox}>
+                                    <Text style={styles.textFieldStyle}>{phone}01115584379</Text>
+                                </View>
+                                <TouchableOpacity onPress={handlePhoneMode} style={styles.editButton}>
+                                    <Image
+                                        source={require("../assets/Image/editButton.png")}
+                                        style={styles.editImage}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </>
                     )
             }
 
 
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={updatePhoto}>
-                    Updata Photo
+            <TouchableOpacity style={styles.button} onPress={updatePhoto}>
+                <Text style={styles.buttonText}>
+                    Update Photo
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={SignOut}>
+            <TouchableOpacity style={styles.button} onPress={SignOut}>
+                <Text style={styles.buttonText} >
                     Sign Out
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={DeleteUser}>
+            <TouchableOpacity style={styles.button} onPress={DeleteUser}>
+                <Text style={styles.buttonText}>
                     Delete Email
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={ResetPassword}>
+            <TouchableOpacity style={styles.button} onPress={ResetPassword}>
+                <Text style={styles.buttonText} >
                     reset password
                 </Text>
             </TouchableOpacity>
-
-
             <Footer navigation={navigation} />
         </ImageBackground>
 
@@ -422,19 +484,12 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     PhotoStyle: {
-        width: "100px",
-        height: "100px",
-        // backgroundColor:"blue",
-        borderRightWidth: "0px",
-        // borderColor:"blue",
+        width: 120,
+        height: 120,
+        borderColor: "black",
         borderRadius: "50%",
-        // marginTop: 0,
-    },
-    textStyle: {
-        fontSize: "15px",
-        fontWeight: "bold",
-        color: '#d8d8d8',
-        fontFamily: 'cairo'
+        marginBottom: 25,
+        borderWidth: 1.5,
     },
     button: {
         width: "70%",
@@ -458,5 +513,57 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontFamily: 'cairo'
     },
+    row: {
+        // flex:1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        // paddingHorizontal: 10,
+        // paddingVertical: 5,
+    },
+    label: {
+        fontSize: "15px",
+        fontWeight: "bold",
+        color: '#d8d8d8',
+        fontFamily: 'cairo',
+        // marginRight: 10,
+    },
+    textFieldBox: {
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 1.5,
+        borderRadius: 7,
+        width: 170,
+        height: 30,
+        fontFamily: 'cairo',
+        marginBottom: 5,
+        alignItems: "center",
+        textAlign: "left",
+        alignContent: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    textFieldStyle: {
+        fontSize: 15,
+        color: 'black',
+        fontFamily: 'cairo',
+        textAlign: "left",
+        color: "black",
+        fontFamily: 'cairo',
+        fontWeight: "700",
+        outlineStyle: 'none',
+        borderColor: "#fff",
+        paddingLeft: 5
+    },
+    editButton: {
+        backgroundColor: 'white',
+        borderRadius: 5,
+        marginLeft: 5,
+    },
+    editImage: {
+        width: 30,
+        height: 30,
+        borderRadius: 10,
+    }
 });
 export default ProfileScreen;
