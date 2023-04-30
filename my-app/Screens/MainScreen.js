@@ -57,7 +57,7 @@ function MainScreen({ navigation }) {
       {
         Admin ? Edit() : console.log("not Admin")
       }
-      <Text style={styles.TextModel}>Model</Text>
+      <Text style={styles.TextModel}>Recently Added</Text>
       <View style={styles.products}>
         {cardArray.map((o) => {
           return (
