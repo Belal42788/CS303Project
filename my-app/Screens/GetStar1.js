@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         width: "100%",
         textAlign: "center",
-        opacity: "80%",
+        opacity: "95%",
     },
     screenBottomText: {
         color: 'white',
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         fontFamily: 'cairo',
         lineHeight: "1.2",
         width: "100%",
-        opacity: "90%",
+        opacity: "88%",
         textAlign: "center",
     },
     signInButton: {

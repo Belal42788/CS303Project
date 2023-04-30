@@ -43,6 +43,7 @@ function GetSart2({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate("Get Start1")}>
                 <Text style={styles.backButton}>Back</Text>
             </TouchableOpacity>
+            <Text>   </Text>
         </ImageBackground >
     )
 }
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
         width: "60%",
         borderRadius: 15,
         // height: "8%",
-        marginBottom: "4%",
+        marginBottom: "6%",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignContent: "center",
         // marginTop: "2%",
-        // marginBottom: -35
+        marginBottom: -3
     },
     upperbuttons: {
         borderStyle: "solid",
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         fontFamily: 'cairo',
-        opacity: "90%"
+        opacity: "88%"
     },
     backButton: {
         marginBottom: "20%",
