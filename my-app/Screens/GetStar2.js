@@ -15,28 +15,31 @@ function GetSart2({ navigation }) {
     return (
 
         <ImageBackground source={require('../assets/Image/Exclusive Luxury Car (Instagram Post15editblur).jpg')} style={styles.container}>
-             <View style={styles.logocont}>
+            <View style={styles.logocont}>
                 <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
             </View>
-            <View style={styles.buttonscontain}>
-            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
-            <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
-            <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
-            </View>
+
             <View style={styles.topScreenView}>
-              <Text style={styles.screenText}>
-                With just a few taps, choose your preferred car from our well maintained fleet and book it instantly.
-              </Text>
+                <Text style={styles.screenText}>
+                    With just a few taps, choose your preferred car from our well maintained fleet and book it instantly.
+                </Text>
             </View>
             {/* <View style={styles.bottomScreenView}>
             <Text style={styles.screenText}>
                 Just choose the brand and the model you want then go for your RIDE!
-              </Text>
+            </Text>
             </View> */}
+            <Text>   </Text>
+            <View style={styles.buttonscontain}>
+                <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
+                <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
+                <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
+            </View>
+            <Text>   </Text>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Get Start3')} >
                 <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
-            
+
             <TouchableOpacity onPress={() => navigation.navigate("Get Start1")}>
                 <Text style={styles.backButton}>Back</Text>
             </TouchableOpacity>
@@ -57,25 +60,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         width: "100%",
-        marginBottom:"1%",
-        marginTop:"1%",
+        marginBottom: "1%",
+        marginTop: "1%",
     },
 
     topScreenView: {
-        flex:1,
-        alignItems:'flex-start',
-        alignContent:"flex-start",
-        alignSelf :"flex-start",
-        marginBottom:'40%',
-        textAlign:'center'
+        flex: 1,
+        alignItems: 'flex-start',
+        alignContent: "flex-start",
+        alignSelf: "flex-start",
+        marginBottom: '40%',
+        textAlign: 'center'
 
     },
 
     bottomScreenView: {
-        flex:1,
-        alignItems:'center',
-        textAlign:'center',
-        width:'80%',
+        flex: 1,
+        alignItems: 'center',
+        textAlign: 'center',
+        width: '80%',
         // marginBottom: '80%',
         paddingTop: '10%'
     },
@@ -110,68 +113,62 @@ const styles = StyleSheet.create({
         alignSelf: "center",
 
     },
-    buttonscontain:{
-        display:"flex",
-        flexDirection:"row",
+    buttonscontain: {
+        flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        marginTop:"2%",
-        marginBottom: "50%",
-        marginLeft:"5%",
-        
-       },
-       upperbuttons :{
-           width: "200%",
-           height: "500%",
-           borderRadius:"100%",
-           backgroundColor: "white",
-           borderStyle: "solid",
-           borderWidth: 2,
-           borderColor: "black",
-          marginTop:"0",
-          marginLeft:"10%",
-          
-       },
-       specialbutton:{
-           width: "200%",
-           height: "500%",
-           borderRadius:"100%",
-           backgroundColor: "#ce9e04",
-           borderStyle: "solid",
-           borderWidth: 2,
-           borderColor: "black",
-           marginBottom: "1%",
-          marginTop:"4%",
-          marginLeft:"10%",
-       },
+        // marginTop: "2%",
+        // marginBottom: -35
+    },
+    upperbuttons: {
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: "black",
+        padding: 0.25,
+        width: 15,
+        height: 15,
+        borderRadius: 10,
+        backgroundColor: "#d8d8d8",
+        marginHorizontal: 5,
+    },
+    specialbutton: {
+        backgroundColor: "#ce9e04",
+        borderStyle: "solid",
+        borderWidth: 1,
+        borderColor: "black",
+        width: 17,
+        height: 17,
+        borderRadius: 12.5,
+        marginHorizontal: 5,
+    },
     logoText: {
         color: "white",
         fontSize: "20px",
         fontWeight: "600",
         fontFamily: 'prompt',
-        justifyContent:'center',
+        justifyContent: 'center',
         alignSelf: "center",
         marginTop: "1%",
     },
     screenText: {
-        color:'white',
-        fontSize:'25px',
-        fontWeight:'400',
+        color: 'white',
+        fontSize: '25px',
+        fontWeight: '400',
         // marginTop:'5%',
-        alignContent:'center',
-        alignItems:'center',
-        textAlign:'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
         fontFamily: 'cairo',
-        opacity :"80%"
+        opacity: "90%"
     },
     backButton: {
         marginBottom: "20%",
         textDecorationLine: "underline",
         fontSize: 20,
-        color:'#d8d8d8',
+        color: '#d8d8d8',
         fontFamily: 'cairo',
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
 });
 
