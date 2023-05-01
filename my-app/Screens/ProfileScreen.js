@@ -300,7 +300,7 @@ const ProfileScreen = ({ navigation }) => {
                             <View style={styles.row}>
                                 <Text style={styles.label}> First Name: </Text>
                                 <View style={styles.textFieldBox}>
-                                    <Text style={styles.textFieldStyle}>{firstName}!</Text>
+                                    <Text style={styles.textFieldStyle}>{firstName}</Text>
                                 </View>
                                 <TouchableOpacity onPress={handleFirstNameMode} style={styles.editButton}>
                                     <Image
@@ -342,7 +342,7 @@ const ProfileScreen = ({ navigation }) => {
                             <View style={styles.row}>
                                 <Text style={styles.label}> Last Name: </Text>
                                 <View style={styles.textFieldBox}>
-                                    <Text style={styles.textFieldStyle}>{lastName}!</Text>
+                                    <Text style={styles.textFieldStyle}>{lastName}</Text>
                                 </View>
                                 <TouchableOpacity onPress={handleLastNameMode} style={styles.editButton}>
                                     <Image
