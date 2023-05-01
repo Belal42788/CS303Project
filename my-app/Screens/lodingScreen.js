@@ -8,8 +8,6 @@ import {
     TextInput, ImageBackground 
 } from "react-native";
 import React, { useState , useEffect } from "react";
-
-
 export default function LodingScreen({ navigation }) {
     useEffect(()=>{
         const timer = setTimeout(()=>{

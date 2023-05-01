@@ -18,6 +18,7 @@ import { UpdateModel } from "./Screens/UpdateModel.js";
 import { AddModel } from "./Screens/AddModel.js";
 import { AddBrand } from "./Screens/AddBrand.js";
 import { UpdateBrand } from "./Screens/UpdateBrand.js";
+import Car from "./Screens/Car.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -71,6 +72,7 @@ export default function App() {
             transitionSpec: { open: config, close: config },
           }}
         >
+             <Stack.Screen name="Car" component={Car} />
           <Stack.Screen name="Loding" component={LodingScreen} />
           <Stack.Screen name="Get Start1" component={Getstar1} />
           <Stack.Screen name="Get Start2" component={Getstar2} />
@@ -88,6 +90,7 @@ export default function App() {
       <NavigationContainer>
         
         <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade }}>
+        <Stack.Screen name="Car" component={Car} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Shop" component={Shop} />
