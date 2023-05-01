@@ -79,19 +79,6 @@ export const AddModel = ({ navigation }) => {
     useEffect(() => {
         updateList();
     })
-    const selected = async () => {
-        if (BrandValue != null) {
-            if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
-                const db = getFirestore();
-                const docRef = doc(db, "Brands", BrandValue.toUpperCase());
-                const colRef = collection(docRef, "B");
-                const DocRef = doc(colRef, "Info");
-                const docSnap = await getDoc(DocRef);
-                seturi(docSnap._document.data.value.mapValue.fields.uri.stringValue);
-                setBrandName(docSnap._document.data.value.mapValue.fields.name.stringValue);
-            }
-        }
-    }
     const AddModel = async () => {
         if (uri == "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c") {
             alert("Please choose Image");
@@ -191,10 +178,6 @@ export const AddModel = ({ navigation }) => {
                                 placeholderStyle={styles.placeholderStyles}
                                 onChangeValue={() => {
                                     onChange;
-                                    if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
-                                        selected();
-                                    }
-                                    setBrandValueOpetion(BrandValue);
                                 }}
                                 zIndex={3000}
                                 zIndexInverse={1000}
