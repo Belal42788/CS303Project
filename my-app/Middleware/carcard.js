@@ -13,6 +13,11 @@ const cardArray = [
     nameCar: "Audi S4 2017",
     seats: 4,
     rent: 50,
+    color : 'Red',
+    CarsPlateNumber : '01-47-87441',
+    LicenseNumber :'SN66-XMZ',
+    InsurencePrice:100,
+    Location: 'cairo',
   },
   {
     id: 2,
@@ -21,6 +26,11 @@ const cardArray = [
     nameCar: "Mercedes E63 AMG 2010",
     seats: 4,
     rent: 80,
+    color : 'black',
+    CarsPlateNumber : '01-47-87441',
+    LicenseNumber :'SN66-XMZ',
+    InsurencePrice:100,
+    Location: 'cairo',
   },
   {
     id: 3,

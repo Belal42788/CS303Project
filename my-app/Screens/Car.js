@@ -22,29 +22,29 @@ function Car({ navigation ,route}) {
       <Image resizeMode="contain" resizeMethod="scale" source={{uri:route.params.img}} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.name}>{route.params.nameCar}</Text>
-        <Text style={styles.price}><Text style={{ color: '#d0a20e' }}>{route.params.rent}</Text><Text style={{ color: '#444444', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
+        <Text style={styles.price}><Text style={{ color: '#c19303',fontWeight:'700',fontSize:35}}>{route.params.rent}$</Text><Text style={{ color: '#444444', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
       </View>
       <View style={styles.rate}>
-        <Text style={{ color: '#444444', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ 5.0 /120 Reviews</Text>
+        <Text style={{ color: '#444444', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ {route.params.review} /120 Reviews</Text>
       </View>
       <View style={styles.specifi}>
         <View style={styles.column}>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} /> 4600 CC</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />200 KM/H</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />4 seats</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} />{route.params.hoursepower} CC</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />{route.params.topspeed} KM/H</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />{route.params.seats} seats</Text>
         </View>
         <View style={styles.column}>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />pertol</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/manual-transmission.png')} style={styles.anim} />Auto</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />4WD</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />{route.params.fuel}</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/manual-transmission.png')} style={styles.anim} />{route.params.transmission}</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />{route.params.chassis}WD</Text>
         </View>
       </View>
       <View style={styles.card}>
-        <Text style={styles.title}>Color :</Text><Text style={styles.description}>red</Text>
-        <Text style={styles.title}>Car's Plate Number :</Text><Text style={styles.description}>01-47-87441</Text>
-        <Text style={styles.title}>License Number:</Text><Text style={styles.description}>SN66-XMZ</Text>
-        <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.rent}$</Text>
-        <Text style={styles.title}>Location:</Text><Text style={styles.description}>Cairo</Text>
+        <Text style={styles.title}>Color :</Text><Text style={styles.description}>{route.params.color}</Text>
+        <Text style={styles.title}>Car's Plate Number :</Text><Text style={styles.description}>{route.params.CarsPlateNumber}</Text>
+        <Text style={styles.title}>License Number:</Text><Text style={styles.description}>{route.params.LicenseNumber}</Text>
+        <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.InsurencePrice}$</Text>
+        <Text style={styles.title}>Location:</Text><Text style={styles.description}>{ route.params.Location}</Text>
       </View>
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
