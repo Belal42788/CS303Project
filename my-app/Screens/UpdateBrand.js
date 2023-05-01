@@ -7,7 +7,7 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
-import { doc, getDoc, getFirestore, collection, setDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection, setDoc , getDocs} from "firebase/firestore";
 import BackButton from '../Components/backButton.js';
 
 
@@ -36,18 +36,13 @@ export const UpdateBrand = ({ navigation }) => {
 
     const updateList = async () => {
         const db = getFirestore();
-        const docRef2 = doc(db, "BrandsList", "List");
-        const docSnap = await getDoc(docRef2);
-        let arr;
-        let arr2 = [];
-        arr = docSnap._document.data.value.mapValue.fields.list.mapValue.fields.BrandName.arrayValue.values;
-        // arr.push({
-        //     stringValue: BrandName.toUpperCase()
-        // });
-        for (let index = 0; index < arr.length; index++) {
-            arr2.push({ label: arr[index].stringValue, value: arr[index].stringValue });
-        }
-        setBrand(arr2);
+        const colRef = collection(db, "Brands");
+        const docsSnap = await getDocs(colRef);
+        let arr=[];
+        docsSnap.forEach(doc => {
+            arr.push({ label: doc.id, value: doc.id });
+        })
+        setBrand(arr);
     }
 
     const selected = async () => {

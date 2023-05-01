@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'reac
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
 import BackButton from '../Components/backButton.js';
-
+import { doc, getDocs, getFirestore, collection, setDoc } from "firebase/firestore";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
@@ -48,9 +48,9 @@ export const UpdateModel = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' ,padding: 30}}>
-                <BackButton/>
-                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold',fontSize:20,marginRight:30 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
+                <BackButton />
+                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
                     Update Model
                 </Text>
             </View>
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
         // borderRadius: "50%",
         // marginTop: 0,
     },
-    ImageStyle:{
-        margin:"5%"
+    ImageStyle: {
+        margin: "5%"
     }
 });
