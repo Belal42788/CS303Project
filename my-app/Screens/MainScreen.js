@@ -7,6 +7,7 @@ import cardArray from "../Middleware/carcard.js";
 import Brands from "../Middleware/Brands.js";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
+import Models from "../Middleware/Models.js";
 import {
   StyleSheet,
   Text,
@@ -58,21 +59,7 @@ function MainScreen({ navigation }) {
         Admin ? Edit() : console.log("not Admin")
       }
       <Text style={styles.TextModel}>Recently Added</Text>
-      <View style={styles.products}>
-        {cardArray.map((o) => {
-          return (
-            <TouchableOpacity style={styles.card} key={o.id}>
-              <Text style={styles.title}>{o.nameCar}</Text>
-              <Image resizeMode="contain" resizeMethod="scale" source={o.img} style={styles.image} />
-              <View style={styles.info}>
-                {/* <Text style={styles.numofseats}>💺{o.seats} seats</Text> */}
-                {/* <Text style={styles.price}>💳{o.rent}$/hour </Text> */}
-                <Text style={styles.price}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/ezgif.com-gif-maker (1).gif')} style={styles.pay} />{o.rent}$/hour </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      <Models />
       <Footer navigation={navigation} />
     </View>
   );
@@ -131,159 +118,37 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     gap: 15,
   },
-  pay: {
-    width: '20%',
-    height: 'auto'
-  },
-
-  marks: {
-    marginTop: 30,
-    marginBottom: 10,
-    // marginLeft:"-20%",
-    display: "flex",
-    flexWrap: "wrap",
-    width: "auto",
-    flexDirection: "row",
-    alignContent: "space-between",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-
-  },
-  marksicons: {
-    width: 80,
-    height: 80,
-    borderRadius: "50%",
-    marginRight: 12,
-  },
-  markstext: {
-    color: "black",
-    fontFamily: "cairo",
-    fontWeight: "800",
-    alignSelf: "center",
-    marginTop: "10%",
-    marginBottom: "20%",
-    marginRight: 12,
-    fontSize: 15
-  },
-  products: {
-    marginTop: "4%",
-    marginBottom: "4%",
-    display: "flex",
-    flexWrap: "wrap",
-    width: "100%",
-    height: "auto",
-    flexDirection: "row",
-    alignContent: "space-between",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    backgroundColor: "lightgray",
-    padding: "auto",
-    paddingRight: "1%",
-    paddingTop: "10%",
-    paddingBottom: 70,
-    borderRadius: 20,
-    borderBottomEndRadius: 0,
-    borderBottomLeftRadius: 0,
-    gap: 5,
-  },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 18,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 7,
-      height: 7,
-    },
-    shadowOpacity: 0.45,
-    shadowRadius: 0.54,
-    elevation: 5,
-    padding: 5,
-    height: "auto",
-    width: "auto",
-    minWidth: 250,
-    minHeight: 300,
-    marginLeft: "6%",
-    marginBottom: "2%",
-    position: 'relative',
-  },
-  image: {
-    position: 'absolute',
-    top: 10,
-    minWidth: 310,
-    minHeight: 300,
-    right: -15,
-    height: "70%",
-    resizeMode: "contain",
-    borderBottomEndRadius: 0,
-    borderBottomLeftRadius: 0,
-  },
-  info: {
-    display: "flex",
-    flexDirection: "row",
-    alignContent: "space-around",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  title: {
-    fontSize: "120%",
-    fontWeight: "700",
-    fontFamily: "cairo",
-    marginTop: "3%",
-    marginBottom: "3%",
-    textAlign: "center",
-  },
-  price: {
-    position: 'absolute',
-    bottom: -230,
-    fontSize: 22,
-    fontWeight: "700",
-    color: "black",
-    fontFamily: "cairo",
-    maxWidth: "100%",
-    minWidth: "100%",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  numofseats: {
-    fontSize: "80%",
-    fontWeight: "700",
-    color: "black",
-    fontFamily: "cairo",
-    maxWidth: "50%",
-    flexWrap: "wrap",
-  },
   TextModel: {
-    marginTop: 5,
-    color: "black",
-    fontWeight: "bold",
-    textTransform: "capitalize",
-    fontSize: 20,
-    textAlign: "center",
-    fontFamily: "cairo",
+      marginTop: 5,
+      color: "black",
+      fontWeight: "bold",
+      textTransform: "capitalize",
+      fontSize: 20,
+      textAlign: "center",
+      fontFamily: "cairo",
   },
   button: {
-    width: "70%",
-    borderRadius: 18,
-    height: 40,
-    alignItems: "center",
-    alignContent: "center",
-    justifyContent: "center",
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderColor: "black",
-    display: "flex",
-    marginTop: 3,
-    backgroundColor: "#ce9e04",
-    marginLeft: "15%"
+      width: "70%",
+      borderRadius: 18,
+      height: 40,
+      alignItems: "center",
+      alignContent: "center",
+      justifyContent: "center",
+      borderStyle: "solid",
+      borderWidth: 2,
+      borderColor: "black",
+      display: "flex",
+      marginTop: 3,
+      backgroundColor: "#ce9e04",
+      marginLeft: "15%"
   },
   buttonText: {
-    color: "black",
-    fontWeight: "bold",
-    textTransform: "capitalize",
-    fontSize: 20,
-    textAlign: "center",
-    fontFamily: "cairo",
+      color: "black",
+      fontWeight: "bold",
+      textTransform: "capitalize",
+      fontSize: 20,
+      textAlign: "center",
+      fontFamily: "cairo",
   },
 });
 export default MainScreen;

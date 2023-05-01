@@ -72,7 +72,6 @@ export default function App() {
             transitionSpec: { open: config, close: config },
           }}
         >
-             <Stack.Screen name="Car" component={Car} />
           <Stack.Screen name="Loding" component={LodingScreen} />
           <Stack.Screen name="Get Start1" component={Getstar1} />
           <Stack.Screen name="Get Start2" component={Getstar2} />
@@ -88,9 +87,7 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        
         <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade }}>
-        <Stack.Screen name="Car" component={Car} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Shop" component={Shop} />
@@ -99,6 +96,7 @@ export default function App() {
           <Stack.Screen name="UpdateBrand" component={UpdateBrand} />
           <Stack.Screen name="AddModel" component={AddModel} />
           <Stack.Screen name="AddBrand" component={AddBrand} />
+          <Stack.Screen name="Car" component={Car} />
         </Stack.Navigator>
       </NavigationContainer>
     );

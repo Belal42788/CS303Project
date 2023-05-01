@@ -300,7 +300,7 @@ const ProfileScreen = ({ navigation }) => {
                             <View style={styles.row}>
                                 <Text style={styles.label}> First Name: </Text>
                                 <View style={styles.textFieldBox}>
-                                    <Text style={styles.textFieldStyle}>{firstName}Ahmed !</Text>
+                                    <Text style={styles.textFieldStyle}>{firstName}!</Text>
                                 </View>
                                 <TouchableOpacity onPress={handleFirstNameMode} style={styles.editButton}>
                                     <Image
@@ -342,7 +342,7 @@ const ProfileScreen = ({ navigation }) => {
                             <View style={styles.row}>
                                 <Text style={styles.label}> Last Name: </Text>
                                 <View style={styles.textFieldBox}>
-                                    <Text style={styles.textFieldStyle}>{lastName}Ibrahem!</Text>
+                                    <Text style={styles.textFieldStyle}>{lastName}!</Text>
                                 </View>
                                 <TouchableOpacity onPress={handleLastNameMode} style={styles.editButton}>
                                     <Image
@@ -358,7 +358,7 @@ const ProfileScreen = ({ navigation }) => {
             <View style={styles.row}>
                 <Text style={styles.label}> Email: </Text>
                 <View style={styles.textFieldBox}>
-                    <Text style={styles.textFieldStyle}>{email}altoraby95@gmail.com</Text>
+                    <Text style={styles.textFieldStyle}>{email}</Text>
                 </View>
             </View>
 
@@ -390,7 +390,7 @@ const ProfileScreen = ({ navigation }) => {
                             <View style={styles.row}>
                                 <Text style={styles.label}> Birth Date: </Text>
                                 <View style={styles.textFieldBox}>
-                                    <Text style={styles.textFieldStyle}>25/9/2002{BirthDate} </Text>
+                                    <Text style={styles.textFieldStyle}>{BirthDate} </Text>
                                 </View>
                                 <TouchableOpacity onPress={handleBirthDateMode} style={styles.editButton}>
                                     <Image
@@ -431,7 +431,7 @@ const ProfileScreen = ({ navigation }) => {
                             <View style={styles.row}>
                                 <Text style={styles.label}> Phone Number: </Text>
                                 <View style={styles.textFieldBox}>
-                                    <Text style={styles.textFieldStyle}>{phone}01115584379</Text>
+                                    <Text style={styles.textFieldStyle}>{phone}</Text>
                                 </View>
                                 <TouchableOpacity onPress={handlePhoneMode} style={styles.editButton}>
                                     <Image

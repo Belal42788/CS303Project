@@ -57,15 +57,13 @@ const Brands = ({ navigation }) => {
       const colRef = collection(docRef, "B");
       const DocRef = doc(colRef, "Info");
       const doc1Snap = await getDoc(DocRef);
-      // console.log(doc1Snap);
-      // console.log("name :"+ doc1Snap._document.data.value.mapValue.fields.name.stringValue );
       arr3.push({ id: i, img: doc1Snap._document.data.value.mapValue.fields.uri.stringValue, name: doc1Snap._document.data.value.mapValue.fields.name.stringValue });
     }
     setBrandsArray(arr3);
   }
 
   useEffect(() => {
-    initialize();
+    // initialize();
   })
 
   return (
