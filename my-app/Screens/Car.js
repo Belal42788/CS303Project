@@ -29,7 +29,7 @@ function Car({ navigation ,route}) {
       </View>
       <View style={styles.specifi}>
         <View style={styles.column}>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} /> 4600CC</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} /> 4600 CC</Text>
           <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />200 KM/H</Text>
           <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />4 seats</Text>
         </View>
@@ -103,6 +103,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   specifi: {
+    display:'flex',
+    flexDirection:'row',
+    flexWrap:'wrap',
     backgroundColor: "white",
     borderRadius: 10,
     marginTop: "4%",
@@ -117,7 +120,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.51,
     shadowRadius: 13.16,
     elevation: 20,
-    height: "30%",
+    height: 'auto',
     width: "85%",
     display: 'flex',
     flexWrap: 'wrap',
@@ -139,6 +142,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   column: {
+    display:'flex',
+    flexDirection:'column',
     flex: 1,
     paddingHorizontal: 10,
   },

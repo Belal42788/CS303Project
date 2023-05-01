@@ -67,7 +67,7 @@ function MainScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(206, 158, 4)",
+    backgroundColor: "#343f4a",
   },
   header: {
     width: "80%",
