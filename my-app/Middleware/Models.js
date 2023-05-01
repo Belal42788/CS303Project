@@ -82,14 +82,14 @@ const Models = () => {
 
     return (
         <View style={styles.products}>
-            {ModelsArray.map((o) => {
+            {ModelsArray.map((info) => {
                 return (
-                    <TouchableOpacity style={styles.card} key={o.id} onPress={() => { navigation.navigate("Car") }}>
-                        <Text style={styles.title}>{o.nameCar}</Text>
+                    <TouchableOpacity style={styles.card} key={info.id} onPress={() => { navigation.navigate("Car",info) }}>
+                        <Text style={styles.title}>{info.nameCar}</Text>
                         <Image
                             resizeMode="contain"
                             resizeMethod="scale"
-                            source={o.img}
+                            source={info.img}
                             style={styles.image}
                         />
                         <View style={styles.info}>
@@ -100,7 +100,7 @@ const Models = () => {
                                     source={require('../assets/ezgif.com-gif-maker (1).gif')}
                                     style={styles.pay}
                                 />
-                                {o.rent}$/hour
+                                {info.rent}$/hour
                             </Text>
                         </View>
                     </TouchableOpacity>

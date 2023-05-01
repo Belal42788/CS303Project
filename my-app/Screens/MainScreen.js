@@ -56,7 +56,7 @@ function MainScreen({ navigation }) {
       <Header navigation={navigation} />
       <Brands />
       {
-        Admin ? Edit() : console.log("not Admin")
+        Admin ? Edit() : <></>
       }
       <Text style={styles.TextModel}>Recently Added</Text>
       <Models />

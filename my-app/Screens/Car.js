@@ -1,10 +1,4 @@
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { StatusBar } from "expo-status-bar";
-import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Ionicons from "@expo/vector-icons/Ionicons"
-import Footer from "../Layouts/Footer.js";
 import BackButton from "../Components/backButton.js";
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -16,8 +10,7 @@ import {
   TouchableOpacity,
   Alert, ImageBackground, FlatList
 } from "react-native";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-function Car({ navigation }) {
+function Car({ navigation ,route}) {
   return (
     <LinearGradient style={styles.container} colors={["#1c2834", "white"]}>
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
@@ -26,10 +19,10 @@ function Car({ navigation }) {
                     Model
                 </Text>
       </View>
-      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/Image/audi_PNG1742.png')} style={styles.image} />
+      <Image resizeMode="contain" resizeMethod="scale" source={{uri:route.params.img}} style={styles.image} />
       <View style={styles.info}>
-        <Text style={styles.name}>LAND CRUISER GXR 4.61</Text>
-        <Text style={styles.price}><Text style={{ color: '#d0a20e' }}>$50</Text><Text style={{ color: '#444444', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
+        <Text style={styles.name}>{route.params.nameCar}</Text>
+        <Text style={styles.price}><Text style={{ color: '#d0a20e' }}>{route.params.rent}</Text><Text style={{ color: '#444444', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
       </View>
       <View style={styles.rate}>
         <Text style={{ color: '#444444', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ 5.0 /120 Reviews</Text>
@@ -50,7 +43,7 @@ function Car({ navigation }) {
         <Text style={styles.title}>Color :</Text><Text style={styles.description}>red</Text>
         <Text style={styles.title}>Car's Plate Number :</Text><Text style={styles.description}>01-47-87441</Text>
         <Text style={styles.title}>License Number:</Text><Text style={styles.description}>SN66-XMZ</Text>
-        <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>100$</Text>
+        <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.rent}$</Text>
         <Text style={styles.title}>Location:</Text><Text style={styles.description}>Cairo</Text>
       </View>
       <TouchableOpacity style={styles.button} >
