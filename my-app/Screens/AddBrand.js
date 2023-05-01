@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
-import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc } from "firebase/firestore";
+import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDocs } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { firebase } from "../firebase/config/firebase-config.js";
 import BackButton from '../Components/backButton.js';
@@ -25,21 +25,25 @@ export const AddBrand = ({ navigation }) => {
         const result = await ImagePicker.launchImageLibraryAsync();
         console.log(result);
         if (!result.canceled) {
-            return result.uri;
+            seturi(result.uri);
         }
     };
 
     //to update Photo
     const updatePhoto = async () => {
-        const uri = await pickImage();
-        if (BrandName == "") {
+        const uriI = uri;
+        try {
+            if (BrandName == "") {
+                throw Error("");
+            }
+        } catch (error) {
             alert("please Enter name of Brand");
             return;
         }
         const filename = BrandName;
         const ref = firebase.storage().ref().child("images/" + filename);
 
-        const response = await fetch(uri);
+        const response = await fetch(uriI);
         const blob = await response.blob();
         const snapshot = await ref.put(blob);
         console.log('Image uploaded successfully');
@@ -55,29 +59,24 @@ export const AddBrand = ({ navigation }) => {
         }
         if (BrandName != "") {
             const db = getFirestore();
+            const colRefB = collection(db, "Brands");
+            const docsSnap = await getDocs(colRefB);
+            try {
+                docsSnap.forEach(doc => {
+                    if (doc.id == BrandName.toUpperCase()) {
+                        throw "exit";
+                    }
+                })
+            } catch (error) {
+                alert("This Brand is alredy exist.");
+                return;
+            }
+            updatePhoto();
             const docRef = doc(db, "Brands", BrandName.toUpperCase());
             await setDoc(docRef, {
 
             });
-            const docRef2 = doc(db, "BrandsList", "List");
-            const docSnap = await getDoc(docRef2);
-            let arr;
-            let arr2 = [];
-            arr = docSnap._document.data.value.mapValue.fields.list.mapValue.fields.BrandName.arrayValue.values;
-            arr.push({
-                stringValue: BrandName.toUpperCase()
-            });
-            for (let index = 0; index < arr.length; index++) {
-                arr2.push(arr[index].stringValue);
-            }
-            for (let index = 0; index < (arr.length - 1); index++) {
-                if (arr2[i] == BrandName.toUpperCase()) {
-                    alert("This Brand is alredy exist.");
-                    return;
-                }
-            }
-            console.log(arr2);
-            await setDoc(docRef2, { list: { BrandName: arr2 } });
+
             const colRef = collection(docRef, "B")
             await setDoc(doc(colRef, "Info"), {
                 name: BrandName,
@@ -97,7 +96,7 @@ export const AddBrand = ({ navigation }) => {
                     Add Brand
                 </Text>
             </View>
-            <TouchableOpacity onPress={updatePhoto} style={styles.ImageStyle}>
+            <TouchableOpacity onPress={pickImage} style={styles.ImageStyle}>
                 <Image
                     style={styles.PhotoStyle}
                     source={{

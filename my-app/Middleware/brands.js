@@ -1,6 +1,6 @@
 import { initializeAuth } from "firebase/auth";
 import Brandcar from "../assets/Image/Brand.png";
-import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc } from "firebase/firestore";
+import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc,getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 
@@ -42,24 +42,22 @@ const Brands = ({ navigation }) => {
 
   const initialize = async () => {
     const db = getFirestore();
-    const docRef2 = doc(db, "BrandsList", "List");
-    const docSnap = await getDoc(docRef2);
-    let arr;
-    let arr2 = [];
-    let arr3 = [];
-    arr = docSnap._document.data.value.mapValue.fields.list.mapValue.fields.BrandName.arrayValue.values;
-    for (let index = 0; index < arr.length; index++) {
-      arr2.push(arr[index].stringValue);
-    }
-    for (let i = 0; i < arr2.length; i++) {
+    const colRef = collection(db, "Brands");
+    const docsSnap = await getDocs(colRef);
+    let arr = [];
+    docsSnap.forEach(doc => {
+      arr.push(doc.id);
+    })
+
+    for (let i = 0; i < arr.length; i++) {
       const db = getFirestore();
-      const docRef = doc(db, "Brands", arr2[i].toUpperCase());
+      const docRef = doc(db, "Brands", arr[i]);
       const colRef = collection(docRef, "B");
       const DocRef = doc(colRef, "Info");
       const doc1Snap = await getDoc(DocRef);
-      arr3.push({ id: i, img: doc1Snap._document.data.value.mapValue.fields.uri.stringValue, name: doc1Snap._document.data.value.mapValue.fields.name.stringValue });
+      arr[i] = ({ id: i, img: doc1Snap._document.data.value.mapValue.fields.uri.stringValue, name: doc1Snap._document.data.value.mapValue.fields.name.stringValue });
     }
-    setBrandsArray(arr3);
+    setBrandsArray(arr);
   }
 
   useEffect(() => {
@@ -107,7 +105,6 @@ const styles = StyleSheet.create({
   marksicons: {
     width: 80,
     height: 80,
-    borderRadius: "50%",
     marginRight: 12,
   },
   markstext: {
@@ -122,5 +119,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// export default BrandsArray;
 export default Brands;
