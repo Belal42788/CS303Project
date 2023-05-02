@@ -174,7 +174,7 @@ const Models = () => {
                                 <Image
                                     resizeMode="contain"
                                     resizeMethod="scale"
-                                    source={require('../assets/ezgif.com-gif-maker (1).gif')}
+                                    source={require('../assets/purse.gif')}
                                     style={styles.pay}
                                 />
                                 {info.rent}$/hour
