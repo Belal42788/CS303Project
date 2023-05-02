@@ -264,7 +264,7 @@ const ProfileScreen = ({ navigation }) => {
     return (
 
         // <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
-        <LinearGradient style={styles.container} colors={["#1c2834", "#1c2834"]}>
+        <LinearGradient style={[styles.container]} colors={["#1c2834","#d0a20e"]} start={{x:0,y:0.5}}   end={{x:1,y:0.5}} locations={[0,0.6]}> 
             <StatusBar style="auto" />
 
             <Image
@@ -432,7 +432,7 @@ const ProfileScreen = ({ navigation }) => {
                         <>
                             <View style={styles.row}>
                                 <Text style={styles.label}> Phone Number: </Text>
-                                <View style={styles.textFieldBox}>
+                                <View style={styles.textFieldBox2}>
                                     <Text style={styles.textFieldStyle}>{phone}</Text>
                                 </View>
                                 <TouchableOpacity onPress={handlePhoneMode} style={styles.editButton}>
@@ -537,7 +537,22 @@ const styles = StyleSheet.create({
         borderColor: "black",
         borderWidth: 1.5,
         borderRadius: 7,
-        width: 170,
+        width: 230,
+        height: 30,
+        fontFamily: 'cairo',
+        marginBottom: 5,
+        alignItems: "center",
+        textAlign: "left",
+        alignContent: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    textFieldBox2: {
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 1.5,
+        borderRadius: 7,
+        width: 200,
         height: 30,
         fontFamily: 'cairo',
         marginBottom: 5,
