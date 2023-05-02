@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback ,useEffect} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
@@ -7,14 +7,15 @@ import { doc, getDocs, getFirestore, collection, setDoc } from "firebase/firesto
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
+import * as ImagePicker from 'expo-image-picker';
+import { firebase } from "../firebase/config/firebase-config.js";
 
 export const UpdateModel = ({ navigation }) => {
     const [modelName, setModelName] = useState();
     const [price, setprice] = useState();
     const [mount, setmount] = useState();
     const [discription, setdiscription] = useState();
-    const [uri, seturi] = useState();
-
+    const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/uploadcar.png?alt=media&token=d89fbcd8-a45b-4f0e-8f77-8c649a08242a");
 
     const [modelOpen, setmodelOpen] = useState(false);
     const [nameOpen, setnameOpen] = useState(false);
@@ -28,12 +29,36 @@ export const UpdateModel = ({ navigation }) => {
         { label: "Tesla", value: "tesla" },
     ]);
 
+    const [BrandOpen, setBrandOpen] = useState(false);
+    const [BrandValue, setBrandValue] = useState("");
+    const [BrandValueOpetion, setBrandValueOpetion] = useState("");
+    const [BrandName, setBrandName] = useState("");
+    const [Brand, setBrand] = useState([
+
+    ]);
 
     const [name, setname] = useState([
         { label: "Bmw", value: "bmw" },
         { label: "Toyota", value: "toyota" },
         { label: "Tesla", value: "tesla" },
     ]);
+
+    
+    useEffect(() => {
+        updateList();
+    })
+
+    const updateList = async () => {
+        const db = getFirestore();
+        const colRef = collection(db, "Brands");
+        const docsSnap = await getDocs(colRef);
+        let arr=[];
+        docsSnap.forEach(doc => {
+            arr.push({ label: doc.id, value: doc.id });
+        })
+        setBrand(arr);
+    }
+
 
     const onmodelOpen = useCallback(() => {
         setnameOpen(false);
@@ -43,6 +68,72 @@ export const UpdateModel = ({ navigation }) => {
     const onnameOpen = useCallback(() => {
         setmodelOpen(false);
     }, []);
+
+    const selected = async () => {
+        if (BrandValue != null) {
+            if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
+                const db = getFirestore();
+                const docRef = doc(db, "Brands", BrandValue.toUpperCase());
+                const colRef = collection(docRef, "B");
+                const DocRef = doc(colRef, "Info");
+                const docSnap = await getDoc(DocRef);
+                seturi(docSnap._document.data.value.mapValue.fields.uri.stringValue);
+                setBrandName(docSnap._document.data.value.mapValue.fields.name.stringValue);
+            }
+        }
+    }
+
+    const update = async () => {
+        if (BrandValue != null) {
+            const db = getFirestore();
+            const docRef = doc(db, "Brands", BrandValue.toUpperCase());
+            const colRef = collection(docRef, "B");
+            const DocRef = doc(colRef, "Info");
+            await setDoc(DocRef, {
+                name: BrandName,
+                uri: uri
+            });
+            alert("done");
+        } else {
+            alert('please choose Brand');
+        }
+    }
+
+    //to PickImage
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+            console.log('permission to access media library is required')
+            return;
+        }
+        const result = await ImagePicker.launchImageLibraryAsync();
+        console.log(result);
+        if (!result.canceled) {
+            return result.uri;
+        }
+    };
+
+
+    //to update Photo
+    const updatePhoto = async () => {
+        const uri = await pickImage();
+        if(uri==undefined||modelName==""||price==""||mount==""||discription==""){
+            alert('please fill all fields');
+            return;
+        }
+        const filename = BrandName;
+        const ref = firebase.storage().ref().child("images/" + filename);
+
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        const snapshot = await ref.put(blob);
+        console.log('Image uploaded successfully');
+
+        const downloadURL = await snapshot.ref.getDownloadURL();
+
+        seturi(downloadURL);
+    }
 
     const { handleSubmit, control } = useForm();
 
@@ -54,7 +145,7 @@ export const UpdateModel = ({ navigation }) => {
                     Update Model
                 </Text>
             </View>
-            <View style={styles.select1}>
+            {/* <View style={styles.select1}>
                 <Controller
                     name="model"
                     defaultValue=""
@@ -83,7 +174,40 @@ export const UpdateModel = ({ navigation }) => {
                         </View>
                     )}
                 />
+            </View> */}
+            <View style={styles.select1}>
+                <Controller
+                    name="Brand"
+                    defaultValue=""
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                        <View style={styles.dropdownmodel}>
+                            <DropDownPicker
+                                style={styles.dropdown}
+                                open={BrandOpen}
+                                value={BrandValue} //BrandValue
+                                items={Brand}
+                                setOpen={setBrandOpen}
+                                setValue={setBrandValue}
+                                setItems={setBrand}
+                                placeholder="Select Brand"
+                                searchable={true}
+                                placeholderStyle={styles.placeholderStyles}
+                                onChangeValue={() => {
+                                    onChange;
+                                    if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
+                                        selected();
+                                    }
+                                    setBrandValueOpetion(BrandValue);
+                                }}
+                                zIndex={3000}
+                                zIndexInverse={1000}
+                            />
+                        </View>
+                    )}
+                />
             </View>
+
             <View style={styles.select2}>
                 <Controller
                     name="Catigory"
@@ -99,7 +223,7 @@ export const UpdateModel = ({ navigation }) => {
                                 setOpen={setnameOpen}
                                 setValue={setnameValue}
                                 setItems={setname}
-                                placeholder="Select name"
+                                placeholder="Select Model"
                                 placeholderStyle={styles.placeholderStyles}
                                 onOpen={onnameOpen}
                                 onChangeValue={() => {
@@ -114,11 +238,11 @@ export const UpdateModel = ({ navigation }) => {
                 />
             </View>
 
-            <TouchableOpacity onPress={() => { console.log("sdjjaljsdf") }} style={styles.ImageStyle}>
+            <TouchableOpacity onPress={updatePhoto} style={styles.ImageStyle}>
                 <Image
                     style={styles.PhotoStyle}
                     source={{
-                        uri: require("../assets/Image/1.jpg"),
+                        uri: uri,
                     }}
                 />
             </TouchableOpacity>

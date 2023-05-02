@@ -5,7 +5,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import cardArray from "../Middleware/carcard.js";
-import Brands from "../Middleware/Brands.js";
+import Brands from "../Middleware/brands.js";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
 import Models from "../Middleware/Models.js";
