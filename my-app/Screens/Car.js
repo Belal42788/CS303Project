@@ -33,6 +33,7 @@ function Car({ navigation, route }) {
           <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} />{route.params.hoursepower} CC</Text>
           <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />{route.params.topspeed} KM/H</Text>
           <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />{route.params.seats} seats</Text>
+          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/galloping horse gif.gif')} style={styles.anim} />{route.params.horsepower}</Text>
         </View>
         <View style={styles.column}>
           <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />{route.params.fuel}</Text>
