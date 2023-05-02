@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
   },
   anim: {
     marginRight: 5,
-    width: '32%',
-    height: 50,
+    width: '42%',
+    height: 53,
   },
   card: {
     display: 'flex',
