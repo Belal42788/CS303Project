@@ -11,8 +11,9 @@ import {
   Alert, ImageBackground, FlatList
 } from "react-native";
 function Car({ navigation ,route}) {
+  
   return (
-    <LinearGradient style={styles.container} colors={["#1c2834", "white"]}>
+    <LinearGradient style={[styles.container]} colors={["#d0a20e","#1c2834"]} start={{x:0.5,y:0}}   end={{x:0.5,y:1}} locations={[0,0.6]}>
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
                 <BackButton />
                 <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
@@ -22,10 +23,10 @@ function Car({ navigation ,route}) {
       <Image resizeMode="contain" resizeMethod="scale" source={{uri:route.params.img}} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.name}>{route.params.nameCar}</Text>
-        <Text style={styles.price}><Text style={{ color: '#c19303',fontWeight:'700',fontSize:35}}>{route.params.rent}$</Text><Text style={{ color: '#444444', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
+        <Text style={styles.price}><Text style={{ color: '#c19303',fontWeight:'700',fontSize:35}}>{route.params.rent}$</Text><Text style={{ color: '#1c2834', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
       </View>
       <View style={styles.rate}>
-        <Text style={{ color: '#444444', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ {route.params.review} /120 Reviews</Text>
+        <Text style={{ color: '#1c2834', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ {route.params.review} /120 Reviews</Text>
       </View>
       <View style={styles.specifi}>
         <View style={styles.column}>
@@ -50,25 +51,15 @@ function Car({ navigation ,route}) {
         <Text style={styles.buttonText}>Checkout</Text>
       </TouchableOpacity>
 
-
-
-
       {/* <Footer /> */}
     </LinearGradient>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
   },
   image: {
-    marginTop: 100,
-    height: "25%",
-    width: 'auto',
-    resizeMode: "contain",
-    borderBottomEndRadius: 0,
-    borderBottomLeftRadius: 0,
+    height: 200,
   },
   info: {
     display: "flex",

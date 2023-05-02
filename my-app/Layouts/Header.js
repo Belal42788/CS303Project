@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 5,
         marginLeft: "10%",
-        backgroundColor: "#343f4a",
+        backgroundColor: "none",
  
     },
     searchbarview: {

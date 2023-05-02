@@ -1,5 +1,6 @@
 
 import auth from "../firebase/config/firebase-config.js";
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
@@ -16,7 +17,7 @@ import userCardArray from "../Middleware/inUserCard.js";
 function Shop({ navigation }) {
     const user = auth.currentUser;
     return (
-        <View style={styles.container}>
+        <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
             <Header navigation={navigation} />
             <ScrollView style={{ width: "100%", height: "100%" }}>
                 <View style={styles.products}>
@@ -34,7 +35,7 @@ function Shop({ navigation }) {
                 </View>
             </ScrollView>
             <Footer navigation={navigation} />
-        </View>
+        </LinearGradient>
     );
 }
 const styles = StyleSheet.create({

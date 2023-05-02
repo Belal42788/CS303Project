@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { LinearGradient } from "expo-linear-gradient";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 import cardArray from "../Middleware/carcard.js";
 import Brands from "../Middleware/Brands.js";
@@ -52,7 +53,7 @@ function MainScreen({ navigation }) {
     )
   }
   return (
-    <View style={styles.container}>
+    <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
       <Header navigation={navigation} />
       <Brands />
       {
@@ -61,7 +62,7 @@ function MainScreen({ navigation }) {
       <Text style={styles.TextModel}>Recently Added</Text>
       <Models />
       <Footer navigation={navigation} />
-    </View>
+    </LinearGradient>
   );
 }
 const styles = StyleSheet.create({
