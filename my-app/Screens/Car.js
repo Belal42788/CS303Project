@@ -13,8 +13,7 @@ import {
 function Car({ navigation ,route}) {
   
   return (
-    <LinearGradient style={[styles.container]} colors={["#d0a20e","#1c2834"]} start={{x:0.5,y:0}}   end={{x:0.5,y:1}} locations={[0,0.6]}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
+    <LinearGradient style={[styles.container]} colors={["#d0a20e","#1c2834"]} start={{x:0.5,y:0}}   end={{x:0.5,y:1}} locations={[0,0.6,1.5]}>      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
                 <BackButton />
                 <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
                     Model
@@ -57,6 +56,8 @@ function Car({ navigation ,route}) {
 };
 const styles = StyleSheet.create({
   container: {
+    minHeight:'100vh',
+    maxHeight:'auto',
   },
   image: {
     height: 200,
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
   anim: {
     marginRight: 5,
     width: '32%',
-    height: '160%',
+    height: 50,
   },
   card: {
     display: 'flex',
