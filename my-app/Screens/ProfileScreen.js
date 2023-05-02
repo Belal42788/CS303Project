@@ -264,7 +264,7 @@ const ProfileScreen = ({ navigation }) => {
     return (
 
         // <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
-        <LinearGradient style={[styles.container]} colors={["#1c2834","#d0a20e"]} start={{x:0,y:0.5}}   end={{x:1,y:0.5}} locations={[0,0.8]}> 
+        <LinearGradient style={[styles.container]} colors={["#1c2834", "#d0a20e"]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} locations={[0, 0.8]}>
             <StatusBar style="auto" />
 
             <Image
@@ -273,6 +273,14 @@ const ProfileScreen = ({ navigation }) => {
                     uri: user.photoURL,
                 }}
             />
+
+
+            <View style={styles.row}>
+                <Text style={styles.label}>Email:  </Text>
+                <View style={styles.textFieldBox2}>
+                    <Text style={styles.textFieldStyle}>{email}</Text>
+                </View>
+            </View>
 
             {
                 firstNameMode ?
@@ -357,12 +365,7 @@ const ProfileScreen = ({ navigation }) => {
                     )
             }
 
-            <View style={styles.row}>
-                <Text style={styles.label}>Email:  </Text>
-                <View style={styles.textFieldBox2}>
-                    <Text style={styles.textFieldStyle}>{email}</Text>
-                </View>
-            </View>
+
 
             {
                 BirthDateMode ?
@@ -470,7 +473,7 @@ const ProfileScreen = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
             <Footer navigation={navigation} />
-        {/*  </ImageBackground> */}
+            {/*  </ImageBackground> */}
         </LinearGradient>
 
 
@@ -552,7 +555,7 @@ const styles = StyleSheet.create({
         borderColor: "black",
         borderWidth: 1.5,
         borderRadius: 7,
-        width: window.innerWidth*0.8,//80%
+        width: window.innerWidth * 0.8,//80%
         height: 30,
         fontFamily: 'cairo',
         marginBottom: 5,
