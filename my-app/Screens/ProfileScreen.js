@@ -264,7 +264,7 @@ const ProfileScreen = ({ navigation }) => {
     return (
 
         // <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
-        <LinearGradient style={[styles.container]} colors={["#1c2834","#d0a20e"]} start={{x:0,y:0.5}}   end={{x:1,y:0.5}} locations={[0,0.6]}> 
+        <LinearGradient style={[styles.container]} colors={["#1c2834","#d0a20e"]} start={{x:0,y:0.5}}   end={{x:1,y:0.5}} locations={[0,0.8]}> 
             <StatusBar style="auto" />
 
             <Image
