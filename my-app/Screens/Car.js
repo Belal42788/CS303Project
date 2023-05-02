@@ -10,20 +10,20 @@ import {
   TouchableOpacity,
   Alert, ImageBackground, FlatList
 } from "react-native";
-function Car({ navigation ,route}) {
-  
+function Car({ navigation, route }) {
+
   return (
-    <LinearGradient  style={[styles.container]} colors={["#d0a20e","#1c2834"]} start={{x:0.5,y:0.5}}   end={{x:0.5,y:1}} locations={[0,0.6]}>   
-       <View  style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
-                <BackButton />
-                <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
-                    Model
-                </Text>
+    <LinearGradient style={[styles.container]} colors={["#d0a20e", "#1c2834"]} start={{ x: 0.5, y: 0.5 }} end={{ x: 0.5, y: 1 }} locations={[0, 0.6]}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
+        <BackButton />
+        <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
+          Model
+        </Text>
       </View>
-      <Image resizeMode="contain" resizeMethod="scale" source={{uri:route.params.img}} style={styles.image} />
+      <Image resizeMode="contain" resizeMethod="scale" source={{ uri: route.params.img }} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.name}>{route.params.nameCar}</Text>
-        <Text style={styles.price}><Text style={{ color: '#c19303',fontWeight:'700',fontSize:35}}>{route.params.rent}$</Text><Text style={{ color: '#1c2834', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
+        <Text style={styles.price}><Text style={{ color: '#c19303', fontWeight: '700', fontSize: 35 }}>{route.params.rent}$</Text><Text style={{ color: '#1c2834', fontFamily: 'cairo', fontWeight: '700' }} >/hour</Text></Text>
       </View>
       <View style={styles.rate}>
         <Text style={{ color: '#1c2834', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ {route.params.review} /120 Reviews</Text>
@@ -45,20 +45,18 @@ function Car({ navigation ,route}) {
         <Text style={styles.title}>Car's Plate Number :</Text><Text style={styles.description}>{route.params.CarsPlateNumber}</Text>
         <Text style={styles.title}>License Number:</Text><Text style={styles.description}>{route.params.LicenseNumber}</Text>
         <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.InsurencePrice}$</Text>
-        <Text style={styles.title}>Location:</Text><Text style={styles.description}>{ route.params.Location}</Text>
+        <Text style={styles.title}>Location:</Text><Text style={styles.description}>{route.params.Location}</Text>
       </View>
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
       </TouchableOpacity>
-
-      {/* <Footer /> */}
     </LinearGradient>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    minHeight:'100vh',
-    maxHeight:'auto',
+    minHeight: '100vh',
+    maxHeight: 'auto',
   },
   image: {
     height: 200,
@@ -96,9 +94,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   specifi: {
-    display:'flex',
-    flexDirection:'row',
-    flexWrap:'wrap',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     backgroundColor: "white",
     borderRadius: 10,
     marginTop: "4%",
@@ -135,8 +133,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   column: {
-    display:'flex',
-    flexDirection:'column',
+    display: 'flex',
+    flexDirection: 'column',
     flex: 1,
     paddingHorizontal: 10,
   },

@@ -358,8 +358,8 @@ const ProfileScreen = ({ navigation }) => {
             }
 
             <View style={styles.row}>
-                <Text style={styles.label}> Email: </Text>
-                <View style={styles.textFieldBox}>
+                <Text style={styles.label}>Email:  </Text>
+                <View style={styles.textFieldBox2}>
                     <Text style={styles.textFieldStyle}>{email}</Text>
                 </View>
             </View>
@@ -410,7 +410,7 @@ const ProfileScreen = ({ navigation }) => {
                     (
                         <>
                             <View style={styles.row}>
-                                <Text style={styles.label}> Phone Number: </Text>
+                                <Text style={styles.label}> Phone:         </Text>
                                 <View style={styles.textFieldBox}>
                                     <TextInput
                                         style={styles.textFieldStyle}
@@ -431,8 +431,8 @@ const ProfileScreen = ({ navigation }) => {
                     ) : (
                         <>
                             <View style={styles.row}>
-                                <Text style={styles.label}> Phone Number: </Text>
-                                <View style={styles.textFieldBox2}>
+                                <Text style={styles.label}> Phone:         </Text>
+                                <View style={styles.textFieldBox}>
                                     <Text style={styles.textFieldStyle}>{phone}</Text>
                                 </View>
                                 <TouchableOpacity onPress={handlePhoneMode} style={styles.editButton}>
@@ -552,7 +552,7 @@ const styles = StyleSheet.create({
         borderColor: "black",
         borderWidth: 1.5,
         borderRadius: 7,
-        width: 200,
+        width: window.innerWidth*0.8,//80%
         height: 30,
         fontFamily: 'cairo',
         marginBottom: 5,
