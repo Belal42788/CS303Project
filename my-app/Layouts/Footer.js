@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     gap:60,
     height: 60,
     backgroundColor: '#ce9e04',
-    borderTopWidth: 2,
+    borderTopWidth: 1,
     borderTopColor: '#ccc',
     opacity:0.96,
     justifyContent: 'space-evenly',

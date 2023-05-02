@@ -26,6 +26,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { firebase } from "../firebase/config/firebase-config.js";
 import Footer from "../Layouts/Footer.js";
+import { LinearGradient } from "expo-linear-gradient";
 
 
 const ProfileScreen = ({ navigation }) => {
@@ -262,7 +263,8 @@ const ProfileScreen = ({ navigation }) => {
 
     return (
 
-        <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
+        // <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
+        <LinearGradient style={styles.container} colors={["#1c2834", "#1c2834"]}>
             <StatusBar style="auto" />
 
             <Image
@@ -468,7 +470,9 @@ const ProfileScreen = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
             <Footer navigation={navigation} />
-        </ImageBackground>
+        {/*  </ImageBackground> */}
+        </LinearGradient>
+
 
 
     );

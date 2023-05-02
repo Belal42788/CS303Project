@@ -36,7 +36,7 @@ const Models = () => {
             mark: 'Mercedes-Benz',
             img: e63,
             nameCar: "Mercedes E63 AMG 2010",
-             review:5.0,
+            review:5.0,
             hoursepower:4700,
             topspeed:210,
             seats: 4,

@@ -3,39 +3,45 @@ import Brandcar from "../assets/Image/Brand.png";
 import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc,getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
+import bmwLogo from "../assets/Image/brands photo/BMW logo.png";
+import mercedesLogo from "../assets/Image/brands photo/Mercedes-Benz-emblem-1926-1920x1080.png";
+import volkwagenLogo from "../assets/Image/brands photo/volkswagen.png";
+import toyotaLogo from "../assets/Image/brands photo/ToyotaLogo.png";
+import nissanLogo from "../assets/Image/brands photo/NissanLogo.png";
+import chevLogo from "../assets/Image/brands photo/chevLogo.png";
 
 
 const Brands = ({ navigation }) => {
   const [BrandsArray, setBrandsArray] = useState([
     {
       id: 1,
-      img: Brandcar,
-      name: '',
+      img: chevLogo,
+      name: 'Chevrolet',
     },
     {
       id: 2,
-      img: Brandcar,
-      name: '',
+      img: mercedesLogo,
+      name: 'Mercedes',
     },
     {
       id: 3,
-      img: Brandcar,
-      name: '',
+      img: toyotaLogo,
+      name: 'Toyota ',
     },
     {
       id: 4,
-      img: Brandcar,
-      name: '',
+      img: volkwagenLogo,
+      name: 'Volkswagen',
     },
     {
       id: 5,
-      img: Brandcar,
-      name: '',
+      img: bmwLogo,
+      name: 'BMW',
     },
     {
       id: 6,
-      img: Brandcar,
-      name: '',
+      img: nissanLogo,
+      name: 'Nissan ',
     },
   ]);
 
