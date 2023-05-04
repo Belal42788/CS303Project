@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "black",
     display: "flex",
-    marginBottom: "20%",
+    marginBottom: "10%",
     marginTop: "4%"
   },
   buttonText: {
