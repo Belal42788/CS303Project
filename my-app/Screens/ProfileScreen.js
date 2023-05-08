@@ -277,7 +277,7 @@ const ProfileScreen = ({ navigation }) => {
 
             <View style={styles.row}>
                 <Text style={styles.label}>Email:  </Text>
-                <View style={styles.textFieldBox2}>
+                <View style={styles.textFieldBox}>
                     <Text style={styles.textFieldStyle}>{email}</Text>
                 </View>
             </View>

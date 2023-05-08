@@ -298,7 +298,7 @@ export const UpdateModel = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        minHeight: '120vh',
+        minHeight: '110vh',
         maxHeight: 'auto',
         height:'auto',
     },
