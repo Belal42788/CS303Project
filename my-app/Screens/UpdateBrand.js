@@ -8,7 +8,8 @@ import { firebase } from "../firebase/config/firebase-config.js";
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
 import { doc, getDoc, getFirestore, collection, setDoc , getDocs} from "firebase/firestore";
-import BackButton from '../Components/backButton.js';
+import BackButton from '../Components/BackButton.js';
+import { LinearGradient } from "expo-linear-gradient";
 
 
 
@@ -114,7 +115,7 @@ export const UpdateBrand = ({ navigation }) => {
     const { handleSubmit, control } = useForm();
 
     return (
-        <View style={styles.container}>
+        <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
                 <BackButton />
                 <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
@@ -183,7 +184,7 @@ export const UpdateBrand = ({ navigation }) => {
             </TouchableOpacity>
 
             <Footer navigation={navigation} />
-        </View>
+        </LinearGradient>
     );
 }
 

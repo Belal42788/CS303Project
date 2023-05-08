@@ -179,7 +179,7 @@ const Admin = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-       minHeight: '101vh',
+       minHeight: '120vh',
     maxHeight: 'auto',
     height:'auto',
     display:'flex',
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     button: {
         width: "80%",
         borderRadius: 13,
-        height: '10%',
+        height: '9%',
         alignItems: "center",
         alignContent: "space-around",
         justifyContent: "space-evenly",
@@ -207,9 +207,8 @@ const styles = StyleSheet.create({
         borderColor: "black",
         display: "flex",
         margin:'auto',
-       marginTop:"10%",
-       marginBottom:"2%",
-       gap:'auto',
+       marginTop:"1%",
+       marginBottom:"1%",
         backgroundColor: "#ce9e04",
     },
     buttonText: {

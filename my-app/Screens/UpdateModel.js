@@ -298,13 +298,9 @@ export const UpdateModel = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        minHeight: '110vh',
+        minHeight: '120vh',
         maxHeight: 'auto',
-        display:'flex',
-        flexDirection:'column',
-        justifyContent:'space-evenly',
-        alignContent:'space-around',
-        alignItems:'center',
+        height:'auto',
     },
     paragraph: {
         margin: 24,
@@ -326,20 +322,24 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginBottom: 15,
         zIndex: 1,
+        fontFamily:'cairo',
     },
     dropdown: {
         borderColor: "#B7B7B7",
         height: 50,
         zIndex: 1,
+        fontFamily:'cairo',
     },
     select1: {
         flexDirection: "row",
         zIndex: 1,
+        fontFamily:'cairo',
     },
     select2: {
 
         flexDirection: "row",
         zIndex: 2,
+        fontFamily:'cairo',
     },
     inputView: {
         backgroundColor: "white",
@@ -378,6 +378,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "black",
         display: "flex",
+        marginBottom:'0%'
     },
     buttonText: {
         color: "black",
