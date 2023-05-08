@@ -21,7 +21,9 @@ const provider = new GoogleAuthProvider();
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailVerified, setemailVerified] = useState("");
   const auth = getAuth();
+
   auth.languageCode = 'it';
 
 
@@ -53,10 +55,14 @@ const LoginScreen = ({ navigation }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        if (user.emailVerified) {
-          navigation.navigate("Main Screen");
+        if (!user.emailVerified) {
+          signOut(auth).then(() => {
+            alert("Email is not Verified");
+            window.location.reload(true);
+          }
+          );
         } else {
-          signOut(auth).then(() => alert("Email is not Verified"));
+          navigation.navigate("Main Screen");
         }
       })
       .catch((error) => {

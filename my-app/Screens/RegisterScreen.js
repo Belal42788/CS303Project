@@ -2,6 +2,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     updateProfile,
+    signOut,
 } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
@@ -120,10 +121,7 @@ const RegisterScreen = ({ navigation }) => {
 
                     await signOut(auth)
                         .then(() => {
-
-                            alert("you singed out successfuly");
-
-                            navigation.navigate("Login");
+                            window.location.reload(true);
                         })
                         .catch((error) => {
                             const errorMessage = error.message;

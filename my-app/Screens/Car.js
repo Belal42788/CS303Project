@@ -50,7 +50,7 @@ function Car({ navigation, route }) {
       </View>
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> 
     </LinearGradient>
   );
 };
