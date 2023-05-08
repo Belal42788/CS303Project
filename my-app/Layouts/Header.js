@@ -234,11 +234,16 @@ import {
 
 function SearchResult({ query }) {
   const data = [
-    { id: 1, name: "Result 1" },
-    { id: 2, name: "Result 2" },
-    { id: 3, name: "Result 3" },
-    { id: 4, name: "Result 4" },
-    { id: 5, name: "Result 5" },
+    { id: 1, name: "BMW" },
+    { id: 2, name: "Chevorlet" },
+    { id: 3, name: "Ford" },
+    { id: 4, name: "Honda" },
+    { id: 5, name: "Mercedes-Benz" },
+{ id: 6 , name: "Nissan"},
+{ id: 7, name: "Toyota"},
+{ id: 8 , name:"Volkswagen"},
+{ id: 9 , name:"Tesla"},
+{ id: 10 , name:"Fiat"}
   ];
 
   const filteredData = data.filter((item) =>
@@ -372,4 +377,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
