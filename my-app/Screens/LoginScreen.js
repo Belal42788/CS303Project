@@ -55,16 +55,14 @@ const LoginScreen = ({ navigation }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        if (user.emailVerified) {
-          navigation.navigate("Main Screen");
-        } else {
+        if (!user.emailVerified) {
           signOut(auth).then(() => {
-
-            alert("Email is not Verified")
+            alert("Email is not Verified");
+            window.location.reload(true);
           }
-          
-        
           );
+        } else {
+          navigation.navigate("Main Screen");
         }
       })
       .catch((error) => {
