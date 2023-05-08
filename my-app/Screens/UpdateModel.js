@@ -2,7 +2,7 @@ import React, { useState, useCallback ,useEffect} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
-import BackButton from '../Components/backButton.js';
+import BackButton from '../Components/BackButton.js';
 import { doc, getDocs, getFirestore, collection, setDoc } from "firebase/firestore";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'

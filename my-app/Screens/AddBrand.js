@@ -5,7 +5,7 @@ import Footer from "../Layouts/Footer.js";
 import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDocs } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { firebase } from "../firebase/config/firebase-config.js";
-import BackButton from '../Components/backButton.js';
+import BackButton from '../Components/BackButton.js';
 
 
 
