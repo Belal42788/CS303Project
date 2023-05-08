@@ -58,7 +58,7 @@ const RegisterScreen = ({ navigation }) => {
             });
     };
 
-    const HandleRegister = () => {
+    const HandleRegister = async () => {
         if (pass(password) == false) {
             alert("Your pass is small");
             return;
@@ -91,7 +91,7 @@ const RegisterScreen = ({ navigation }) => {
                     }
 
                     //to set user info
-                    updateProfile(auth.currentUser, {
+                    await updateProfile(auth.currentUser, {
                         displayName: firstName + " " + lastName,
                         email: email,
                         password: password,
@@ -105,15 +105,27 @@ const RegisterScreen = ({ navigation }) => {
                         });
 
                     //to send email verification
-                    sendEmailVerification(user)
+                    await sendEmailVerification(user)
                         .then(() => {
                             alert(
                                 "Verification link has been sent to your email Plesase check your email then LOGIN"
                             );
-                            navigation.navigate("Login");
+
                         })
                         .catch((error) => {
                             const errorCode = error.code;
+                            const errorMessage = error.message;
+                            alert(errorMessage);
+                        });
+
+                    await signOut(auth)
+                        .then(() => {
+
+                            alert("you singed out successfuly");
+
+                            navigation.navigate("Login");
+                        })
+                        .catch((error) => {
                             const errorMessage = error.message;
                             alert(errorMessage);
                         });
@@ -121,7 +133,7 @@ const RegisterScreen = ({ navigation }) => {
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    Alert.alert("Email alredy registered");
+                    alert("Email alredy registered");
                     console.log(errorMessage);
                 });
         } else if (password != password1) {
