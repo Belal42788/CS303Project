@@ -9,7 +9,7 @@ const Footer = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
           <FontAwesome name='home'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("UpdateCar")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <FontAwesome name='user'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Shop")}>
@@ -21,7 +21,9 @@ const Footer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   footer: {
-    position: 'fixed',
+    
+    marginTop:20,
+    position:'fixed',
       display:'flex',
     bottom: 0,
     flexDirection: 'row',
@@ -34,8 +36,6 @@ const styles = StyleSheet.create({
     opacity:0.96,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-  
-  
   },
 });
 

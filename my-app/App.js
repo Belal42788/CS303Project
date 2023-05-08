@@ -102,6 +102,7 @@ export default function App() {
           <Stack.Screen name="AddBrand" component={AddBrand} />
           <Stack.Screen name="Car" component={Car} />
           <Stack.Screen name="BlankCar" component={BlankCar} />
+          <Stack.Screen name="UpdateCar" component={UpdateCar} />
         </Stack.Navigator>
       </NavigationContainer>
     );
