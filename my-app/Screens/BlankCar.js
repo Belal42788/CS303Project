@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useCallback } from "react";
-import BackButton from "../Components/backButton.js";
+import BackButton from "../Components/BackButton.js";
 import { LinearGradient } from "expo-linear-gradient";
 import {
     StyleSheet,

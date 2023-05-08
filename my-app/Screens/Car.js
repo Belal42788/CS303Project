@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BackButton from "../Components/backButton.js";
+import BackButton from "../Components/BackButton.js";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   StyleSheet,
@@ -50,7 +50,7 @@ function Car({ navigation, route }) {
       </View>
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> 
     </LinearGradient>
   );
 };
