@@ -21,7 +21,9 @@ const Footer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   footer: {
-    position: 'fixed',
+    
+    marginTop:20,
+    position:'fixed',
       display:'flex',
     bottom: 0,
     flexDirection: 'row',
@@ -34,8 +36,6 @@ const styles = StyleSheet.create({
     opacity:0.96,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-  
-  
   },
 });
 

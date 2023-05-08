@@ -5,7 +5,8 @@ import Footer from "../Layouts/Footer.js";
 import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDocs } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker';
 import { firebase } from "../firebase/config/firebase-config.js";
-import BackButton from '../Components/backButton.js';
+import BackButton from '../Components/BackButton.js';
+import { LinearGradient } from "expo-linear-gradient";
 
 
 
@@ -89,7 +90,7 @@ export const AddBrand = ({ navigation }) => {
     };
 
     return (
-        <View style={styles.container}>
+        <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
                 <BackButton />
                 <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
@@ -124,7 +125,7 @@ export const AddBrand = ({ navigation }) => {
             </TouchableOpacity>
             <Footer navigation={navigation} />
 
-        </View>
+        </LinearGradient>
     );
 }
 

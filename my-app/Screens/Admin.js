@@ -9,6 +9,7 @@ import {
     updatePhoneNumber,
 } from "firebase/auth";
 import { getDatabase, child, get } from "firebase/database";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState } from "react";
 import {
     StyleSheet,
@@ -142,7 +143,7 @@ const Admin = ({ navigation }) => {
 
 
     return (
-        <View  style={styles.container}>
+        <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
 
 
 
@@ -159,7 +160,7 @@ const Admin = ({ navigation }) => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddModel') }}>
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('BlankCar') }}>
                     Add Model
                 </Text>
             </TouchableOpacity>
@@ -172,43 +173,49 @@ const Admin = ({ navigation }) => {
 
 
             <Footer navigation={navigation} />
-        </View>
+        </LinearGradient>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        
-        height: "100%",
-        width: "100%",
+       minHeight: '120vh',
+    maxHeight: 'auto',
+    height:'auto',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-evenly',
+    alignContent:'space-around',
+    alignItems:'center',
+    
     },
     textStyle: {
-        fontSize: "15px",
+        fontSize: 'auto',
         fontWeight: "bold",
         color: "#d8d8d8",
         fontFamily: "cairo",
     },
     button: {
-        width: "70%",
-        borderRadius: 18,
-        height: 40,
+        width: "80%",
+        borderRadius: 13,
+        height: '9%',
         alignItems: "center",
-        alignContent: "center",
-        justifyContent: "center",
+        alignContent: "space-around",
+        justifyContent: "space-evenly",
         borderStyle: "solid",
-        borderWidth: 2,
+        borderWidth: 3,
         borderColor: "black",
         display: "flex",
-        margin:"15%",
+        margin:'auto',
+       marginTop:"1%",
+       marginBottom:"1%",
         backgroundColor: "#ce9e04",
     },
     buttonText: {
         color: "black",
         fontWeight: "bold",
         textTransform: "capitalize",
-        fontSize: 20,
+        fontSize: '120%',
         textAlign: "center",
         fontFamily: "cairo",
     },

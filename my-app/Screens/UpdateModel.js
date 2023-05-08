@@ -2,10 +2,11 @@ import React, { useState, useCallback ,useEffect} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import Footer from "../Layouts/Footer.js";
-import BackButton from '../Components/backButton.js';
+import BackButton from '../Components/BackButton.js';
 import { doc, getDocs, getFirestore, collection, setDoc } from "firebase/firestore";
 // You can import from local files
-import DropDownPicker from 'react-native-dropdown-picker'
+import DropDownPicker from 'react-native-dropdown-picker';
+import { LinearGradient } from "expo-linear-gradient";
 import { useForm, Controller } from 'react-hook-form';
 import * as ImagePicker from 'expo-image-picker';
 import { firebase } from "../firebase/config/firebase-config.js";
@@ -138,7 +139,7 @@ export const UpdateModel = ({ navigation }) => {
     const { handleSubmit, control } = useForm();
 
     return (
-        <View style={styles.container}>
+        <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
             <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
                 <BackButton />
                 <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
@@ -286,20 +287,20 @@ export const UpdateModel = ({ navigation }) => {
 
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.buttonText} onPress={null}>
-                    Updata
+                    Update
                 </Text>
             </TouchableOpacity>
             <Footer navigation={navigation} />
 
-        </View>
+        </LinearGradient>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingTop: Constants.statusBarHeight,
-        backgroundColor: '#ecf0f1',
+        minHeight: '120vh',
+        maxHeight: 'auto',
+        height:'auto',
     },
     paragraph: {
         margin: 24,
@@ -321,20 +322,24 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginBottom: 15,
         zIndex: 1,
+        fontFamily:'cairo',
     },
     dropdown: {
         borderColor: "#B7B7B7",
         height: 50,
         zIndex: 1,
+        fontFamily:'cairo',
     },
     select1: {
         flexDirection: "row",
         zIndex: 1,
+        fontFamily:'cairo',
     },
     select2: {
 
         flexDirection: "row",
         zIndex: 2,
+        fontFamily:'cairo',
     },
     inputView: {
         backgroundColor: "white",
@@ -373,6 +378,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "black",
         display: "flex",
+        marginBottom:'0%'
     },
     buttonText: {
         color: "black",
