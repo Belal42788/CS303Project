@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Alert, ImageBackground, FlatList
 } from "react-native";
+import Footer from '../Layouts/Footer';
 function Car({ navigation, route }) {
 
   return (
@@ -51,6 +52,7 @@ function Car({ navigation, route }) {
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
       </TouchableOpacity> 
+      <Footer navigation={navigation} />
     </LinearGradient>
   );
 };
