@@ -34,7 +34,6 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 function UpdateCar({ navigation, route }) {
 
-    const [modelName, setModelName] = useState("");
     const [price, setPrice] = useState("");
     const [horsePowerCC, setHorsePowerCC] = useState("");
     const [hoursepower, setHoursePower] = useState("");
@@ -50,10 +49,13 @@ function UpdateCar({ navigation, route }) {
     const [location, setLocation] = useState("");
     const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/uploadcar.png?alt=media&token=d89fbcd8-a45b-4f0e-8f77-8c649a08242a");
 
-    const [modelOpen, setmodelOpen] = useState(false);
+    const [modelOpen, setModelOpen] = useState(false);
+    const [modelValue, setModelValue] = useState("");
+    const [modelValueOpetion, setModelalueOpetion] = useState("");
+    const [modelName, setModelName] = useState("");
+    const [model, setModel] = useState([]);
+    
     const [nameOpen, setnameOpen] = useState(false);
-
-    const [modelValue, setmodelValue] = useState(null);
     const [nameValue, setnameValue] = useState(null);
 
 
@@ -61,9 +63,7 @@ function UpdateCar({ navigation, route }) {
     const [BrandValue, setBrandValue] = useState("");
     const [BrandValueOpetion, setBrandValueOpetion] = useState("");
     const [BrandName, setBrandName] = useState("");
-    const [Brand, setBrand] = useState([
-
-    ]);
+    const [Brand, setBrand] = useState([]);
 
     //to PickImage
     const pickImage = async () => {
@@ -105,10 +105,25 @@ function UpdateCar({ navigation, route }) {
         })
         setBrand(arr);
     }
+
+    const updateModelList = async () => {
+        const db = getFirestore();
+        const colRefB = collection(db, "Models");
+        const docsSnap = await getDocs(colRefB);
+        const docRef = doc(db, "Models", modelName.toUpperCase());
+        const colRef = collection(docRef, "B")
+
+        let arr = [];
+        docsSnap.forEach(doc => {
+            arr.push({ label: doc.id, value: doc.id });
+        })
+        setModel(arr);
+    }
     useEffect(() => {
         updateList();
+        updateModelList();
     })
-    const AddModel = async () => {
+    const UpdateModel = async () => {
         if (uri == "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c") {
             alert("Please choose Image");
         }
@@ -116,16 +131,7 @@ function UpdateCar({ navigation, route }) {
             const db = getFirestore();
             const colRefB = collection(db, "Models");
             const docsSnap = await getDocs(colRefB);
-            try {
-                docsSnap.forEach(doc => {
-                    if (doc.id == modelName.toUpperCase()) {
-                        throw "exit";
-                    }
-                })
-            } catch (error) {
-                alert("This Model is alredy exist.");
-                return;
-            }
+
             updatePhoto();
             const docRef = doc(db, "Models", modelName.toUpperCase());
             await setDoc(docRef, {
@@ -153,7 +159,7 @@ function UpdateCar({ navigation, route }) {
             });
             alert("done");
         } else {
-            alert("please All car info");
+            alert("please Add All car info");
             // console.log(location + " " + insurence + " " + licenseNumber + " " + plateNumber + " " + color + " " + chassis + " " + transmission + " " + fuel + " " + seats + " " + topSpeed + " " + hoursepower + " " + price + modelName + " " + modelValue +" ");
         }
     };
@@ -348,7 +354,7 @@ function UpdateCar({ navigation, route }) {
                     onChangeText={setLocation}
                 />
             </View>
-            <TouchableOpacity style={styles.button} onPress={AddModel}>
+            <TouchableOpacity style={styles.button} onPress={UpdateModel}>
                 <Text style={styles.buttonText}>Add</Text>
             </TouchableOpacity>
         </LinearGradient>

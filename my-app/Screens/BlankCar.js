@@ -139,7 +139,7 @@ function BlankCar({ navigation, route }) {
             });
             alert("done");
         } else {
-            alert("please All car info");
+            alert("please Add All car info");
             // console.log(location + " " + insurence + " " + licenseNumber + " " + plateNumber + " " + color + " " + chassis + " " + transmission + " " + fuel + " " + seats + " " + topSpeed + " " + hoursepower + " " + price + modelName + " " + modelValue +" ");
         }
     };
