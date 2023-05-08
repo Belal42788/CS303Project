@@ -161,7 +161,7 @@ function BlankCar({ navigation, route }) {
                     defaultValue=""
                     control={control}
                     render={({ field: { onChange, value } }) => (
-                        <View style={styles.dropdownmodel}>
+                        <View style={styles.dropdownBrand}>
                             <DropDownPicker
                                 style={styles.dropdown}
                                 open={BrandOpen}
@@ -175,6 +175,10 @@ function BlankCar({ navigation, route }) {
                                 placeholderStyle={styles.placeholderStyles}
                                 onChangeValue={() => {
                                     onChange;
+                                    if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
+                                        selected();
+                                    }
+                                    setBrandValueOpetion(BrandValue);
                                 }}
                                 zIndex={3000}
                                 zIndexInverse={1000}
@@ -347,38 +351,42 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 200,
+        zIndex:-1,
     },
     info: {
         display: "flex",
         flexDirection: "row",
-        alignContent: "space-around",
+        alignContent: "center",
         alignItems: "center",
         justifyContent: "space-evenly",
-        gap: 10,
-        paddingLeft: 10,
+        gap: 8,
+        paddingLeft:8,
         paddingRight: 10,
-    },
-    name: {
+      },
+      name: {
         fontSize: 20,
         fontWeight: "600",
         color: "black",
         fontFamily: "cairo",
-        maxWidth: "60%",
+        maxWidth: "38%",
         flexWrap: "wrap",
         lineHeight: 18,
-    },
+      },
     price: {
         fontSize: 20,
         fontWeight: "600",
         color: "black",
         fontFamily: "cairo",
-        maxWidth: "50%",
+        maxWidth: "15%",
         flexWrap: "wrap",
     },
     rate: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
+    },
+    dropdown:{
+        zIndex:1000,
     },
     specifi: {
         display: 'flex',
@@ -492,6 +500,7 @@ const styles = StyleSheet.create({
 
     },
     PhotoStyle: {
+        zIndex:-1,
         width: "100%",
         height: "100px",
         // backgroundColor:"blue",
@@ -499,6 +508,65 @@ const styles = StyleSheet.create({
         // borderColor:"blue",
         // borderRadius: "50%",
         // marginTop: 0,
+    },
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    placeholderStyles: {
+        color: "grey",
+    },
+    dropdownBrand: {
+        marginHorizontal: 10,
+        width: "85%",
+        marginBottom: 15,
+        marginLeft: "6%",
+        zIndex: 1,
+    },
+    dropdownCompany: {
+        marginHorizontal: 10,
+        marginBottom: 15,
+        zIndex: 1,
+    },
+    dropdown: {
+        borderColor: "#B7B7B7",
+        height: 50,
+        zIndex: 1,
+    },
+    select1: {
+        flexDirection: "row",
+        zIndex: 1,
+    },
+    select2: {
+
+        flexDirection: "row",
+        zIndex: 2,
+    },
+    inputView: {
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 2.5,
+        borderRadius: 15,
+        width: "90%",
+        height: "7%",
+        fontFamily: 'cairo',
+        marginBottom: 5,
+        alignItems: "center",
+        textAlign: "left",
+        alignContent: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    TextInput: {
+        fontSize: "120%",
+        width: "96%",
+        height: "90%",
+        textAlign: "left",
+        color: "black",
+        fontFamily: 'cairo',
+        fontWeight: "700",
     },
 });
 

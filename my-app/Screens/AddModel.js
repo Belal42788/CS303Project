@@ -128,35 +128,6 @@ export const AddModel = ({ navigation }) => {
                     Add Model
                 </Text>
             </View>
-            {/* <View style={styles.select1}>
-                <Controller
-                    name="model"
-                    defaultValue=""
-                    control={control}
-                    render={({ field: { onChange, value } }) => (
-                        <View style={styles.dropdownmodel}>
-                            <DropDownPicker
-                                style={styles.dropdown}
-                                open={modelOpen}
-                                value={modelValue} //modelValue
-                                items={model}
-                                setOpen={setmodelOpen}
-                                setValue={setmodelValue}
-                                setItems={setmodel}
-                                placeholder="Select Model"
-                                searchable={true}
-                                placeholderStyle={styles.placeholderStyles}
-                                onChangeValue={() => {
-                                    onChange;
-                                    console.log(modelValue);
-                                }}
-                                zIndex={3000}
-                                zIndexInverse={1000}
-                            />
-                        </View>
-                    )}
-                />
-            </View> */}
 
             <View style={styles.select1}>
                 <Controller
@@ -265,7 +236,7 @@ const styles = StyleSheet.create({
         width: "85%",
         marginBottom: 15,
         marginLeft: "6%",
-        zIndex: 1,
+        zIndex: 10,
     },
     dropdownCompany: {
         marginHorizontal: 10,
@@ -275,16 +246,16 @@ const styles = StyleSheet.create({
     dropdown: {
         borderColor: "#B7B7B7",
         height: 50,
-        zIndex: 1,
+        zIndex: 10,
     },
     select1: {
         flexDirection: "row",
-        zIndex: 1,
+        zIndex: 10,
     },
     select2: {
 
         flexDirection: "row",
-        zIndex: 2,
+        zIndex: 10,
     },
     inputView: {
         backgroundColor: "white",
@@ -332,6 +303,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     PhotoStyle: {
+        zIndex:-1,
         width: "100%",
         height: "100px",
         // backgroundColor:"blue",
@@ -341,6 +313,7 @@ const styles = StyleSheet.create({
         // marginTop: 0,
     },
     ImageStyle:{
+         zIndex:-1,
         margin:"5%"
     }
 });
