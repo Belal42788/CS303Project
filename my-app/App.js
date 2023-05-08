@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useState, useEffect } from "react";
 import MainSrceen from "./Screens/MainScreen.js";
 import LodingScreen from "./Screens/lodingScreen.js";
+import BlankCar from "./Screens/BlankCar.js";
 import Shop from "./Screens/Shop.js";
 import Admin from "./Screens/Admin.js";
 import { UpdateModel } from "./Screens/UpdateModel.js";
@@ -19,6 +20,7 @@ import { AddModel } from "./Screens/AddModel.js";
 import { AddBrand } from "./Screens/AddBrand.js";
 import { UpdateBrand } from "./Screens/UpdateBrand.js";
 import Car from "./Screens/Car.js";
+import UpdateCar from "./Screens/UpdateCar.js";
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -81,6 +83,8 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
+          <Stack.Screen name="BlankCar" component={BlankCar} />
+          <Stack.Screen name="UpdateCar" component={UpdateCar} />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -97,6 +101,7 @@ export default function App() {
           <Stack.Screen name="AddModel" component={AddModel} />
           <Stack.Screen name="AddBrand" component={AddBrand} />
           <Stack.Screen name="Car" component={Car} />
+          <Stack.Screen name="BlankCar" component={BlankCar} />
         </Stack.Navigator>
       </NavigationContainer>
     );

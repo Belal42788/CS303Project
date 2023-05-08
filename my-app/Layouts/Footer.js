@@ -9,7 +9,7 @@ const Footer = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate("Main Screen")}>
           <FontAwesome name='home'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <TouchableOpacity onPress={() => navigation.navigate("UpdateCar")}>
         <FontAwesome name='user'  size={30} color="black" style={styles.PhotoStyle} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Shop")}>
