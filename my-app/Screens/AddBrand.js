@@ -91,6 +91,7 @@ export const AddBrand = ({ navigation }) => {
 
     return (
         <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
+            
             <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
                 <BackButton />
                 <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
@@ -217,17 +218,17 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     PhotoStyle: {
-        width: "100px",
-        height: "100px",
+        width: 120,
+        height: 120,
         // backgroundColor:"blue",
-        borderRightWidth: "0px",
         // borderColor:"blue",
         borderRadius: "50%",
-        // marginTop: 0,
+        // marginTop: 0
+        resizeMode: 'contain'
     },
     ImageStyle: {
         margin: "5%",
-        marginLeft: "35%"
+        marginLeft: "35%",
     },
 
 });

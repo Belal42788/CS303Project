@@ -4,17 +4,13 @@ import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc,getDocs }
 import React, { useEffect, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import bmwLogo from "../assets/Image/brands photo/BMW logo.png";
-import bmw from "../assets/Image/brands photo/bmw.png";
-import mercedesLogo from "../assets/Image/brands photo/Mercedes-Benz-emblem-1926-1920x1080.png";
-import mercedes from "../assets/Image/brands photo/mercedes-logo-15885.png";
-import volkwagenLogo from "../assets/Image/brands photo/volkswagen.png";
-import volkwagen from "../assets/Image/brands photo/Volkswagen New Logo PNG Vector (AI) Free Download.png";
-import toyotaLogo from "../assets/Image/brands photo/Toyota_logo_PNG17.png";
-import nissanLogo from "../assets/Image/brands photo/Nissan_logo_PNG1.png";
+import mercedesLogo from "../assets/Image/brands photo/MercedesLogo.png";
+import volkwagenLogo from "../assets/Image/brands photo/volkswagenLogo.png";
+import toyotaLogo from "../assets/Image/brands photo/ToyotaLogo.png";
+import nissanLogo from "../assets/Image/brands photo/NissanLogo.png";
 import chevLogo from "../assets/Image/brands photo/chevLogo.png";
 import chev from "../assets/Image/brands photo/Chevrolet_logo_PNG1.png";
 import ford from "../assets/Image/brands photo/ford.png";
-
 
 
 const Brands = ({ navigation }) => {
@@ -122,17 +118,16 @@ const styles = StyleSheet.create({
   marksicons: {
     width: 80,
     height: 80,
-    marginRight: 12,
+    marginRight: 8,
     resizeMode: 'contain'
   },
   markstext: {
-    color: "black",
+    color: "#ccc",
     fontFamily: "cairo",
-    fontWeight: "800",
+    fontWeight: 800,
     alignSelf: "center",
-    marginTop: "10%",
-    marginBottom: "20%",
-    marginRight: 12,
+    marginBottom: 10,
+    marginRight: 8,
     fontSize: 15
   }
 });
