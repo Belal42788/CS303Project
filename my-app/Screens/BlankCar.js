@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import BackButton from "../Components/BackButton.js";
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -18,9 +18,10 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
-import { doc, getDoc, getFirestore, collection, setDoc , getDocs} from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection, setDoc, getDocs } from "firebase/firestore";
 function BlankCar({ navigation, route }) {
 
+    const [Model, setModel] = useState([]);
     const [modelName, setModelName] = useState("");
     const [price, setPrice] = useState("");
     const [horsePowerCC, setHorsePowerCC] = useState("");
@@ -85,7 +86,7 @@ function BlankCar({ navigation, route }) {
         const db = getFirestore();
         const colRef = collection(db, "Brands");
         const docsSnap = await getDocs(colRef);
-        let arr=[];
+        let arr = [];
         docsSnap.forEach(doc => {
             arr.push({ label: doc.id, value: doc.id });
         })
@@ -98,46 +99,48 @@ function BlankCar({ navigation, route }) {
         if (uri == "https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/nonuser.png?alt=media&token=96df5919-4ce1-4d6a-8978-f728f03d356c") {
             alert("Please choose Image");
         }
-        if (BrandValue != null && modelName !="" && horsePowerCC!="" && location !="" && insurence !="" && licenseNumber !="" && plateNumber !="" && color !="" && chassis !="" && transmission !="" && fuel !="" && seats !="" && topSpeed !="" && hoursepower !="" && price!="")
-        {
+        if (BrandValue != null && modelName != "" && horsePowerCC != "" && location != "" && insurence != "" && licenseNumber != "" && plateNumber != "" && color != "" && chassis != "" && transmission != "" && fuel != "" && seats != "" && topSpeed != "" && hoursepower != "" && price != "") {
             const db = getFirestore();
-            const colRefB = collection(db, "Models");
-            const docsSnap = await getDocs(colRefB);
-            try {
-                docsSnap.forEach(doc => {
-                    if (doc.id == modelName.toUpperCase()) {
-                        throw "exit";
-                    }
-                })
-            } catch (error) {
-                alert("This Model is alredy exist.");
-                return;
+            const UserRef = doc(db, "Brands", modelName.toUpperCase());
+            const docSnap = await getDoc(UserRef);
+            console.log(docSnap.data());
+            // try {
+            //     docSnap.data().Car.map((i) => {
+            //         if (i.nameCar == route.params.nameCar) {
+            //             throw 0;
+            //         }
+            //     });
+            // } catch (error) {
+            //     alert("This car add elrady.");
+            //     return;
+            // }
+            docSnap.data().Car.map((i) => {
+                setModel(Model.push(i));
+            });
+            const uriL = await updatePhoto();
+            setModel(Model.push({
+                        name: modelName,
+                        price: price,
+                        horsePowerCC: horsePowerCC,
+                        hoursepower: hoursepower,
+                        topSpeed: topSpeed,
+                        seats: seats,
+                        fuel: fuel,
+                        transmission: transmission,
+                        chassis: chassis,
+                        color: color,
+                        plateNumber: plateNumber,
+                        licenseNumber: licenseNumber,
+                        insurence: insurence,
+                        location: location,
+                        brand: BrandValue,
+                        uri: uriL
+                    }));
+            console.log(Model);
+            await updateDoc(UserRef,{
+                Car: Model
             }
-            const uriL=await updatePhoto();
-            const docRef = doc(db, "Models", modelName.toUpperCase());
-            await setDoc(docRef, {
-
-            });
-
-            const colRef = collection(docRef, "B")
-            await setDoc(doc(colRef, "Info"), {
-                name: modelName,
-                price: price,
-                horsePowerCC: horsePowerCC,
-                hoursepower: hoursepower,
-                topSpeed: topSpeed,
-                seats: seats,
-                fuel: fuel,
-                transmission: transmission,
-                chassis: chassis,
-                color: color,
-                plateNumber: plateNumber,
-                licenseNumber: licenseNumber,
-                insurence: insurence,
-                location: location,
-                brand: BrandValue,
-                uri: uriL
-            });
+            );
             alert("done");
         } else {
             alert("please Add All car info");
@@ -177,7 +180,7 @@ function BlankCar({ navigation, route }) {
                                 onChangeValue={() => {
                                     onChange;
                                     if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
-                                        // selected();
+                                        setModelName(BrandValue);
                                     }
                                     setBrandValueOpetion(BrandValue);
                                 }}
@@ -196,7 +199,7 @@ function BlankCar({ navigation, route }) {
                     source={{
                         uri: uri,
                     }}
-                    
+
                 />
             </TouchableOpacity>
 
@@ -227,69 +230,69 @@ function BlankCar({ navigation, route }) {
                 <View style={styles.column}>
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} />hoursepower CC</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="Horse Power CC"
-                    placeholderTextColor="#003f5c"
-                    value={hoursepower}
-                    onChangeText={setHoursePower}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="Horse Power CC"
+                        placeholderTextColor="#003f5c"
+                        value={hoursepower}
+                        onChangeText={setHoursePower}
+                    />
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />topspeed KM/H</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="Top Speed KM/H"
-                    placeholderTextColor="#003f5c"
-                    value={topSpeed}
-                    onChangeText={setTopSpeed}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="Top Speed KM/H"
+                        placeholderTextColor="#003f5c"
+                        value={topSpeed}
+                        onChangeText={setTopSpeed}
+                    />
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />seats seats</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="Seats"
-                    placeholderTextColor="#003f5c"
-                    value={seats}
-                    onChangeText={setSeats}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="Seats"
+                        placeholderTextColor="#003f5c"
+                        value={seats}
+                        onChangeText={setSeats}
+                    />
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/galloping horse gif.gif')} style={styles.anim} />horsepower</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="Horse Power"
-                    placeholderTextColor="#003f5c"
-                    value={horsePowerCC}
-                    onChangeText={setHorsePowerCC}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="Horse Power"
+                        placeholderTextColor="#003f5c"
+                        value={horsePowerCC}
+                        onChangeText={setHorsePowerCC}
+                    />
                 </View>
                 <View style={styles.column}>
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />fuel</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="fuel"
-                    placeholderTextColor="#003f5c"
-                    value={fuel}
-                    onChangeText={setFuel}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="fuel"
+                        placeholderTextColor="#003f5c"
+                        value={fuel}
+                        onChangeText={setFuel}
+                    />
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/manual-transmission.png')} style={styles.anim} />transmission</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="Transmission"
-                    placeholderTextColor="#003f5c"
-                    value={transmission}
-                    onChangeText={setTransmission}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="Transmission"
+                        placeholderTextColor="#003f5c"
+                        value={transmission}
+                        onChangeText={setTransmission}
+                    />
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />chassis WD</Text> */}
                     <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="chassis"
-                    placeholderTextColor="#003f5c"
-                    value={chassis}
-                    onChangeText={setChassis}
-                />
+                        // style={styles.TextInput}
+                        style={styles.specifitext}
+                        placeholder="chassis"
+                        placeholderTextColor="#003f5c"
+                        value={chassis}
+                        onChangeText={setChassis}
+                    />
                 </View>
             </View>
             <View style={styles.card}>
@@ -352,7 +355,7 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 200,
-        zIndex:-1,
+        zIndex: -1,
     },
     info: {
         display: "flex",
@@ -361,10 +364,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-evenly",
         gap: 8,
-        paddingLeft:8,
+        paddingLeft: 8,
         paddingRight: 10,
-      },
-      name: {
+    },
+    name: {
         fontSize: 20,
         fontWeight: "600",
         color: "black",
@@ -372,7 +375,7 @@ const styles = StyleSheet.create({
         maxWidth: "38%",
         flexWrap: "wrap",
         lineHeight: 18,
-      },
+    },
     price: {
         fontSize: 20,
         fontWeight: "600",
@@ -386,8 +389,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
     },
-    dropdown:{
-        zIndex:1000,
+    dropdown: {
+        zIndex: 1000,
     },
     specifi: {
         display: 'flex',
@@ -501,7 +504,7 @@ const styles = StyleSheet.create({
 
     },
     PhotoStyle: {
-        zIndex:-1,
+        zIndex: -1,
         width: "100%",
         height: "100px",
         // backgroundColor:"blue",
