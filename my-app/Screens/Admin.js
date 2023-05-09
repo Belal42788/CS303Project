@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
         color: "black",
         fontWeight: "bold",
         textTransform: "capitalize",
-        fontSize: '120%',
+        fontSize: 25,
         textAlign: "center",
         fontFamily: "cairo",
     },

@@ -335,7 +335,6 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         marginLeft: 0,
         outlineStyle: 'none',
-
     },
     photoGroub: {
         marginTop: 0,
