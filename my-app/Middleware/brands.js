@@ -6,9 +6,9 @@ import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "rea
 import bmwLogo from "../assets/Image/brands photo/bmw.png";
 import mercedesLogo from "../assets/Image/brands photo/MercedesLogo.png";
 import volkwagenLogo from "../assets/Image/brands photo/volkswagenLogo.png";
-import toyotaLogo from "../assets/Image/brands photo/Toyota_logo_PNG17.png";
+import toyotaLogo from "../assets/Image/brands photo/ToyotaLogo.png";
 import nissanLogo from "../assets/Image/brands photo/NissanLogo.png";
-import chev from "../assets/Image/brands photo/Chevrolet_logo_PNG1.png";
+import chev from "../assets/Image/brands photo/chevLogo.png";
 import ford from "../assets/Image/brands photo/ford.png";
 
 
