@@ -263,7 +263,6 @@ const ProfileScreen = ({ navigation }) => {
 
 
   return (
-
     <LinearGradient style={[styles.container]} colors={["#1c2834", "#d0a20e"]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} locations={[0, 0.8]}>
       <StatusBar style="auto" />
       <View style={styles.logocont}>
@@ -284,9 +283,6 @@ const ProfileScreen = ({ navigation }) => {
           <Text style={styles.updatePhotoButtonText}>+</Text>
         </TouchableOpacity>
       </TouchableOpacity>
-
-
-
 
       {
         firstNameMode ?
@@ -332,7 +328,6 @@ const ProfileScreen = ({ navigation }) => {
             </>
           )
       }
-
 
       {
         lastNameMode ?
@@ -512,20 +507,22 @@ const ProfileScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    minHeight:'110vh',
+    minHeight:'120vh',
+    height: 'auto',
     alignItems: "center",
     justifyContent: "center",
-    height: 'auto',
+    
     width: '100%',
   },
   logoText: {
     color: "white",
-    fontSize: "20px",
-    fontWeight: "600",
+    fontSize: 30,
+    fontWeight: 600,
     fontFamily: 'prompt',
     justifyContent: 'center',
     alignSelf: "center",
     marginTop: "1%",
+    marginBottom: "5%",
   },
   logocont: {
     alignItems: "center",
@@ -620,7 +617,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   editImage: {
-    marginTop:'-70%',
     width: 30,
     height: 30,
     borderRadius: 10,
@@ -643,12 +639,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   photo: {
-    marginTop:'-60%',
     width: 120,
     height: 120,
     borderColor: "#1c2834",
     borderRadius: "50%",
-    marginBottom: 2,
+    marginBottom: 25,
     borderWidth: 3,
   },
   updatePhotoButton: {
