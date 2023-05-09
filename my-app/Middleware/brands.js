@@ -75,8 +75,8 @@ const Brands = ({ navigation }) => {
       <ScrollView horizontal={true} contentContainerStyle={styles.marksscroll} >
         {BrandsArray.map((m) => {
           return (
-            <TouchableOpacity key={m.id}>
-              <Image source={m.img} style={styles.marksicons} />
+            <TouchableOpacity key={m.id} onPress={() => navigation.navigate('modelsListScreen')}> 
+              <Image source={m.img} style={styles.marksicons}  />
               <Text style={styles.markstext}>{m.name}</Text>
             </TouchableOpacity>
           );
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     marginRight: 12,
+    resizeMode: 'contain'
   },
   markstext: {
     color: "black",
