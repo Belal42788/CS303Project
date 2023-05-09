@@ -20,6 +20,11 @@ import { Auth } from "firebase/auth";
 import Footer from '../Layouts/Footer';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 function Car({ navigation, route }) {
+  const [search, setSearch] = useState("");
+
+  const handleSearch = () => {
+    // handle search functionality here
+  };
   const [Model, setModel] = useState([route.params]);
   console.log(Model);
 
@@ -137,6 +142,18 @@ function Car({ navigation, route }) {
         <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.InsurencePrice}$</Text>
         <Text style={styles.title}>Location:</Text><Text style={styles.description}>{route.params.Location}</Text>
       </View>
+      <View  style={styles.hours}>
+        <Text style={styles.hourstext}>Rent Hours </Text>
+      <View style={styles.searchbarview}>
+          <TextInput
+            style={styles.searchbartext}
+            placeholderTextColor="#a9a9a9"
+            onChangeText={setSearch}
+            onSubmitEditing={handleSearch}
+            value={search}
+          />
+        </View>
+        </View>
       <TouchableOpacity style={styles.button} onPress={addCard}>
         <Text style={styles.buttonText}>Checkout</Text>
       </TouchableOpacity>
@@ -148,6 +165,41 @@ const styles = StyleSheet.create({
   container: {
     minHeight: '120vh',
     maxHeight: 'auto',
+  },
+  hours:{
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:"center",
+    alignContent:'center',
+    alignItems:'center'
+
+  },
+  hourstext:{
+   fontSize:20,
+   fontFamily:'cairo',
+   color:'white'
+  },
+  searchbarview: {
+    flexDirection: "row",
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 3,
+    borderRadius: 30,
+    width: "80%",
+    height: 50,
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
+  searchbartext: {
+    borderRadius:0,
+    width:"100%",
+    fontSize: 16,
+    color: "black",
+    fontFamily: "cairo",
+    fontWeight: "700",
+    marginLeft: 0,
+    textAlign:'center',
+    
   },
   image: {
     height: 200,
@@ -313,6 +365,48 @@ logocont: {
     fontFamily: 'cairo',
     fontWeight: '600'
   },
+  row: {
+    // flex:1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    // paddingHorizontal: 10,
+    // paddingVertical: 5,
+},
+label: {
+    fontSize: "15px",
+    fontWeight: "bold",
+    color: '#d8d8d8',
+    fontFamily: 'cairo',
+    // marginRight: 10,
+},
+textFieldBox: {
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 1.5,
+    borderRadius: 7,
+    width: 230,
+    height: 30,
+    fontFamily: 'cairo',
+    marginBottom: 5,
+    alignItems: "center",
+    textAlign: "left",
+    alignContent: "center",
+    alignSelf: "center",
+    justifyContent: "center",
+},
+textFieldStyle: {
+    fontSize: 15,
+    color: 'black',
+    fontFamily: 'cairo',
+    textAlign: "left",
+    color: "black",
+    fontFamily: 'cairo',
+    fontWeight: "700",
+    outlineStyle: 'none',
+    borderColor: "#fff",
+    paddingLeft: 5
+},
   button: {
     marginLeft: 'auto',
     marginRight: 'auto',
