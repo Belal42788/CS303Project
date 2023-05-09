@@ -1,7 +1,7 @@
 
 import auth from "../firebase/config/firebase-config.js";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
 import {
@@ -12,16 +12,29 @@ import {
     TouchableOpacity,
     ScrollView,
 } from "react-native";
-import userCardArray from "../Middleware/inUserCard.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 function Shop({ navigation }) {
     const user = auth.currentUser;
+    const [Model, setModel] = useState([]);
+
+    const intilize = async () => {
+        const db = getFirestore();
+        const UserRef = doc(db, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(UserRef);
+        setModel(docSnap.data().incard);
+    }
+
+    useEffect(() => {
+        // intilize();
+    });
     return (
         <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
             <Header navigation={navigation} />
             <ScrollView style={{ width: "100%", height: "100%" }}>
                 <View style={styles.products}>
-                    {userCardArray.map((o) => {
+                    {Model.map((o) => {
                         return (
                             <TouchableOpacity style={styles.card} key={o.id}>
                                 <Text style={styles.title}>{o.nameCar}</Text>
@@ -63,6 +76,8 @@ const styles = StyleSheet.create({
         borderBottomEndRadius: 0,
         borderBottomLeftRadius: 0,
         gap: 5,
+        width: "100%",
+        height: "100%"
     },
     card: {
         backgroundColor: "#fff",
