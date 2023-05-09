@@ -109,7 +109,7 @@ function BlankCar({ navigation, route }) {
         }
         if (BrandValue != null && modelName != "" && horsePowerCC != "" && location != "" && insurence != "" && licenseNumber != "" && plateNumber != "" && color != "" && chassis != "" && transmission != "" && fuel != "" && seats != "" && topSpeed != "" && hoursepower != "" && price != "") {
             const db = getFirestore();
-            const UserRef = doc(db, "Brands", modelName.toUpperCase());
+            const UserRef = doc(db, "Brands", BrandValue.toUpperCase());
             const docSnap = await getDoc(UserRef);
             console.log(docSnap.data());
             // try {
@@ -196,8 +196,10 @@ function BlankCar({ navigation, route }) {
                                     onChange;
                                     if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
                                         setBrandName(BrandValue);
+                                        console.log(BrandValue);
                                     }
                                     setBrandValueOpetion(BrandValue);
+
                                 }}
                                 zIndex={3000}
                                 zIndexInverse={1000}
