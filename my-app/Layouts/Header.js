@@ -250,8 +250,14 @@ function SearchResult({ query }) {
     item.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  const navigation = useNavigation();
+
+
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.resultItem} onPress={() => alert('Hello')} >
+    <TouchableOpacity
+      style={styles.resultItem}
+      onPress={() => navigation.navigate("Admin")}
+    >
       <Text style={styles.resultText}>{item.name}</Text>
     </TouchableOpacity>
   );

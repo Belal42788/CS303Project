@@ -27,7 +27,7 @@ function Shop({ navigation }) {
     }
 
     useEffect(() => {
-        // intilize();
+        intilize();
     });
     return (
         <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
