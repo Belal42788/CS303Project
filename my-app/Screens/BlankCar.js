@@ -18,7 +18,7 @@ import { firebase } from "../firebase/config/firebase-config.js";
 // You can import from local files
 import DropDownPicker from 'react-native-dropdown-picker'
 import { useForm, Controller } from 'react-hook-form';
-import { doc, getDoc, getFirestore, collection, setDoc, getDocs } from "firebase/firestore";
+import { doc, getDoc, getFirestore, collection, setDoc, getDocs , updateDoc} from "firebase/firestore";
 function BlankCar({ navigation, route }) {
 
     const [Model, setModel] = useState([]);
@@ -112,18 +112,19 @@ function BlankCar({ navigation, route }) {
             const UserRef = doc(db, "Brands", modelName.toUpperCase());
             const docSnap = await getDoc(UserRef);
             console.log(docSnap.data());
-            // try {
-            //     docSnap.data().Car.map((i) => {
-            //         if (i.nameCar == route.params.nameCar) {
-            //             throw 0;
-            //         }
-            //     });
-            // } catch (error) {
-            //     alert("This car add elrady.");
-            //     return;
-            // }
+            try {
+                docSnap.data().Car.map((i) => {
+                    if (i.nameCar == route.params.nameCar) {
+                        throw 0;
+                    }
+                });
+            } catch (error) {
+                alert("This car add elrady.");
+                return;
+            }
             docSnap.data().Car.map((i) => {
                 setModel(Model.push(i));
+                console.log(i);
             });
             const uriL = await updatePhoto();
             setModel(Model.push({
@@ -152,7 +153,6 @@ function BlankCar({ navigation, route }) {
             alert("done");
         } else {
             alert("please Add All car info");
-            // console.log(location + " " + insurence + " " + licenseNumber + " " + plateNumber + " " + color + " " + chassis + " " + transmission + " " + fuel + " " + seats + " " + topSpeed + " " + hoursepower + " " + price + modelName + " " + modelValue +" ");
         }
     };
 
