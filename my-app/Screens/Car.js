@@ -29,18 +29,74 @@ function Car({ navigation, route }) {
         <Text style={{ color: '#1c2834', fontFamily: 'cairo', fontSize: 15, fontWeight: '700' }}> ⭐⭐⭐⭐⭐ {route.params.review} /120 Reviews</Text>
       </View>
       <View style={styles.specifi}>
-        <View style={styles.column}>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} />{route.params.hoursepower} CC</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />{route.params.topspeed} KM/H</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />{route.params.seats} seats</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/galloping horse gif.gif')} style={styles.anim} />{route.params.horsepower}</Text>
-        </View>
-        <View style={styles.column}>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />{route.params.fuel}</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/manual-transmission.png')} style={styles.anim} />{route.params.transmission}</Text>
-          <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />{route.params.chassis}WD</Text>
-        </View>
-      </View>
+  <View style={styles.column}>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/CayuB64xuL.gif')} style={styles.anim} />
+      <Text style={styles.information}>Capacity</Text> <Text style={styles.specifiDescription}>{route.params.hoursepower} CC</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speedometer.gif')} style={styles.anim} />
+      <Text style={styles.information}>Top Speed</Text> <Text style={styles.specifiDescription}>{route.params.topspeed} KM/H</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/safety-belt.gif')} style={styles.anim} />
+      <Text style={styles.information}>Seats</Text> <Text style={styles.specifiDescription}>{route.params.seats} seats</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/galloping horse gif.gif')} style={styles.anim} />
+      <Text style={styles.information}>hoursepower</Text> <Text style={styles.specifiDescription}>{route.params.horsepower}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/calendar.gif')} style={styles.anim} />
+      <Text style={styles.information}>Year</Text> <Text style={styles.specifiDescription}>{route.params.year}</Text>
+    </View>
+  </View>
+  <View style={styles.column}>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />
+      <Text style={styles.information}>Fuel</Text><Text style={styles.specifiDescription}>{route.params.fuel}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/manual-transmission.png')} style={styles.anim} />
+      <Text style={styles.information}>Transmission</Text> <Text style={styles.specifiDescription}>{route.params.transmission}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />
+      <Text style={styles.information}>Chassis</Text> <Text style={styles.specifiDescription}>{route.params.chassis}WD</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/length.png')} style={styles.anim} />
+      <Text style={styles.information}>Length</Text> <Text style={styles.specifiDescription}>{route.params.Length}mm</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/tank-truck.gif')} style={styles.anim} />
+      <Text style={styles.information}>Tank Capacity</Text> <Text style={styles.specifiDescription}>{route.params.Tankapacity}</Text>
+    </View>
+  </View>
+  <View style={styles.column}>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/Acceleration.gif')} style={styles.anim} />
+      <Text style={styles.information}>Acceleration</Text><Text style={styles.specifiDescription}>{route.params.Acceleration}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/speeds.gif')} style={styles.anim} />
+      <Text style={styles.information}>Speeds</Text> <Text style={styles.specifiDescription}>{route.params.Speeds}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets//assembly.png')} style={styles.anim} />
+      <Text style={styles.information}>Assembly Country</Text> <Text style={styles.specifiDescription}>{route.params.AssemblyCountry}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/Torque.png')} style={styles.anim} />
+      <Text style={styles.information}>Torque</Text> <Text style={styles.specifiDescription}>{route.params.Torque}</Text>
+    </View>
+    <View style={styles.specifiItem}>
+      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/traction.png')} style={styles.anim} />
+      <Text style={styles.information}>Traction</Text><Text style={styles.specifiDescription}>{route.params.Traction}</Text>
+    </View>
+  </View>
+</View>
+
       <View style={styles.card}>
         <Text style={styles.title}>Color :</Text><Text style={styles.description}>{route.params.color}</Text>
         <Text style={styles.title}>Car's Plate Number :</Text><Text style={styles.description}>{route.params.CarsPlateNumber}</Text>
@@ -50,7 +106,7 @@ function Car({ navigation, route }) {
       </View>
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
-      </TouchableOpacity> 
+      </TouchableOpacity>
     </LinearGradient>
   );
 };
@@ -61,6 +117,28 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 200,
+  },
+  specifiItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  information:{
+  color:"#777",
+  fontFamily: "cairo",
+  fontWeight: "600",
+  textAlign: "center",
+  fontSize:15,
+  lineHeight:14,
+
+  },
+  specifiDescription: {
+    fontSize: 15,
+    fontFamily: "cairo",
+    fontWeight: "800",
+    textAlign: "center",
+    marginTop: 0,
+    marginBottom:"15%",
   },
   info: {
     display: "flex",
@@ -101,6 +179,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     marginTop: "4%",
+    paddingTop:"4%",
+    paddingLeft:"2%",
+    paddingRight:"2%",
+    paddingBottom:"4%",
     marginBottom: "4%",
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -113,7 +195,7 @@ const styles = StyleSheet.create({
     shadowRadius: 13.16,
     elevation: 20,
     height: 'auto',
-    width: "85%",
+    width: "90%",
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: "row",
@@ -141,8 +223,8 @@ const styles = StyleSheet.create({
   },
   anim: {
     marginRight: 5,
-    width: '42%',
-    height: 53,
+    width: '59%',
+    height: 69,
   },
   card: {
     display: 'flex',
