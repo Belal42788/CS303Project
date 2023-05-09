@@ -511,10 +511,11 @@ const ProfileScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    minHeight:'110vh',
+    height: 'auto',
     alignItems: "center",
     justifyContent: "center",
-    height: '95%',
+    
     width: '100%',
   },
   logoText: {
@@ -531,7 +532,7 @@ const styles = StyleSheet.create({
     // justifyContent: "flex-start",
     width: "100%",
     // marginBottom: '-5%',
-    position: 'fixed',
+    position: 'absolute',
     top: 0,
   },
   button: {
