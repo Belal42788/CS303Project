@@ -166,11 +166,11 @@ const Admin = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
+            {/* <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdateCar') }}>
                     Update Model
                 </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
 
             <Footer navigation={navigation} />
