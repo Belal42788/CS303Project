@@ -206,7 +206,37 @@ const Models = () => {
         },
 
     ]);
+    const [Brand, setBrand] = useState([
 
+    ]);
+
+    const [Model, setModel] = useState([
+
+    ]);
+
+
+    const updateList = async () => {
+        const db = getFirestore();
+        const colRef = collection(db, "Brands");
+        const docsSnap = await getDocs(colRef);
+        let arr=[];
+        docsSnap.forEach(doc => {
+            arr.push({  value: doc.id });
+        })
+        setBrand(arr);
+    }
+
+    const AddModel = async () => {
+        const db = getFirestore();
+        setModel([]);
+        Brand.map(async(i)=>{
+            const UserRef = doc(db, "Brands", i.value);
+            const docSnap = await getDoc(UserRef);
+            docSnap.data().Car.map((i) => {
+                setModel(Model.push(i));
+            });
+        })
+    }
 
     const initialize = async () => {
 
