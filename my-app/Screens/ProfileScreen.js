@@ -25,6 +25,7 @@ import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from 
 import * as ImagePicker from 'expo-image-picker';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { firebase } from "../firebase/config/firebase-config.js";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Footer from "../Layouts/Footer.js";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -266,6 +267,9 @@ const ProfileScreen = ({ navigation }) => {
         // <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
         <LinearGradient style={[styles.container]} colors={["#1c2834", "#d0a20e"]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} locations={[0, 0.8]}>
             <StatusBar style="auto" />
+            <View style={styles.logocont}>
+                <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
+            </View>
 
             <Image
                 style={styles.PhotoStyle}
@@ -489,6 +493,24 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: '95%',
         width: '100%',
+    },
+    logoText: {
+        color: "white",
+        fontSize: "20px",
+        fontWeight: "600",
+        fontFamily: 'prompt',
+        justifyContent: 'center',
+        alignSelf: "center",
+        marginTop: "1%",
+    },
+    logocont: {
+      alignItems: "center",
+      justifyContent: "flex-start",
+      width: "100%",
+      marginBottom:'-5%',
+      position:'fixed',
+      top:0,
+      
     },
     PhotoStyle: {
         width: 120,
