@@ -8,6 +8,7 @@ import mercedesLogo from "../assets/Image/brands photo/MercedesLogo.png";
 import volkwagenLogo from "../assets/Image/brands photo/volkswagenLogo.png";
 import toyotaLogo from "../assets/Image/brands photo/ToyotaLogo.png";
 import nissanLogo from "../assets/Image/brands photo/NissanLogo.png";
+import Audi from "../assets/Image/brands photo/Audi_logo_PNG1.png";
 import chev from "../assets/Image/brands photo/chevLogo.png";
 import ford from "../assets/Image/brands photo/ford.png";
 
@@ -21,31 +22,36 @@ const Brands = ({ navigation }) => {
     },
     {
       id: 2,
+      img: Audi,
+      name: 'Audi',
+    },
+    {
+      id: 3,
       img: mercedesLogo,
       name: 'Mercedes',
     },
     {
-      id: 3,
+      id: 4,
       img: toyotaLogo,
       name: 'Toyota ',
     },
     {
-      id: 4,
+      id: 5,
       img: volkwagenLogo,
       name: 'Volkswagen',
     },
     {
-      id: 5,
+      id: 6,
       img: bmwLogo,
       name: 'BMW',
     },
     {
-      id: 6,
+      id: 7,
       img: nissanLogo,
       name: 'Nissan ',
     },
     {
-      id: 7,
+      id: 8,
       img: ford,
       name: 'Ford',
     },
