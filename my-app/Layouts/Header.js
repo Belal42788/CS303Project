@@ -250,11 +250,17 @@ function SearchResult({ query }) {
         item.name.toLowerCase().includes(query.toLowerCase())
     );
 
-    const renderItem = ({ item }) => (
-        <TouchableOpacity style={styles.resultItem} onPress={() => alert('Hello')} >
-            <Text style={styles.resultText}>{item.name}</Text>
-        </TouchableOpacity>
-    );
+  const navigation = useNavigation();
+
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.resultItem}
+      onPress={() => navigation.navigate("Admin")}
+    >
+      <Text style={styles.resultText}>{item.name}</Text>
+    </TouchableOpacity>
+  );
 
     return (
         <FlatList

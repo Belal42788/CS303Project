@@ -142,18 +142,17 @@ function Car({ navigation, route }) {
         <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.InsurencePrice}$</Text>
         <Text style={styles.title}>Location:</Text><Text style={styles.description}>{route.params.Location}</Text>
       </View>
-      <View  style={styles.hours}>
+      {/* <View  style={styles.hours}>
         <Text style={styles.hourstext}>Rent Hours </Text>
       <View style={styles.searchbarview}>
           <TextInput
             style={styles.searchbartext}
             placeholderTextColor="#a9a9a9"
             onChangeText={setHour}
-            onSubmitEditing={handleHour}
             value={Hour}
           />
         </View>
-        </View>
+        </View> */}
       <TouchableOpacity style={styles.button} onPress={addCard}>
         <Text style={styles.buttonText}>Checkout</Text>
       </TouchableOpacity>
