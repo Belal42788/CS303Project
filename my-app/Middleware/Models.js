@@ -39,7 +39,7 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
+            
         },
         {
             id: 2,
@@ -67,7 +67,6 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
         },
         {
             id: 3,
@@ -95,7 +94,6 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
         },
         {
             id: 4,
@@ -123,7 +121,6 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
         },
         {
             id: 5,
@@ -151,7 +148,6 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
         },
         {
             id: 6,
@@ -179,7 +175,6 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
         },
 
         {
@@ -208,7 +203,6 @@ const Models = () => {
             Speeds:7,
             AssemblyCountry:'Germany',
             Torque: 220,
-            Traction:'Front Traction',
         },
 
     ]);

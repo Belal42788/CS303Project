@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useState, useEffect } from "react";
 import MainSrceen from "./Screens/MainScreen.js";
 import LodingScreen from "./Screens/lodingScreen.js";
+import Loading2 from "./Screens/loading2.js";
 import BlankCar from "./Screens/BlankCar.js";
 import Shop from "./Screens/Shop.js";
 import Admin from "./Screens/Admin.js";
@@ -79,11 +80,11 @@ export default function App() {
           <Stack.Screen name="Get Start1" component={Getstar1} />
           <Stack.Screen name="Get Start2" component={Getstar2} />
           <Stack.Screen name="Get Start3" component={Getstar3} />
+          <Stack.Screen name="Main Screen" component={MainSrceen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
-          <Stack.Screen name="Main Screen" component={MainSrceen} />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -91,6 +92,13 @@ export default function App() {
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: forFade }}>
+          <Stack.Screen name="Loading2" component={Loading2} />
+          <Stack.Screen name="Get Start1" component={Getstar1} />
+          <Stack.Screen name="Get Start2" component={Getstar2} />
+          <Stack.Screen name="Get Start3" component={Getstar3} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ cardStyleInterpolator: forFade }} />
           <Stack.Screen name="Shop" component={Shop} />
