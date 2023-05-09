@@ -483,24 +483,25 @@ const ProfileScreen = ({ navigation }) => {
           )
       }
 
+      <Text>  </Text>
+      <Text>  </Text>
       <TouchableOpacity style={styles.button} onPress={SignOut}>
         <Text style={styles.buttonText} >
           Sign Out
         </Text>
       </TouchableOpacity>
-
+      <Text>  </Text>
       <TouchableOpacity style={styles.button} onPress={DeleteUser}>
         <Text style={styles.buttonText}>
           Delete Email
         </Text>
       </TouchableOpacity>
-
+      <Text>  </Text>
       <TouchableOpacity style={styles.button} onPress={ResetPassword}>
         <Text style={styles.buttonText} >
           reset password
         </Text>
       </TouchableOpacity>
-
       <Footer navigation={navigation} />
     </LinearGradient>
 
@@ -519,13 +520,12 @@ const styles = StyleSheet.create({
   },
   logoText: {
     color: "white",
-    fontSize: 30,
-    fontWeight: 600,
+    fontSize: "20px",
+    fontWeight: "600",
     fontFamily: 'prompt',
     justifyContent: 'center',
     alignSelf: "center",
     marginTop: "1%",
-    marginBottom: "3%",
   },
   logocont: {
     alignItems: "center",
@@ -620,8 +620,8 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   editImage: {
-    marginTop:'10%',
-    width: 0,
+    marginTop:'-70%',
+    width: 30,
     height: 30,
     borderRadius: 10,
   },
