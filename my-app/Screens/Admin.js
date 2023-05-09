@@ -167,7 +167,7 @@ const Admin = ({ navigation }) => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdateModel') }}>
+                <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdateCar') }}>
                     Update Model
                 </Text>
             </TouchableOpacity>
