@@ -45,7 +45,7 @@ function BlankCar({ navigation, route }) {
     const [ Torque, setTorque] = useState("");
     const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/uploadcar.png?alt=media&token=d89fbcd8-a45b-4f0e-8f77-8c649a08242a");
 
-    
+
     const [modelOpen, setmodelOpen] = useState(false);
 
     const [modelValue, setmodelValue] = useState(null);
@@ -195,7 +195,7 @@ function BlankCar({ navigation, route }) {
                                 onChangeValue={() => {
                                     onChange;
                                     if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
-                                        setModelName(BrandValue);
+                                        setBrandName(BrandValue);
                                     }
                                     setBrandValueOpetion(BrandValue);
                                 }}
