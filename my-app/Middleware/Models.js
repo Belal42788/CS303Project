@@ -242,8 +242,8 @@ const Models = () => {
     }
 
     const initialize = async () => {
-        await updateList();
-        await AddModel();
+        // await updateList();
+        // await AddModel();
     }
 
     useEffect(() => {
