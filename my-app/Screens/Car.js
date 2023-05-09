@@ -10,10 +10,42 @@ import {
   TouchableOpacity,
   Alert, ImageBackground, FlatList
 } from "react-native";
+import {
+  updateProfile,
+} from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
+import auth from "../firebase/config/firebase-config.js";
+import { Auth } from "firebase/auth";
 import Footer from '../Layouts/Footer';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 function Car({ navigation, route }) {
+  const [Model, setModel] = useState([route.params]);
+  console.log(Model);
 
+  const addCard = async () => {
+    const db = getFirestore();
+    const UserRef = doc(db, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(UserRef);
+    try {
+      docSnap.data().incard.map((i)=>{
+        if(i.nameCar == route.params.nameCar){
+          throw 0;
+        }
+      });
+    } catch (error) {
+      alert("This car add elrady.");
+      return;
+    }
+    docSnap.data().incard.map((i)=>{
+      setModel(Model.push(i));
+    });
+    console.log(Model);
+    await updateDoc(UserRef, {
+      incard: Model,
+    });
+    alert("added succses");
+  }
   return (
     <LinearGradient style={[styles.container]} colors={["#d0a20e", "#1c2834"]} start={{ x: 0.5, y: 0.5 }} end={{ x: 0.5, y: 1 }} locations={[0, 0.6]}>
               <View style={styles.logocont}>
@@ -109,7 +141,7 @@ function Car({ navigation, route }) {
         <Text style={styles.title}>Insurence Price:</Text><Text style={styles.description}>{route.params.InsurencePrice}$</Text>
         <Text style={styles.title}>Location:</Text><Text style={styles.description}>{route.params.Location}</Text>
       </View>
-      <TouchableOpacity style={styles.button} >
+      <TouchableOpacity style={styles.button} onPress={addCard}>
         <Text style={styles.buttonText}>Checkout</Text>
       </TouchableOpacity>
       <Footer navigation={navigation} />

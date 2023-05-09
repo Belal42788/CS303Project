@@ -79,6 +79,8 @@ const RegisterScreen = ({ navigation }) => {
                         email: email,
                         phone: phone,
                         BirthDate: BirthDate,
+                        incard:[],
+                        shop:[],
                         date: Date.now()
                     });
 
