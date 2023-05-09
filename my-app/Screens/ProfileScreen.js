@@ -507,7 +507,7 @@ const ProfileScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    minHeight:'110vh',
+    minHeight:'120vh',
     height: 'auto',
     alignItems: "center",
     justifyContent: "center",
@@ -516,18 +516,19 @@ const styles = StyleSheet.create({
   },
   logoText: {
     color: "white",
-    fontSize: "20px",
-    fontWeight: "600",
+    fontSize: 30,
+    fontWeight: 600,
     fontFamily: 'prompt',
     justifyContent: 'center',
     alignSelf: "center",
     marginTop: "1%",
+    marginBottom: "5%",
   },
   logocont: {
     alignItems: "center",
     // justifyContent: "flex-start",
     width: "100%",
-    // marginBottom: '-5%',
+    marginBottom: '-100%',
     position: 'absolute',
     top: 0,
   },
