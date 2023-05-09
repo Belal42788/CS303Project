@@ -23,7 +23,7 @@
 //                         placeholder="Search "
 //                         placeholderTextColor="black"
 //                         underlineColorAndroid="transparent"
-        
+
 //                     />
 //                 </View>
 //                 <View style={styles.photoGroub}>
@@ -48,7 +48,7 @@
 //         marginBottom: 5,
 //         marginLeft: "10%",
 //         backgroundColor: "none",
- 
+
 //     },
 //     searchbarview: {
 //         flexDirection: 'row',
@@ -109,7 +109,7 @@
 //     }
 // });
 // export default Header;
- 
+
 
 ////////////////////////////////
 
@@ -240,8 +240,8 @@ function SearchResult({ query }) {
     { id: 3, name: "Toyota Supra GTS 2023" },
     { id: 4, name: "Mercedes AMG GT C190" },
     { id: 5, name: "BMW E31 850i V12" },
-    { id: 6 , name: "Chevrolet Corvette C6"},
-    { id: 7, name: "Ford Mustang Coupe 2017"},
+    { id: 6, name: "Chevrolet Corvette C6" },
+    { id: 7, name: "Ford Mustang Coupe 2017" },
     // { id: 8 , name:"Volkswagen"},
     // { id: 9 , name:"Tesla"},
   ];
@@ -328,13 +328,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   searchbartext: {
-    width:"80%",
+    width: "80%",
     fontSize: 16,
     color: "black",
     fontFamily: "cairo",
     fontWeight: "700",
     marginLeft: 0,
-    
+    outlineStyle: 'none',
+    borderColor: "#fff"
+
   },
   photoGroub: {
     marginTop: 0,
@@ -355,11 +357,11 @@ const styles = StyleSheet.create({
     borderColor: "black",
   },
   photoSearch: {
-             width: 40,
-            height: 40,
-            borderRadius: "50%",
-            borderColor: "black",
-          marginLeft:-6,
+    width: 40,
+    height: 40,
+    borderRadius: "50%",
+    borderColor: "black",
+    marginLeft: -6,
   },
   resultList: {
     backgroundColor: "#f5f5f5",
