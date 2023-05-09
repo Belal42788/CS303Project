@@ -21,6 +21,7 @@ import { AddBrand } from "./Screens/AddBrand.js";
 import { UpdateBrand } from "./Screens/UpdateBrand.js";
 import Car from "./Screens/Car.js";
 import UpdateCar from "./Screens/UpdateCar.js";
+import modelsListScreen from "./Screens/modelsListScreen.js"
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -83,8 +84,6 @@ export default function App() {
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Forgetpassword" component={Forgetpassword} />
           <Stack.Screen name="Main Screen" component={MainSrceen} />
-          <Stack.Screen name="BlankCar" component={BlankCar} />
-          <Stack.Screen name="UpdateCar" component={UpdateCar} />
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -103,6 +102,7 @@ export default function App() {
           <Stack.Screen name="Car" component={Car} />
           <Stack.Screen name="BlankCar" component={BlankCar} />
           <Stack.Screen name="UpdateCar" component={UpdateCar} />
+          <Stack.Screen name="modelsListScreen" component={modelsListScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

@@ -45,8 +45,8 @@ function MainScreen({ navigation }) {
 
   const Edit = () => {
     return (
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} onPress={() => { navigation.navigate('Admin') }}>
+      <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Admin') }}>
+        <Text style={styles.buttonText}>
           Edit
         </Text>
       </TouchableOpacity>
