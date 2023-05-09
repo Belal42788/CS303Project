@@ -263,7 +263,6 @@ const ProfileScreen = ({ navigation }) => {
 
 
   return (
-
     <LinearGradient style={[styles.container]} colors={["#1c2834", "#d0a20e"]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} locations={[0, 0.8]}>
       <StatusBar style="auto" />
       <View style={styles.logocont}>
@@ -284,9 +283,6 @@ const ProfileScreen = ({ navigation }) => {
           <Text style={styles.updatePhotoButtonText}>+</Text>
         </TouchableOpacity>
       </TouchableOpacity>
-
-
-
 
       {
         firstNameMode ?
@@ -332,7 +328,6 @@ const ProfileScreen = ({ navigation }) => {
             </>
           )
       }
-
 
       {
         lastNameMode ?

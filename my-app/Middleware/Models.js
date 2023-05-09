@@ -8,6 +8,7 @@ import e31 from "../assets/Image/BMW E31.png";
 import mustang from "../assets/Image/Ford-Mustang-PNG-Photo.png";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { doc, getDoc, getFirestore, collection, setDoc , getDocs} from "firebase/firestore";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 
 const Models = () => {
@@ -206,10 +207,41 @@ const Models = () => {
         },
 
     ]);
+    const [Brand, setBrand] = useState([
 
+    ]);
+
+    const [Model, setModel] = useState([
+
+    ]);
+
+
+    const updateList = async () => {
+        const db = getFirestore();
+        const colRef = collection(db, "Brands");
+        const docsSnap = await getDocs(colRef);
+        let arr=[];
+        docsSnap.forEach(doc => {
+            arr.push({  value: doc.id });
+        })
+        setBrand(arr);
+    }
+
+    const AddModel = async () => {
+        const db = getFirestore();
+        Brand.map(async(i)=>{
+            const UserRef = doc(db, "Brands", i.value);
+            const docSnap = await getDoc(UserRef);
+            docSnap.data().Car.map((i) => {
+                setModel(Model.push(i));
+            });
+        })
+        setModelsArray(Model);
+    }
 
     const initialize = async () => {
-
+        // await updateList();
+        // await AddModel();
     }
 
     useEffect(() => {
