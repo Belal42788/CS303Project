@@ -223,6 +223,13 @@
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState } from "react";
 import { useNavigation } from '@react-navigation/native';
+import p2 from "../assets/Image/audi_PNG1742.png";
+import e63 from "../assets/Image/mercedes E63.png";
+import supra from "../assets/Image/Toyota supra.png"
+import C190 from "../assets/Image/Mercedes AMG GT S Car - 2128x1160.png"
+import corvette from "../assets/Image/Chevrolet Corvette.png"
+import e31 from "../assets/Image/BMW E31.png";
+import mustang from "../assets/Image/Ford-Mustang-PNG-Photo.png";
 import {
   StyleSheet,
   View,
@@ -450,7 +457,8 @@ function SearchResult({ query }) {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.resultItem}
-      onPress={() => {navigation.navigate("Admin")}}
+      onPress={() => {navigation.navigate("Car",ModelsArray[item.id-1])
+    }}
     >
       <Text style={styles.resultText}>{item.name}</Text>
     </TouchableOpacity>
