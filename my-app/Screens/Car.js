@@ -114,7 +114,7 @@ function Car({ navigation, route }) {
 };
 const styles = StyleSheet.create({
   container: {
-    minHeight: '100vh',
+    minHeight: '120vh',
     maxHeight: 'auto',
   },
   image: {
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "black",
     display: "flex",
-    marginBottom: "10%",
+    marginBottom: "23%",
     marginTop: "4%"
   },
   buttonText: {
