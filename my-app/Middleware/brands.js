@@ -3,9 +3,10 @@ import Brandcar from "../assets/Image/Brand.png";
 import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc,getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-
-const Brands = ({ navigation }) => {
+const Brands = ({  }) => {
+  const navigation = useNavigation();
   const [BrandsArray, setBrandsArray] = useState([
     {
       id: 1,

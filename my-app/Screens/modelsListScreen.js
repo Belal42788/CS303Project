@@ -16,7 +16,7 @@ const modelsListScreen = () => {
   ];
 
   const renderCarModel = ({ item }) => (
-    <TouchableOpacity style={styles.carModelContainer} onPress={() => { navigation.navigate('Car',info) }}>
+    <TouchableOpacity style={styles.carModelContainer}  key={item.id} onPress={() => { navigation.navigate(null) }}>
       <Image source={item.carImage} style={styles.carImage} />
       <View style={styles.carDetails}>
         <Text style={styles.modelName}>{item.modelName}</Text>
