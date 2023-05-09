@@ -123,7 +123,7 @@ const RegisterScreen = ({ navigation }) => {
 
                     await signOut(auth)
                         .then(() => {
-                            window.location.reload(true);
+                            navigation.navigate("Login");
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
