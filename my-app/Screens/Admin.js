@@ -166,11 +166,11 @@ const Admin = ({ navigation }) => {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button}>
+            {/* <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={() => { navigation.navigate('UpdateCar') }}>
                     Update Model
                 </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
 
             <Footer navigation={navigation} />
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
         color: "black",
         fontWeight: "bold",
         textTransform: "capitalize",
-        fontSize: '120%',
+        fontSize: 25,
         textAlign: "center",
         fontFamily: "cairo",
     },
