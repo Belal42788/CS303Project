@@ -107,7 +107,7 @@ function Car({ navigation, route }) {
       </View>
       <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Checkout</Text>
-      </TouchableOpacity> 
+      </TouchableOpacity>
       <Footer navigation={navigation} />
     </LinearGradient>
   );
@@ -287,7 +287,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontFamily: 'cairo',
     alignSelf: "center",
-
   },
 });
 
