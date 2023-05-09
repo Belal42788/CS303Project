@@ -127,10 +127,6 @@ function Car({ navigation, route }) {
       <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/Torque.png')} style={styles.anim} />
       <Text style={styles.information}>Torque</Text> <Text style={styles.specifiDescription}>{route.params.Torque}</Text>
     </View>
-    <View style={styles.specifiItem}>
-      <Image resizeMode="contain" resizeMethod="scale" source={require('../assets/traction.png')} style={styles.anim} />
-      <Text style={styles.information}>Traction</Text><Text style={styles.specifiDescription}>{route.params.Traction}</Text>
-    </View>
   </View>
 </View>
 
