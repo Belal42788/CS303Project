@@ -4,23 +4,29 @@ import { collection, addDoc, getFirestore, setDoc, doc, docRef, getDoc,getDocs }
 import React, { useEffect, useState } from "react";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import bmwLogo from "../assets/Image/brands photo/BMW logo.png";
+import bmw from "../assets/Image/brands photo/bmw.png";
 import mercedesLogo from "../assets/Image/brands photo/Mercedes-Benz-emblem-1926-1920x1080.png";
+import mercedes from "../assets/Image/brands photo/mercedes-logo-15885.png";
 import volkwagenLogo from "../assets/Image/brands photo/volkswagen.png";
-import toyotaLogo from "../assets/Image/brands photo/ToyotaLogo.png";
-import nissanLogo from "../assets/Image/brands photo/NissanLogo.png";
+import volkwagen from "../assets/Image/brands photo/Volkswagen New Logo PNG Vector (AI) Free Download.png";
+import toyotaLogo from "../assets/Image/brands photo/Toyota_logo_PNG17.png";
+import nissanLogo from "../assets/Image/brands photo/Nissan_logo_PNG1.png";
 import chevLogo from "../assets/Image/brands photo/chevLogo.png";
+import chev from "../assets/Image/brands photo/Chevrolet_logo_PNG1.png";
+import ford from "../assets/Image/brands photo/ford.png";
+
 
 
 const Brands = ({ navigation }) => {
   const [BrandsArray, setBrandsArray] = useState([
     {
       id: 1,
-      img: chevLogo,
+      img: chev,
       name: 'Chevrolet',
     },
     {
       id: 2,
-      img: mercedesLogo,
+      img: mercedes,
       name: 'Mercedes',
     },
     {
@@ -30,18 +36,23 @@ const Brands = ({ navigation }) => {
     },
     {
       id: 4,
-      img: volkwagenLogo,
+      img: volkwagen,
       name: 'Volkswagen',
     },
     {
       id: 5,
-      img: bmwLogo,
+      img: bmw,
       name: 'BMW',
     },
     {
       id: 6,
       img: nissanLogo,
       name: 'Nissan ',
+    },
+    {
+      id: 7,
+      img: ford,
+      name: 'Ford',
     },
   ]);
 
