@@ -359,7 +359,7 @@ function BlankCar({ navigation, route }) {
                     <TextInput
                     // style={styles.TextInput}
                     style={styles.specifitext}
-                    placeholder="Torue"
+                    placeholder="Torque"
                     placeholderTextColor="#003f5c"
                     value={Torque}
                     onChangeText={setTorque}
