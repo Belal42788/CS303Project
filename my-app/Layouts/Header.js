@@ -234,15 +234,15 @@ import {
 
 function SearchResult({ query }) {
   const data = [
-    { id: 1, name: "BMW" },
-    { id: 2, name: "Chevorlet" },
-    { id: 3, name: "Ford" },
-    { id: 4, name: "Honda" },
-    { id: 5, name: "Mercedes-Benz" },
-    { id: 6 , name: "Nissan"},
-    { id: 7, name: "Toyota"},
-    { id: 8 , name:"Volkswagen"},
-    { id: 9 , name:"Tesla"},
+    { id: 1, name: "Audi S4 2017" },
+    { id: 2, name: "Mercedes E63 AMG 2010" },
+    { id: 3, name: "Toyota Supra GTS 2023" },
+    { id: 4, name: "Mercedes AMG GT C190" },
+    { id: 5, name: "BMW E31 850i V12" },
+    { id: 6 , name: "Chevrolet Corvette C6"},
+    { id: 7, name: "Ford Mustang Coupe 2017"},
+    // { id: 8 , name:"Volkswagen"},
+    // { id: 9 , name:"Tesla"},
   ];
 
   const filteredData = data.filter((item) =>
