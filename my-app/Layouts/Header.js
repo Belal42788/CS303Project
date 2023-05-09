@@ -333,6 +333,7 @@ const styles = StyleSheet.create({
     fontFamily: "cairo",
     fontWeight: "700",
     marginLeft: 0,
+    
   },
   photoGroub: {
     marginTop: 0,

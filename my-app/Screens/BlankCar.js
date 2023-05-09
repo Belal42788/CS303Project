@@ -35,6 +35,14 @@ function BlankCar({ navigation, route }) {
     const [licenseNumber, setLicenseNumber] = useState("");
     const [insurence, setInsurence] = useState("");
     const [location, setLocation] = useState("");
+    const [Year, setYear] = useState("");
+    const [Tankapacity, setTankapacity] = useState("");
+    const [ Acceleration, setAcceleration] = useState("");
+    const [Speeds, setSpeeds] = useState("");
+    const [Length, setLength] = useState("");
+    const [AssemblyCountry, setAssemblyCountry] = useState("");
+    const [ Torque, setTorque] = useState("");
+ 
     const [uri, seturi] = useState("https://firebasestorage.googleapis.com/v0/b/twsela-71a88.appspot.com/o/uploadcar.png?alt=media&token=d89fbcd8-a45b-4f0e-8f77-8c649a08242a");
 
     const [modelOpen, setmodelOpen] = useState(false);
@@ -229,7 +237,7 @@ function BlankCar({ navigation, route }) {
                     <TextInput
                     // style={styles.TextInput}
                     style={styles.specifitext}
-                    placeholder="Horse Power CC"
+                    placeholder="Engine Capacity"
                     placeholderTextColor="#003f5c"
                     value={hoursepower}
                     onChangeText={setHoursePower}
@@ -238,7 +246,7 @@ function BlankCar({ navigation, route }) {
                     <TextInput
                     // style={styles.TextInput}
                     style={styles.specifitext}
-                    placeholder="Top Speed KM/H"
+                    placeholder="Top Speed"
                     placeholderTextColor="#003f5c"
                     value={topSpeed}
                     onChangeText={setTopSpeed}
@@ -261,6 +269,16 @@ function BlankCar({ navigation, route }) {
                     value={horsePowerCC}
                     onChangeText={setHorsePowerCC}
                 />
+                        <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="AssemblyCountry"
+                    
+                    placeholderTextColor="#003f5c"
+                    value={AssemblyCountry}
+                    onChangeText={setAssemblyCountry}
+                />
+             
                 </View>
                 <View style={styles.column}>
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />fuel</Text> */}
@@ -289,6 +307,52 @@ function BlankCar({ navigation, route }) {
                     placeholderTextColor="#003f5c"
                     value={chassis}
                     onChangeText={setChassis}
+                />
+                    <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Length"
+                    placeholderTextColor="#003f5c"
+                    value={Length}
+                    onChangeText={setLength}
+                />
+                    <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Tank Capacity"
+                    placeholderTextColor="#003f5c"
+                    value={Tankapacity}
+                    onChangeText={setTankapacity}
+                />
+                </View>
+                <View style={styles.column}>
+                    {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/eco-fuel.gif')} style={styles.anim} />fuel</Text> */}
+                    <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Accelartion"
+                    placeholderTextColor="#003f5c"
+                    value={Acceleration}
+                    onChangeText={setAcceleration}
+                />
+                    {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/manual-transmission.png')} style={styles.anim} />transmission</Text> */}
+                    <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Speeds"
+                    placeholderTextColor="#003f5c"
+                    value={Speeds}
+                    onChangeText={setSpeeds}
+                />
+                    {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />chassis WD</Text> */}
+            
+                    <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Torue"
+                    placeholderTextColor="#003f5c"
+                    value={Torque}
+                    onChangeText={setTorque}
                 />
                 </View>
             </View>
@@ -330,6 +394,14 @@ function BlankCar({ navigation, route }) {
                     onChangeText={setInsurence}
                 />
                 {/* <Text style={styles.title}>Location:</Text><Text style={styles.description}>Location</Text> */}
+                <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Year"
+                    placeholderTextColor="#003f5c"
+                    value={Year}
+                    onChangeText={setYear}
+                />
                 <TextInput
                     // style={styles.TextInput}
                     style={styles.title}
@@ -389,44 +461,53 @@ const styles = StyleSheet.create({
     dropdown:{
         zIndex:1000,
     },
-    specifi: {
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        backgroundColor: "white",
-        borderRadius: 10,
-        marginTop: "4%",
-        marginBottom: "4%",
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.51,
-        shadowRadius: 13.16,
-        elevation: 20,
-        height: 'auto',
-        width: "85%",
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: "row",
-        alignContent: "center",
-        justifyContent: "space-between",
+    
+  specifi: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginTop: "4%",
+    paddingTop:"4%",
+    paddingLeft:"2%",
+    paddingRight:"2%",
+    paddingBottom:"4%",
+    marginBottom: "4%",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 10,
     },
+    shadowOpacity: 0.51,
+    shadowRadius: 13.16,
+    elevation: 20,
+    height: 'auto',
+    width: "95%",
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "space-between",
+  },
+   
     specifitext: {
         display: "flex",
         flexDirection: "row",
-        alignContent: "space-around",
+        alignContent: "space-between",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-evenly",
         color: '#444444',
         fontFamily: 'cairo',
         fontWeight: '700',
         marginBottom: 25,
         marginTop: 10,
         textAlign: "center",
+        flexWrap:'wrap',
+        width:"120%",
+        
     },
     column: {
         display: 'flex',
