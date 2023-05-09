@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     opacity:0.96,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    
   },
 });
 
