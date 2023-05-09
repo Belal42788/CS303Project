@@ -8,6 +8,7 @@ import e31 from "../assets/Image/BMW E31.png";
 import mustang from "../assets/Image/Ford-Mustang-PNG-Photo.png";
 import { View, Image, ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import FontAwesome from "@expo/vector-icons/FontAwesome"
 
 const Models = () => {
     const navigation = useNavigation();

@@ -9,6 +9,7 @@ import Brands from "../Middleware/brands.js";
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
 import Models from "../Middleware/Models.js";
+
 import {
   StyleSheet,
   Text,

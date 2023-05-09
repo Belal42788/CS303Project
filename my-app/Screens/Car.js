@@ -11,10 +11,14 @@ import {
   Alert, ImageBackground, FlatList
 } from "react-native";
 import Footer from '../Layouts/Footer';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 function Car({ navigation, route }) {
 
   return (
     <LinearGradient style={[styles.container]} colors={["#d0a20e", "#1c2834"]} start={{ x: 0.5, y: 0.5 }} end={{ x: 0.5, y: 1 }} locations={[0, 0.6]}>
+              <View style={styles.logocont}>
+                <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
+            </View>
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 30 }}>
         <BackButton />
         <Text style={{ flex: 1, textAlign: 'center', fontWeight: 'bold', fontSize: 20, marginRight: 30 }}>
@@ -174,6 +178,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
+  logoText: {
+    color: "white",
+    fontSize: "20px",
+    fontWeight: "600",
+    fontFamily: 'prompt',
+    justifyContent: 'center',
+    alignSelf: "center",
+    marginTop: "1%",
+},
+logocont: {
+  alignItems: "center",
+  justifyContent: "flex-start",
+  width: "100%",
+  marginBottom:'-5%'
+},
+
   specifi: {
     display: 'flex',
     flexDirection: 'row',
