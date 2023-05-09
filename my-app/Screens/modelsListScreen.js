@@ -28,7 +28,6 @@ const modelsListScreen = () => {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
-      
       <View style={styles.brandContainer}>
         <Image source={brandImage} style={styles.brandImage} />
         <Text style={styles.brandName}>BMW</Text> 
@@ -58,6 +57,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 50,
+    resizeMode: 'contain'
   },
   brandName: {
     fontSize: 15,

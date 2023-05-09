@@ -36,6 +36,7 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { firebase } from "../firebase/config/firebase-config.js";
 import Footer from "../Layouts/Footer.js";
 import DropDownPicker from 'react-native-dropdown-picker';
+import BackButton from "../Components/BackButton.js";
 
 const Admin = ({ navigation }) => {
     const user = auth.currentUser;
@@ -144,9 +145,9 @@ const Admin = ({ navigation }) => {
 
     return (
         <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
-
-
-
+            <View style={styles.back}>
+                <BackButton/>
+            </View>
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText} onPress={() => { navigation.navigate('AddBrand') }}>
                     Add Brand
@@ -179,22 +180,18 @@ const Admin = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-       minHeight: '120vh',
+    minHeight: '120vh',
     maxHeight: 'auto',
     height:'auto',
     display:'flex',
+    flex: 1,
     flexDirection:'column',
     justifyContent:'space-evenly',
     alignContent:'space-around',
-    alignItems:'center',
+    // alignItems:'center',
     
     },
-    textStyle: {
-        fontSize: 'auto',
-        fontWeight: "bold",
-        color: "#d8d8d8",
-        fontFamily: "cairo",
-    },
+    
     button: {
         width: "80%",
         borderRadius: 13,
@@ -203,12 +200,12 @@ const styles = StyleSheet.create({
         alignContent: "space-around",
         justifyContent: "space-evenly",
         borderStyle: "solid",
-        borderWidth: 3,
+        borderWidth: 2,
         borderColor: "black",
         display: "flex",
         margin:'auto',
-       marginTop:"1%",
-       marginBottom:"1%",
+        marginTop:"1%",
+        marginBottom:"1%",
         backgroundColor: "#ce9e04",
     },
     buttonText: {
@@ -219,17 +216,10 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontFamily: "cairo",
     },
-    PhotoStyle: {
-        width: "100%",
-        height: "100px",
-        // backgroundColor:"blue",
-        borderRightWidth: "0px",
-        // borderColor:"blue",
-        // borderRadius: "50%",
-        // marginTop: 0,
-    },
-    ImageStyle:{
-        margin:"5%"
+    back: {
+        marginTop: -80,
+        marginLeft: 20
     }
+
 });
 export default Admin;
