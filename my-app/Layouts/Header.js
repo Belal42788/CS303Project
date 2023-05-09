@@ -222,6 +222,7 @@
 ////////////////////////////////////////////////////////////////////////
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   View,
@@ -250,7 +251,7 @@ function SearchResult({ query }) {
   );
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.resultItem}>
+    <TouchableOpacity style={styles.resultItem} onPress={() => alert('Hello')} >
       <Text style={styles.resultText}>{item.name}</Text>
     </TouchableOpacity>
   );
