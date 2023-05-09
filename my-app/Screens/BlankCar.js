@@ -79,6 +79,7 @@ function BlankCar({ navigation, route }) {
         const downloadURL = await snapshot.ref.getDownloadURL();
 
         seturi(downloadURL);
+        return downloadURL;
     }
     const updateList = async () => {
         const db = getFirestore();
@@ -112,7 +113,7 @@ function BlankCar({ navigation, route }) {
                 alert("This Model is alredy exist.");
                 return;
             }
-            updatePhoto();
+            const uriL=await updatePhoto();
             const docRef = doc(db, "Models", modelName.toUpperCase());
             await setDoc(docRef, {
 
@@ -135,7 +136,7 @@ function BlankCar({ navigation, route }) {
                 insurence: insurence,
                 location: location,
                 brand: BrandValue,
-                uri: uri
+                uri: uriL
             });
             alert("done");
         } else {
@@ -176,7 +177,7 @@ function BlankCar({ navigation, route }) {
                                 onChangeValue={() => {
                                     onChange;
                                     if (BrandName != BrandValue & BrandValue != BrandValueOpetion) {
-                                        selected();
+                                        // selected();
                                     }
                                     setBrandValueOpetion(BrandValue);
                                 }}

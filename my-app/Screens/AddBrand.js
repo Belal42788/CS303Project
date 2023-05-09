@@ -52,6 +52,7 @@ export const AddBrand = ({ navigation }) => {
         const downloadURL = await snapshot.ref.getDownloadURL();
 
         seturi(downloadURL);
+        return downloadURL;
     }
 
     const AddBrand = async () => {
@@ -72,16 +73,16 @@ export const AddBrand = ({ navigation }) => {
                 alert("This Brand is alredy exist.");
                 return;
             }
-            updatePhoto();
+            const uriL=await updatePhoto();
             const docRef = doc(db, "Brands", BrandName.toUpperCase());
             await setDoc(docRef, {
 
             });
 
-            const colRef = collection(docRef, "B")
+            const colRef = collection(docRef, "B");
             await setDoc(doc(colRef, "Info"), {
                 name: BrandName,
-                uri: uri
+                uri: uriL
             });
             alert("done");
         } else {
