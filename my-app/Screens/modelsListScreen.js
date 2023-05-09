@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Image, Text, FlatList, StyleSheet ,TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Footer from "../Layouts/Footer.js";
+import Header from "../Layouts/Header.js";
+
 
 const modelsListScreen = () => {
   const brandImage = require('../assets/Image/brands photo/BMW logo.png'); // Replace with the actual path to the brand image
@@ -24,6 +27,8 @@ const modelsListScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Header navigation={navigation} />
+      
       <View style={styles.brandContainer}>
         <Image source={brandImage} style={styles.brandImage} />
         <Text style={styles.brandName}>BMW</Text> 
@@ -31,11 +36,10 @@ const modelsListScreen = () => {
       <FlatList
         data={data}
         renderItem={renderCarModel}
-        keyExtractor={(item) =>{item.id
-        console.log(item)}}
-        
+        keyExtractor={(item) =>{item.id}}
         contentContainerStyle={styles.carList}
       />
+      <Footer navigation={navigation} />
     </View>
   );
 };
