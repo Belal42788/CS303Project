@@ -76,7 +76,7 @@ export const AddBrand = ({ navigation }) => {
             const uriL=await updatePhoto();
             const docRef = doc(db, "Brands", BrandName.toUpperCase());
             await setDoc(docRef, {
-
+                Car:[]
             });
 
             const colRef = collection(docRef, "B");
