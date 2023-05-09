@@ -239,11 +239,10 @@ export default Header;
 //     { id: 3, name: "Ford" },
 //     { id: 4, name: "Honda" },
 //     { id: 5, name: "Mercedes-Benz" },
-// { id: 6 , name: "Nissan"},
-// { id: 7, name: "Toyota"},
-// { id: 8 , name:"Volkswagen"},
-// { id: 9 , name:"Tesla"},
-// { id: 10 , name:"Fiat"}
+//     { id: 6 , name: "Nissan"},
+//     { id: 7, name: "Toyota"},
+//     { id: 8 , name:"Volkswagen"},
+//     { id: 9 , name:"Tesla"},
 //   ];
 
 //   const filteredData = data.filter((item) =>
