@@ -3,7 +3,7 @@ import { View, Image, Text, FlatList, StyleSheet ,TouchableOpacity } from 'react
 import { useNavigation } from '@react-navigation/native';
 import Footer from "../Layouts/Footer.js";
 import Header from "../Layouts/Header.js";
-
+import { LinearGradient } from "expo-linear-gradient";
 
 const modelsListScreen = () => {
   const brandImage = require('../assets/Image/brands photo/BMW logo.png'); // Replace with the actual path to the brand image
@@ -26,7 +26,7 @@ const modelsListScreen = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <LinearGradient style={[styles.container]} colors={["#d0a20e", "#1c2834"]} start={{ x: 0.5, y: 0.5 }} end={{ x: 0.5, y: 1 }} locations={[0, 0.6]}>
       <Header navigation={navigation} />
       <View style={styles.brandContainer}>
         <Image source={brandImage} style={styles.brandImage} />
@@ -39,7 +39,7 @@ const modelsListScreen = () => {
         contentContainerStyle={styles.carList}
       />
       <Footer navigation={navigation} />
-    </View>
+    </LinearGradient>
   );
 };
 
