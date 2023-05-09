@@ -58,7 +58,6 @@ const LoginScreen = ({ navigation }) => {
         if (!user.emailVerified) {
           signOut(auth).then(() => {
             alert("Email is not Verified");
-            window.location.reload(true);
           }
           );
         } else {
