@@ -345,7 +345,14 @@ function BlankCar({ navigation, route }) {
                     onChangeText={setSpeeds}
                 />
                     {/* <Text style={styles.specifitext}><Image resizeMode="contain" resizeMethod="scale" source={require('../assets/chassis.png')} style={styles.anim} />chassis WD</Text> */}
-            
+                    <TextInput
+                    // style={styles.TextInput}
+                    style={styles.specifitext}
+                    placeholder="Year"
+                    placeholderTextColor="#003f5c"
+                    value={Year}
+                    onChangeText={setYear}
+                />
                     <TextInput
                     // style={styles.TextInput}
                     style={styles.specifitext}
@@ -394,14 +401,6 @@ function BlankCar({ navigation, route }) {
                     onChangeText={setInsurence}
                 />
                 {/* <Text style={styles.title}>Location:</Text><Text style={styles.description}>Location</Text> */}
-                <TextInput
-                    // style={styles.TextInput}
-                    style={styles.specifitext}
-                    placeholder="Year"
-                    placeholderTextColor="#003f5c"
-                    value={Year}
-                    onChangeText={setYear}
-                />
                 <TextInput
                     // style={styles.TextInput}
                     style={styles.title}
