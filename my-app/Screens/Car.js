@@ -20,9 +20,9 @@ import { Auth } from "firebase/auth";
 import Footer from '../Layouts/Footer';
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 function Car({ navigation, route }) {
-  const [search, setSearch] = useState("");
+  const [Hour, setHour] = useState("");
 
-  const handleSearch = () => {
+  const handleHour = () => {
     // handle search functionality here
   };
   const [Model, setModel] = useState([route.params]);
@@ -148,9 +148,9 @@ function Car({ navigation, route }) {
           <TextInput
             style={styles.searchbartext}
             placeholderTextColor="#a9a9a9"
-            onChangeText={setSearch}
-            onSubmitEditing={handleSearch}
-            value={search}
+            onChangeText={setHour}
+            onSubmitEditing={handleHour}
+            value={Hour}
           />
         </View>
         </View>
