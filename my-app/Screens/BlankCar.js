@@ -112,16 +112,16 @@ function BlankCar({ navigation, route }) {
             const UserRef = doc(db, "Brands", modelName.toUpperCase());
             const docSnap = await getDoc(UserRef);
             console.log(docSnap.data());
-            try {
-                docSnap.data().Car.map((i) => {
-                    if (i.nameCar == route.params.nameCar) {
-                        throw 0;
-                    }
-                });
-            } catch (error) {
-                alert("This car add elrady.");
-                return;
-            }
+            // try {
+            //     docSnap.data().Car.map((i) => {
+            //         if (i.nameCar == route.params.nameCar) {
+            //             throw 0;
+            //         }
+            //     });
+            // } catch (error) {
+            //     alert("This car add elrady.");
+            //     return;
+            // }
             docSnap.data().Car.map((i) => {
                 setModel(Model.push(i));
                 console.log(i);

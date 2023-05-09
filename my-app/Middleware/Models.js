@@ -232,16 +232,18 @@ const Models = () => {
         Brand.map(async(i)=>{
             const UserRef = doc(db, "Brands", i.value);
             const docSnap = await getDoc(UserRef);
-            docSnap.data().Car.map((i) => {
-                setModel(Model.push(i));
-            });
+            if(docSnap.data().Car!=null){
+                docSnap.data().Car.map((i) => {
+                    setModel(Model.push(i));
+                });
+            }
         })
         setModelsArray(Model);
     }
 
     const initialize = async () => {
-        // await updateList();
-        // await AddModel();
+        await updateList();
+        await AddModel();
     }
 
     useEffect(() => {
