@@ -1,22 +1,18 @@
 import { StyleSheet, View, Text, Image, useWindowDimensions, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
-import { ReactDOM } from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons"
-import Ionicons from "@expo/vector-icons/Ionicons"
 import FontAwesome from "@expo/vector-icons/FontAwesome"
-import { useFonts } from "expo-font";
-//import { StatusBar } from "expo-status-bar";
-import backgroundpic from "../assets/Image/zachary-edmundson-ygqZpaNl_dM-unsplash - Copy.jpg"
+
 
 
 
 function GetSart3({ navigation }) {
-    const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Image/Exclusive Luxury Car (Instagram Post15editblur).jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/Image/Exclusive2.jpg')} style={styles.container}>
             <View style={styles.logocont}>
-                <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
+                <Text style={styles.logoText}>
+                    {/* <FontAwesome name="xing" size={"25px"} color="white" style={{}} />  */}
+                    Luxury</Text>
             </View>
             
             <View style={styles.topScreenView}>
@@ -62,9 +58,9 @@ const styles = StyleSheet.create({
     topScreenView: {
         width: "100%",
         flex: 1,
-        alignItems: 'flex-start',
-        alignContent: "flex-start",
-        alignSelf: "flex-start",
+        alignItems: 'center',
+        alignContent: "center",
+        alignSelf: "center",
         marginBottom: '40%',
         textAlign: 'center'
 
@@ -82,7 +78,7 @@ const styles = StyleSheet.create({
     button: {
         width: "60%",
         borderRadius: 15,
-        // height: "8%",
+        height: "8%",
         marginBottom: "6%",
         justifyContent: "center",
         alignItems: "center",
@@ -132,17 +128,17 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: "black",
-        fontSize: "200%",
-        fontWeight: "700",
-        fontFamily: 'cairo',
+        fontSize: 19,
+        fontWeight: 700,
+        // fontFamily: 'cairo',
         alignSelf: "center",
 
     },
     logoText: {
         color: "white",
-        fontSize: "20px",
-        fontWeight: "600",
-        fontFamily: 'prompt',
+        fontSize: 20,
+        fontWeight: 600,
+        // fontFamily: 'prompt',
         justifyContent: 'center',
         alignSelf: "center",
         marginTop: "1%",
@@ -150,21 +146,21 @@ const styles = StyleSheet.create({
     screenText: {
         width: "100%",
         color: 'white',
-        fontSize: '25px',
-        fontWeight: '400',
-        // marginTop:'5%',
+        fontSize: 20,
+        fontWeight: 400,
+        marginTop:'5%',
         alignContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        fontFamily: 'cairo',
-        opacity: "88%"
+        // fontFamily: 'cairo',
+        opacity: 0.8
     },
     backButton: {
-        marginBottom: "20%",
-        textDecorationLine: "underline",
+        marginBottom: "5%",
+        // textDecorationLine: "underline",
         fontSize: 20,
         color: '#d8d8d8',
-        fontFamily: 'cairo',
+        // fontFamily: 'cairo',
         fontWeight: 'bold'
     },
 });

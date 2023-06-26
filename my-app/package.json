@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "type": "Module",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -29,7 +30,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-native": "0.71.6",
+    "react-native": "0.71.8",
     "react-native-dropdown-picker": "^5.4.6",
     "react-native-fbads": "^7.1.0",
     "react-native-fbsdk-next": "^11.2.1",

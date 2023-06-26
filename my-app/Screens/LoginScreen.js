@@ -1,8 +1,6 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
-import auth from "../firebase/config/firebase-config.js";
 import React, { useState, useEffect } from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome"
 import {
   StyleSheet,
   Text,
@@ -14,8 +12,9 @@ import {
 
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {Dimensions} from 'react-native';
 
-
+const h = Dimensions.get('window').height;
 const provider = new GoogleAuthProvider();
 
 const LoginScreen = ({ navigation }) => {
@@ -67,7 +66,7 @@ const LoginScreen = ({ navigation }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("Email or Password is wrong");
+        Alert.alert("Email or Password is wrong");
         console.log(errorMessage);
       });
   };
@@ -75,8 +74,11 @@ const LoginScreen = ({ navigation }) => {
   return (
     <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.logocont}>
-        <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
+      <View style={styles.logoVeiw}>
+        <Text style={styles.logoText}>
+          {/* <FontAwesome name="xing" size={"40px"} color="white" style={{}} /> */}
+          Luxury
+        </Text>
       </View>
       <View style={styles.inputView}>
         <TextInput
@@ -87,7 +89,7 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={setEmail}
         />
       </View>
-
+      
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -98,6 +100,7 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={setPassword}
         />
       </View>
+      
       <TouchableOpacity>
         <Text
           style={styles.forgot_button}
@@ -106,19 +109,17 @@ const LoginScreen = ({ navigation }) => {
           Forgot your password?
         </Text>
       </TouchableOpacity>
-      <Text>   </Text>
       <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.buttonText} onPress={HandleSignin}>
           LOGIN
         </Text>
       </TouchableOpacity>
-      <Text>   </Text>
 
 
 
-      <View style={styles.smallloginicon}>
+
+      <View style={styles.icon}>
         <TouchableOpacity>
-          {/* <TouchableOpacity onPress={onFacebookButtonPress}> */}
           <Image
             style={styles.smallloginicon}
             source={require("../assets/Image/thcc.png")}
@@ -138,39 +139,35 @@ const LoginScreen = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
-      <Text>   </Text>
-      <Text>   </Text>
       <TouchableOpacity>
-        <Text
-          style={styles.Sign_Up_button}
-          onPress={() => navigation.navigate("Register")}
-        >
-          Don't Have Account?Sign Up Now.
-        </Text>
-      </TouchableOpacity>
-      <View style={styles.smallView}>
-        <Text>   </Text>
-        <Text>   </Text>
-      </View>
+      <Text
+      style={styles.Sign_Up_button}
+      onPress={() => navigation.navigate("Register")}
+      >
+      Don't Have Account?Sign Up Now.
+      </Text>
+    </TouchableOpacity>
+
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    height: h,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  image: {
-    justifyContent: "center",
-    alignContent: "center",
+  logoVeiw: {
     alignItems: "center",
+    width: "100%",
+    marginTop: "10%",
+    marginBottom: "30%"
+  },
+  logoText: {
+    color: "white",
     alignSelf: "center",
-    marginBottom: "-8%",
-    width: 250,
-    height: 250,
+    fontSize: 50,
   },
   inputView: {
     backgroundColor: "white",
@@ -178,30 +175,28 @@ const styles = StyleSheet.create({
     borderWidth: 2.5,
     borderRadius: 15,
     width: "90%",
-    height: "7%",
-    fontFamily: 'cairo',
+    height: 50,
     marginBottom: 5,
     alignItems: "center",
     textAlign: "left",
     alignContent: "center",
     alignSelf: "center",
     justifyContent: "center",
+    marginBottom:10
   },
   TextInput: {
-    fontSize: "120%",
+    fontSize: 19,
     width: "96%",
-    height: "90%",
+    height: 50,
     textAlign: "left",
     color: "black",
-    fontFamily: 'cairo',
-    fontWeight: "700",
-    outlineStyle: 'none',
     borderColor: "#fff"
   },
   forgot_button: {
     width: "100%",
     marginBottom: "10%",
     marginTop: "5%",
+    textAlign:"center",
     color: "#d8d8d8",
     textDecorationLine: "underline",
     fontSize: 13,
@@ -211,6 +206,9 @@ const styles = StyleSheet.create({
     marginBottom: "10%",
     marginTop: "5%",
     color: "#d8d8d8",
+    alignItems: "center",    
+    justifyContent: "center",
+    textAlign: "center",
     textDecorationLine: "underline",
     fontSize: 15,
   },
@@ -220,13 +218,13 @@ const styles = StyleSheet.create({
     height: "8%",
     marginTop: "2%",
     justifyContent: "center",
-    alignItems: "flex-end",
+    alignItems: "center",
     alignContent: "center",
+    alignSelf:"center",
     backgroundColor: "#ce9e04",
     borderStyle: "solid",
     borderWidth: 3,
     borderColor: "black",
-    display: "flex",
   },
   registerBtn: {
     width: "85%",
@@ -235,52 +233,36 @@ const styles = StyleSheet.create({
     marginBottom: "2%",
     marginTop: "2%",
     justifyContent: "center",
-    alignItems: "flex-end",
+    alignItems: "center",
     alignContent: "center",
     backgroundColor: "#ce9e04",
     borderStyle: "solid",
     borderWidth: 3,
     borderColor: "black",
-    display: "flex",
   },
   buttonText: {
     color: "black",
-    fontSize: "200%",
-    fontWeight: "700",
-    fontFamily: 'cairo',
-    alignSelf: "center",
+    fontSize: 20,
+    fontWeight: 700,
+    alignSelf: "center",  
+    justifyContent: "center",
+    alignContent: "center",
+  },
+  icon:{
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop:"10%"
   },
   smallloginicon: {
     width: 55,
     height: 55,
-    margin: 5,
     marginTop: "1%",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignContent: "space-around",
-    borderRadius: "50%",
-  },
-  logocont: {
-    flex: 1,
-    alignItems: "center",
+    marginLeft: 10,
     justifyContent: "center",
-    width: "100%",
-    marginBottom: '5%',
-
-
-  },
-  logoText: {
-    color: "white",
-    fontSize: "50px",
-    fontWeight: "600",
-    fontFamily: 'prompt',
-    justifyContent: 'center',
-    alignSelf: "center",
-    marginTop: "20%",
-
-  },
-  smallView: {
-    paddingBottom: '5%'
+    alignContent: "center",
+    borderRadius: 5,
   },
 });
 

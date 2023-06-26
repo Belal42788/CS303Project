@@ -1,24 +1,19 @@
-import { StyleSheet, View, Text, Image, useWindowDimensions, TouchableOpacity, ImageBackground, Button } from "react-native";
+import { StyleSheet, View, Text,TouchableOpacity, ImageBackground} from "react-native";
 import React from "react";
-import { ReactDOM } from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons"
-import Ionicons from "@expo/vector-icons/Ionicons"
-import FontAwesome from "@expo/vector-icons/FontAwesome"
-import { useFonts } from "expo-font";
-//import { StatusBar } from "expo-status-bar";
-import backgroundpic from "../assets/Image/zachary-edmundson-ygqZpaNl_dM-unsplash - Copy.jpg"
+import {FontAwesome}  from "@expo/vector-icons"
+
+
 
 
 
 function GetStar1({ navigation }) {
-    const { height } = useWindowDimensions();
     return (
 
-        <ImageBackground source={require('../assets/Image/Exclusive Luxury Car  (Instagram Post15edit).jpg')} style={styles.container}>
+        <ImageBackground source={require('../assets/Image/Exclusive1.jpg')} style={styles.container}>
             <View style={styles.logocont}>
-                <Text style={styles.logoText}><FontAwesome name="xing" size={"25px"} color="white" style={{}} /> Luxury</Text>
+                <Text style={styles.logoText}><FontAwesome name={"xing"} size={25} color="white" style={{}} /> Luxury</Text>
             </View>
-            
+
             <View style={styles.topScreenView}>
                 <Text style={styles.screenTopText}>Luxury Cars.</Text>
                 <Text style={styles.screenTopText}>Enjoy the Permium</Text>
@@ -26,13 +21,13 @@ function GetStar1({ navigation }) {
             <Text style={styles.screenBottomText}>
                 Find a variety of the car of your dreams, at a good price and quality premium.
             </Text>
-            <Text>   </Text>
+
             <View style={styles.buttonscontain}>
                 <TouchableOpacity style={styles.specialbutton}></TouchableOpacity>
                 <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
                 <TouchableOpacity style={styles.upperbuttons}></TouchableOpacity>
             </View>
-            <Text>   </Text>
+
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Get Start2')} >
                 <Text style={styles.buttonText}>GET STARTED </Text>
             </TouchableOpacity>
@@ -76,14 +71,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        // marginTop: "2%",
-        marginBottom: -35
+        marginTop: "5%",
+        marginBottom: "1%"
     },
     upperbuttons: {
         borderStyle: "solid",
         borderWidth: 1,
         borderColor: "black",
-        padding : 0.25,
+        padding: 0.25,
         width: 15,
         height: 15,
         borderRadius: 10,
@@ -111,8 +106,8 @@ const styles = StyleSheet.create({
     button: {
         width: "90%",
         borderRadius: 18,
-        // height: "8%",
-        // marginBottom: "2%",
+        height: "8%",
+        marginBottom: "2%",
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
@@ -121,8 +116,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "black",
         display: "flex",
-        marginBottom: "1%",
-        marginTop: "8%"
+        marginBottom: "3%",
+        marginTop: "10%"
     },
 
     ico: {
@@ -134,55 +129,55 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: "black",
-        fontSize: "200%",
-        fontWeight: "700",
-        fontFamily: 'cairo',
+        fontSize: 25,
+        fontWeight: 700,
+        // fontFamily: 'cairo',
         alignSelf: "center",
 
     },
     logoText: {
         color: "white",
-        fontSize: "20px",
-        fontWeight: "600",
-        fontFamily: 'prompt',
+        fontSize: 20,
+        fontWeight: 600,
+        // fontFamily: 'prompt',
         justifyContent: 'center',
         alignSelf: "center",
         marginTop: "1%",
     },
     screenTopText: {
         color: 'white',
-        fontSize: '38px',
-        fontWeight: '400',
-        // marginTop:'5%',
+        fontSize: 30,
+        fontWeight: 400,
+        marginTop:'5%',
         alignContent: 'center',
         width: "100%",
         textAlign: "center",
-        opacity: "95%",
+        // opacity: "95%",
     },
     screenBottomText: {
         color: 'white',
-        fontWeight: '400',
-        fontSize: '120%',
-        fontFamily: 'cairo',
-        lineHeight: "1.2",
+        fontWeight: 400,
+        fontSize: 19,
+        // fontFamily: 'cairo',
+        // lineHeight: "1.2",
         width: "100%",
-        opacity: "88%",
+        opacity: 0.8,
         textAlign: "center",
     },
     signInButton: {
         marginBottom: "6%",
-        // marginTop: "9%",
-        textDecorationLine: "underline",
+        marginTop: "3%",
+        // textDecorationLine: "underline",
         fontSize: 16,
         color: '#d8d8d8',
-        fontFamily: 'cairo'
+        // fontFamily: 'cairo'
     },
     skipButton: {
-        marginBottom: "10%",
-        textDecorationLine: "underline",
+        marginBottom: "1%",
+        // textDecorationLine: "underline",
         fontSize: 20,
         color: '#d8d8d8',
-        fontFamily: 'cairo',
+        // fontFamily: 'cairo',
         fontWeight: 'bold'
     }
 });

@@ -2,21 +2,17 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
-  useWindowDimensions,
   TouchableOpacity,
-  TextInput,ImageBackground
+  TextInput, ImageBackground
 } from "react-native";
 import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import auth from "../firebase/config/firebase-config";
-import { StatusBar } from "expo-status-bar";
+import { Dimensions } from 'react-native';
 
-export default function Forgetpassword({ navigation }) {
+const h = Dimensions.get('window').height;
+const Forgetpassword = ({ navigation }) => {
   const [email, setEmail] = useState("");
-  const { height } = useWindowDimensions();
-
   const handelforgetpassword = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
@@ -33,11 +29,11 @@ export default function Forgetpassword({ navigation }) {
 
   return (
     <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
-      <StatusBar style="auto" />.
-      {/* <Image   source={require("../assets/5-removebg-preview.png")} style={[styles.logo]} /> */}
-      {/* <Text style={styles.title}>forgot password </Text> */}
+
       <View style={styles.logocont}>
-        <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
+        <Text style={styles.logoText}>
+          Luxury
+        </Text>
       </View>
       <View style={styles.inputView}>
         <TextInput
@@ -50,142 +46,92 @@ export default function Forgetpassword({ navigation }) {
       </View>
 
       <TouchableOpacity
-        style={styles.loginBtn}
+        style={styles.ForgetButton}
         onLayout={styles.hoverstyle}
         onPress={handelforgetpassword}
       >
-        <Text style={styles.loginText} onPressIn={styles.loginText}>
-          SEND TO EMAIL
+        <Text style={styles.ForgetText}>
+          Send
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <Text style={styles.forgot_button}>back to sign in</Text>
+        <Text style={styles.signBack}>sign in</Text>
       </TouchableOpacity>
-      <View style={styles.smallView}>
-        <Text>   </Text>
-      </View>
+
     </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: h,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
   },
-  logo: {
-    justifyContent:"center",
-        alignContent:"center",
-        alignItems:"center",
-        alignSelf:"center",
-        marginBottom: "50%",
-        marginTop: "-10%",
-        width: 300,
-        height: 300,
+  logocont: {
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: "100%",
   },
-  title: {
-    fontWeight: "bold",
+  logoText: {
+    color: "white",
     fontSize: 50,
-    marginBottom: 20,
+    justifyContent: 'center',
+    alignSelf: "center",
+    marginTop: "15%",
   },
-  title1: {
-    fontSize: 20,
-    color: "3A3967",
-    marginBottom: 20,
+  inputView: {
+    backgroundColor: "white",
+    width: "90%",
+    height: "7%",
+    borderColor: "black",
+    borderWidth: 2.5,
+    borderRadius: 15,
+    alignItems: "center",
+    textAlign: "left",
+    alignContent: "center",
+    alignSelf: "center",
+    justifyContent: "center",
+    marginTop:"40%"
   },
-  loginBtn: {
-    width: "85%",
+  TextInput: {
+    width: "95%",
+    fontSize: 16,
+    textAlign: "left",
+    color: "black",
+    outlineStyle: 'none',
+    borderColor: "#fff",
+  },
+  ForgetButton: {
+    width: "60%",
     borderRadius: 13,
     height: "8%",
     marginBottom: "2%",
     marginTop: "2%",
     justifyContent: "center",
-    alignItems:"flex-end",
-    alignContent:"center",
+    alignItems: "flex-end",
+    alignContent: "center",
     backgroundColor: "#ce9e04",
     borderStyle: "solid",
     borderWidth: 3,
     borderColor: "black",
-    display:"flex",
+    marginTop:"20%"
   },
-  TextInput: {
-    fontSize: "160%",
-    width: "96%",
-    height: "90%",
-    textAlign: "left",
+  ForgetText: {
     color: "black",
-    fontFamily:'cairo',
-    fontWeight:"600",
-    outlineStyle: 'none',
-    borderColor: "#fff"
-  },
-
-  inputView: {
-    backgroundColor: "white",
-    borderColor: "black",
-    borderWidth: 2.5,
-    borderRadius: 15,
-    fontFamily:'cairo',
-    alignItems: "center",
-    textAlign: "left",
-    alignContent:"center",
-    alignSelf:"center",
-    justifyContent:"flex-end",
-  },
-  RegBtn: {
-    width: "90%",
-    borderRadius: 5,
-    height: 70,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 0,
-    fontSize: 50,
-    Size: 50,
-    backgroundColor: "black",
-    borderWidth: 2,
-    borderColor: "#64e3ff",
-    marginBottom: 0,
-  },
-  loginText: {
-    color: "black",
-    fontSize: "200%",
-    fontWeight: "700",
-    fontFamily:'cairo',
-    alignSelf:"center",
-  },
-  RegisterText: {
     fontSize: 20,
-    lineHeight: 20,
-    fontStyle: "normal",
-    padding: 10,
-    color: "#64e3ff",
+    // fontWeight: "700",
+    // fontFamily:'cairo',
+    alignSelf: "center",
   },
-  forgot_button: {
-    marginBottom: "0",
+  signBack: {
+    marginBottom: 0,
     marginTop: "5%",
     color: "#d8d8d8",
     textDecorationLine: "underline",
     fontSize: 20,
   },
-  logocont: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    width: "100%",
-
-},
-logoText: {
-    color: "white",
-    fontSize: "50px",
-    fontWeight: "600",
-    fontFamily: 'prompt',
-    justifyContent: 'center',
-    alignSelf: "center",
-    marginTop: "15%",
-},
-smallView: {
-    paddingBottom: '20%'
-},
 });
+
+
+export default Forgetpassword;

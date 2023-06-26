@@ -56,13 +56,13 @@ function MainScreen({ navigation }) {
   return (
     <LinearGradient style={styles.container} colors={["#1c2834", "#d0a20e"]}>
       <Header navigation={navigation} />
-      <Brands />
+      {/* <Brands /> */}
       {
         Admin ? Edit() : <></>
       }
       <Text style={styles.TextModel}>Recently Added</Text>
-      <Models />
-      <Footer navigation={navigation} />
+      {/* <Models /> */}
+      {/* <Footer navigation={navigation} /> */}
     </LinearGradient>
   );
 }
@@ -84,11 +84,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderColor: "black",
     borderWidth: 2.5,
-    borderRadius: 70,
+    borderRadius: 7,
     width: "85%",
     height: "70%",
-    fontFamily: "cairo",
-    marginBottom: "5px",
+    marginBottom: 5,
     justifyContent: "flex-start",
     alignItems: "flex-start",
     textAlign: "left",
@@ -102,8 +101,6 @@ const styles = StyleSheet.create({
     height: "90%",
     textAlign: "left",
     color: "black",
-    fontFamily: "cairo",
-    fontWeight: "700",
     marginLeft: 9,
   },
   PhotoStyle: {
@@ -127,7 +124,6 @@ const styles = StyleSheet.create({
       textTransform: "capitalize",
       fontSize: 20,
       textAlign: "center",
-      fontFamily: "cairo",
   },
   button: {
       width: "70%",
@@ -150,7 +146,6 @@ const styles = StyleSheet.create({
       textTransform: "capitalize",
       fontSize: 20,
       textAlign: "center",
-      fontFamily: "cairo",
   },
 });
 export default MainScreen;

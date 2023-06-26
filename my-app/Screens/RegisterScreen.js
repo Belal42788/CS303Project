@@ -4,7 +4,6 @@ import {
     updateProfile,
     signOut,
 } from "firebase/auth";
-import { StatusBar } from "expo-status-bar";
 import auth from "../firebase/config/firebase-config.js";
 import React, { useState } from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome"
@@ -19,7 +18,9 @@ import {
 } from "react-native";
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { doc, setDoc, getFirestore, updateDoc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
+import { Dimensions } from 'react-native';
 
+const h = Dimensions.get('window').height;
 
 const RegisterScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState("");
@@ -79,8 +80,8 @@ const RegisterScreen = ({ navigation }) => {
                         email: email,
                         phone: phone,
                         BirthDate: BirthDate,
-                        incard:[],
-                        shop:[],
+                        incard: [],
+                        shop: [],
                         date: Date.now()
                     });
 
@@ -158,9 +159,11 @@ const RegisterScreen = ({ navigation }) => {
     return (
 
         <ImageBackground source={require('../assets/Image/reg3.jpg')} style={styles.container}>
-            <StatusBar style="auto" />
             <View style={styles.logocont}>
-                <Text style={styles.logoText}><FontAwesome name="xing" size={"40px"} color="white" style={{}} /> Luxury</Text>
+                <Text style={styles.logoText}>
+                    <FontAwesome name="xing" size={40} color="white" style={{}} />
+                    Luxury
+                </Text>
             </View>
             <View style={styles.inputView}>
                 <TextInput
@@ -238,13 +241,14 @@ const RegisterScreen = ({ navigation }) => {
                     Register
                 </Text>
             </TouchableOpacity>
-            <View style={styles.smallloginicon}>
+            <View style={styles.icon}>
                 <TouchableOpacity>
                     <Image
                         style={styles.smallloginicon}
                         source={require("../assets/Image/thcc.png")}
                     />
                 </TouchableOpacity>
+
                 <TouchableOpacity onPress={signGoogle}>
                     <Image
                         style={styles.smallloginicon}
@@ -261,29 +265,14 @@ const RegisterScreen = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                 <Text style={styles.forgot_button}>Need to Login instead?</Text>
             </TouchableOpacity>
-            <View style={styles.smallView}>
-                <Text>   </Text>
-            </View>
         </ImageBackground>
     );
 };
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height: h,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center",
-    },
-    image: {
-        // marginTop: '50px',
-        justifyContent: "center",
-        alignContent: "center",
-        alignItems: "center",
-        alignSelf: "center",
-        marginBottom: "-8%",
-        marginTop: "-12%",
-        width: 250,
-        height: 250,
     },
     inputView: {
         backgroundColor: "white",
@@ -292,28 +281,23 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: "90%",
         height: "7%",
-        fontFamily: 'cairo',
-        marginBottom: "5px",
+        marginBottom: 5,
         alignItems: "center",
         textAlign: "left",
         alignContent: "center",
         alignSelf: "center",
         justifyContent: "center",
-        marginTop: '-1%',
+        marginTop: '1%',
     },
     TextInput: {
-        fontSize: "120%",
+        fontSize: 19,
         width: "96%",
         height: "90%",
         textAlign: "left",
         color: "black",
-        fontFamily: 'cairo',
-        fontWeight: "700",
-        outlineStyle: 'none',
         borderColor: "#fff"
     },
     RegBtn: {
-
         width: "85%",
         borderRadius: 13,
         height: "8%",
@@ -327,51 +311,45 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "black",
         display: "flex",
-
     },
     loginText: {
         color: "black",
-        fontSize: "200%",
-        fontWeight: "700",
-        fontFamily: 'cairo',
+        fontSize: 20,
         alignSelf: "center",
+    },
+    icon: {
+        flexDirection: "row",
+        alignContent: "center",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "2%"
     },
     smallloginicon: {
         width: 55,
         height: 55,
-        margin: 5,
         marginTop: "1%",
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        alignContent: "space-around",
-        borderRadius: "50%",
+        marginLeft: 10,
+        justifyContent: "center",
+        alignContent: "center",
+        borderRadius: 5,
     },
     forgot_button: {
         marginBottom: "10%",
-        marginTop: "5%",
+        marginTop: "2%",
         textDecorationLine: "underline",
         fontSize: 20,
         color: "#d8d8d8",
     },
     logocont: {
-        flex: 1,
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-
-
     },
     logoText: {
         color: "white",
-        fontSize: "50px",
-        fontWeight: "600",
-        fontFamily: 'prompt',
-        justifyContent: 'center',
+        fontSize: 50,
         alignSelf: "center",
         marginTop: "10%",
-    },
-    smallView: {
-        paddingBottom: '5%'
     },
 });
 export default RegisterScreen;
